@@ -65,18 +65,17 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: cafe
 
-plugin:
+plugins:
 - hexo-generator-feed
+- hexo-generator-sitemap
 
 feed:
   type: atom
   path: atom.xml
   limit: 20
-  hub:
-  content:
-  content_limit: 140
-  content_limit_delim: ' 
  
+sitemap:
+    path: sitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
