@@ -69,7 +69,7 @@ show_count: true
 
 # 标签云TagClound
 # 如果启动，则标签云颜色为随机
-tagcloud_color: false 
+tagcloud_color: true 
 
 # MathJax Support
 # 设置enable属性为true即可开启mathjax
@@ -89,12 +89,17 @@ favicon: /favicon.png
 # 关闭统一为 false
 # 若使用多说，此处填写的是多说评论账号ID
 ## 网易云跟帖
-### 使用说明 http://cafe.giscafer.com/2017/04/14/gentie-test/
-gentie_productKey: e2fb4051c49xxx8ce669e634bc983f 
+### 使用说明 http://cafe.giscafer.com/2017/04/14/gentie-test/ 
 ## 多说 （2017年6月将关闭）
 duoshuo_shortname: false 
 ## disqus
 disqus_shortname: false
+gitment:
+  enable: true #如果不使用则设置false关闭
+  owner: jin10086 # 你的github名称或者id id的获取方式为https://api.github.com/users/forvoid（你的名称）中的id极为github id
+  repo: jin10086.github.io # 你的留言存放的位置 我的是放在我的github的github page上面
+  client_id: 935e92a5333436856348 # Register a new OAuth application https://github.com/settings/applications/new 
+  client_secret: e655566eaf920d216ec6283978d67874bf0850a6 
 google_plus:
 fb_admins:
 fb_app_id:
