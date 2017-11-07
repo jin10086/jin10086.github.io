@@ -3,6 +3,7 @@ search: Search
 tags: Tags
 tagcloud: Tag Cloud
 friendly_link: Links
+wechat: WeChat
 hot_comment_posts: Hot Posts
 lastest_comments: Latest Comments
 post_content: Content
@@ -14,6 +15,7 @@ archive_a: Archives
 archive_b: "Archives: %s"
 page: Page %d
 recent_posts: Recent Posts
+random_posts: Recommended Posts
 newer: Newer
 older: Older
 share: Share
