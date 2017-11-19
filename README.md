@@ -71,6 +71,12 @@ Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来
 先clone github中的仓库
 在本地clone的文件下内通过git bash执行下列指令：
 
+### 如果是重装了系统的话，则需要
+
+- [下载nodejs](https://nodejs.org/en/)  
+- 安装hexo 客户端 `npm install -g hexo-cli
+`
+
 [使用国内源](http://npm.taobao.org/ "使用国内源")
 
 `npm install -g cnpm --registry=https://registry.npm.taobao.org`
