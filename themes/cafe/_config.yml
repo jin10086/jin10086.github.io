@@ -3,6 +3,9 @@ menu:
   首页: /
   归档: /archives
   关于: /about
+  实验室: /lab/
+skip_render:
+    lab/**
 rss: /atom.xml
 
 # footer底部显示联系邮箱（在博客配置文件下添加email配置也是一样的效果）
