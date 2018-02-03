@@ -91,7 +91,7 @@ mathjax:
 
 
 # 其他参数
-google_analytics:
+google_analytics: UA-113457160-1
 favicon: /favicon.png
 
 #comments 评论插件
