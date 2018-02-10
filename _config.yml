@@ -56,6 +56,11 @@ index_generator:
 tag_generator:
   per_page: 10
 
+nofollow:
+  enable: true
+  exclude:
+    - jin10086.github.io
+
 #archive option
 archive_generator:
   per_page: 20 ## Posts displayed per page. (0 = disable pagination)
