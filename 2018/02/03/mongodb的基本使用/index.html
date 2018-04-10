@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongodb的基本使用 | 高金的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
+<meta name="keywords" content="mongodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb的基本使用">
+<meta property="og:url" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/index.html">
+<meta property="og:site_name" content="高金的博客">
+<meta property="og:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg">
+<meta property="og:updated_time" content="2018-04-04T07:12:10.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb的基本使用">
+<meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113457160-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jin10086.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/lab/">实验室</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">高金的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongodb的基本使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/mongodb的基本使用/" class="article-date">
+  <time datetime="2018-02-03T09:36:09.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongodb的基本使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>本文章属于<a href="https://zhuanlan.zhihu.com/p/25296437" rel="external nofollow noopener noreferrer" target="_blank">爬虫入门到精通系统教程</a>第十讲</p>
+<p>在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？</p>
+<h2 id="保存到文本文件？"><a href="#保存到文本文件？" class="headerlink" title="保存到文本文件？"></a>保存到文本文件？</h2><p>可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…</p>
+<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg" alt=""><br>我今天爬取了10000部日本电影</p>
+<p>假如说你要找苍老师出演的，那么你可能会说，我直接<code>ctrl+f</code>查找”苍老师”不就行了</p>
+<p>但是假如你想要找”苍老师+无码”怎么办呢？？？</p>
+<p>这个时候就是体现数据库的作用了。</p>
+<h2 id="Mongodb的介绍"><a href="#Mongodb的介绍" class="headerlink" title="Mongodb的介绍"></a>Mongodb的介绍</h2><h3 id="为什么用mongodb呢？"><a href="#为什么用mongodb呢？" class="headerlink" title="为什么用mongodb呢？"></a>为什么用mongodb呢？</h3><ol>
+<li>文档结构的存储方式</li>
+<li>简单讲就是可以直接存json,list</li>
+<li>不要事先定义”表”,随时可以创建</li>
+<li>“表”中的数据长度可以不一样</li>
+<li>也就是第一条记录有10个值，第二条记录不要规定也要10个值</li>
+<li>对爬虫这种很乱的数据来说，很适用 。</li>
+</ol>
+<h2 id="Mongodb的安装"><a href="#Mongodb的安装" class="headerlink" title="Mongodb的安装"></a>Mongodb的安装</h2><p>直接到 <a href="https://www.mongodb.com/download-center#community" rel="external nofollow noopener noreferrer" target="_blank">https://www.mongodb.com/download-center#community</a>选择合适的版本下载安装就可以了。</p>
+<p>安装完成后</p>
+<p>windows用户在<br><code>bin</code>目录下新建一个<code>data</code>的文件夹<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg" alt=""></p>
+<p>然后在新建一个<code>start.bat</code>文件,内容写上<br><code>mongod --dbpath ./data</code><br>后面每次只要直接打开这个.bat 文件mongodb就运行了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg" alt=""><br>你可以直接选中<code>start.bat</code>，发送到桌面快捷方式，这样你以后可以直接在桌面打开了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg" alt=""></p>
+<h2 id="mongodb的基本使用"><a href="#mongodb的基本使用" class="headerlink" title="mongodb的基本使用"></a>mongodb的基本使用</h2><p>首先 <code>pip install pymongo</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="爬虫经常用到的三条插入语句"><a href="#爬虫经常用到的三条插入语句" class="headerlink" title="爬虫经常用到的三条插入语句"></a>爬虫经常用到的三条插入语句</h3><p>下面的<strong>test2为表名</strong>,</p>
+<ul>
+<li><code>test2.insert_one(xx)</code> 插入一条数据</li>
+<li><code>test2.insert_many(xx)</code> 插入list</li>
+<li><strong>最常用&gt;&gt;&gt;</strong><code>test2.update_one({&#39;x&#39;:1},{&#39;$set&#39;:{&#39;x&#39;:3}},upsert=True)</code></li>
+<li>第三条一般会在防止重复的数据被存到数据库内 要用到</li>
+</ul>
+<p>代码都在 <a href="https://github.com/kimg1234/pachong/blob/master/mongodb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.ipynb" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/kimg1234/pachong/blob/master/mongodb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.ipynb</a></p>
+<p>参考文档</p>
+<ul>
+<li><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" rel="external nofollow noopener noreferrer" target="_blank">mongodb中文文档</a></li>
+<li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.find_one_and_update" rel="external nofollow noopener noreferrer" target="_blank">mongodb官方文档</a></li>
+</ul>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jin10086.github.io/2018/02/03/mongodb的基本使用/" data-id="cjflacrqg000dz8yyyugluskg" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/抓取手机app的数据（摩拜单车）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          抓取手机app的数据（摩拜单车）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/03/headers的详细讲解（If-modified-since）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">headers的详细讲解（If-modified-since）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#保存到文本文件？"><span class="toc-number">1.</span> <span class="toc-text">保存到文本文件？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongodb的介绍"><span class="toc-number">2.</span> <span class="toc-text">Mongodb的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么用mongodb呢？"><span class="toc-number">2.1.</span> <span class="toc-text">为什么用mongodb呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongodb的安装"><span class="toc-number">3.</span> <span class="toc-text">Mongodb的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongodb的基本使用"><span class="toc-number">4.</span> <span class="toc-text">mongodb的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫经常用到的三条插入语句"><span class="toc-number">5.1.</span> <span class="toc-text">爬虫经常用到的三条插入语句</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Gao JIn&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank" rel="external nofollow noopener noreferrer">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1019855680@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/lab/" class="mobile-nav-link">实验室</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+    var gitment = new Gitment({
+      id: 'mongodb的基本使用', // 可选。默认为 location.href
+      owner: 'jin10086',
+      repo: 'jin10086.github.io',
+      oauth: {
+        client_id: '935e92a5333436856348',
+        client_secret: 'e655566eaf920d216ec6283978d67874bf0850a6',
+      }
+    })
+    gitment.render(document.getElementById("gitment_comments"))
+  </script>
+
+  
+    <!-- author:forvoid end -->
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
