@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jin10086.github.io/"/>
-  <updated>2018-04-04T07:12:10.672Z</updated>
+  <updated>2018-04-22T15:25:14.525Z</updated>
   <id>https://jin10086.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一行代码蒸发了¥6,447,277,680人民币！</title>
+    <link href="https://jin10086.github.io/2018/04/22/%E4%BA%BA%E6%B0%91%E5%B8%81%EF%BC%81/"/>
+    <id>https://jin10086.github.io/2018/04/22/人民币！/</id>
+    <published>2018-04-22T15:24:05.000Z</published>
+    <updated>2018-04-22T15:25:14.525Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>现在进入你还是先行者，最后观望者进场才是韭菜。</strong></p><p>美图董事长蔡文胜曾在三点钟群，高调的说出了这句话，随即被大众疯传。</p><p>在他发表完言论没多久，2月美链（BEC）上交易所会暴涨4000%，后又暴跌。尽管他多次否认，聪明的网友早已扒出，他与BEC千丝万缕的关系。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqltga6j8bj20hs0dpqas.jpg" alt=""></p><p>庄家坐庄操控币价，美图的股价随之暴涨，蔡文胜顺利完成了他的韭菜收割大计。</p><p>但在币圈，割人者，人恒割之。</p><p>随着BEC智能合约的漏洞的爆出，被黑客利用，瞬间套现抛售大额BEC，6亿在瞬间归零。</p><p>而这一切，竟然是因为一个简单至极的程序Bug。</p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今天有人在群里说，<a href="https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d" rel="external nofollow noopener noreferrer" target="_blank">Beauty Chain 美蜜</a> 代码里面有bug，已经有人利用该bug获得了  57,896,044,618,658,100,000,000,000,000,000,000,000,000,000,000,000,000,000,000.792003956564819968 个 BEC</p><p>那笔操作记录是 <a href="https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f" rel="external nofollow noopener noreferrer" target="_blank">0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f</a></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlpon57s4j21qe15c13c.jpg" alt=""></p><p>下面我来带大家看看，黑客是如何实现的！</p><p>我们可以看到执行的方法是 <code>batchTransfer</code></p><p>那这个方法是干嘛的呢？（给指定的几个地址，发送相同数量的代币）</p><h3 id="整体逻辑是"><a href="#整体逻辑是" class="headerlink" title="整体逻辑是"></a>整体逻辑是</h3><p>你传几个地址给我(_receivers),然后再传给我你要给每个人多少代币（_value)</p><p>然后你要发送的总金额 = 发送的人数* 发送的金额</p><p>然后 要求你当前的余额大于 发送的总金额</p><p>然后扣掉你发送的总金额</p><p>然后 给_receivers 里面的每个人发送 指定的金额（_value)</p><p>从逻辑上看，这边是没有任何问题的，你想给别人发送代币，那么你本身的余额一定要大于发送的总金额的！</p><p>但是这段代码却犯了一个很傻的错!</p><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlpsliqg9j21aq0di41a.jpg" alt=""></p><p>这个方法会传入两个参数</p><ol><li>_receivers</li><li>_value</li></ol><p>_receivers 的值是个列表，里面有两个地址 </p><p><a href="https://etherscan.io/token/0xc5d105e63711398af9bbff092d4b6769c82f793d?a=0x0e823ffe018727585eaf5bc769fa80472f76c3d7" rel="external nofollow noopener noreferrer" target="_blank">0x0e823ffe018727585eaf5bc769fa80472f76c3d7</a></p><p><a href="https://etherscan.io/token/0xc5d105e63711398af9bbff092d4b6769c82f793d?a=0xb4d30cac5124b46c2df0cf3e3e1be05f42119033" rel="external nofollow noopener noreferrer" target="_blank">0xb4d30cac5124b46c2df0cf3e3e1be05f42119033</a></p><p>_value 的值是 <code>8000000000000000000000000000000000000000000000000000000000000000</code></p><p>我们再查看代码（如下图）</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlpj1qxlxj226s0o8wjw.jpg" alt=""></p><p>我们一行一行的来解释</p><p><code>uint cnt = _receivers.length;</code></p><p>是获取 _receivers 里面有几个地址，我们从上面可以看到 参数里面只有两个地址，所以 cnt=2，也就是 给两个地址发送代币</p><p><code>uint256 amount = uint256(cnt) * _value;</code></p><h2 id="uint256"><a href="#uint256" class="headerlink" title="uint256"></a>uint256</h2><p>首先<code>uint256(cnt)</code> 是把cnt 转成了 uint256类型</p><p>那么,什么是uint256类型？或者说uint256类型的取值范围是多少…</p><p>uintx 类型的取值范围是 0 到 2的x次方 -1</p><p>也就是 假如是 uint8的话 </p><p>则 uint8的取值范围是 0 到 2的8次方 -1 </p><p>也就是 0 到255</p><p>那么uint256 的取值范围是 </p><p>0 - 2的256次方-1  也就是 <code>0 到115792089237316195423570985008687907853269984665640564039457584007913129639935</code></p><p>python 算 2的256次方是多少<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlpjvwod1j20zs03c74x.jpg" alt=""></p><p>那么假如说 设置的值超过了 取值范围怎么办？这种情况称为<code>溢出</code></p><p>举个例子来说明</p><p>因为uint256的取值太大了，所以用uint8来 举例。。。</p><p>从上面我们已经知道了  uint8 最小是0，最大是255</p><p>那么当我 255 + 1 的时候，结果是啥呢？<strong>结果会变成0</strong></p><p>那么当我 255 + 2 的时候，结果是啥呢？<strong>结果会变成1</strong></p><p>那么当我 0 - 1  的时候，结果是啥呢？<strong>结果会变成255</strong></p><p>那么当我 0 - 2  的时候，结果是啥呢？<strong>结果会变成255</strong></p><p>那么 我们回到上面的代码中，</p><p><code>amount = uint256(cnt) * _value</code></p><p>则 amount = 2* _value</p><p>但是此时 _value 是16进制的，我们把他转成 10进制 </p><p>（python 16进制转10进制）<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlqm9j1thj20y203sjs6.jpg" alt=""></p><p>可以看到 _value = <code>57896044618658097711785492504343953926634992332820282019728792003956564819968</code></p><p>那么amount = _value*2 = <code>115792089237316195423570985008687907853269984665640564039457584007913129639936</code></p><p>可以在查看上面看到 uint256取值范围最大为 <code>115792089237316195423570985008687907853269984665640564039457584007913129639935</code></p><p>此时，amout已经超过了最大值，溢出 则<code>amount = 0</code></p><p>下一行代码<br><code>require(cnt &gt; 0 &amp;&amp; cnt &lt;= 20);</code><br>require 语句是表示该语句一定要是正确的，也就是 cnt 必须大于0 且 小于等于20</p><p>我们的cnt等于2，通过!</p><p><code>require(_value &gt; 0 &amp;&amp; balances[msg.sender] &gt;= amount);</code></p><p>这句要求 _value 大于0，我们的_value是大于0 的<br>且,当前用户拥有的代币余额大于等于 amount,因为amount等于0，所以 就算你一个代币没有，也是满足的！</p><p><code>balances[msg.sender] = balances[msg.sender].sub(amount);</code></p><p>这句是当前用户的余额 - amount</p><p>当前amount 是0，所以当前用户代币的余额没有变动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (uint i = 0; i &lt; cnt; i++) &#123;</span><br><span class="line">    balances[_receivers[i]] = balances[_receivers[i]].add(_value);</span><br><span class="line">    Transfer(msg.sender, _receivers[i], _value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这句是遍历 _receivers中的地址，<br>对每个地址做以下操作</p><p><code>balances[_receivers[i]] = balances[_receivers[i]].add(_value);</code><br>_receivers中的地址 的余额 = 原本余额+value</p><p>所以 _receivers 中地址的余额 则加了57896044618658097711785492504343953926634992332820282019728792003956564819968 个代币！！！</p><p><code>Transfer(msg.sender, _receivers[i], _value);}</code><br>这句则只是把赠送代币的记录存下来！！！</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>就一个简单的溢出漏洞，导致BEC代币的市值接近归0</p><p>那么，开发者有没有考虑到溢出问题呢？</p><p>其实他考虑了,</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlssg2452j225m0o20y4.jpg" alt=""></p><p>可以看如上截图</p><p>除了amount的计算外, 其他的给用户转钱 都用了safeMath 的方法（sub,add)</p><p>那么 为啥就偏偏这一句没有用safeMath的方法呢。。。</p><p>这就要用写代码的人了。。。</p><h2 id="啥是safeMath"><a href="#啥是safeMath" class="headerlink" title="啥是safeMath"></a>啥是safeMath</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqlsweul1oj21o014k105.jpg" alt=""></p><p>safeMath 是为了计算安全 而写的一个library</p><p>我们看看他干了啥？为啥能保证计算安全.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function mul(uint256 a, uint256 b) internal constant returns (uint256) &#123;</span><br><span class="line">uint256 c = a * b;</span><br><span class="line">assert(a == 0 || c / a == b);</span><br><span class="line">return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如上面的乘法.<br>他在计算后，用assert 验证了下结果是否正确！</p><p>如果在上面计算 amount的时候，用了 mul的话，<br>则 <code>c / a == b</code><br>也就是 验证 amount / cnt == _value </p><p>这句会执行报错的，因为 0 / cnt  不等于 _value</p><p>所以程序会报错！</p><p>也就不会发生溢出了…</p><p>那么 还有一个小问题，这里的<code>assert</code> 好 <code>require</code> 好像是干的同一件事</p><p>都是为了验证 某条语句是否正确！</p><p>那么他俩有啥区别呢？</p><p> 用了assert的话，则程序的gas limit 会消耗完毕</p><p>而require的话，则只是消耗掉当前执行的gas </p><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>那么 我们如何避免这种问题呢？</p><p>我个人看法是</p><ol><li>只要涉及到计算，一定要用safeMath</li><li>代码一定要测试！</li><li>代码一定要review！</li><li>必要时，要请专门做代码审计的公司来 测试代码</li></ol><p>这件事后需要如何处理呢？</p><p>目前，该方法已经暂停了（还好可以暂停）所以看过文章的朋友 不要去测试了…</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqltbqvtz7j227o0pyq8i.jpg" alt=""></p><p>不过已经发生了的事情咋办呢？</p><p>我的想法是，快照在漏洞之前，所有用户的余额情况</p><p>然后发行新的token，给之前的用户 发送等额的代币…</p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
+    
+    <summary type="html">
+    
+      现在进入你还是先行者，最后观望者进场才是韭菜。
+
+美图董事长蔡文胜曾在三点钟群，高调的说出了这句话，随即被大众疯传。
+
+在他发表完言论没多久，2月美链（BEC）上交易所会暴涨4000%，后又暴跌。尽管他多次否认，聪明的网友早已扒出，他与BEC千丝万缕的关系。
+
+
+
+庄家坐庄操控币价，美图的股价随之暴涨，蔡文胜顺利完成了他的韭菜收割大计。
+
+但在币圈，割人者，人恒割之。
+
+随着BEC智能合约的漏洞的爆出，被黑客利用，瞬间套现抛售大额BEC，6亿在瞬间归零。
+
+而这一切，竟然是因为一个简单至极的程序Bug。
+
+背景
+今天有人在群里说，Beauty Chain 美蜜 代码里面有bug，已经有人利用该
+    
+    </summary>
+    
+    
+      <category term="区块链" scheme="https://jin10086.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>爬虫带你发现区块链好游戏</title>
@@ -822,9 +859,9 @@ impo
       <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
     
     
-      <category term="headers" scheme="https://jin10086.github.io/tags/headers/"/>
-    
       <category term="If-modified-since" scheme="https://jin10086.github.io/tags/If-modified-since/"/>
+    
+      <category term="headers" scheme="https://jin10086.github.io/tags/headers/"/>
     
   </entry>
   
@@ -924,62 +961,6 @@ Parsel is a library to extract data from HTML and XML usin
       <category term="异步加载" scheme="https://jin10086.github.io/tags/%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/"/>
     
       <category term="花瓣网爬虫" scheme="https://jin10086.github.io/tags/%E8%8A%B1%E7%93%A3%E7%BD%91%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>headers的详细讲解</title>
-    <link href="https://jin10086.github.io/2018/02/03/headers%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3/"/>
-    <id>https://jin10086.github.io/2018/02/03/headers的详细讲解/</id>
-    <published>2018-02-03T08:28:27.000Z</published>
-    <updated>2018-04-04T07:12:10.669Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文章属于<a href="https://zhuanlan.zhihu.com/p/25296437" rel="external nofollow noopener noreferrer" target="_blank">爬虫入门到精通系统教程</a>第七讲</p><p>直接开始案例吧。</p><p>本次我们实现如何模拟登陆知乎。</p><h3 id="1-抓包"><a href="#1-抓包" class="headerlink" title="1.抓包"></a>1.抓包</h3><p>首先打开知乎登录页 <a href="https://www.zhihu.com/#signin" rel="external nofollow noopener noreferrer" target="_blank">知乎 - 与世界分享你的知识、经验和见解</a></p><p>注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbpjtcsj20k009nad2.jpg" alt=""><br>我们很简单的就找到了 我们需要的请求</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbxwa6yj20qo054gmm.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cc5iwg0j20s10fbn2q.jpg" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_xsrf:<span class="number">81</span>aa4a69cd410c3454ce515187f2d4c9</span><br><span class="line">password:***</span><br><span class="line">email:admin@wuaics.cn</span><br></pre></td></tr></table></figure></p><p>可以看到请求一共有三个参数</p><p><code>email</code> 和<code>password</code>就是我们需要登录的账号及密码</p><p>那么<code>_xsrf</code>是什么？我们在哪能找到？</p><p>像<code>_xsrf</code>这种参数，一般叫做页面校检码，是来检查你是否是从正常的登录页面过来的。</p><p>那我们复制这个值，在登录页面找找看。<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3ccy0fw9j20it0cm44y.jpg" alt=""></p><p>可以看到已经找到了。用xpath很简单就能获取</p><p><code>//input[@name=&quot;_xsrf&quot;]/@value</code></p><p>所以，本次登录我们需要得到的数据已经都得到了</p><p>步骤如下：</p><ol><li>打开知乎登录页面，获取<code>_xsrf</code></li><li>把_xsrf和自己的账号及密码一起发送（模拟登录）</li></ol><h3 id="2-模拟登录"><a href="#2-模拟登录" class="headerlink" title="2.模拟登录"></a>2.模拟登录</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.zhihu.com/#signin'</span></span><br><span class="line">z = requests.get(url)</span><br><span class="line"><span class="keyword">print</span> z.status_code</span><br></pre></td></tr></table></figure><p>我们会看到 http状态码为500…</p><p>至于为什么会返回500状态码呢？是因为我们用程序来访问知乎被发现了…</p><p>我们伪装成浏览器，添加一行</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cdrwe63j20r40bo77h.jpg" alt=""></p><p>可以看到返回正常了，http状态码为200<strong>(这就是headers的作用)</strong></p><p>那我们现在获取<code>_xsrf</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">sel = etree.HTML(z1.content)</span><br><span class="line"><span class="comment"># 这个xsrf怎么获取 我们上面有讲到</span></span><br><span class="line">_xsrf = sel.xpath(<span class="string">'//input[@name="_xsrf"]/@value'</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure><p>然后模拟登录</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">loginurl = <span class="string">'https://www.zhihu.com/login/email'</span></span><br><span class="line"><span class="comment"># 这里的_xsrf就是我们刚刚上面得到的</span></span><br><span class="line">formdata = &#123;</span><br><span class="line"><span class="string">'email'</span>:<span class="string">'admin@wuaics.cn'</span>,</span><br><span class="line"><span class="string">'password'</span>:<span class="string">'你的密码'</span>,</span><br><span class="line"><span class="string">'_xsrf'</span>:_xsrf</span><br><span class="line">&#125;</span><br><span class="line">z2 = requests.post(url=loginurl,data=formdata,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z2.status_code</span><br><span class="line"><span class="comment">#200</span></span><br><span class="line"><span class="keyword">print</span> z2.content</span><br><span class="line"><span class="comment"># '&#123;"r":0,\n "msg": "\\u767b\\u5f55\\u6210\\u529f"\n&#125;'</span></span><br><span class="line"><span class="keyword">print</span> z2.json()[<span class="string">'msg'</span>]</span><br><span class="line"><span class="comment"># 登陆成功</span></span><br></pre></td></tr></table></figure><p>可以看到已经模拟登录并成功了。</p><p>那我们来打开<a href="https://www.zhihu.com/people/pa-chong-21/logs" rel="external nofollow noopener noreferrer" target="_blank">知乎 - 与世界分享你的知识、经验和见解</a>来检查下 是否有登录成功</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为什么用这个页面呢？</span></span><br><span class="line"><span class="comment"># 因为这个页面只有登录后才能看得到，如果没有登录的话 会自动跳转让你登录的</span></span><br><span class="line">mylog = <span class="string">'https://www.zhihu.com/people/pa-chong-21/logs'</span></span><br><span class="line">z3 = requests.get(url=mylog,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z3.status_code</span><br><span class="line"><span class="comment">#200</span></span><br><span class="line"><span class="keyword">print</span> z3.url</span><br><span class="line"><span class="comment"># u'https://www.zhihu.com/?next=%2Fpeople%2Fpa-chong-21%2Flogs'</span></span><br></pre></td></tr></table></figure><p>发现页面url是 (<a href="https://www.zhihu.com/?next=%2Fpeople%2Fpa-chong-21%2Flogs" rel="external nofollow noopener noreferrer" target="_blank">https://www.zhihu.com/?next=%2Fpeople%2Fpa-chong-21%2Flogs</a>)</p><p>并不是 我前面输入的 (<a href="https://www.zhihu.com/people/pa-chong-21/logs" rel="external nofollow noopener noreferrer" target="_blank">https://www.zhihu.com/people/pa-chong-21/logs</a>)</p><p>说明知乎判断我们没有登录，然后把我们跳转到登录页面了.</p><p>如果感兴趣的话，可以把z3.text 的返回值存为123.html，然后打开看看，是不是跳转到登录页面了..</p><p>那么为什么会跳到登录页面呢？刚刚不是已经登录成功了么？</p><p>这是因为，我们这几个模拟请求，相互间都是独立的，所以z2登录成功了，和z3并没有什么关系。</p><p>那如果我现在想要z3不用再模拟登录一次，也能登录的话，怎么办呢？</p><p>我们可以把z2登录成功后得到的cookie给z3,这样，z3也就能登录成功了.</p><p><strong>用程序实现</strong></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cefs9q1j20ft0enjuc.jpg" alt=""><br>再次判断下是否登录成功。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z3 = requests.get(url=mylog,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z3.url</span><br><span class="line"><span class="comment"># u'https://www.zhihu.com/people/pa-chong-21/logs'</span></span><br></pre></td></tr></table></figure><p>我们可以看到已经正常访问了。说明我们登录成功了</p><p>所以，以后只要你带着这个cookie，就可以访问登录后的页面了.<strong>(这就是cookie的作用..)</strong></p><p>最后附上一个小技巧.</p><p>当你需要登录，或者说你需要在一段会话中操作（也就是我们上面的操作）</p><blockquote><h2 id="会话对象高级用法-Requests-2-10-0-文档"><a href="#会话对象高级用法-Requests-2-10-0-文档" class="headerlink" title="会话对象高级用法 - Requests 2.10.0 文档"></a>会话对象<a href="http://link.zhihu.com/?target=http%3A//docs.python-requests.org/zh_CN/latest/user/advanced.html%23session-objects" rel="external nofollow noopener noreferrer" target="_blank">高级用法 - Requests 2.10.0 文档</a></h2><p>会话对象让你能够跨请求保持某些参数。它也会在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 <a href="http://link.zhihu.com/?target=https%3A//urllib3.readthedocs.io/en/latest/pools.html" rel="external nofollow noopener noreferrer" target="_blank">connection pooling</a> 功能。所以如果你向同一主机发送多个请求，底层的 TCP 连接将会被重用，从而带来显著的性能提升。 (参见 <a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/HTTP_persistent_connection" rel="external nofollow noopener noreferrer" target="_blank">HTTP persistent connection</a>).</p></blockquote><p>使用会话后，我们上面的代码可以改成这样</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cesij8pj20k00dp0yh.jpg" alt=""></p><p>可以看到我们没有把cookie传过去，但是还是登录成功了，这是因为session会自动帮你处理这些，会自动帮你管理cookie</p><p>我们可以打印看下我们请求的headers</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cf2wyjnj20go03qwff.jpg" alt=""><br>可以看到headers里面自动加上了cookie</p><p>最后所有的代码都在<a href="http://link.zhihu.com/?target=https%3A//github.com/kimg1234/pachong/blob/master/headers%25E7%259A%2584%25E8%25AF%25A6%25E7%25BB%2586%25E8%25AE%25B2%25E8%25A7%25A3.ipynb" rel="external nofollow noopener noreferrer" target="_blank">kimg1234/pachong</a></p><h2 id="最后再次总结一下"><a href="#最后再次总结一下" class="headerlink" title="最后再次总结一下"></a>最后再次总结一下</h2><p>看完本篇文章后，你应该要</p><ul><li>能理解User-Agent,cookie的作用</li><li>了解requests中的session用法</li><li>了解如何模拟登录一个网页</li></ul><p>如果你对requests这个库不太熟悉的话，你可以在<a href="http://link.zhihu.com/?target=http%3A//docs.python-requests.org/zh_CN/latest/user/quickstart.html" rel="external nofollow noopener noreferrer" target="_blank">快速上手 - Requests 2.10.0 文档</a>浏览。</p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
-    
-    <summary type="html">
-    
-      本文章属于爬虫入门到精通系统教程第七讲
-
-直接开始案例吧。
-
-本次我们实现如何模拟登陆知乎。
-
-1.抓包
-首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解
-
-注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录
-
-
-我们很简单的就找到了 我们需要的请求
-
-
-
-1
-2
-3
-
-
-_xsrf:81aa4a69cd410c3454ce515187f2d4c9
-password:***
-email:admin@wuaics.cn
-
-
-
-
-可以看到请求一共有三个参数
-
-email 和password就是我们需要登录的账号及密码
-
-那么_xsrf是什么？我们在
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="headers" scheme="https://jin10086.github.io/tags/headers/"/>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
