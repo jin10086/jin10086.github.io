@@ -3,23 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>爬虫小工具-copyheader | 高金的博客</title>
+  <title>一键上链 | 高金的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大家写爬虫的，肯定知道如何伪造请求头了，那么你们是如何做的呢？  首先，来看看我之前是如何做的，有多烦我就不说了…    如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~  那我现在怎么是怎么做的呢？    可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.  如何安装呢 pip install copyh">
-<meta name="keywords" content="爬虫工具,copyheaders">
+  <meta name="description" content="一键上链！ 今天在朋友圈看到很多人在 讨论 北大yuexin上链事件.  虽然看到很多人写了教程 如何上链，但是觉得对普通人门槛还是太高了！  所以 做了一个一键上链的服务！  请直接点击&amp;gt;&amp;gt;&amp;gt;一键上链    在文本框内输入你要上链的内容，然后点击提交即可！！！  成功后会看到如下内容，点击以太坊交易流水号.    页面拉到最下面，点击convert to UTF8，则可以在看到你上链的内容了！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫小工具-copyheader">
-<meta property="og:url" content="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/index.html">
+<meta property="og:title" content="一键上链">
+<meta property="og:url" content="https://jin10086.github.io/2018/04/25/一键上链/index.html">
 <meta property="og:site_name" content="高金的博客">
-<meta property="og:description" content="大家写爬虫的，肯定知道如何伪造请求头了，那么你们是如何做的呢？  首先，来看看我之前是如何做的，有多烦我就不说了…    如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~  那我现在怎么是怎么做的呢？    可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.  如何安装呢 pip install copyh">
+<meta property="og:description" content="一键上链！ 今天在朋友圈看到很多人在 讨论 北大yuexin上链事件.  虽然看到很多人写了教程 如何上链，但是觉得对普通人门槛还是太高了！  所以 做了一个一键上链的服务！  请直接点击&amp;gt;&amp;gt;&amp;gt;一键上链    在文本框内输入你要上链的内容，然后点击提交即可！！！  成功后会看到如下内容，点击以太坊交易流水号.    页面拉到最下面，点击convert to UTF8，则可以在看到你上链的内容了！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://pic1.zhimg.com/v2-f20b1ebea73a0481283d65f632e96a3d_r.gif">
-<meta property="og:image" content="https://pic2.zhimg.com/v2-81aa0e4fee50c03a19d3d6bc587c1e55_r.gif">
-<meta property="og:updated_time" content="2018-04-04T07:12:10.673Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fqo7ukywt7j20v00u07ij.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fqo80hyhw8j21yq08wgn9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fqomrevja2j21xm14y4bp.jpg">
+<meta property="og:image" content="https://im.ezgif.com/tmp/ezgif-1-62fc348e0c.gif">
+<meta property="og:updated_time" content="2018-04-25T06:25:27.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爬虫小工具-copyheader">
-<meta name="twitter:description" content="大家写爬虫的，肯定知道如何伪造请求头了，那么你们是如何做的呢？  首先，来看看我之前是如何做的，有多烦我就不说了…    如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~  那我现在怎么是怎么做的呢？    可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.  如何安装呢 pip install copyh">
-<meta name="twitter:image" content="https://pic1.zhimg.com/v2-f20b1ebea73a0481283d65f632e96a3d_r.gif">
+<meta name="twitter:title" content="一键上链">
+<meta name="twitter:description" content="一键上链！ 今天在朋友圈看到很多人在 讨论 北大yuexin上链事件.  虽然看到很多人写了教程 如何上链，但是觉得对普通人门槛还是太高了！  所以 做了一个一键上链的服务！  请直接点击&amp;gt;&amp;gt;&amp;gt;一键上链    在文本框内输入你要上链的内容，然后点击提交即可！！！  成功后会看到如下内容，点击以太坊交易流水号.    页面拉到最下面，点击convert to UTF8，则可以在看到你上链的内容了！">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fqo7ukywt7j20v00u07ij.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -87,14 +88,14 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-爬虫小工具-copyheader" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-一键上链" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/03/爬虫小工具-copyheader/" class="article-date">
-  <time datetime="2018-02-03T10:25:31.000Z" itemprop="datePublished">2018-02-03</time>
+    <a href="/2018/04/25/一键上链/" class="article-date">
+  <time datetime="2018-04-25T06:24:54.000Z" itemprop="datePublished">2018-04-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+    <a class="article-category-link" href="/categories/区块链/">区块链</a>►<a class="article-category-link" href="/categories/区块链/dapdap/">dapdap</a>
   </div>
 
   </div>
@@ -105,7 +106,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      爬虫小工具-copyheader
+      一键上链
     </h1>
   
 
@@ -115,17 +116,18 @@ ga('send', 'pageview');
       
         <!-- Table of Contents -->
         
-        <p>大家写爬虫的，肯定知道如何伪造请求头了，那么你们是如何做的呢？</p>
-<p>首先，来看看我之前是如何做的，有多烦我就不说了…</p>
-<p><img src="https://pic1.zhimg.com/v2-f20b1ebea73a0481283d65f632e96a3d_r.gif" alt=""></p>
-<p>如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~</p>
-<p><strong>那我现在怎么是怎么做的呢？</strong></p>
-<p><img src="https://pic2.zhimg.com/v2-81aa0e4fee50c03a19d3d6bc587c1e55_r.gif" alt=""></p>
-<p>可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.</p>
-<h2 id="如何安装呢"><a href="#如何安装呢" class="headerlink" title="如何安装呢"></a>如何安装呢</h2><p><code>pip install copyheaders</code></p>
-<h2 id="如何使用呢"><a href="#如何使用呢" class="headerlink" title="如何使用呢"></a>如何使用呢</h2><p>先找到你要复制的请求头，并且复制</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入python包</span></span><br><span class="line"><span class="keyword">from</span> copyheaders <span class="keyword">import</span> headers_raw_to_dict</span><br><span class="line">impore requests</span><br><span class="line"><span class="comment"># 把刚刚复制的请求头复制进来</span></span><br><span class="line">r_h = <span class="string">b'''</span></span><br><span class="line"><span class="string">Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</span></span><br><span class="line"><span class="string">Accept-Encoding:gzip, deflate, br</span></span><br><span class="line"><span class="string">Accept-Language:zh-CN,zh;q=0.9,zh-TW;q=0.8</span></span><br><span class="line"><span class="string">Cache-Control:max-age=0</span></span><br><span class="line"><span class="string">Connection:keep-alive</span></span><br><span class="line"><span class="string">Cookie:_gauges_unique_month=1; _gauges_unique_year=1; _gauges_unique=1; _gauges_unique_hour=1; _gauges_unique_day=1</span></span><br><span class="line"><span class="string">DNT:1</span></span><br><span class="line"><span class="string">Host:httpbin.org</span></span><br><span class="line"><span class="string">Referer:https://httpbin.org/</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests:1</span></span><br><span class="line"><span class="string">User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 转换成字典</span></span><br><span class="line">headers = headers_raw_to_dict(r_h)</span><br><span class="line"><span class="comment"># 然后就可以直接使用了~</span></span><br><span class="line">z = requests.get(<span class="string">'https://httpbin.org/headers'</span>,headers=headers</span><br></pre></td></tr></table></figure>
-<p>项目地址在<a href="https://github.com/jin10086/copyheaders" rel="external nofollow noopener noreferrer" target="_blank">copyheaders</a></p>
+        <h2 id="一键上链！"><a href="#一键上链！" class="headerlink" title="一键上链！"></a>一键上链！</h2><p>今天在朋友圈看到很多人在 讨论 <strong>北大yuexin上链</strong>事件.</p>
+<p>虽然看到很多人写了教程 如何上链，但是觉得对普通人门槛还是太高了！</p>
+<p>所以 做了一个一键上链的服务！</p>
+<p>请直接点击&gt;&gt;&gt;<a href="http://www.dapdap.io/#/onChain" rel="external nofollow noopener noreferrer" target="_blank">一键上链</a></p>
+<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqo7ukywt7j20v00u07ij.jpg" alt=""></p>
+<p>在文本框内输入你要上链的内容，然后点击提交即可！！！</p>
+<p>成功后会看到如下内容，点击以太坊交易流水号.</p>
+<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqo80hyhw8j21yq08wgn9.jpg" alt=""></p>
+<p>页面拉到最下面，点击<em>convert to UTF8</em>，则可以在看到你上链的内容了！</p>
+<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqomrevja2j21xm14y4bp.jpg" alt=""></p>
+<p>如果还不明白的，我们做了一个动图！</p>
+<p><img src="https://im.ezgif.com/tmp/ezgif-1-62fc348e0c.gif" alt=""></p>
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -143,12 +145,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/" data-id="cjgeptyn0003bf1c9oukopgz6" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/04/25/一键上链/" data-id="cjgeptylt000af1c9qgjzqzs4" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/copyheaders/">copyheaders</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫工具/">爬虫工具</a></li></ul>
-
     </footer>
   </div>
   
@@ -197,19 +197,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2018/02/03/再也不用担心网页编码的坑了！/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          再也不用担心网页编码的坑了！
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/03/模拟登陆知乎/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/22/人民币！/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">模拟登陆知乎</div>
+      <div class="article-nav-title">一行代码蒸发了¥6,447,277,680人民币！</div>
     </a>
   
 </nav>
@@ -245,7 +236,7 @@ ga('send', 'pageview');
       
         <strong class="toc-title">文章目录</strong>
         <div class="toc-widget-list">
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何安装呢"><span class="toc-number">1.</span> <span class="toc-text">如何安装呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用呢"><span class="toc-number">2.</span> <span class="toc-text">如何使用呢</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一键上链！"><span class="toc-number">1.</span> <span class="toc-text">一键上链！</span></a></li></ol>
           </div>
       </div>
     </div>
@@ -325,7 +316,7 @@ window.onload = function() {
   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
   <script>
     var gitment = new Gitment({
-      id: '爬虫小工具-copyheader', // 可选。默认为 location.href
+      id: '一键上链', // 可选。默认为 location.href
       owner: 'jin10086',
       repo: 'jin10086.github.io',
       oauth: {
