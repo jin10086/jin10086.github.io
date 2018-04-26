@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jin10086.github.io/"/>
-  <updated>2018-04-25T08:03:55.997Z</updated>
+  <updated>2018-04-26T12:06:39.338Z</updated>
   <id>https://jin10086.github.io/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何用myetherwallet 来玩智能合约</title>
+    <link href="https://jin10086.github.io/2018/04/26/%E5%A6%82%E4%BD%95%E7%94%A8myetherwallet-%E6%9D%A5%E7%8E%A9%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/"/>
+    <id>https://jin10086.github.io/2018/04/26/如何用myetherwallet-来玩智能合约/</id>
+    <published>2018-04-26T12:05:47.000Z</published>
+    <updated>2018-04-26T12:06:39.338Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="如何用myetherwallet-来玩智能合约"><a href="#如何用myetherwallet-来玩智能合约" class="headerlink" title="如何用myetherwallet 来玩智能合约"></a>如何用myetherwallet 来玩智能合约</h2><p>用myetherwallet之前，请先看看 <a href="https://zhuanlan.zhihu.com/p/36105871" rel="external nofollow noopener noreferrer" target="_blank">黑客已经盗了15,945,221.72 USD</a></p><p>看完应该会知道如何安全的使用 myetherwallet 了.</p><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p><strong>本次我们玩的合约是 <a href="https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38" rel="external nofollow noopener noreferrer" target="_blank">https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38</a></strong></p><h3 id="确定合约是在哪个网"><a href="#确定合约是在哪个网" class="headerlink" title="确定合约是在哪个网"></a>确定合约是在哪个网</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpucquu3ij20fe0b83zv.jpg" alt=""></p><p>以上就是常见的所有网了</p><p>如果网址 前缀是ropsten，那么就是 ropsten测试网…</p><p>如果网址 前缀是kovan，那么就是 kovan测试网…</p><p>网址前面没有带的，如<a href="https://etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38" rel="external nofollow noopener noreferrer" target="_blank">https://etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38</a></p><p>这种就是主网…</p><p>除了主网外，其他的网都是测试网（也就是获取ETH是免费的）</p><p>我们本次测试的时候，网址是<a href="https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38" rel="external nofollow noopener noreferrer" target="_blank">https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38</a></p><p>那么我们本次玩的合约在 ropsten.</p><h3 id="获取合约地址"><a href="#获取合约地址" class="headerlink" title="获取合约地址"></a>获取合约地址</h3><p>合约地址还是很简单就能知道的</p><p>如本次我们要玩的网址是<a href="https://ropsten.etherscan.io/address/**0x39171828d0c6d072c19f5d32900e30343c296f38*" rel="external nofollow noopener noreferrer" target="_blank">https://ropsten.etherscan.io/address/**0x39171828d0c6d072c19f5d32900e30343c296f38*</a>*</p><p>那么合约地址就是 <strong>0x39171828d0c6d072c19f5d32900e30343c296f38</strong></p><h3 id="获取ABI"><a href="#获取ABI" class="headerlink" title="获取ABI"></a>获取ABI</h3><p>打开<a href="https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38#code" rel="external nofollow noopener noreferrer" target="_blank">https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38#code</a> (注意，如果你要玩的合约地址，不一样的话，则可以吧address 后面的地址替换成你的…)</p><p>复制contract ABI 里面的内容…(这就是ABI)</p><p>如果打开没有的话，则说明这个合约没有开源…</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpup111sfj222k14uqja.jpg" alt=""></p><h3 id="打开myetherwallet"><a href="#打开myetherwallet" class="headerlink" title="打开myetherwallet"></a>打开myetherwallet</h3><ul><li><p>打开 <a href="https://www.myetherwallet.com/#contracts" rel="external nofollow noopener noreferrer" target="_blank">https://www.myetherwallet.com/#contracts</a></p></li><li><p>选择正确的网</p></li></ul><p>可以看到，每个都有好几个，随便选择一个就行…(本次我们是ropsten，也就是只要前面是ropsten的，你随便选哪个都可以）</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqput51107j20z80zkqa1.jpg" alt=""></p><ul><li>复制上你合约地址 与 合约ABI ，然后点击Access</li></ul><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpuwhj65ij225o0n2wk1.jpg" alt=""></p><ul><li>选则你要调用的方法</li></ul><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpuxrptpaj212810iq6n.jpg" alt=""></p><p>（本次我们选择 <code>batchTransfer</code>)</p><ul><li>输入你的参数</li></ul><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpvf9kw43j21p20taq79.jpg" alt=""></p><p>本次我们的参数 如上图所示…<br>不知道为啥 请看<a href="https://mp.weixin.qq.com/s?__biz=MzU2OTAxNTcwMw==&amp;mid=2247483863&amp;idx=1&amp;sn=5029734091080c37923f9bd666a6e1fa&amp;chksm=fc846d2fcbf3e439e4f25ad1c7915c10ee8b375f791a260e0cd273d982aa521948d325f59121#rd" rel="external nofollow noopener noreferrer" target="_blank">一行代码蒸发了¥6,447,277,680 人民币！</a></p><ul><li>连接到metamask（metamask 没有装的话，请百度.)</li></ul><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpv39fzkuj223s0uqtg7.jpg" alt=""></p><ul><li>点击write </li></ul><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpvh38jhmj21840rwad6.jpg" alt=""></p><p>注意，gaslimit 会自动出来…如果gas limit 那边为空的话，请确认你的参数…</p><ul><li>点击生成交易</li></ul><p>确认提交就可以了</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpviza1z9j215u12awk3.jpg" alt=""></p><ul><li>然后这笔交易会发送到metamask上，点击submit 就可以了.<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fqpvkhkfb8j20ke0qmgoh.jpg" alt=""></li></ul><p>我本次提交成功后的 tx <a href="https://ropsten.etherscan.io/tx/0x8359cfe6c0ccbb9a8126531c1162e80fb0c6f0beecb10bdcd0843bc368848b33" rel="external nofollow noopener noreferrer" target="_blank">https://ropsten.etherscan.io/tx/0x8359cfe6c0ccbb9a8126531c1162e80fb0c6f0beecb10bdcd0843bc368848b33</a></p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
+    
+    <summary type="html">
+    
+      如何用myetherwallet 来玩智能合约
+用myetherwallet之前，请先看看 黑客已经盗了15,945,221.72 USD
+
+看完应该会知道如何安全的使用 myetherwallet 了.
+
+开始
+本次我们玩的合约是 https://ropsten.etherscan.io/address/0x39171828d0c6d072c19f5d32900e30343c296f38
+
+确定合约是在哪个网
+
+
+以上就是常见的所有网了
+
+如果网址 前缀是ropsten，那么就是 ropsten测试网…
+
+如果网址 前缀是kovan，那么就是 kovan测试网…
+
+网址前面没有带的，如htt
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://jin10086.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="myetherwallet" scheme="https://jin10086.github.io/tags/myetherwallet/"/>
+    
+      <category term="智能合约" scheme="https://jin10086.github.io/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>黑客已经盗了15,945,221.72 USD</title>
@@ -64,11 +105,11 @@ myetherwallet 昨日发推特说，他们的DNS 被污染，导致部分用户�
       <category term="区块链" scheme="https://jin10086.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
     
+      <category term="myetherwallet" scheme="https://jin10086.github.io/tags/myetherwallet/"/>
+    
       <category term="黑客" scheme="https://jin10086.github.io/tags/%E9%BB%91%E5%AE%A2/"/>
     
       <category term="安全" scheme="https://jin10086.github.io/tags/%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="myetherwallet" scheme="https://jin10086.github.io/tags/myetherwallet/"/>
     
   </entry>
   
@@ -916,51 +957,6 @@ Mongodb的介绍
     
     
       <category term="mongodb" scheme="https://jin10086.github.io/tags/mongodb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>headers的详细讲解（If-modified-since）</title>
-    <link href="https://jin10086.github.io/2018/02/03/headers%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3%EF%BC%88If-modified-since%EF%BC%89/"/>
-    <id>https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/</id>
-    <published>2018-02-03T09:30:25.000Z</published>
-    <updated>2018-04-04T07:12:10.669Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文讲解的知识点是headers里面的If-modified-since</p><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>本次我们要抓取的内容是苹果应用商店里面的所有app <a href="https://itunes.apple.com/cn/genre/ios/id36" rel="external nofollow noopener noreferrer" target="_blank">从 iTunes 下载的 App Store</a><br>当我第一次打开<a href="https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964" rel="external nofollow noopener noreferrer" target="_blank">王者荣耀：在 App Store</a> 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e36k8vrj210q0id49d.jpg" alt=""></p><p>那么知道了这个http状态码304对我们爬虫有什么用呢？</p><p>当我需要每天的爬取苹果应用商店的app的时候，因为苹果app很多，所以每次如果我全部爬取的话，会花费很多的时间，其实我只要抓取有更新的内容就好了。那么http状态码304就派上用场了。</p><h2 id="看代码"><a href="#看代码" class="headerlink" title="看代码"></a>看代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'</span>&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964'</span></span><br><span class="line"></span><br><span class="line">z = requests.get(url,headers=headers)</span><br></pre></td></tr></table></figure><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e3xshabj20yf07hwil.jpg" alt=""></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取上次修改时间</span></span><br><span class="line">last_modified = z.headers[<span class="string">'Last-Modified'</span>]</span><br><span class="line"><span class="comment"># 修改headers</span></span><br><span class="line">headers[<span class="string">'If-Modified-Since'</span>] = last_modified</span><br></pre></td></tr></table></figure><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z1 = requests.get(url,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z1.status_code</span><br><span class="line"><span class="comment"># 304</span></span><br><span class="line"><span class="comment"># 可以看到已经返回状态码304，表示网页没有更新</span></span><br></pre></td></tr></table></figure><h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z2 = requests.head(url,headers=headers)</span><br><span class="line"><span class="keyword">if</span> z1.headers[<span class="string">'Last-Modified'</span>] == last_modified:</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'网页没有更新'</span></span><br><span class="line"><span class="comment"># 这种方法也可以知道网页是否有更新</span></span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么假如我要每天爬取苹果应该商店的app，那么我会在第一次请求的时候吧每个网页的上次修改时间存到数据库（也就是If-Modified-Since）</p><p>然后在我第二次爬取的时候，我会把上次存到数据库的时间放到headers里面，如果http状态码返回304,则表示网页没有更新，我可以不用再次解析网页，这样会节约大量时间…</p><p>最后代码在 <a href="https://github.com/jin10086/pachong/blob/master/If-modified-since.ipynb" rel="external nofollow noopener noreferrer" target="_blank">kimg1234/pachong</a></p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
-    
-    <summary type="html">
-    
-      本文讲解的知识点是headers里面的If-modified-since
-
-案例
-本次我们要抓取的内容是苹果应用商店里面的所有app 从 iTunes 下载的 App Store
-当我第一次打开王者荣耀：在 App Store 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304
-
-
-那么知道了这个http状态码304对我们爬虫有什么用呢？
-
-当我需要每天的爬取苹果应用商店的app的时候，因为苹果app很多，所以每次如果我全部爬取的话，会花费很多的时间，其实我只要抓取有更新的内容就好了。那么http状态码304就派上用场了。
-
-看代码
-1
-2
-3
-4
-5
-6
-7
-
-
-impo
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="headers" scheme="https://jin10086.github.io/tags/headers/"/>
-    
-      <category term="If-modified-since" scheme="https://jin10086.github.io/tags/If-modified-since/"/>
     
   </entry>
   
