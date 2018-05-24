@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jin10086.github.io/"/>
-  <updated>2018-04-26T12:06:39.338Z</updated>
+  <updated>2018-05-24T06:50:53.841Z</updated>
   <id>https://jin10086.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一行代码损失了？？？RMB</title>
+    <link href="https://jin10086.github.io/2018/05/24/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%8D%9F%E5%A4%B1%E4%BA%86%EF%BC%9F%EF%BC%9F%EF%BC%9FRMB/"/>
+    <id>https://jin10086.github.io/2018/05/24/一行代码损失了？？？RMB/</id>
+    <published>2018-05-24T06:50:38.000Z</published>
+    <updated>2018-05-24T06:50:53.841Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>又发现一个ERC20 超级大的漏洞</p><p>这个漏洞严重到什么情况呢？</p><p><strong>你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱</strong></p><p>那笔操作记录是 <a href="https://etherscan.io/tx/0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca" rel="external nofollow noopener noreferrer" target="_blank">0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca</a></p><p><img src="https://s1.ax1x.com/2018/05/24/CW30Qf.png" alt="CW30Qf.png"><br>下面我来带大家看看，黑客是如何实现的！</p><p>我们可以看到执行的方法是 <code>transferFrom</code></p><p>那这个方法是干嘛的呢？（从某个人 转钱到 另外一个人 ）</p><p>这个方法有一个配套的方法<code>approve</code>，你授权某个人用多少你的钱。。。</p><p>所以，这两个方法的使用场景是，</p><p>举个例子：</p><p>我授权我儿子使用我的100块钱，那我先调用<code>approve</code><br>然后 我儿子要用钱的时候，调用<code>transferFrom</code>来用我的钱，当然用一次少一次（而且每次用的钱不能超过我授权的钱）</p><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) &#123;</span><br><span class="line">    /// same as above</span><br><span class="line">    require(_to != 0x0);</span><br><span class="line">    require(balances[_from] &gt;= _value);</span><br><span class="line">    require(balances[_to] + _value &gt; balances[_to]);</span><br><span class="line"></span><br><span class="line">    uint previousBalances = balances[_from] + balances[_to];</span><br><span class="line">    balances[_from] -= _value;</span><br><span class="line">    balances[_to] += _value;</span><br><span class="line">    allowed[_from][msg.sender] -= _value;</span><br><span class="line">    Transfer(_from, _to, _value);</span><br><span class="line">    assert(balances[_from] + balances[_to] == previousBalances);</span><br><span class="line"></span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个方法会传入三个参数</p><ol><li>_from :在用谁的钱</li><li>_to : 把钱给谁</li><li>_value : 准备用多少钱</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require(_to != 0x0);</span><br><span class="line">require(balances[_from] &gt;= _value);</span><br><span class="line">require(balances[_to] + _value &gt; balances[_to]);</span><br></pre></td></tr></table></figure><p>这三行是一些强制要求</p><ol><li>你不能把钱转给0x0,也就是空地址</li><li>你在用谁的钱（那么这个人的余额一定要大于 你要用的钱）</li><li>你转给的那个人钱，那么那个人的余额一定要大于 之前的余额（也就是不能转个-1之类的，导致他余额反而变少了）</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uint previousBalances = balances[_from] + balances[_to];</span><br><span class="line">balances[_from] -= _value;</span><br><span class="line">balances[_to] += _value;</span><br></pre></td></tr></table></figure><p>这三行</p><ol><li>算出两个人余额的总数</li><li>from 那个人的余额 - value</li><li>to 那个人的余额 + value</li></ol><p><code>allowed[_from][msg.sender] -= _value;</code></p><p>这一行我们分解下<br><code>allowed[_from][msg.sender]</code> 是 当前方法调用的人（msg.sender）可以使用(_from) 多少钱</p><p>也就是假如 我授权了我儿子100块，那么 </p><p>allowed[我的地址][msg.sender] = 100(这边的msg.sender 需要是我儿子的地址，如果是别人的话，我没有授权给他，则是0 </p><p>所以这一行原本的意思是 (我儿子用了多少授权的金额，那么总授权金额需要 减掉 被用掉的）</p><p>但是呢。。。因为没用用safemath…导致任何人都能通过这一行（也就是 0- value)</p><p>0-value是不会报错的（当然如果用safemath的话，是会报错的。。。）</p><p>所以呢，只要你找到一个有钱人的地址，，，然后就可以吧他的钱全部转给任何账户。。。</p><p>下面的代码就没有意义了，不需要解释了。。。</p><p>而且他这个合约 没有暂停的方法。。。</p><p>导致现在任何人都可以调用这个合约。。。</p><h2 id="合约的问题"><a href="#合约的问题" class="headerlink" title="合约的问题"></a>合约的问题</h2><ol><li>当然是做加减乘除的时候没有用safemath</li><li>逻辑还有一个问题</li></ol><p>正常来说，应该需要加一个 判断，被授权的金额 不能大于 要发送的金额。。。</p><p><code>require(allowed[_from][msg.sender] &gt;= _value);</code></p><p>这样的话 后面也就不会有这些事情了。。。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我发现了 攻击这个合约的人 已经攻击了很多合约了！！！<br><img src="https://s1.ax1x.com/2018/05/24/CW3By8.png" alt="CW3By8.png"><br>这一些币大家就别抄底了!</p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
+    
+    <summary type="html">
+    
+      背景
+又发现一个ERC20 超级大的漏洞
+
+这个漏洞严重到什么情况呢？
+
+你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱
+
+那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca
+
+
+下面我来带大家看看，黑客是如何实现的！
+
+我们可以看到执行的方法是 transferFrom
+
+那这个方法是干嘛的呢？（从某个人 转钱到 另外一个人 ）
+
+这个方法有一个配套的方法approve，你授权某个人用多少你的钱。。。
+
+所以，这两个方法的使用场景是，
+
+举个例子：
+
+我授权我儿子使用我的1
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://jin10086.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>如何用myetherwallet 来玩智能合约</title>
@@ -915,48 +957,6 @@ fiddle的安装与配置
       <category term="手机app抓包" scheme="https://jin10086.github.io/tags/%E6%89%8B%E6%9C%BAapp%E6%8A%93%E5%8C%85/"/>
     
       <category term="fiddle" scheme="https://jin10086.github.io/tags/fiddle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mongodb的基本使用</title>
-    <link href="https://jin10086.github.io/2018/02/03/mongodb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <id>https://jin10086.github.io/2018/02/03/mongodb的基本使用/</id>
-    <published>2018-02-03T09:36:09.000Z</published>
-    <updated>2018-04-04T07:12:10.670Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文章属于<a href="https://zhuanlan.zhihu.com/p/25296437" rel="external nofollow noopener noreferrer" target="_blank">爬虫入门到精通系统教程</a>第十讲</p><p>在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？</p><h2 id="保存到文本文件？"><a href="#保存到文本文件？" class="headerlink" title="保存到文本文件？"></a>保存到文本文件？</h2><p>可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg" alt=""><br>我今天爬取了10000部日本电影</p><p>假如说你要找苍老师出演的，那么你可能会说，我直接<code>ctrl+f</code>查找”苍老师”不就行了</p><p>但是假如你想要找”苍老师+无码”怎么办呢？？？</p><p>这个时候就是体现数据库的作用了。</p><h2 id="Mongodb的介绍"><a href="#Mongodb的介绍" class="headerlink" title="Mongodb的介绍"></a>Mongodb的介绍</h2><h3 id="为什么用mongodb呢？"><a href="#为什么用mongodb呢？" class="headerlink" title="为什么用mongodb呢？"></a>为什么用mongodb呢？</h3><ol><li>文档结构的存储方式</li><li>简单讲就是可以直接存json,list</li><li>不要事先定义”表”,随时可以创建</li><li>“表”中的数据长度可以不一样</li><li>也就是第一条记录有10个值，第二条记录不要规定也要10个值</li><li>对爬虫这种很乱的数据来说，很适用 。</li></ol><h2 id="Mongodb的安装"><a href="#Mongodb的安装" class="headerlink" title="Mongodb的安装"></a>Mongodb的安装</h2><p>直接到 <a href="https://www.mongodb.com/download-center#community" rel="external nofollow noopener noreferrer" target="_blank">https://www.mongodb.com/download-center#community</a>选择合适的版本下载安装就可以了。</p><p>安装完成后</p><p>windows用户在<br><code>bin</code>目录下新建一个<code>data</code>的文件夹<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg" alt=""></p><p>然后在新建一个<code>start.bat</code>文件,内容写上<br><code>mongod --dbpath ./data</code><br>后面每次只要直接打开这个.bat 文件mongodb就运行了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg" alt=""><br>你可以直接选中<code>start.bat</code>，发送到桌面快捷方式，这样你以后可以直接在桌面打开了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg" alt=""></p><h2 id="mongodb的基本使用"><a href="#mongodb的基本使用" class="headerlink" title="mongodb的基本使用"></a>mongodb的基本使用</h2><p>首先 <code>pip install pymongo</code></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg" alt=""></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="爬虫经常用到的三条插入语句"><a href="#爬虫经常用到的三条插入语句" class="headerlink" title="爬虫经常用到的三条插入语句"></a>爬虫经常用到的三条插入语句</h3><p>下面的<strong>test2为表名</strong>,</p><ul><li><code>test2.insert_one(xx)</code> 插入一条数据</li><li><code>test2.insert_many(xx)</code> 插入list</li><li><strong>最常用&gt;&gt;&gt;</strong><code>test2.update_one({&#39;x&#39;:1},{&#39;$set&#39;:{&#39;x&#39;:3}},upsert=True)</code></li><li>第三条一般会在防止重复的数据被存到数据库内 要用到</li></ul><p>代码都在 <a href="https://github.com/kimg1234/pachong/blob/master/mongodb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.ipynb" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/kimg1234/pachong/blob/master/mongodb%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.ipynb</a></p><p>参考文档</p><ul><li><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" rel="external nofollow noopener noreferrer" target="_blank">mongodb中文文档</a></li><li><a href="https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.find_one_and_update" rel="external nofollow noopener noreferrer" target="_blank">mongodb官方文档</a></li></ul><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
-    
-    <summary type="html">
-    
-      本文章属于爬虫入门到精通系统教程第十讲
-
-在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？
-
-保存到文本文件？
-可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…
-
-
-我今天爬取了10000部日本电影
-
-假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了
-
-但是假如你想要找”苍老师+无码”怎么办呢？？？
-
-这个时候就是体现数据库的作用了。
-
-Mongodb的介绍
-为什么用mongodb呢？
- 1. 文档结构的存储方式
- 2. 简单讲就是可以直接存json,list
- 3
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="mongodb" scheme="https://jin10086.github.io/tags/mongodb/"/>
     
   </entry>
   
