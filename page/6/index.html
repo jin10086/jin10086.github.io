@@ -84,6 +84,147 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-爬虫之异步加载-实战花瓣网" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/爬虫之异步加载-实战花瓣网/" class="article-date">
+  <time datetime="2018-02-03T08:41:58.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/爬虫之异步加载-实战花瓣网/">爬虫之异步加载（实战花瓣网）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        本文章属于爬虫入门到精通系统教程第八讲
+本次我们会讲解两个知识点
+
+ 1. 异步加载
+ 2. headers中的Accept
+
+本次我们要抓取的是花瓣网美女照片美女花瓣，陪你做生活的设计师（发现、采集你喜欢的美女图片）花瓣网（http://huaban.com/favorite/beauty/）
+
+本次我们会用到的辅助包
+scrapy/parsel （https://github.com/scrapy/parsel）(假如你用过scrapy,那么一定不陌生，这就是其中提取器)
+
+Parsel is a library to extract data from HTML and XML usin
+        
+          <p class="article-more-link">
+            <a href="/2018/02/03/爬虫之异步加载-实战花瓣网/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/" data-id="cjidd4t8j001umlypacv6ncg7" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异步加载/">异步加载</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/花瓣网爬虫/">花瓣网爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-headers的详细讲解" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/headers的详细讲解/" class="article-date">
+  <time datetime="2018-02-03T08:28:27.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/headers的详细讲解/">headers的详细讲解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        本文章属于爬虫入门到精通系统教程第七讲
+
+直接开始案例吧。
+
+本次我们实现如何模拟登陆知乎。
+
+1.抓包
+首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解
+
+注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录
+
+
+我们很简单的就找到了 我们需要的请求
+
+
+
+1
+2
+3
+
+
+_xsrf:81aa4a69cd410c3454ce515187f2d4c9
+password:***
+email:admin@wuaics.cn
+
+
+
+
+可以看到请求一共有三个参数
+
+email 和password就是我们需要登录的账号及密码
+
+那么_xsrf是什么？我们在
+        
+          <p class="article-more-link">
+            <a href="/2018/02/03/headers的详细讲解/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解/" data-id="cjidd4t7u0005mlypeiq864dc" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/headers/">headers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-网页的解析之XPATH" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/03/网页的解析之XPATH/" class="article-date">
@@ -127,7 +268,7 @@ XPath的基本使用
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之XPATH/" data-id="cjhk6i601002axccbnmwa84bm" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之XPATH/" data-id="cjidd4t8q002dmlypl845rwy3" class="article-share-link">分享</a>
       
       
       
@@ -208,7 +349,7 @@ html = u"""
       
     </textarea></div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/" data-id="cjhk6i602002dxccb2lf6u8bp" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/" data-id="cjidd4t8r002imlyplfwmeixo" class="article-share-link">分享</a>
       
       
       
@@ -275,133 +416,11 @@ html = u"""
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的下载/" data-id="cjhk6i6000025xccbntywuycd" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/网页的下载/" data-id="cjidd4t8p002bmlypq2lp3yun" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-http协议的讲解" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/03/http协议的讲解/" class="article-date">
-  <time datetime="2018-02-03T07:41:28.000Z" itemprop="datePublished">2018-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/http协议的讲解/">http协议的讲解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        什么是HTTP协议？
-引用自维基百科
-
-超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。
-HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起。由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task
-        
-          <p class="article-more-link">
-            <a href="/2018/02/03/http协议的讲解/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/http协议的讲解/" data-id="cjhk6i5z40008xccbxr3dlm11" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http协议/">http协议</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-爬虫环境的配置" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/03/爬虫环境的配置/" class="article-date">
-  <time datetime="2018-02-03T07:38:51.000Z" itemprop="datePublished">2018-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/爬虫环境的配置/">爬虫环境的配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        IDE的安装
-IDE我用的是VS code，也用过pycharm（但是电脑配置不行，比较卡）
-
-VScode安装教程在这,写的蛮清楚的
-
-然后安装一个python的插件就行
-见如下截图
-
- * 点击数字1的地方
- * 在数字2的地方输入python
- * 点击python 0.5.8 右边的安装按钮
-
-
-
-包的安装
-配置pip源，不配置的话下载速度很慢
-windows:在当前用户根目录下，创建.pip和这个文件夹，然后在里面新建一个文件pip.in 里面的内容为
-
-[global]
-index-url = http://mirrors.aliyun.com/pypi/simple/
-[inst
-        
-          <p class="article-more-link">
-            <a href="/2018/02/03/爬虫环境的配置/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/爬虫环境的配置/" data-id="cjhk6i5zx001yxccbwr0bnued" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫环境/">爬虫环境</a></li></ul>
 
     </footer>
   </div>
@@ -437,6 +456,14 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
       <ul>
         
           <li>
+            <a href="/2018/06/14/EOS-hackathon-香港总结/">EOS hackathon 香港总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/14/2018学习计划/">2018学习计划</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/24/一行代码损失了？？？RMB/">一行代码损失了？？？RMB</a>
           </li>
         
@@ -446,14 +473,6 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
         
           <li>
             <a href="/2018/04/25/黑客已经盗了15-945-221-72-USD/">黑客已经盗了15,945,221.72 USD</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/25/一键上链/">一键上链</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/22/人民币！/">一行代码蒸发了¥6,447,277,680人民币！</a>
           </li>
         
       </ul>
