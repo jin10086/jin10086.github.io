@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jin10086.github.io/"/>
-  <updated>2018-06-15T03:47:16.574Z</updated>
+  <updated>2018-07-08T06:29:55.515Z</updated>
   <id>https://jin10086.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>牛逼的班科协议</title>
+    <link href="https://jin10086.github.io/2018/07/08/%E7%89%9B%E9%80%BC%E7%9A%84%E7%8F%AD%E7%A7%91%E5%8D%8F%E8%AE%AE/"/>
+    <id>https://jin10086.github.io/2018/07/08/牛逼的班科协议/</id>
+    <published>2018-07-08T05:49:45.000Z</published>
+    <updated>2018-07-08T06:29:55.515Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>这段时间炒作EOS内存很火.</p><p>于是了解了下 买卖内存后面的班科协议…</p><h2 id="班科协议"><a href="#班科协议" class="headerlink" title="班科协议"></a>班科协议</h2><blockquote><p>“双重需求巧合”这一表述由杰文斯(Jevons)于 1875 年首次 提出。“以物换物的首要难题就是碰巧找到两个人，他们各自拥有 的物品刚好是对方所需要的。会有很多人有需求，又有很多人拥有能 满足这些需求的物品，但要通过物物交换的机制完成双方的物品交 换，必须要求实现双重巧合，实际上这很难发生。”</p></blockquote><blockquote><p>我们生活在这样一个世界里:任何人都可以轻松的发布文章、歌曲或者视频; 任何人都可以创建一个交流群，也可以经营一个在线商城;我们甚至开始见证“用 户自定义货币”诞生。<br>数百年来，不同类型的价值储备(以下称“货币”)一直以钞票、债券、股 票、礼品卡、商家积分和社区货币等形式发行和流通。 接下来，出现了第一个 去中心化的的数字货币，比特币。各种新型数字加密货币的发行浪潮紧随其后。 最近，我们见证了又一新兴的、使用智能合约技术的、通过众筹(ICO)发行的 资产类别，“代币”的崛起。<br>然而，这些货币虽实质上已经形成了“价值互联网”，却未能如“信息互联 网”一般顺畅的相互联接。当英特网节点 (IXs) 的交换机们把信息互联网联结 起来的时候，货币价值网络中“交换机”的角色实际上在各大交易所活跃着的交 易者们扮演着。<br><strong>当前的货币交换模式有一个严重的障碍，即需要一定的交易量来实现市场 流动性。这使得小规模货币，比如社区货币、商家积分及各种自定义代币等， 几乎不可能通过市场发现合理兑换价格并与主流货币进行交换。</strong></p></blockquote><h3 id="班科协议解决了哪些问题？"><a href="#班科协议解决了哪些问题？" class="headerlink" title="班科协议解决了哪些问题？"></a>班科协议解决了哪些问题？</h3><p>如上面所说,双重需求巧合 很难发生.<br>目前的货币交换模式有一个严重的障碍,即需要一定的交易量来实现市场 流动性。</p><p>举个简单的例子,假如我想购买ETH，那么我必须等到有人卖ETH后，我才能买到…<br>班科协议就是解决了<strong>双重需求巧合</strong>的问题</p><h3 id="怎么解决的？"><a href="#怎么解决的？" class="headerlink" title="怎么解决的？"></a>怎么解决的？</h3><p>具体请看<a href="https://storage.googleapis.com/website-bancor/2018/04/01ba8253-bancor_protocol_whitepaper_en.pdf" rel="external nofollow noopener noreferrer" target="_blank">班科协议白皮书</a></p><h2 id="EOS的优点"><a href="#EOS的优点" class="headerlink" title="EOS的优点"></a>EOS的优点</h2><p>这几天如果有买卖过EOS ram的同学应该能感觉出来,交易速度很快.而且所有的购买都是直接和合约交互,所有的代币都不需要转到某个别的账号</p><h2 id="FT"><a href="#FT" class="headerlink" title="FT"></a>FT</h2><p>FT 主打交易及挖矿的思路.</p><h2 id="整合？"><a href="#整合？" class="headerlink" title="整合？"></a>整合？</h2><h3 id="目前ETH上交易所的状况"><a href="#目前ETH上交易所的状况" class="headerlink" title="目前ETH上交易所的状况."></a>目前ETH上交易所的状况.</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1ft2frs3r69j225y0vg7ef.jpg" alt=""></p><p>可以看到每天的成交金额有5000ETH左右.</p><p>数据来源<a href="https://dappradar.com/category/exchanges?sortBy=balance&amp;order=desc" rel="external nofollow noopener noreferrer" target="_blank">https://dappradar.com/category/exchanges?sortBy=balance&amp;order=desc</a></p><h3 id="班科-EOS-FT"><a href="#班科-EOS-FT" class="headerlink" title="班科+EOS+FT"></a>班科+EOS+FT</h3><p>如果把班科协议+EOS+FT 的优势结合起来,那么是不是会做成一个超级牛逼的交易所.一个真正的去中心化的交易所.</p><p>而且用户体验和现在所有的中心化交易所并没有什么差别.</p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
+    
+    <summary type="html">
+    
+      背景
+这段时间炒作EOS内存很火.
+
+于是了解了下 买卖内存后面的班科协议…
+
+班科协议
+“双重需求巧合”这一表述由杰文斯(Jevons)于 1875 年首次 提出。“以物换物的首要难题就是碰巧找到两个人，他们各自拥有 的物品刚好是对方所需要的。会有很多人有需求，又有很多人拥有能 满足这些需求的物品，但要通过物物交换的机制完成双方的物品交 换，必须要求实现双重巧合，实际上这很难发生。”
+
+我们生活在这样一个世界里:任何人都可以轻松的发布文章、歌曲或者视频; 任何人都可以创建一个交流群，也可以经营一个在线商城;我们甚至开始见证“用 户自定义货币”诞生。
+数百年来，不同类型的价值储备(以下称“货币
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://jin10086.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="班科协议" scheme="https://jin10086.github.io/tags/%E7%8F%AD%E7%A7%91%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="交易所" scheme="https://jin10086.github.io/tags/%E4%BA%A4%E6%98%93%E6%89%80/"/>
+    
+      <category term="FT" scheme="https://jin10086.github.io/tags/FT/"/>
+    
+      <category term="BANCOR" scheme="https://jin10086.github.io/tags/BANCOR/"/>
+    
+  </entry>
   
   <entry>
     <title>你的EOS 账号安全谁来保护？</title>
@@ -865,41 +902,6 @@ pip install copyheaders
       <category term="爬虫实战" scheme="https://jin10086.github.io/tags/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/"/>
     
       <category term="模拟登陆知乎" scheme="https://jin10086.github.io/tags/%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%9F%A5%E4%B9%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>请正确使用http状态码，谢谢！</title>
-    <link href="https://jin10086.github.io/2018/02/03/%E8%AF%B7%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8http%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%8C%E8%B0%A2%E8%B0%A2%EF%BC%81/"/>
-    <id>https://jin10086.github.io/2018/02/03/请正确使用http状态码，谢谢！/</id>
-    <published>2018-02-03T10:13:25.000Z</published>
-    <updated>2018-04-04T07:12:10.674Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近，由于某些特别原因。打开一些网址一直显示404，<br>想请问下，xx站的程序员，能不能按照http协议来返回呢？</p><h2 id="什么是http状态码451"><a href="#什么是http状态码451" class="headerlink" title="什么是http状态码451"></a>什么是http状态码451</h2><blockquote><p>根据定义，HTTP 451错误代码状态出现，不代表这个地址是否存在，而代表该网页可能对于国家安全产生危险，或是该网页可能违反著作权、隐私权、亵渎神明或其他法律或法院命令。<br>该响应代码有如下的性质：<br>除非另外指明，否则这个响应代码是可以被缓存的。<br>必须携带一个带有一个Link头部，列出要求封禁该地址的实体URI；且应带有一个”rel”字段，值应为”blocked-by”[1]。<br>简单的讲 就是由于某些政治原因，所以，该页面不予访问</p></blockquote><h2 id="HTTP451的来源"><a href="#HTTP451的来源" class="headerlink" title="HTTP451的来源"></a>HTTP451的来源</h2><blockquote><p>本代码于2013年由提姆·布雷（Tim Bray）正式提出，主要基于博客Terence Eden的文章所提出的非正式提案[2]。2015年12月18日，此代码由国际网络工程研究团队通过[3]。<br>451这个代码源于1953年的反乌托邦小说《华氏451度》(纸的燃点为华氏451度)，在这部小说中，所有书籍是违禁品[4]。相比较HTTP 403代码，451可更好描述一种由于法律规定或受权威部门要求而导致的封禁状态[5]</p></blockquote><h2 id="一个示例"><a href="#一个示例" class="headerlink" title="一个示例"></a>一个示例</h2><p>某地一用户以GET方式请求<a href="http://example.org的/index.php路径：" rel="external nofollow noopener noreferrer" target="_blank">http://example.org的/index.php路径：</a></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /index.php HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br></pre></td></tr></table></figure><p>由于用户所在地的某项法律规定，网站不可以向该地区用户返回这个页面，所以服务器做出回应，设置了有效期为一年的缓存头部，并在Link头部中加入了指定的政府部门URL<code>http://www.xxx.gov.tld</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 451 Unavailable For Legal Reasons</span><br><span class="line">Link: <span class="tag">&lt;<span class="name">http:</span>//<span class="attr">www.xxx.gov.tld</span>&gt;</span>; rel="blocked-by"</span><br><span class="line">Cache-control: max-age=31536000; public</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>因法律原因不可用<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTTP/1.1 451 因法律原因，本页面不可用<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>根据《某法》第某条之规定，本网站页面对来自某地的访客不可用。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fco2j5kj219m0b3dtv.jpg" alt=""></p><p>文章参考于 维基百科 <a href="https://zh.wikipedia.org/wiki/HTTP_451" rel="external nofollow noopener noreferrer" target="_blank">https://zh.wikipedia.org/wiki/HTTP_451</a></p><p><a href="https://tools.ietf.org/html/rfc7725" rel="external nofollow noopener noreferrer" target="_blank">RFC 7725</a> - HTTP 451的正式RFC文件</p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
-    
-    <summary type="html">
-    
-      背景
-最近，由于某些特别原因。打开一些网址一直显示404，
-想请问下，xx站的程序员，能不能按照http协议来返回呢？
-
-什么是http状态码451
-根据定义，HTTP 451错误代码状态出现，不代表这个地址是否存在，而代表该网页可能对于国家安全产生危险，或是该网页可能违反著作权、隐私权、亵渎神明或其他法律或法院命令。
-该响应代码有如下的性质：
-除非另外指明，否则这个响应代码是可以被缓存的。
-必须携带一个带有一个Link头部，列出要求封禁该地址的实体URI；且应带有一个”rel”字段，值应为”blocked-by”[1]。
-简单的讲 就是由于某些政治原因，所以，该页面不予访问
-
-HTTP451
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="http状态吗" scheme="https://jin10086.github.io/tags/http%E7%8A%B6%E6%80%81%E5%90%97/"/>
-    
-      <category term="http451" scheme="https://jin10086.github.io/tags/http451/"/>
     
   </entry>
   
