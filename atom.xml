@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jin10086.github.io/"/>
-  <updated>2018-07-08T06:29:55.515Z</updated>
+  <updated>2018-07-25T02:54:33.349Z</updated>
   <id>https://jin10086.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的审判</title>
+    <link href="https://jin10086.github.io/2018/07/25/%E6%88%91%E7%9A%84%E5%AE%A1%E5%88%A4/"/>
+    <id>https://jin10086.github.io/2018/07/25/我的审判/</id>
+    <published>2018-07-25T02:52:46.000Z</published>
+    <updated>2018-07-25T02:54:33.349Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>正常来说，如果要做一个审判，必须要政府支持…</p><p>但是呢，最近很多企业的一些事情，可能政府并不能很好的裁决…</p><p>所以，诞生了我的审判</p><h2 id="什么是我的审判"><a href="#什么是我的审判" class="headerlink" title="什么是我的审判"></a>什么是我的审判</h2><p>我们每个人都可以自由决定是否可以和某某交朋友<br>也可以自由决定是否进某家公司</p><p>那么，对于那些伤害我的企业，我也就可以不进他的公司，不和他做朋友.<br>甚至可以歧视他以及他的朋友<br>这就是我的审判的基础.</p><h2 id="共识"><a href="#共识" class="headerlink" title="共识"></a>共识</h2><p>可能我个人对某个人,某个公司进行审判的话，是起不了什么作用的.</p><p>但是呢,如果大家都能形成共识的话，那么这个力量一定是巨大的.</p><p>无论他在zf有多大背景，无论他有多谨慎，无论他有多少临时工.</p><p>就算在法律上，对他的惩罚很小。但是在我们每个人来说，对他的审判会尽可能的公平.</p><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>我的审判的目标应该不是比较小的事情，而是一些危害了大部分利益的事情</p><p>如 三鹿奶粉，红黄蓝幼儿园，最近的疫苗事情,等等.</p><p>在这些事情上，我想大部分人都能形成共识.</p><p>如果只是涉及到了个人利益相关的事情，可能很难形成一个共识…</p><p>我们的目标是：让坏人作恶的成本增加，不仅需要考虑法律上面的事情，还需要考虑道德方面的事情.</p><h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>可能在未来的某一天，某个人在做坏事情之前，不仅会考虑到法律上面的东西，</p><p>也会想到 如果做了这件事，会不会变的没朋友，变得无法在这个社会上生存下去…</p><h2 id="如何帮助这个项目"><a href="#如何帮助这个项目" class="headerlink" title="如何帮助这个项目"></a>如何帮助这个项目</h2><ul><li>让更多人知道该项目</li><li>增加审判的人</li><li>增加审判人的相关新闻以及相关资料</li><li>和大家一起，是真正的审判这些人</li></ul><p>所有的文件都在 <a href="https://github.com/My-Trial/My-Trial" rel="external nofollow noopener noreferrer" target="_blank">My-Trial</a></p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
+    
+    <summary type="html">
+    
+      背景
+正常来说，如果要做一个审判，必须要政府支持…
+
+但是呢，最近很多企业的一些事情，可能政府并不能很好的裁决…
+
+所以，诞生了我的审判
+
+什么是我的审判
+我们每个人都可以自由决定是否可以和某某交朋友
+也可以自由决定是否进某家公司
+
+那么，对于那些伤害我的企业，我也就可以不进他的公司，不和他做朋友.
+甚至可以歧视他以及他的朋友
+这就是我的审判的基础.
+
+共识
+可能我个人对某个人,某个公司进行审判的话，是起不了什么作用的.
+
+但是呢,如果大家都能形成共识的话，那么这个力量一定是巨大的.
+
+无论他在zf有多大背景，无论他有多谨慎，无论他有多少临时工.
+
+就算在法律上，对他的惩罚很小。但是在我们每个
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>牛逼的班科协议</title>
@@ -865,43 +905,6 @@ pip install copyheaders
       <category term="爬虫工具" scheme="https://jin10086.github.io/tags/%E7%88%AC%E8%99%AB%E5%B7%A5%E5%85%B7/"/>
     
       <category term="copyheaders" scheme="https://jin10086.github.io/tags/copyheaders/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模拟登陆知乎</title>
-    <link href="https://jin10086.github.io/2018/02/03/%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%9F%A5%E4%B9%8E/"/>
-    <id>https://jin10086.github.io/2018/02/03/模拟登陆知乎/</id>
-    <published>2018-02-03T10:19:32.000Z</published>
-    <updated>2018-04-04T07:12:10.672Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>为啥要写这一篇文章呢？<br>（主要是qq群内有人在模拟登陆知乎，一直不成功）然后我抓包看了下，发现知乎登陆页已经改版了，而且难度大大提高了。</p><h2 id="开始抓包"><a href="#开始抓包" class="headerlink" title="开始抓包"></a>开始抓包</h2><p>首先内，还是打开知乎首页，然后输入账号密码，登陆（记得输错密码）  </p><p>这样我们就可以看到请求头了（请求头如下）<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fgpbpfwj20s10aadp4.jpg" alt=""><br>我们发现有这几个请求头和正常的不一样（红色框中的）</p><ol><li><code>authorization</code> （感觉应该是js生成的，后面再看</li><li><code>Content-Type</code> （后面多了boundary=xxx 这种,那这种是啥意思呢,后面和请求参数一起看</li><li><code>cookie</code>：这个要注意,登陆前cookie就不为空，说明之前肯定有set-cookie的操作</li><li><code>x-udid,x-sxrftoken</code> 这两个都是验证参数,估计都在网页源代码能找到</li></ol><p>再看一下请求参数</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fgywrwfj20a50d1goo.jpg" alt=""><br>可以看到参数是以payload的形式出现的</p><p>第一次看到这种的人估计会一脸懵逼</p><p>这个要结合请求中的<code>Content-Type</code>:<code>multipart/form-data; boundary=----WebKitFormBoundary2KNsyxgtG28t93VF</code><br>来一起看</p><p><code>multipart/form-data</code> 是一种表单提交的方式，后面的boundary=xxx 是表单分割的方式，那到底啥意思呢？看一个简单的小列子你就能明白啦</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fhy0z52j20df04c40r.jpg" alt=""><br><code>------WebKitFormBoundary2KNsyxgtG28t93VF</code> 是分割不同参数的，所以可以直接不看他（这个是由上面的Content-Type后面的boundary决定的，可以随便修改）</p><p>那把分割线去掉后，上面的就相当于 <code>client_id=c3cef7c66a1843f8b3a9e6a1e3160e20</code>,</p><p><code>grant_type=password</code>.</p><p>那么这个payload就很好理解了.</p><p>我们来看一下，一共有哪些参数</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fi7frqjj20t60fjn3c.jpg" alt=""><br>参数还挺多的，可以看到很多参数都是固定的，如账号，密码，时间戳，等等</p><p>变动的有两个 client_id,signature</p><h2 id="开始找参数"><a href="#开始找参数" class="headerlink" title="开始找参数"></a>开始找参数</h2><p><code>authorization</code>：</p><p>我们在chrome内，直接按ctrl+shift+f(全局搜索，搜索js,css这些)，可以看到已经搜索到了，并且是直接写在js里面的，然后重新随便换个账号再抓一次包，发现authorization 的值还是固定的，所以说明authorization 是直接写在js里面的，不是动态修改的(那么authorization 的值我们就已经找到了）</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3filrwi9j20kr053tbj.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3firqfpjj20gc09lq71.jpg" alt=""><br><code>cookie</code>：</p><p>在登陆之前，就发现cookie的值不为空，说明肯定打开网页后就有set-cookie的操作了，我们想验证的话，先打开一个无痕浏览器（主要是为了把之前的cookie全部清空，避免干扰），然后打开<a href="http://zhihu.com/" rel="external nofollow noopener noreferrer" target="_blank">http://zhihu.com</a>，我们发现他有几次set-cookie的动作</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fj4op6sj20rm06f78i.jpg" alt=""></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fjayv50j20qe06tgqo.jpg" alt=""></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fjjbul8j20ty06yjxl.jpg" alt=""><br>那我们想要模拟的话，很简单的方法是直接使用requests.session</p><p><code>x-udid,x-sxrftoken</code>:</p><p>一般这种验证参数都会在网页源代码里面,所以直接查看网页源代码</p><p>可以看到已经找到了,后续就是如何把这个找出来而已，可以使用正则，或者xpath定位到</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fjyl8ltj20tq09rnfl.jpg" alt=""><br><code>client_id</code>:</p><p>你会发现client_id与上面的authorization 一模一样</p><p><code>signature</code>:</p><p>还是使用ctrl+shift+f 全局搜索</p><p>发现找到了，但是参数是js动态生成的…</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fkaq7tzj20x909wah2.jpg" alt=""><br>主要是找到如何加密的，然后使用Python模拟出来</p><p>第一步：下载这个js，格式化（让代码好看一些）</p><p>第二步：使用fiddle替换掉原来的js，使用刚刚格式化的js</p><p>第三步：慢慢调试。。。直到找到如何生成的…</p><p>大概步骤是这样</p><p>但是假如你js像我一样很渣的话，你可以直接找到这段加密的js，然后Python执行这段js就可以了。。。</p><h2 id="上面呢，我们把该找的参数都找到了，接着只要模拟发送就可以了"><a href="#上面呢，我们把该找的参数都找到了，接着只要模拟发送就可以了" class="headerlink" title="上面呢，我们把该找的参数都找到了，接着只要模拟发送就可以了"></a>上面呢，我们把该找的参数都找到了，接着只要模拟发送就可以了</h2><p><a href="https://github.com/jin10086/pachong/blob/master/zhihulogin.py" rel="external nofollow noopener noreferrer" target="_blank">知乎登陆代码在这</a></p><script>(function(){    var bp = document.createElement('script');    var curProtocol = window.location.protocol.split(':')[0];    if (curProtocol === 'https') {        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';            }    else {        bp.src = 'http://push.zhanzhang.baidu.com/push.js';    }    var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(bp, s);})();</script>]]></content>
-    
-    <summary type="html">
-    
-      原因
-为啥要写这一篇文章呢？
-（主要是qq群内有人在模拟登陆知乎，一直不成功）然后我抓包看了下，发现知乎登陆页已经改版了，而且难度大大提高了。
-
-开始抓包
-首先内，还是打开知乎首页，然后输入账号密码，登陆（记得输错密码） 
-
-这样我们就可以看到请求头了（请求头如下）
-
-我们发现有这几个请求头和正常的不一样（红色框中的）
-
- 1. authorization （感觉应该是js生成的，后面再看
- 2. Content-Type （后面多了boundary=xxx 这种,那这种是啥意思呢,后面和请求参数一起看
- 3. cookie：这个要注意,登陆前cookie就不为空，说明之前肯定有set-coo
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://jin10086.github.io/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-      <category term="爬虫实战" scheme="https://jin10086.github.io/tags/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="模拟登陆知乎" scheme="https://jin10086.github.io/tags/%E6%A8%A1%E6%8B%9F%E7%99%BB%E9%99%86%E7%9F%A5%E4%B9%8E/"/>
     
   </entry>
   
