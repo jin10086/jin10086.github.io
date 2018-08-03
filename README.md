@@ -86,3 +86,7 @@ Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来
 `cnpm install`
 
 `cnpm install hexo-deployer-git --save`
+
+## 每周分享
+
+直接 `hexo new week "weekly-issue-2" ` 就可以了
