@@ -26,7 +26,7 @@ Coursera上线了，目前是唯一一所常春藤联盟的大学参加在线授
 
 ---
 
-## 一些文章
+# 一些文章
 
 ### [寻找圣杯](https://bihu.com/article/1019497)
 帮助币圈用户充值信仰
@@ -48,7 +48,7 @@ Coursera上线了，目前是唯一一所常春藤联盟的大学参加在线授
 
 ---
 
-## 不错的项目
+# 不错的项目
 
 ### [Photon](https://github.com/s0md3v/Photon)
 
@@ -66,7 +66,7 @@ certbot 可以很方便的帮你生成HTTPS证书
 
 --- 
 
-## 好玩的
+# 好玩的
 
 ### [现在跳槽第一个收到你简历的可能是你现在的上司](https://juejin.im/pin/5b5ed8a5f265da1046bb7799)
 ![](http://ww1.sinaimg.cn/large/cfc08357gy1ftwrbymglfj20j60y2jyv.jpg)
@@ -83,7 +83,7 @@ certbot 可以很方便的帮你生成HTTPS证书
 
 --- 
 
-## 我的奇思妙想
+# 我的奇思妙想
 
 ### 弄一个新的b站，建立在ipfs之上
 为啥有这个想法呢，主要是看到了[如何看待 bilibili 将播放量过千万的鬼畜视频《蕉忍疾风传》封禁？](https://www.zhihu.com/question/284623285)
