@@ -7,7 +7,7 @@ date: 2018-08-03 19:08:14
 tags:
 ---
 
-这里记录过去一周，我看到的值得分享的东西，每周五发布。[灵感来自阮一峰](http://www.ruanyifeng.com/blog/2018/08/weekly-issue-16.html)
+这里记录过去一周，我看到的值得分享的东西，以及我的一些奇思妙想,每周五发布。[灵感来自阮一峰](http://www.ruanyifeng.com/blog/2018/08/weekly-issue-16.html)
 
 ### [宾夕法尼亚大学提供在线计算机科学硕士学位](https://www.coursera.org/degrees/mcit-penn?utm_medium=email&utm_source=marketing&utm_campaign=_NY5YJBjEeilGMF2QyQgTw#academics)
 
