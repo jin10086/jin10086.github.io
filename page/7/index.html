@@ -84,6 +84,76 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-headers的详细讲解（If-modified-since）" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/headers的详细讲解（If-modified-since）/" class="article-date">
+  <time datetime="2018-02-03T09:30:25.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/headers的详细讲解（If-modified-since）/">headers的详细讲解（If-modified-since）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        本文讲解的知识点是headers里面的If-modified-since
+
+案例
+本次我们要抓取的内容是苹果应用商店里面的所有app 从 iTunes 下载的 App Store
+当我第一次打开王者荣耀：在 App Store 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304
+
+
+那么知道了这个http状态码304对我们爬虫有什么用呢？
+
+当我需要每天的爬取苹果应用商店的app的时候，因为苹果app很多，所以每次如果我全部爬取的话，会花费很多的时间，其实我只要抓取有更新的内容就好了。那么http状态码304就派上用场了。
+
+看代码
+1
+2
+3
+4
+5
+6
+7
+
+
+impo
+        
+          <p class="article-more-link">
+            <a href="/2018/02/03/headers的详细讲解（If-modified-since）/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/" data-id="cjkktaled000ccwypeq3biunz" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/If-modified-since/">If-modified-since</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/headers/">headers</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-拒绝撕逼，用数据来告诉你选择器到底哪家强" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/03/拒绝撕逼，用数据来告诉你选择器到底哪家强/" class="article-date">
@@ -153,7 +223,7 @@ parsel:1.1.0
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/拒绝撕逼，用数据来告诉你选择器到底哪家强/" data-id="cjki6bnep001k4uypbzhcd888" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/拒绝撕逼，用数据来告诉你选择器到底哪家强/" data-id="cjkktalf5001qcwypecwpzwro" class="article-share-link">分享</a>
       
       
       
@@ -213,7 +283,7 @@ Parsel is a library to extract data from HTML and XML usin
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/" data-id="cjki6bngd005e4uypiqaa1pmj" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/" data-id="cjkktalgz005kcwyp12lek1eh" class="article-share-link">分享</a>
       
       
       
@@ -294,7 +364,7 @@ email 和password就是我们需要登录的账号及密码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解/" data-id="cjki6bne3000c4uypbk9fook1" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解/" data-id="cjkktaleb000bcwyp5tlmyun8" class="article-share-link">分享</a>
       
       
       
@@ -351,7 +421,7 @@ XPath的基本使用
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之XPATH/" data-id="cjki6bnf7002r4uyp39jzo81p" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之XPATH/" data-id="cjkktalfk002ocwypd7uu36wa" class="article-share-link">分享</a>
       
       
       
@@ -361,87 +431,6 @@ XPath的基本使用
   </div>
   
 </article>
- 
-
-
-  
-    <article id="post-网页的解析之正则表达式" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/03/网页的解析之正则表达式/" class="article-date">
-  <time datetime="2018-02-03T08:12:20.000Z" itemprop="datePublished">2018-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/网页的解析之正则表达式/">网页的解析之正则表达式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        在爬虫入门到精通第四讲中，我们了解了如何下载网页，这一节就是如何从下载的网页中获取我们想要的内容
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-
-
-html = u"""
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>文章的标题</title>
-</head>
-<body>
-<div id="app" class="container">
-<h1>h1文字</h1>
-
-<label for="input">Input</label>
-<textarea id="inp
-        
-          <p class=" article-more-link"="">
-            <a href="/2018/02/03/网页的解析之正则表达式/#more">继续阅读全文 »</a>
-          <p></p>
-        
-      
-    </textarea></div>
-    <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/" data-id="cjki6bnf5002n4uypsnl5duax" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫解析/">爬虫解析</a></li></ul>
-
-    </footer>
-  </body></html></div>
-  
-</div></article>
  
 
 
@@ -472,6 +461,10 @@ html = u"""
       <ul>
         
           <li>
+            <a href="/2018/08/08/weekly-issue-2/">每周分享第 2 期</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/06/MAC-如何安装-bsddb3/">MAC 如何安装 bsddb3</a>
           </li>
         
@@ -485,10 +478,6 @@ html = u"""
         
           <li>
             <a href="/2018/07/25/我的审判/">我的审判</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/08/牛逼的班科协议/">牛逼的班科协议</a>
           </li>
         
       </ul>
