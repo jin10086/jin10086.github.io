@@ -84,6 +84,68 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-模拟登陆知乎" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/模拟登陆知乎/" class="article-date">
+  <time datetime="2018-02-03T10:19:32.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/模拟登陆知乎/">模拟登陆知乎</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        原因
+为啥要写这一篇文章呢？
+（主要是qq群内有人在模拟登陆知乎，一直不成功）然后我抓包看了下，发现知乎登陆页已经改版了，而且难度大大提高了。
+
+开始抓包
+首先内，还是打开知乎首页，然后输入账号密码，登陆（记得输错密码） 
+
+这样我们就可以看到请求头了（请求头如下）
+
+我们发现有这几个请求头和正常的不一样（红色框中的）
+
+ 1. authorization （感觉应该是js生成的，后面再看
+ 2. Content-Type （后面多了boundary=xxx 这种,那这种是啥意思呢,后面和请求参数一起看
+ 3. cookie：这个要注意,登陆前cookie就不为空，说明之前肯定有set-coo
+        
+          <p class="article-more-link">
+            <a href="/2018/02/03/模拟登陆知乎/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jin10086.github.io/2018/02/03/模拟登陆知乎/" data-id="cjkuwwp5n00218oypljtb3tti" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模拟登陆知乎/">模拟登陆知乎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫实战/">爬虫实战</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-请正确使用http状态码，谢谢！" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/03/请正确使用http状态码，谢谢！/" class="article-date">
@@ -385,79 +447,10 @@ fiddle的安装与配置
 
 
   
-    <article id="post-mongodb的基本使用" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/03/mongodb的基本使用/" class="article-date">
-  <time datetime="2018-02-03T09:36:09.000Z" itemprop="datePublished">2018-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/爬虫/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/mongodb的基本使用/">mongodb的基本使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        本文章属于爬虫入门到精通系统教程第十讲
-
-在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？
-
-保存到文本文件？
-可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…
-
-
-我今天爬取了10000部日本电影
-
-假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了
-
-但是假如你想要找”苍老师+无码”怎么办呢？？？
-
-这个时候就是体现数据库的作用了。
-
-Mongodb的介绍
-为什么用mongodb呢？
- 1. 文档结构的存储方式
- 2. 简单讲就是可以直接存json,list
- 3
-        
-          <p class="article-more-link">
-            <a href="/2018/02/03/mongodb的基本使用/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/mongodb的基本使用/" data-id="cjkuwwp4t000g8oypw6v6aof6" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页&raquo;</a>
   </nav>
 </section>
            
@@ -480,6 +473,10 @@ Mongodb的介绍
       <ul>
         
           <li>
+            <a href="/2018/08/17/weekly-issue-3/">每周分享第 3 期</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/11/weekly-issue-2/">每周分享第 2 期</a>
           </li>
         
@@ -493,10 +490,6 @@ Mongodb的介绍
         
           <li>
             <a href="/2018/07/28/教你买书如何折上折/">教你买书如何折上折</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/25/我的审判/">我的审判</a>
           </li>
         
       </ul>
