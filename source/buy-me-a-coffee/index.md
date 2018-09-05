@@ -3,5 +3,13 @@ title: buy me a coffee
 date: 2018-08-15 17:06:51
 ---
 
-![ETH:![](http://ww1.sinaimg.cn/large/cfc08357gy1fuai18epcoj20k20is757.jpg)](http://ww1.sinaimg.cn/large/cfc08357gy1fuai18epcoj20k20is757.jpg)
-
+1. 支付宝
+    ![](http://ww1.sinaimg.cn/thumbnail/cfc08357gy1fuyli47rt9j20d40d0mzf.jpg)
+2. 微信
+    ![](http://ww1.sinaimg.cn/thumbnail/cfc08357gy1fuylgmzwedj20e60duwhh.jpg)
+3. 加密货币
+    - 比特币(BTC): 1FmRnLEdDuhsWpoiVZh5YtqvdP63Tp9bdd
+    - BitcoinCash（BCH): 15QsZRENDvqWnu5Zz2sZwXsPuLQkV9aXj8
+    - ETH: 0xfb1b5df432b12959d1f7e7d2f9661b43ba0d5bf3
+    - EOS: gy2dgmztgqge
+    - FIBOS: gggggggggggg
