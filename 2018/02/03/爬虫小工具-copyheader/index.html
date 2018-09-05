@@ -24,7 +24,7 @@
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   
     
@@ -126,24 +126,11 @@ ga('send', 'pageview');
 <h2 id="如何使用呢"><a href="#如何使用呢" class="headerlink" title="如何使用呢"></a>如何使用呢</h2><p>先找到你要复制的请求头，并且复制</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入python包</span></span><br><span class="line"><span class="keyword">from</span> copyheaders <span class="keyword">import</span> headers_raw_to_dict</span><br><span class="line">impore requests</span><br><span class="line"><span class="comment"># 把刚刚复制的请求头复制进来</span></span><br><span class="line">r_h = <span class="string">b'''</span></span><br><span class="line"><span class="string">Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</span></span><br><span class="line"><span class="string">Accept-Encoding:gzip, deflate, br</span></span><br><span class="line"><span class="string">Accept-Language:zh-CN,zh;q=0.9,zh-TW;q=0.8</span></span><br><span class="line"><span class="string">Cache-Control:max-age=0</span></span><br><span class="line"><span class="string">Connection:keep-alive</span></span><br><span class="line"><span class="string">Cookie:_gauges_unique_month=1; _gauges_unique_year=1; _gauges_unique=1; _gauges_unique_hour=1; _gauges_unique_day=1</span></span><br><span class="line"><span class="string">DNT:1</span></span><br><span class="line"><span class="string">Host:httpbin.org</span></span><br><span class="line"><span class="string">Referer:https://httpbin.org/</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests:1</span></span><br><span class="line"><span class="string">User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 转换成字典</span></span><br><span class="line">headers = headers_raw_to_dict(r_h)</span><br><span class="line"><span class="comment"># 然后就可以直接使用了~</span></span><br><span class="line">z = requests.get(<span class="string">'https://httpbin.org/headers'</span>,headers=headers</span><br></pre></td></tr></table></figure>
 <p>项目地址在<a href="https://github.com/jin10086/copyheaders" rel="external nofollow noopener noreferrer" target="_blank">copyheaders</a></p>
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/" data-id="cjl7qk8xz0026nxypo7bxgh03" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/" data-id="cjlhjh5le002c73yps0gdye6q" class="article-share-link">分享</a>
       
       
       
