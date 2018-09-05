@@ -24,7 +24,7 @@
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   
     
@@ -127,24 +127,11 @@ ga('send', 'pageview');
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么假如我要每天爬取苹果应该商店的app，那么我会在第一次请求的时候吧每个网页的上次修改时间存到数据库（也就是If-Modified-Since）</p>
 <p>然后在我第二次爬取的时候，我会把上次存到数据库的时间放到headers里面，如果http状态码返回304,则表示网页没有更新，我可以不用再次解析网页，这样会节约大量时间…</p>
 <p>最后代码在 <a href="https://github.com/jin10086/pachong/blob/master/If-modified-since.ipynb" rel="external nofollow noopener noreferrer" target="_blank">kimg1234/pachong</a></p>
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/" data-id="cjl7qk8wz000dnxypu0q6q2sd" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/" data-id="cjlhjh5kk000o73ypi7il9d8h" class="article-share-link">分享</a>
       
       
       
