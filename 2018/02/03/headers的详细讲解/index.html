@@ -5,27 +5,27 @@
   
   <title>headers的详细讲解 | 高金的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录   我们很简单的就找到了 我们需要的请求    1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9">
+  <meta name="description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录  我们很简单的就找到了 我们需要的请求  1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9 pa">
 <meta name="keywords" content="headers,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="headers的详细讲解">
 <meta property="og:url" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/index.html">
 <meta property="og:site_name" content="高金的博客">
-<meta property="og:description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录   我们很简单的就找到了 我们需要的请求    1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9">
+<meta property="og:description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录  我们很简单的就找到了 我们需要的请求  1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9 pa">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbpjtcsj20k009nad2.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbxwa6yj20qo054gmm.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cc5iwg0j20s10fbn2q.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3ccy0fw9j20it0cm44y.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cdrwe63j20r40bo77h.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cefs9q1j20ft0enjuc.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cesij8pj20k00dp0yh.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cf2wyjnj20go03qwff.jpg">
-<meta property="og:updated_time" content="2018-09-05T02:21:35.360Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/3.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/4.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/5.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/6.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/7.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="headers的详细讲解">
-<meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录   我们很简单的就找到了 我们需要的请求    1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbpjtcsj20k009nad2.jpg">
+<meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第七讲  直接开始案例吧。  本次我们实现如何模拟登陆知乎。  1.抓包 首先打开知乎登录页 知乎 - 与世界分享你的知识、经验和见解  注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录  我们很简单的就找到了 我们需要的请求  1 2 3   _xsrf:81aa4a69cd410c3454ce515187f2d4c9 pa">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -126,13 +126,16 @@ ga('send', 'pageview');
 <p>本次我们实现如何模拟登陆知乎。</p>
 <h3 id="1-抓包"><a href="#1-抓包" class="headerlink" title="1.抓包"></a>1.抓包</h3><p>首先打开知乎登录页 <a href="https://www.zhihu.com/#signin" rel="external nofollow noopener noreferrer" target="_blank">知乎 - 与世界分享你的知识、经验和见解</a></p>
 <p>注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbpjtcsj20k009nad2.jpg" alt=""><br>我们很简单的就找到了 我们需要的请求</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbxwa6yj20qo054gmm.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cc5iwg0j20s10fbn2q.jpg" alt=""><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_xsrf:<span class="number">81</span>aa4a69cd410c3454ce515187f2d4c9</span><br><span class="line">password:***</span><br><span class="line">email:admin@wuaics.cn</span><br></pre></td></tr></table></figure></p>
+<img src="/2018/02/03/headers的详细讲解/0.jpg">
+<p>我们很简单的就找到了 我们需要的请求</p>
+<img src="/2018/02/03/headers的详细讲解/1.jpg">
+<img src="/2018/02/03/headers的详细讲解/2.jpg">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_xsrf:<span class="number">81</span>aa4a69cd410c3454ce515187f2d4c9</span><br><span class="line">password:***</span><br><span class="line">email:admin@wuaics.cn</span><br></pre></td></tr></table></figure>
 <p>可以看到请求一共有三个参数</p>
 <p><code>email</code> 和<code>password</code>就是我们需要登录的账号及密码</p>
 <p>那么<code>_xsrf</code>是什么？我们在哪能找到？</p>
 <p>像<code>_xsrf</code>这种参数，一般叫做页面校检码，是来检查你是否是从正常的登录页面过来的。</p>
-<p>那我们复制这个值，在登录页面找找看。<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3ccy0fw9j20it0cm44y.jpg" alt=""></p>
+<p>那我们复制这个值，在登录页面找找看。<br><img src="/2018/02/03/headers的详细讲解/3.jpg"></p>
 <p>可以看到已经找到了。用xpath很简单就能获取</p>
 <p><code>//input[@name=&quot;_xsrf&quot;]/@value</code></p>
 <p>所以，本次登录我们需要得到的数据已经都得到了</p>
@@ -145,7 +148,7 @@ ga('send', 'pageview');
 <p>我们会看到 http状态码为500…</p>
 <p>至于为什么会返回500状态码呢？是因为我们用程序来访问知乎被发现了…</p>
 <p>我们伪装成浏览器，添加一行</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cdrwe63j20r40bo77h.jpg" alt=""></p>
+<img src="/2018/02/03/headers的详细讲解/4.jpg">
 <p>可以看到返回正常了，http状态码为200<strong>(这就是headers的作用)</strong></p>
 <p>那我们现在获取<code>_xsrf</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">sel = etree.HTML(z1.content)</span><br><span class="line"><span class="comment"># 这个xsrf怎么获取 我们上面有讲到</span></span><br><span class="line">_xsrf = sel.xpath(<span class="string">'//input[@name="_xsrf"]/@value'</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
@@ -163,7 +166,8 @@ ga('send', 'pageview');
 <p>那如果我现在想要z3不用再模拟登录一次，也能登录的话，怎么办呢？</p>
 <p>我们可以把z2登录成功后得到的cookie给z3,这样，z3也就能登录成功了.</p>
 <p><strong>用程序实现</strong></p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cefs9q1j20ft0enjuc.jpg" alt=""><br>再次判断下是否登录成功。</p>
+<img src="/2018/02/03/headers的详细讲解/5.jpg">
+<p>再次判断下是否登录成功。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z3 = requests.get(url=mylog,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z3.url</span><br><span class="line"><span class="comment"># u'https://www.zhihu.com/people/pa-chong-21/logs'</span></span><br></pre></td></tr></table></figure>
 <p>我们可以看到已经正常访问了。说明我们登录成功了</p>
 <p>所以，以后只要你带着这个cookie，就可以访问登录后的页面了.<strong>(这就是cookie的作用..)</strong></p>
@@ -173,10 +177,11 @@ ga('send', 'pageview');
 <h2 id="会话对象高级用法-Requests-2-10-0-文档"><a href="#会话对象高级用法-Requests-2-10-0-文档" class="headerlink" title="会话对象高级用法 - Requests 2.10.0 文档"></a>会话对象<a href="http://link.zhihu.com/?target=http%3A//docs.python-requests.org/zh_CN/latest/user/advanced.html%23session-objects" rel="external nofollow noopener noreferrer" target="_blank">高级用法 - Requests 2.10.0 文档</a></h2><p>会话对象让你能够跨请求保持某些参数。它也会在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 <a href="http://link.zhihu.com/?target=https%3A//urllib3.readthedocs.io/en/latest/pools.html" rel="external nofollow noopener noreferrer" target="_blank">connection pooling</a> 功能。所以如果你向同一主机发送多个请求，底层的 TCP 连接将会被重用，从而带来显著的性能提升。 (参见 <a href="http://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/HTTP_persistent_connection" rel="external nofollow noopener noreferrer" target="_blank">HTTP persistent connection</a>).</p>
 </blockquote>
 <p>使用会话后，我们上面的代码可以改成这样</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cesij8pj20k00dp0yh.jpg" alt=""></p>
+<img src="/2018/02/03/headers的详细讲解/6.jpg">
 <p>可以看到我们没有把cookie传过去，但是还是登录成功了，这是因为session会自动帮你处理这些，会自动帮你管理cookie</p>
 <p>我们可以打印看下我们请求的headers</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cf2wyjnj20go03qwff.jpg" alt=""><br>可以看到headers里面自动加上了cookie</p>
+<img src="/2018/02/03/headers的详细讲解/7.jpg">
+<p>可以看到headers里面自动加上了cookie</p>
 <p>最后所有的代码都在<a href="http://link.zhihu.com/?target=https%3A//github.com/kimg1234/pachong/blob/master/headers%25E7%259A%2584%25E8%25AF%25A6%25E7%25BB%2586%25E8%25AE%25B2%25E8%25A7%25A3.ipynb" rel="external nofollow noopener noreferrer" target="_blank">kimg1234/pachong</a></p>
 <h2 id="最后再次总结一下"><a href="#最后再次总结一下" class="headerlink" title="最后再次总结一下"></a>最后再次总结一下</h2><p>看完本篇文章后，你应该要</p>
 <ul>
@@ -189,7 +194,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解/" data-id="cjlojdwvi000gu7yp2z8045w8" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解/" data-id="cjlrtpu56000b8lypjbb90r1r" class="article-share-link">分享</a>
       
       
       

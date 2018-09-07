@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="什么是HTTP协议？ 引用自维基百科  超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。 HTTP的发展是由蒂姆·伯纳">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fcue2xxtzfj21hb0j5q6q">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fcue7p6k7sj21hb0m90wh">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fcug3muzx4j20ol0fe769">
-<meta property="og:updated_time" content="2018-09-05T02:21:35.361Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/http协议的讲解/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/http协议的讲解/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/http协议的讲解/2.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http协议的讲解">
 <meta name="twitter:description" content="什么是HTTP协议？ 引用自维基百科  超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。 HTTP的发展是由蒂姆·伯纳">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fcue2xxtzfj21hb0j5q6q">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/http协议的讲解/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -130,9 +130,9 @@ ga('send', 'pageview');
 <li>点击Network</li>
 <li>点击Doc</li>
 </ul>
-<p>应该会看到如下界面<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fcue2xxtzfj21hb0j5q6q" alt=""></p>
+<p>应该会看到如下界面<br><img src="/2018/02/03/http协议的讲解/0.jpg"></p>
 <p>然后我们点击<code>25296437</code></p>
-<p>应该会看到如下界面<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fcue7p6k7sj21hb0m90wh" alt=""></p>
+<p>应该会看到如下界面<br><img src="/2018/02/03/http协议的讲解/1.jpg"></p>
 <h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><pre><code>Request URL:https://zhuanlan.zhihu.com/p/25296437 （爬虫会用到）
 </code></pre><p>这个对应HTTP协议中的<strong>统一资源定位符</strong>也就是我们打开的网址</p>
 <pre><code>Request Method:GET（爬虫会用到）
@@ -206,7 +206,7 @@ ga('send', 'pageview');
 <p><code>Last-Modified:Wed, 15 Feb 2017 09:14:13 GMT</code><br><code>ETag:&quot;58a41be5-190aa&quot;</code></p>
 <p>这4个一般静态页面会用到 <code>If-Modified-Since,If-None-Match</code><br>这两个是请求头，<code>ETag,Last-Modified</code>是返回头（服务器返回的）</p>
 <p>如果<code>If-Modified-Since</code>的值和<code>Last-Modified</code>相等 则表明当前请求的内容没有变动，服务器返回 <code>Status Code:304 Not Modified</code><br><code>If-None-Match</code>和<code>ETag</code> 同理</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fcug3muzx4j20ol0fe769" alt=""></p>
+<img src="/2018/02/03/http协议的讲解/2.jpg">
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看完本篇文章后，你应该要</p>
 <ul>
 <li>大概了解什么是HTTP协议</li>
@@ -218,7 +218,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/http协议的讲解/" data-id="cjlojdwxm005lu7ypue3hscj4" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/http协议的讲解/" data-id="cjlrtpu78005p8lypuk61my06" class="article-share-link">分享</a>
       
       
       

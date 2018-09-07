@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="在爬虫入门到精通第四讲中，我们了解了如何下载网页，这一节就是如何从下载的网页中获取我们想要的内容  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16   html = u&quot;&quot;&quot;     文章的标题    h1文字  Input">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bdrpj36j20pc06t0vc.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bjp97onj20m71brb29.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bkoxu6yj20nc0bbaj8.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bl72ixxj20qs0fqq8h.jpg">
-<meta property="og:updated_time" content="2018-09-05T02:21:35.371Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/3.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页的解析之正则表达式">
 <meta name="twitter:description" content="在爬虫入门到精通第四讲中，我们了解了如何下载网页，这一节就是如何从下载的网页中获取我们想要的内容  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16   html = u&quot;&quot;&quot;     文章的标题    h1文字  Input">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bdrpj36j20pc06t0vc.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -126,16 +126,17 @@ ga('send', 'pageview');
 <p>很简单,根据它两边的内容.</p>
 <p>我们很简单的能发现 它 左边是<code>&lt;title&gt;</code> ,右边是<code>&lt;/title&gt;</code></p>
 <p>所以，我们如何找到<strong>文章的标题</strong>这几个文字呢，只要左边是<code>title</code>,右边是<code>title</code>，那么中间就是我们要找的</p>
-<h3 id="下面用程序写出来"><a href="#下面用程序写出来" class="headerlink" title="下面用程序写出来"></a>下面用程序写出来</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bdrpj36j20pc06t0vc.jpg" alt=""><br>可以看到我们正确匹配到了文章的标题，</p>
+<h3 id="下面用程序写出来"><a href="#下面用程序写出来" class="headerlink" title="下面用程序写出来"></a>下面用程序写出来</h3><img src="/2018/02/03/网页的解析之正则表达式/0.jpg">
+<p>可以看到我们正确匹配到了文章的标题，</p>
 <p>我们首先来看 <code>pattern = &#39;&lt;title&gt;(.*?)&lt;/title&gt;&#39;</code></p>
 <p>我们可以发现这就是我们上面讲的,左边是<code>&lt;title&gt;</code> ,右边是<code>&lt;/title&gt;</code>,那么中间的<code>(.*?)</code>是什么呢？这其实是来用来声明我们要匹配的字符串是什么,这边我们用的是<code>(.*?)</code>,表示我们要匹配的字符串可以是任何东西,没有格式要求。也就是俗称”万能匹配”，大家可以下图的正则表达式语法，来解释下为什么 <code>.*?</code> 是万能匹配, <code>.*？</code> 外面的 <code>()</code> 又是什么鬼</p>
 <p><code>string=html</code> 表示我们当前要被匹配的是我们定义的html</p>
 <p>最后<code>flags=re.S</code> 表示,<code>(.*?)</code>中的 <code>.</code> 可以匹配包括换行符（见下面表）</p>
 <p><code>[0]</code> 是取返回列表中的第一个，主要是方便演示</p>
 <p>正则表达式语法（声明我们要匹配的字符串是什么格式的</p>
-<p>引用自 <a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" rel="external nofollow noopener noreferrer" target="_blank">博客园</a><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bjp97onj20m71brb29.jpg" alt=""></p>
-<h3 id="re中所有的flags解释"><a href="#re中所有的flags解释" class="headerlink" title="re中所有的flags解释"></a>re中所有的flags解释</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bkoxu6yj20nc0bbaj8.jpg" alt=""></p>
-<h3 id="最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字-代码如下"><a href="#最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字-代码如下" class="headerlink" title="最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字,代码如下"></a>最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字,代码如下</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3bl72ixxj20qs0fqq8h.jpg" alt=""></p>
+<p>引用自 <a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" rel="external nofollow noopener noreferrer" target="_blank">博客园</a><br><img src="/2018/02/03/网页的解析之正则表达式/1.jpg"></p>
+<h3 id="re中所有的flags解释"><a href="#re中所有的flags解释" class="headerlink" title="re中所有的flags解释"></a>re中所有的flags解释</h3><img src="/2018/02/03/网页的解析之正则表达式/2.jpg">
+<h3 id="最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字-代码如下"><a href="#最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字-代码如下" class="headerlink" title="最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字,代码如下"></a>最后再来一个案例，还是上面的html，我们需要匹配的内容是h1文字,代码如下</h3><img src="/2018/02/03/网页的解析之正则表达式/3.jpg">
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看完本篇文章后，你应该要：</p>
 <p>学会最通用的一种正则表达式</p>
 <p><code>re.findall(&#39;左右的字符串(.*?)右边的字符串&#39;,等待匹配的字符串,flags)</code><br>大家想深入了解正则表达式的话</p>
@@ -145,7 +146,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/" data-id="cjlojdwws002wu7yp4t4z8xg1" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/网页的解析之正则表达式/" data-id="cjlrtpu6d002y8lypdo8n2njo" class="article-share-link">分享</a>
       
       
       

@@ -13,18 +13,18 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="背景 最近在写几个私有项目,每次提交都需要输入账号密码，很烦…  搜索发现如果使用ssh协议来提交的话，只要生成ssh key，就不需要输入账号密码了  本地ssh-key的创建 默认已经装好了git,如果没有安装的话，请百度如何安装  在命令行中输入下面命令 ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;  如果提示找不到ssh-keygen 这个命令的话,请检查是否有安装git 以">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3h4q7e9xj20gz09wwf1.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3h7ooj2gj20ay044jre.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3haocqmmj20lt0c83yu.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hfokg3kj20k103hmxf.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hj3l773j20b205y3yt.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hm0gw5kj20cl020748.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hnu7ygaj20k002owel.jpg">
-<meta property="og:updated_time" content="2018-09-05T02:21:35.360Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/3.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/4.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/5.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/6.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github如何创建ssh-key">
 <meta name="twitter:description" content="背景 最近在写几个私有项目,每次提交都需要输入账号密码，很烦…  搜索发现如果使用ssh协议来提交的话，只要生成ssh key，就不需要输入账号密码了  本地ssh-key的创建 默认已经装好了git,如果没有安装的话，请百度如何安装  在命令行中输入下面命令 ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;  如果提示找不到ssh-keygen 这个命令的话,请检查是否有安装git 以">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3h4q7e9xj20gz09wwf1.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -124,28 +124,31 @@ ga('send', 'pageview');
 <p>搜索发现如果使用ssh协议来提交的话，只要生成ssh key，就不需要输入账号密码了</p>
 <h2 id="本地ssh-key的创建"><a href="#本地ssh-key的创建" class="headerlink" title="本地ssh-key的创建"></a>本地ssh-key的创建</h2><p>默认已经装好了git,如果没有安装的话，请百度如何安装</p>
 <p>在命令行中输入下面命令<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code></p>
-<p>如果提示找不到ssh-keygen 这个命令的话,请检查是否有安装git 以及是否要ssh-keygen加入环境变量<br>然后直接回车三连（三次回车）<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3h4q7e9xj20gz09wwf1.jpg" alt=""></p>
+<p>如果提示找不到ssh-keygen 这个命令的话,请检查是否有安装git 以及是否要ssh-keygen加入环境变量<br>然后直接回车三连（三次回车）<br><img src="/2018/02/03/github如何创建ssh-key/0.jpg"></p>
 <p>然后 li* mac 等系统的同学 直接输入<br><code>cat ~/.ssh/id_rsa.pub</code> 然后直接复制里面的所有的内容</p>
-<p>windows的同学,打开当前计算机名（如我当前计算机名是 <code>kimga</code><br><code>C:\Users\kimga\.ssh</code>下面的<code>id_rsa.pub</code>,然后复制里面的所有内容<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3h7ooj2gj20ay044jre.jpg" alt=""></p>
+<p>windows的同学,打开当前计算机名（如我当前计算机名是 <code>kimga</code><br><code>C:\Users\kimga\.ssh</code>下面的<code>id_rsa.pub</code>,然后复制里面的所有内容<br><img src="/2018/02/03/github如何创建ssh-key/1.jpg"></p>
 <h2 id="github-设置"><a href="#github-设置" class="headerlink" title="github 设置"></a>github 设置</h2><ol>
 <li>打开github<a href="https://github.com/settings/ssh/new" rel="external nofollow noopener noreferrer" target="_blank">设置ssh-key的地址</a></li>
 <li>在title里面输入你这个key用在哪的,(可以随便写)</li>
 <li>在key里面粘贴进去上面复制的</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3haocqmmj20lt0c83yu.jpg" alt=""></li>
+<li><img src="/2018/02/03/github如何创建ssh-key/2.jpg"></li>
 <li>点击add ssh key，然后输入GitHub密码就好了</li>
 </ol>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在命令行输入<br><code>ssh -T git@github.com</code><br>会有一个警告,直接输入<code>yes</code><br>然后会看到 <code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code><br>则成功了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hfokg3kj20k103hmxf.jpg" alt=""></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在命令行输入<br><code>ssh -T git@github.com</code><br>会有一个警告,直接输入<code>yes</code><br>然后会看到 <code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code><br>则成功了<br><img src="/2018/02/03/github如何创建ssh-key/3.jpg"></p>
 <h2 id="在项目中使用ssh协议"><a href="#在项目中使用ssh协议" class="headerlink" title="在项目中使用ssh协议"></a>在项目中使用ssh协议</h2><p>有两种情况</p>
 <ol>
-<li><p>你项目还没有clone 下来，则你clone的时候直接使用ssh协议<br>如下图，点击Use SSH,然后复制地址<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hj3l773j20b205y3yt.jpg" alt=""><br>正常clone，如<code>git clone git@github.com:jin10086/pachong.git</code></p>
+<li><p>你项目还没有clone 下来，则你clone的时候直接使用ssh协议<br>如下图，点击Use SSH,然后复制地址</p>
+<img src="/2018/02/03/github如何创建ssh-key/4.jpg">
+<p>正常clone，如<code>git clone git@github.com:jin10086/pachong.git</code></p>
 </li>
 <li><p>你项目已经clone下来了，但是用的是https协议，则需要更改下remote url<br>怎么做的，看下面</p>
 <ol>
 <li>输入<code>git remote -v</code> 查看当前的url，可以发现我使用的https协议</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hm0gw5kj20cl020748.jpg" alt=""></li>
+<li><img src="/2018/02/03/github如何创建ssh-key/5.jpg"></li>
 <li>输入<code>git remote set-url origin git@github.com:jin10086/pachong.git</code>,后面的git协议的地址获取方法和 方法1一样的.</li>
 <li>输入<code>git remote -v</code>看看是否有修改成功</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3hnu7ygaj20k002owel.jpg" alt=""></li>
+<li><img src="/2018/02/03/github如何创建ssh-key/6.jpg">
+</li>
 </ol>
 </li>
 </ol>
@@ -154,7 +157,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/" data-id="cjlojdwvf000bu7ypqsyemidk" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/github如何创建ssh-key/" data-id="cjlrtpu5a000g8lyp2ezagryh" class="article-share-link">分享</a>
       
       
       

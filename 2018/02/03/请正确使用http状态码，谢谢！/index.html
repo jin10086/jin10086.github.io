@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="背景 最近，由于某些特别原因。打开一些网址一直显示404， 想请问下，xx站的程序员，能不能按照http协议来返回呢？  什么是http状态码451 根据定义，HTTP 451错误代码状态出现，不代表这个地址是否存在，而代表该网页可能对于国家安全产生危险，或是该网页可能违反著作权、隐私权、亵渎神明或其他法律或法院命令。 该响应代码有如下的性质： 除非另外指明，否则这个响应代码是可以被缓存的。 必须">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fco2j5kj219m0b3dtv.jpg">
-<meta property="og:updated_time" content="2018-09-05T02:21:35.371Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/请正确使用http状态码，谢谢！/0.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="请正确使用http状态码，谢谢！">
 <meta name="twitter:description" content="背景 最近，由于某些特别原因。打开一些网址一直显示404， 想请问下，xx站的程序员，能不能按照http协议来返回呢？  什么是http状态码451 根据定义，HTTP 451错误代码状态出现，不代表这个地址是否存在，而代表该网页可能对于国家安全产生危险，或是该网页可能违反著作权、隐私权、亵渎神明或其他法律或法院命令。 该响应代码有如下的性质： 除非另外指明，否则这个响应代码是可以被缓存的。 必须">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fco2j5kj219m0b3dtv.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/请正确使用http状态码，谢谢！/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -124,14 +124,14 @@ ga('send', 'pageview');
 <h2 id="一个示例"><a href="#一个示例" class="headerlink" title="一个示例"></a>一个示例</h2><p>某地一用户以GET方式请求<a href="http://example.org的/index.php路径：" rel="external nofollow noopener noreferrer" target="_blank">http://example.org的/index.php路径：</a></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /index.php HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br></pre></td></tr></table></figure>
 <p>由于用户所在地的某项法律规定，网站不可以向该地区用户返回这个页面，所以服务器做出回应，设置了有效期为一年的缓存头部，并在Link头部中加入了指定的政府部门URL<code>http://www.xxx.gov.tld</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 451 Unavailable For Legal Reasons</span><br><span class="line">Link: <span class="tag">&lt;<span class="name">http:</span>//<span class="attr">www.xxx.gov.tld</span>&gt;</span>; rel="blocked-by"</span><br><span class="line">Cache-control: max-age=31536000; public</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>因法律原因不可用<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTTP/1.1 451 因法律原因，本页面不可用<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>根据《某法》第某条之规定，本网站页面对来自某地的访客不可用。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3fco2j5kj219m0b3dtv.jpg" alt=""></p>
+<img src="/2018/02/03/请正确使用http状态码，谢谢！/0.jpg">
 <p>文章参考于 维基百科 <a href="https://zh.wikipedia.org/wiki/HTTP_451" rel="external nofollow noopener noreferrer" target="_blank">https://zh.wikipedia.org/wiki/HTTP_451</a></p>
 <p><a href="https://tools.ietf.org/html/rfc7725" rel="external nofollow noopener noreferrer" target="_blank">RFC 7725</a> - HTTP 451的正式RFC文件</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/请正确使用http状态码，谢谢！/" data-id="cjlojdwwt002zu7ypn7w3ljfm" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/请正确使用http状态码，谢谢！/" data-id="cjlrtpu6e00328lypmc7wgtgq" class="article-share-link">分享</a>
       
       
       
