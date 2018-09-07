@@ -47,7 +47,7 @@ tags:
 ### [TextQL](https://github.com/dinedal/textql)
 
 用SQL查询 CSV
-![](https://camo.githubusercontent.com/43ca79fc6307d1f80c543bd68a4979a74919013c/68747470733a2f2f7261772e6769746875622e636f6d2f64696e6564616c2f74657874716c2f6d61737465722f74657874716c5f75736167652e676966)
+{% asset_img 0.jpg  %}
 
 ### [可以自动生成.gitignore的网站](https://www.gitignore.io/)
 
@@ -68,13 +68,13 @@ tags:
 >这都属于道路的“规律性”，可以通过计算被量化。加州大学伯克利分校城市规划专业的博士后吉奥夫·波音（Geoff Boeing）就提供了判定市道路的“规律性”的方法：他用一个小工具（OSMnx）在地图上取样，把城市里面不同方向的道路，按长度叠加，然后在一个玫瑰图上比较各个方向的路的比率，可以说是非常直观了。
 
 - 北京
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fu2bw9t1sij21ak0x84qp.jpg)
+  {% asset_img 1.jpg  %}
 - 上海
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fu2bwtkmxjj21aa0xw7wh.jpg)
+  {% asset_img 2.jpg  %}
 - 西安
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fu2bxvcs8mj21ae0xg7rd.jpg)
+  {% asset_img 3.jpg  %}
 - 重庆
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fu2byt8i1ej21ac0xae5s.jpg)
+  {% asset_img 4.jpg  %}
 
 想自己去找更多城市[点这里](https://mourner.github.io/road-orientation-map/#6.5/30.204/107.74)
 想看源代码[点这里](https://github.com/mourner/road-orientation-map)
@@ -82,15 +82,15 @@ tags:
 ### [wttr.in](https://github.com/chubin/wttr.in)
 
 在命令行里面查看天气.
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu6383xi99j21ju12swla.jpg)
+{% asset_img 5.jpg  %}
 
 **还可以打开[chubin](https://github.com/chubin)的主页，可以看能在命令行做很多事情！**
 
 - 做小抄 [cheat.sh](https://github.com/chubin/cheat.sh)
-![](https://camo.githubusercontent.com/85cf29460f6af99d0e1ddb467fde7ec32b6e9989/68747470733a2f2f63686561742e73682f66696c65732f64656d6f2d6375726c2e676966)
+{% asset_img 6.jpg  %}
 
 - 查币价 [](https://github.com/chubin/rate.sx)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu63cb505sj20zc10g41n.jpg)
+{% asset_img 7.jpg  %}
 
 
 ---

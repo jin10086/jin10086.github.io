@@ -19,7 +19,7 @@ tags:
 我也终于在越挫越勇不懈努力下
 
 一次都没冲顶成功
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3fzh1tvrj201s01sq2w.jpg)
+{% asset_img 0.jpg  %}
 不过，作为一个
 
 追热点蹭关注精通各种互联网小道消息的
@@ -36,12 +36,12 @@ tags:
 
 一共12道涵盖python热点及必备知识的问题 
 
-![](https://pic4.zhimg.com/v2-c14dbe46c110c10fe1313609bf209128_b.gif)
+{% asset_img 1.gif  %}
 
 是**pythoner**就来冲顶！
 
 [冲顶大会地址在这](http://togetthere.cn/chongdingdahui.html)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3g17mlxxj201s01sq2x.jpg)
+{% asset_img 2.jpg  %}
 最后P个S：主播是花大价钱请来的，异常貌美，不容错过！
 
 创意抄的三节课的

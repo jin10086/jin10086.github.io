@@ -16,7 +16,7 @@ tags:
 
 那笔操作记录是 [0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca](https://etherscan.io/tx/0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca)
 
-![CW30Qf.png](https://s1.ax1x.com/2018/05/24/CW30Qf.png)
+{% asset_img 0.png CW30Qf.png %}
 下面我来带大家看看，黑客是如何实现的！
 
 我们可以看到执行的方法是 `transferFrom`
@@ -125,7 +125,7 @@ allowed[我的地址][msg.sender] = 100(这边的msg.sender 需要是我儿子�
 
 ## 总结
 我发现了 攻击这个合约的人 已经攻击了很多合约了！！！
-![CW3By8.png](https://s1.ax1x.com/2018/05/24/CW3By8.png)
+{% asset_img 1.png CW3By8.png %}
 这一些币大家就别抄底了!
 
 

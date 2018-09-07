@@ -36,12 +36,12 @@ tags:
 
 >在这段艰难的岁月里，信仰者坚持了下来，我们经常说矿工没有信仰，但事实上，在这样艰难的岁月，矿工走遍中国寻找低价水电，仍然在坚持拓荒式生存，瑞锡、小小、三金他们就是在这段时间一直坚守着自己的领地。
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu9dor06nmj20m80erh4f.jpg)
+{% asset_img 0.jpg  %}
 
 >还有很多我不知道的人，他们在那个充满争议的时代开始布道。
 到了今天，无数的专家和大咖冒了出来，编织一个又一个百度不到的神奇故事。
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu9dplsmzyj20u019s1kx.jpg)
+{% asset_img 1.jpg  %}
 
 >比特币的十年，是充满争议的十年，也是野蛮生长的十年。
 很多时候都是误解，无论你喜欢还是不喜欢———比特币只是一段开源程序、一种密码算法、一种新技术、一个P2P的电子支付系统、一段美好的思想……
@@ -81,8 +81,8 @@ tags:
 做老板，校长在电竞圈中已经8年，但是如果有机会能做选手，这依然是让他非常渴望的体验。
 所以这就是为什么每次有什么商业活动如果安排了他与职业选手的表演赛，他一向都颇为乐于参的原因吧
 
-![](https://wx3.sinaimg.cn/large/628324afly1fubyci0vhwj21s02o0u0x.jpg)
-![](https://wx3.sinaimg.cn/large/628324afly1fubyc8koi9j22io3sw4qt.jpg)
+{% asset_img 2.jpg  %}
+{% asset_img 3.jpg  %}
 
 **最新播报，已经赢了**
 
@@ -99,7 +99,7 @@ tags:
 <iframe width="560" height="315" src="https://f.us.sinaimg.cn/00392wlBlx07mX7NaQRO01040200FpgP0k010.mp4?label=mp4_ld&template=640x360.28&Expires=1534678671&ssig=PRV8hnwb1c&KID=unistore,video" frameborder="0" allowfullscreen></iframe>
 
 ### [天才 第一季](https://movie.douban.com/subject/26782706/)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukv4rj2c1j20u018gqv5.jpg)
+{% asset_img 4.jpg  %}
 讲述爱因斯坦的故事.
 
 我个人看完感受是
@@ -112,7 +112,7 @@ tags:
 
 其实这个漏洞，我在7月份就看到了，而且当时还在群里发了下...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fuf7cou3nhj20ss0bwwge.jpg)
+{% asset_img 5.jpg  %}
 
 为啥能攻击可以看这篇[how_to_pwn_fomo3d_a_beginners_guide](https://www.reddit.com/r/ethereum/comments/916xni/how_to_pwn_fomo3d_a_beginners_guide/)
 
@@ -135,7 +135,7 @@ tags:
 
 下面这张图是我的，育儿是什么鬼...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fuf75a8gebj212216ugt1.jpg)
+{% asset_img 6.jpg  %}
 ---
 
 # 我的奇思妙想

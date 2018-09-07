@@ -54,7 +54,7 @@ Coursera上线了，目前是唯一一所常春藤联盟的大学参加在线授
 
 Photon是一种快速的网络爬虫，可以提取网址，电子邮件，文件，网站帐户等等。
 
-![](https://camo.githubusercontent.com/f25db66909c7a985140f1592d06da2d4ecfdec40/68747470733a2f2f696d6167652e6962622e636f2f6664415375542f53637265656e73686f745f323031385f30375f32375f30305f35355f33332e706e67)
+{% asset_img 0.jpg  %}
 
 ### [certbot](https://github.com/certbot/certbot)
 certbot 可以很方便的帮你生成HTTPS证书
@@ -62,24 +62,24 @@ certbot 可以很方便的帮你生成HTTPS证书
 ### [simpread](https://github.com/kenshin/simpread) 
  让你瞬间进入沉浸式阅读的扩展
 
- ![](https://camo.githubusercontent.com/3dcbe5b71cbda36c641e17aee9e9c11500895cde/687474703a2f2f6f6a656335646464352e626b742e636c6f7564646e2e636f6d2f77656c636f6d652d726561646d652d312e706e67)
+ {% asset_img 1.jpg  %}
 
 --- 
 
 # 好玩的
 
 ### [现在跳槽第一个收到你简历的可能是你现在的上司](https://juejin.im/pin/5b5ed8a5f265da1046bb7799)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1ftwrbymglfj20j60y2jyv.jpg)
+{% asset_img 2.jpg  %}
 
 ### [教你怎么写 PHP 和 JavaScript 的异常捕获 ​​​](https://juejin.im/pin/5b5c25e8092dcb61bd728390)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1ftwre86xynj20go03odgt.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1ftwrefhvh4j20gn088wim.jpg)
+{% asset_img 3.jpg  %}
+{% asset_img 4.jpg  %}
 
 谁来补一个python的.
 
 ### [Nod to the Rhythm](http://nodtotherhythm.com/?g2OXmPYH=)
 上传一张照片，就可以让照片跟着节奏动起来了
-![](http://ww1.sinaimg.cn/large/cfc08357gy1ftwrjgigqdj20lc0sg7wh.jpg)
+{% asset_img 5.jpg  %}
 
 --- 
 

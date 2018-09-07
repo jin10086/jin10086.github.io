@@ -14,7 +14,7 @@ tags:
 
 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg)
+{% asset_img 0.jpg  %}
 我今天爬取了10000部日本电影
 
 假如说你要找苍老师出演的，那么你可能会说，我直接`ctrl+f`查找"苍老师"不就行了
@@ -41,25 +41,25 @@ tags:
 
 windows用户在
 `bin`目录下新建一个`data`的文件夹
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg)
+{% asset_img 1.jpg  %}
 
 然后在新建一个`start.bat`文件,内容写上
 `mongod --dbpath ./data`
 后面每次只要直接打开这个.bat 文件mongodb就运行了
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg)
+{% asset_img 2.jpg  %}
 你可以直接选中`start.bat`，发送到桌面快捷方式，这样你以后可以直接在桌面打开了
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg)
+{% asset_img 3.jpg  %}
 ## mongodb的基本使用
 
 首先 `pip install pymongo`
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg)
+{% asset_img 4.jpg  %}
+{% asset_img 5.jpg  %}
+{% asset_img 6.jpg  %}
+{% asset_img 7.jpg  %}
+{% asset_img 8.jpg  %}
+{% asset_img 9.jpg  %}
+{% asset_img 10.jpg  %}
 
 ## 总结
 ### 爬虫经常用到的三条插入语句

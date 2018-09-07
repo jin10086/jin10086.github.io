@@ -12,13 +12,13 @@ tags:
 
 首先，来看看我之前是如何做的，有多烦我就不说了...
 
-![](https://pic1.zhimg.com/v2-f20b1ebea73a0481283d65f632e96a3d_r.gif)
+{% asset_img 0.gif  %}
 
 如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~
 
 **那我现在怎么是怎么做的呢？**
 
-![](https://pic2.zhimg.com/v2-81aa0e4fee50c03a19d3d6bc587c1e55_r.gif)
+{% asset_img 1.gif  %}
 
 可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.
 

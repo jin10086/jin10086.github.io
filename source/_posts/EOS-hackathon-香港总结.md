@@ -74,6 +74,6 @@ coding中发现的一些问题
 
 进前10 的很多产品基本上 和EOS的生态有关，所以 参加的时候，应该想想**主办方为啥想组织这个活动**
 
-![上一张合照](http://ww1.sinaimg.cn/large/cfc08357gy1fsa1oj03kkj21400u0b2a.jpg)
+{% asset_img 0.jpg 上一张合照 %}
 
 

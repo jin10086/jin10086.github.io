@@ -13,7 +13,7 @@ tags:
 ## 案例
 本次我们要抓取的内容是苹果应用商店里面的所有app [从 iTunes 下载的 App Store](https://itunes.apple.com/cn/genre/ios/id36)
 当我第一次打开[王者荣耀：在 App Store](https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964) 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3e36k8vrj210q0id49d.jpg)
+{% asset_img 0.jpg  %}
 
 那么知道了这个http状态码304对我们爬虫有什么用呢？
 
@@ -29,7 +29,7 @@ url = 'https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id98
 
 z = requests.get(url,headers=headers)
 ```
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3e3xshabj20yf07hwil.jpg)
+{% asset_img 1.jpg  %}
 
 ```python
 # 获取上次修改时间

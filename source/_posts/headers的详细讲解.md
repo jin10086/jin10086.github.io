@@ -19,11 +19,11 @@ categories:
 
 注意打开开发者工具后点击“preserve log”，密码记得故意输入错误，然后点击登录
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbpjtcsj20k009nad2.jpg)
+{% asset_img 0.jpg  %}
 我们很简单的就找到了 我们需要的请求
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cbxwa6yj20qo054gmm.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cc5iwg0j20s10fbn2q.jpg)
+{% asset_img 1.jpg  %}
+{% asset_img 2.jpg  %}
 ```python
 _xsrf:81aa4a69cd410c3454ce515187f2d4c9
 password:***
@@ -39,7 +39,7 @@ email:admin@wuaics.cn
 像`_xsrf`这种参数，一般叫做页面校检码，是来检查你是否是从正常的登录页面过来的。
 
 那我们复制这个值，在登录页面找找看。
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3ccy0fw9j20it0cm44y.jpg)
+{% asset_img 3.jpg  %}
 
 可以看到已经找到了。用xpath很简单就能获取
 
@@ -69,7 +69,7 @@ print z.status_code
 
 我们伪装成浏览器，添加一行
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cdrwe63j20r40bo77h.jpg)
+{% asset_img 4.jpg  %}
 
 可以看到返回正常了，http状态码为200**(这就是headers的作用)**
 
@@ -139,7 +139,7 @@ print z3.url
 
 **用程序实现**
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cefs9q1j20ft0enjuc.jpg)
+{% asset_img 5.jpg  %}
 再次判断下是否登录成功。
 
 
@@ -164,13 +164,13 @@ print z3.url
 
 使用会话后，我们上面的代码可以改成这样
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cesij8pj20k00dp0yh.jpg)
+{% asset_img 6.jpg  %}
 
 可以看到我们没有把cookie传过去，但是还是登录成功了，这是因为session会自动帮你处理这些，会自动帮你管理cookie
 
 我们可以打印看下我们请求的headers
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3cf2wyjnj20go03qwff.jpg)
+{% asset_img 7.jpg  %}
 可以看到headers里面自动加上了cookie
 
 最后所有的代码都在[kimg1234/pachong](http://link.zhihu.com/?target=https%3A//github.com/kimg1234/pachong/blob/master/headers%25E7%259A%2584%25E8%25AF%25A6%25E7%25BB%2586%25E8%25AE%25B2%25E8%25A7%25A3.ipynb)

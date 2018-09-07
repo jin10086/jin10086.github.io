@@ -29,13 +29,13 @@ tags:
 
 找到了 [Installing bsddb package - python](https://stackoverflow.com/questions/16003224/installing-bsddb-package-python)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu06gauh63j215m0ggdil.jpg)
+{% asset_img 0.jpg  %}
 
 然后试了下。。。发现还是不行
 
 然后找到了 [https://github.com/scrapy-plugins/scrapy-deltafetch/issues/23](https://github.com/scrapy-plugins/scrapy-deltafetch/issues/23)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fu06id86xvj211q0ss79e.jpg)
+{% asset_img 1.jpg  %}
 
 然后发现报错，提示我安装的`berkeley-db`版本过高...
 

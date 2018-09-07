@@ -116,33 +116,33 @@ Sec-WebSocket-Location: ws://example.com/
 会发现怎么没有找到他是如何提交数据的...
 
 选择ws,然后刷新下网页，再点击下投票，会发现有一个请求
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4rs5d7hjj20zf0bugmx.jpg)
+{% asset_img 0.jpg  %}
 
 可以看到是在握手阶段,请求头里面的参数和我们上面讲的是一样的.
 
 请求地址是`ws://v5.10brandchina.com:8008/`
 这边顺带说一下，有时候这边会看到 `wss://v5.10brandchina.com:8008/`
 那么这两个有啥区别的，简单的讲就是http与https协议的区别一样...
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4rykh56tj20ah027mx2.jpg)
+{% asset_img 1.jpg  %}
 
 看一下交互的内容（点击Frames）
 可以看到已经有四条消息了，但是消息内容是二进制的，chrome这边无法预览...
 那么我们使用fiddle试一下
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4s0okwq0j20d505fmx7.jpg)
+{% asset_img 2.jpg  %}
 
 ### 抓包与分析
 打开fiddle，**刷新一下网页**
 不刷新的话是看不到的，然后随便投一下票.
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4s4eceovj20ki08dmy3.jpg)
+{% asset_img 3.jpg  %}
 
 怎么找到请求呢，很简单，看状态码为101的就行，然后双击这一行
 
 然后这边还是看到四条消息，我们点击第一条，然后用`TextView`展示，可以看到消息是这些
 为啥用`TextView`呢？其实是一个一个的试过来的，假如你发现都试过了，还是乱码，那应该是他使用了其他的压缩或者加密方法，需要查看js看看他是如何加密的
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4si2qs3uj20d1074t8w.jpg)
+{% asset_img 4.jpg  %}
 
 这个网站的数据是没有加密过的.
 带向上的箭头的是我们向服务器发送的，向下的箭头是服务器返回的(下面的数据，前面带黑点？,是我们发送的)
@@ -183,26 +183,26 @@ itemid,catid,capthc,auth,rnd如何生成
 还是使用chrome，直接用`ctrl + shift +f`，然后输入websocket（或者on_open,on_message，等等上面提到的事件去搜索）
 
 运气很好，输入`websocket`直接就搜到了js,还是没有混淆的
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4t04u89ej20i30410t0.jpg)
+{% asset_img 5.jpg  %}
 
 首先发现 websocket 地址是根据catId变的，如果catId能被2整除则地址为xxx，否则为xxx
 那么catId是什么呢，调试发现就是url中的id，我们当前url为`http://www.10brandchina.com/vote/startin.php?id=41867`则 catId为`41867`
 
 然后onmessage也看到了，大概意思是收到信息后，用json解析，如果action是auth的话，则调用sendData这个方法，如果action是vote的话，则使用vote_resule方法.
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4t2w87vsj20gp0fm0to.jpg)
+{% asset_img 6.jpg  %}
 
 在看到onopen方法，是调用sendData,并发送`('auth',authType)`,在这边是不是联想到前面，我们第一次发送的数据？`{"action":"auth","val":5}`,是不是感觉一模一样
 
 close方法就不说了,反正我们也用不上
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4tg5g7kyj20dl01ba9w.jpg)
+{% asset_img 7.jpg  %}
 
 再看看sendData这个方法,
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4tj2ks1vj20hw07awet.jpg)
-用python实现的话是这样![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4tnwvhgjj20cd02qt8n.jpg)
+{% asset_img 8.jpg  %}
+用python实现的话是这样{% asset_img 9.jpg  %}
 
 再看vote_result方法，大概作用是判断投票结果
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4tpk059lj20nc0e0myk.jpg)
+{% asset_img 10.jpg  %}
 
 所有的方法我们都找到了，那么我们再和之前要找的参数走一遍.
 
@@ -216,7 +216,7 @@ close方法就不说了,反正我们也用不上
   **可以通过onmessage方法知道他返回的json数据，json解析一下就行，**
   **里面的val是通过执行 `eval(val)`得到的**
   **所以你也可以直接执行这个.或者用python实现**
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4twpructj20c109igm0.jpg)
+  {% asset_img 11.jpg  %}
 
 4. 发送投票信息里面`{"action":"vote","val":"{\"itemid\":126067,\"catid\":41867,\"captcha\":\"%u7EC7%u65E7%u5F88%u9C7C\",\"auth\":5,\"rnd\":\"4186712606754595\"}"}`
 itemid,catid,capthc,auth,rnd如何生成
@@ -224,14 +224,14 @@ itemid,catid,capthc,auth,rnd如何生成
 **itemid 就是你投票的公司的id，catid之前讲过，captcha就是验证码,**
 **auth和上面的authtype一样**
 **rnd是通过搜索js发现了.**
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4u0llrazj20uo03t0sz.jpg)
+{% asset_img 12.jpg  %}
 
 
 再看看验证码是如何生成的呢
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4u2gg6f5j20o507x0t9.jpg)
+{% asset_img 13.jpg  %}
 
 检查验证码是否正确
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo4u3248gpj20um09adgu.jpg)
+{% asset_img 14.jpg  %}
 
 我们已经拿到所有需要的东西了，只要用程序模拟发送就行了.
 

@@ -21,7 +21,7 @@ tags:
 
 ### 确定合约是在哪个网
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpucquu3ij20fe0b83zv.jpg)
+{% asset_img 0.jpg  %}
 
 以上就是常见的所有网了
 
@@ -55,7 +55,7 @@ tags:
 
 如果打开没有的话，则说明这个合约没有开源...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpup111sfj222k14uqja.jpg)
+{% asset_img 1.jpg  %}
 
 ### 打开myetherwallet
 - 打开 https://www.myetherwallet.com/#contracts
@@ -65,31 +65,31 @@ tags:
 可以看到，每个都有好几个，随便选择一个就行...(本次我们是ropsten，也就是只要前面是ropsten的，你随便选哪个都可以）
 
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqput51107j20z80zkqa1.jpg)
+{% asset_img 2.jpg  %}
 
 - 复制上你合约地址 与 合约ABI ，然后点击Access
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpuwhj65ij225o0n2wk1.jpg)
+{% asset_img 3.jpg  %}
 
 - 选则你要调用的方法
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpuxrptpaj212810iq6n.jpg)
+{% asset_img 4.jpg  %}
 
 （本次我们选择 `batchTransfer`)
 - 输入你的参数
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpvf9kw43j21p20taq79.jpg)
+{% asset_img 5.jpg  %}
 
 本次我们的参数 如上图所示...
 不知道为啥 请看[一行代码蒸发了¥6,447,277,680 人民币！](https://mp.weixin.qq.com/s?__biz=MzU2OTAxNTcwMw==&mid=2247483863&idx=1&sn=5029734091080c37923f9bd666a6e1fa&chksm=fc846d2fcbf3e439e4f25ad1c7915c10ee8b375f791a260e0cd273d982aa521948d325f59121#rd)
 
 - 连接到metamask（metamask 没有装的话，请百度.)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpv39fzkuj223s0uqtg7.jpg)
+{% asset_img 6.jpg  %}
 
 - 点击write 
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpvh38jhmj21840rwad6.jpg)
+{% asset_img 7.jpg  %}
 
 注意，gaslimit 会自动出来...如果gas limit 那边为空的话，请确认你的参数...
 
@@ -97,10 +97,10 @@ tags:
 
 确认提交就可以了
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpviza1z9j215u12awk3.jpg)
+{% asset_img 8.jpg  %}
 
 - 然后这笔交易会发送到metamask上，点击submit 就可以了.
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fqpvkhkfb8j20ke0qmgoh.jpg)
+{% asset_img 9.jpg  %}
 
 我本次提交成功后的 tx https://ropsten.etherscan.io/tx/0x8359cfe6c0ccbb9a8126531c1162e80fb0c6f0beecb10bdcd0843bc368848b33
 

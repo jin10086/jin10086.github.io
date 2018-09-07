@@ -45,7 +45,7 @@ Content-Type: text/html; charset=utf-8
   </body>
 </html>
 ```
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3fco2j5kj219m0b3dtv.jpg)
+{% asset_img 0.jpg  %}
 
 文章参考于 维基百科 https://zh.wikipedia.org/wiki/HTTP_451
 

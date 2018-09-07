@@ -15,12 +15,12 @@ tags:
 
 还是可以找回来的，因为主网没有上线，黑客无法把代币转到自己的账号...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fsazmps7iej21hy0x049z.jpg)
+{% asset_img 0.jpg  %}
 
 
 ## EOS主网上线了
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fsboq84fnej20ku1121j2.jpg)
+{% asset_img 1.jpg  %}
 
 昨天晚上主网正式上线了，上线三天后，就可以自由交易代币了，也就是黑客可以转账了...
 

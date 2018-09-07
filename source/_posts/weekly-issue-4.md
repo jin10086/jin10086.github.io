@@ -18,7 +18,7 @@ Fomo3D 游戏第一轮正式结束，最终大奖由地址 0xa169 获得，奖�
 
 安比（SECBIT）实验室昨日首个发现 Fomo3D 大奖获得者采取一些“特殊攻击技巧”，使得游戏临近结束时，矿工打包入区块内的交易数量骤减（涉及连续多个区块），从而起到加速游戏结束和提高胜率的作用。安比（SECBIT）实验室在 Last Winner 上轮游戏结束时也观察到了多个十分类似的异常区块和交易。
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukw3rlr3dj217g1biaxm.jpg)
+{% asset_img 0.jpg  %}
 
 后面准备写一篇 fomo3d 的文章，从随机数的漏洞到如何有机会得到大奖...
 
@@ -26,13 +26,13 @@ Fomo3D 游戏第一轮正式结束，最终大奖由地址 0xa169 获得，奖�
 
 ### [一个安卓程序媛的人生经验](https://mp.weixin.qq.com/s/Whtx_UPUELzzpOGVKteo5Q)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukvc2roo0j20bo0fo7gc.jpg)
+{% asset_img 1.jpg  %}
 
 一位程序媛妹子的心酸血泪史
 
 ### [我们正在目睹的是 20 世纪以来人类社会最大规模的崩溃](https://mp.weixin.qq.com/s/sHqIni5wBa9qV3WeRa-pcQ)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukvhtq38gj20p00s6h45.jpg)
+{% asset_img 2.jpg  %}
 
 关于委内瑞拉的现状，媒体上已经有很多的报道了，大致可以归纳为三个方面。
 
@@ -46,7 +46,7 @@ Fomo3D 游戏第一轮正式结束，最终大奖由地址 0xa169 获得，奖�
 
 ### [喷子简史：当年“匡扶正义”的网友，如何成为今天尽情狂欢的嗨粉](https://mp.weixin.qq.com/s/afLY6E34CnuO5SwGkthfBQ)
 
-![喷子也随社会进化](http://ww1.sinaimg.cn/large/cfc08357gy1fukvkh2io7j20u00ftq6v.jpg)
+{% asset_img 3.jpg 喷子也随社会进化 %}
 
 传说亚洲有三子，韩国棒子、日本鬼子和中国喷子。
 中国喷子凭借其辉煌的战绩获得如此高的地位，可以说受之无愧。
@@ -70,7 +70,7 @@ lunr.js 是个用于浏览器的轻量级 JavaScript 全文搜索引擎，对于
 
 ### [Save Page WE](https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof)
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukvpe9f42j20hs0b4gnp.jpg)
+{% asset_img 4.jpg  %}
 
 Save Page WE，一个保存网页的扩展程序，可以将网页保存为 html 格式单文件，效果极好，自带的 Ctrl+S 实在很弱
 
@@ -110,7 +110,7 @@ Save Page WE，一个保存网页的扩展程序，可以将网页保存为 html
 - 可以通过它生成自己的在线简历，并选择性的附加 github 总结报告
 
 可以扫描下面二维码看看我的页面...
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fukvs8xuupj208q08ggm2.jpg)
+{% asset_img 5.jpg  %}
 
 ---
 

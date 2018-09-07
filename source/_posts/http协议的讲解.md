@@ -28,12 +28,12 @@ HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（
 - 点击Doc
 
 应该会看到如下界面
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fcue2xxtzfj21hb0j5q6q)
+{% asset_img 0.jpg  %}
 
 然后我们点击`25296437`
 
 应该会看到如下界面
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fcue7p6k7sj21hb0m90wh)
+{% asset_img 1.jpg  %}
 
 ## General
 
@@ -132,7 +132,7 @@ Cache-Control 是用来控制网页的缓存，详细可以[Cache-control_百度
 如果`If-Modified-Since`的值和`Last-Modified`相等 则表明当前请求的内容没有变动，服务器返回 `Status Code:304 Not Modified`
 `If-None-Match`和`ETag` 同理
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fcug3muzx4j20ol0fe769)
+{% asset_img 2.jpg  %}
 
 ## 总结
 看完本篇文章后，你应该要

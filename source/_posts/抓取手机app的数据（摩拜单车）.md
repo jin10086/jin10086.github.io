@@ -11,8 +11,8 @@ tags:
 ## 背景
 前几天有人私信我，问能不能帮忙抓取摩拜单车的数据。。。
 我想着授人以鱼不如授人以渔，所以本次我们就讲讲如何抓取手机app的内容吧
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eefpyn0j20k703gq4h.jpg)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eenva64j20zq049tch.jpg)
+{% asset_img 0.jpg  %}
+{% asset_img 1.jpg  %}
 
 ## fiddle的安装与配置
 抓手机包我用的是fiddle。
@@ -25,15 +25,15 @@ tags:
 
 以及同意“最终用户许可协议”就可以下载了
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3efqsytmj20k00b9diq.jpg)
+{% asset_img 2.jpg  %}
 下载后按照提示安装就可以了。
 
 ### 配置
 - 点击tool->telerik fiddler options...
-- ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3egyj6e7j20gk08mtbx.jpg)
+- {% asset_img 3.jpg  %}
 - 点击connections，然后勾选 `allow remote computers to connect`
 记住这边的端口号（`8888`）
-- ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3ehhpvhej20fd0aawjg.jpg)
+- {% asset_img 4.jpg  %}
 
 ## 抓包前设置
 1. 首先确保电脑和手机连在同一个WiFi下面
@@ -41,48 +41,48 @@ tags:
 3. 获取电脑ip
   1. 打开cmd命令行
   2. 输入ipconfig,如图所示，192.168.31.146就是我的ip地址
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eigqm4wj20rf0e80vp.jpg)
+  {% asset_img 5.jpg  %}
 4. 打开手机WiFi设置，找到你当前链接的WiFi
   1. 我当前链接的是Xiaomi_E172_5G
-  2. ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3ej0khpjj20yi1pcwrg.jpg)
+  2. {% asset_img 6.jpg  %}
 5. 设置代理服务器为你电脑的ip，端口号为上面设置的端口号（默认为8888）
-  1. ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3ejpdwshj20yi1pcakm.jpg)
+  1. {% asset_img 7.jpg  %}
 6. 安装https证书
   1. 在手机浏览器上打开 你电脑ip:你设置的端口号
   2. 我的是192.168.31.146:8888
   3. 点击框框处安装证书
-    ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3ekjddrzj20hs0di40s.jpg)
+    {% asset_img 8.jpg  %}
 7. 设置fiddle监听所有请求
   1. 选择all process
-  ![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3el4w4dij20rs0d5wil.jpg)
+  {% asset_img 9.jpg  %}
 
 ## 开始抓包
 打开摩拜单车app
 然后你会看到定位的时候一辆车也没有。。。
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3em8t60rj20k00zkkbs.jpg)
+{% asset_img 10.jpg  %}
 打开个人详情页还提示“抱歉，服务暂不可用。。。”
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3emjgaggj20k00zkajb.jpg)
+{% asset_img 11.jpg  %}
 这是因为摩拜有防抓取限制（我猜是检测，如果有使用代理的话，直接让你用不了。。。）
 那这样的话我们就没办法抓到么？？？
 因为我之前还用过摩拜的小程序，所以我们抓抓微信小程序试试看
 打开摩拜单车的小程序
 我们看到已经定位了。。，并且把附件的单车都显示出来了
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3emy2bh2j20k00zkkgd.jpg)
+{% asset_img 12.jpg  %}
 
 我们可以多移动我们的位置，然后等有把附近的车显示出来
 可以看到fiddle上面已经有好多请求了
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3enb2gqyj20nm09qago.jpg)
+{% asset_img 13.jpg  %}
 那么如何找到摩拜的那一条呢。。。
 很简单，看单词就好。。。
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3enl8gw7j21cf0p54gg.jpg)
+{% asset_img 14.jpg  %}
 
 mobike-api。。。这很明显就是我们要找的请求
 请求头如下图所示，方法是post
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eny90p9j20hv0br441.jpg)
+{% asset_img 15.jpg  %}
 参数如下图
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eo78v3uj20np080n05.jpg)
+{% asset_img 16.jpg  %}
 返回值因为我看到是json的格式了，所以直接以json的格式看。
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3eoogktnj20of0a077i.jpg)
+{% asset_img 17.jpg  %}
 
 ## 模拟发送
 ```python

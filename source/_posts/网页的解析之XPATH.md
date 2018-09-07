@@ -52,9 +52,9 @@ s1.xpath('/html/head/title/text()')
 
 相对路径与绝对路径
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3bxd7qh0j20ko078t9t.jpg)
+{% asset_img 0.jpg  %}
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3bxy0f6gj20o70g3dji.jpg)
+{% asset_img 1.jpg  %}
 
 ### 总结及注意事项
 
@@ -82,7 +82,7 @@ sample2 = """
 """
 s2 = getxpath(sample2)
 ```
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3c3hu0ewj20nd0gntei.jpg)
+{% asset_img 2.jpg  %}
 ### 总结及注意事项
 
 * 上面的li 可以更换为任何标签，如 p、div
@@ -108,7 +108,7 @@ s3 = getxpath(sample3)
 
 ```
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3c3xhw2ij20ji07ead0.jpg)
+{% asset_img 3.jpg  %}
 ### 总结及注意事项
 
 * 根据html的属性或者文本直接定位到当前标签
@@ -119,7 +119,7 @@ s3 = getxpath(sample3)
 * 我们只要用如下代码就可以了
 
 `//input[@name="_xsrf"]/@value `
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3c4bepswj20fm063wik.jpg)
+{% asset_img 4.jpg  %}
 ## 第四个案列
 ```python
 sample4 = u"""
@@ -147,7 +147,7 @@ sample4 = u"""
 """
 s4 = etree.HTML(sample4)
 ```
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fo3c4q0cejj20jf0din1m.jpg)
+{% asset_img 5.jpg  %}
 ### 总结及注意事项
 
 * 想要获取某个标签下所有的文本（包括子标签下的文本），使用`string`
