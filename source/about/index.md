@@ -23,7 +23,7 @@ date: 2018-02-04 13:35:04
 - ai1019855680 微信号
 
 ## 微信公众号
-![微信公众号](https://ww1.sinaimg.cn/large/cfc08357gy1fl9vsrbmfwj20by0byaau.jpg)
+{% asset_img 0.jpg 微信公众号 %}
 
 ## 请杯咖啡
 

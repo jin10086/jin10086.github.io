@@ -4,9 +4,9 @@ date: 2018-08-15 17:06:51
 ---
 
 1. 支付宝
-    ![](http://ww1.sinaimg.cn/thumbnail/cfc08357gy1fuyli47rt9j20d40d0mzf.jpg)
+    {% asset_img 0.jpg  %}
 2. 微信
-    ![](http://ww1.sinaimg.cn/thumbnail/cfc08357gy1fuylgmzwedj20e60duwhh.jpg)
+    {% asset_img 1.jpg  %}
 3. 加密货币
     - 比特币(BTC): 1FmRnLEdDuhsWpoiVZh5YtqvdP63Tp9bdd
     - BitcoinCash（BCH): 15QsZRENDvqWnu5Zz2sZwXsPuLQkV9aXj8
