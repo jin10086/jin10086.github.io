@@ -13,26 +13,26 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="背景 写爬虫的目的应该就是为了拿到数据，或者说模拟某种操作 如果他使用的是http(s) 协议来传输数据的，那么我们就模拟http协议来发送数据 如果它使用的是websocket协议来传输数据的， 那么我们理所当然的就模拟websocket来发送数据~  首先，我们需要了解什么是websocket  websocket的介绍 WebSocket是一种在单个TCP连接上进行全双工通讯的协议。WebS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4rs5d7hjj20zf0bugmx.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4rykh56tj20ah027mx2.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4s0okwq0j20d505fmx7.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4s4eceovj20ki08dmy3.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4si2qs3uj20d1074t8w.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4t04u89ej20i30410t0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4t2w87vsj20gp0fm0to.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tg5g7kyj20dl01ba9w.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tj2ks1vj20hw07awet.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tnwvhgjj20cd02qt8n.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tpk059lj20nc0e0myk.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4twpructj20c109igm0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u0llrazj20uo03t0sz.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u2gg6f5j20o507x0t9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u3248gpj20um09adgu.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.489Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/3.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/4.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/5.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/6.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/7.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/8.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/9.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/10.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/11.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/12.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/13.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/14.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="websocket与爬虫">
 <meta name="twitter:description" content="背景 写爬虫的目的应该就是为了拿到数据，或者说模拟某种操作 如果他使用的是http(s) 协议来传输数据的，那么我们就模拟http协议来发送数据 如果它使用的是websocket协议来传输数据的， 那么我们理所当然的就模拟websocket来发送数据~  首先，我们需要了解什么是websocket  websocket的介绍 WebSocket是一种在单个TCP连接上进行全双工通讯的协议。WebS">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo4rs5d7hjj20zf0bugmx.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/04/websocket与爬虫/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -176,16 +176,16 @@ ga('send', 'pageview');
 <h2 id="实际案例"><a href="#实际案例" class="headerlink" title="实际案例"></a>实际案例</h2><p>前面介绍了一堆websocket协议相关的东西，估计很多人已经晕了.<br>没关系，先看实例，有问题再回到上面看</p>
 <h3 id="抓包可以使用fiddle，chrome也是可以的"><a href="#抓包可以使用fiddle，chrome也是可以的" class="headerlink" title="抓包可以使用fiddle，chrome也是可以的"></a>抓包可以使用fiddle，chrome也是可以的</h3><p>我们先使用chrome</p>
 <p>本次要抓的网站的<a href="http://www.10brandchina.com/vote/startin.php?id=41867" rel="external nofollow noopener noreferrer" target="_blank">一个投票网站</a><br>大家可以先随便投一个票，抓抓包看看<br>会发现怎么没有找到他是如何提交数据的…</p>
-<p>选择ws,然后刷新下网页，再点击下投票，会发现有一个请求<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4rs5d7hjj20zf0bugmx.jpg" alt=""></p>
+<p>选择ws,然后刷新下网页，再点击下投票，会发现有一个请求<br><img src="/2018/02/04/websocket与爬虫/0.jpg"></p>
 <p>可以看到是在握手阶段,请求头里面的参数和我们上面讲的是一样的.</p>
-<p>请求地址是<code>ws://v5.10brandchina.com:8008/</code><br>这边顺带说一下，有时候这边会看到 <code>wss://v5.10brandchina.com:8008/</code><br>那么这两个有啥区别的，简单的讲就是http与https协议的区别一样…<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4rykh56tj20ah027mx2.jpg" alt=""></p>
+<p>请求地址是<code>ws://v5.10brandchina.com:8008/</code><br>这边顺带说一下，有时候这边会看到 <code>wss://v5.10brandchina.com:8008/</code><br>那么这两个有啥区别的，简单的讲就是http与https协议的区别一样…<br><img src="/2018/02/04/websocket与爬虫/1.jpg"></p>
 <p>看一下交互的内容（点击Frames）<br>可以看到已经有四条消息了，但是消息内容是二进制的，chrome这边无法预览…<br>那么我们使用fiddle试一下</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4s0okwq0j20d505fmx7.jpg" alt=""></p>
+<img src="/2018/02/04/websocket与爬虫/2.jpg">
 <h3 id="抓包与分析"><a href="#抓包与分析" class="headerlink" title="抓包与分析"></a>抓包与分析</h3><p>打开fiddle，<strong>刷新一下网页</strong><br>不刷新的话是看不到的，然后随便投一下票.</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4s4eceovj20ki08dmy3.jpg" alt=""></p>
+<img src="/2018/02/04/websocket与爬虫/3.jpg">
 <p>怎么找到请求呢，很简单，看状态码为101的就行，然后双击这一行</p>
 <p>然后这边还是看到四条消息，我们点击第一条，然后用<code>TextView</code>展示，可以看到消息是这些<br>为啥用<code>TextView</code>呢？其实是一个一个的试过来的，假如你发现都试过了，还是乱码，那应该是他使用了其他的压缩或者加密方法，需要查看js看看他是如何加密的</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4si2qs3uj20d1074t8w.jpg" alt=""></p>
+<img src="/2018/02/04/websocket与爬虫/4.jpg">
 <p>这个网站的数据是没有加密过的.<br>带向上的箭头的是我们向服务器发送的，向下的箭头是服务器返回的(下面的数据，前面带黑点？,是我们发送的)</p>
 <ul>
 <li><code>{&quot;action&quot;:&quot;auth&quot;,&quot;val&quot;:5}</code></li>
@@ -209,14 +209,14 @@ ga('send', 'pageview');
 <li>发送投票信息里面<code>{&quot;action&quot;:&quot;vote&quot;,&quot;val&quot;:&quot;{\&quot;itemid\&quot;:126067,\&quot;catid\&quot;:41867,\&quot;captcha\&quot;:\&quot;%u7EC7%u65E7%u5F88%u9C7C\&quot;,\&quot;auth\&quot;:5,\&quot;rnd\&quot;:\&quot;4186712606754595\&quot;}&quot;}</code><br>itemid,catid,capthc,auth,rnd如何生成</li>
 </ol>
 <h2 id="找参数"><a href="#找参数" class="headerlink" title="找参数"></a>找参数</h2><p>还是使用chrome，直接用<code>ctrl + shift +f</code>，然后输入websocket（或者on_open,on_message，等等上面提到的事件去搜索）</p>
-<p>运气很好，输入<code>websocket</code>直接就搜到了js,还是没有混淆的<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4t04u89ej20i30410t0.jpg" alt=""></p>
+<p>运气很好，输入<code>websocket</code>直接就搜到了js,还是没有混淆的<br><img src="/2018/02/04/websocket与爬虫/5.jpg"></p>
 <p>首先发现 websocket 地址是根据catId变的，如果catId能被2整除则地址为xxx，否则为xxx<br>那么catId是什么呢，调试发现就是url中的id，我们当前url为<code>http://www.10brandchina.com/vote/startin.php?id=41867</code>则 catId为<code>41867</code></p>
 <p>然后onmessage也看到了，大概意思是收到信息后，用json解析，如果action是auth的话，则调用sendData这个方法，如果action是vote的话，则使用vote_resule方法.</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4t2w87vsj20gp0fm0to.jpg" alt=""></p>
+<img src="/2018/02/04/websocket与爬虫/6.jpg">
 <p>在看到onopen方法，是调用sendData,并发送<code>(&#39;auth&#39;,authType)</code>,在这边是不是联想到前面，我们第一次发送的数据？<code>{&quot;action&quot;:&quot;auth&quot;,&quot;val&quot;:5}</code>,是不是感觉一模一样</p>
-<p>close方法就不说了,反正我们也用不上<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tg5g7kyj20dl01ba9w.jpg" alt=""></p>
-<p>再看看sendData这个方法,<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tj2ks1vj20hw07awet.jpg" alt=""><br>用python实现的话是这样<img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tnwvhgjj20cd02qt8n.jpg" alt=""></p>
-<p>再看vote_result方法，大概作用是判断投票结果<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4tpk059lj20nc0e0myk.jpg" alt=""></p>
+<p>close方法就不说了,反正我们也用不上<br><img src="/2018/02/04/websocket与爬虫/7.jpg"></p>
+<p>再看看sendData这个方法,<br><img src="/2018/02/04/websocket与爬虫/8.jpg"><br>用python实现的话是这样<img src="/2018/02/04/websocket与爬虫/9.jpg"></p>
+<p>再看vote_result方法，大概作用是判断投票结果<br><img src="/2018/02/04/websocket与爬虫/10.jpg"></p>
 <p>所有的方法我们都找到了，那么我们再和之前要找的参数走一遍.</p>
 <ol>
 <li><p><code>{&quot;action&quot;:&quot;auth&quot;,&quot;val&quot;:5}</code>里面的<code>val:5</code>,这个5是固定的么？如果不是，是如何生成的</p>
@@ -225,14 +225,15 @@ ga('send', 'pageview');
 <li><p>服务器返回的是什么，如何解析</p>
 </li>
 <li><p>如何根据服务器返回的生成一个新的val</p>
-<p><strong>可以通过onmessage方法知道他返回的json数据，json解析一下就行，</strong><br><strong>里面的val是通过执行 <code>eval(val)</code>得到的</strong><br><strong>所以你也可以直接执行这个.或者用python实现</strong><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4twpructj20c109igm0.jpg" alt=""></p>
+<p><strong>可以通过onmessage方法知道他返回的json数据，json解析一下就行，</strong><br><strong>里面的val是通过执行 <code>eval(val)</code>得到的</strong><br><strong>所以你也可以直接执行这个.或者用python实现</strong></p>
+<img src="/2018/02/04/websocket与爬虫/11.jpg">
 </li>
 <li><p>发送投票信息里面<code>{&quot;action&quot;:&quot;vote&quot;,&quot;val&quot;:&quot;{\&quot;itemid\&quot;:126067,\&quot;catid\&quot;:41867,\&quot;captcha\&quot;:\&quot;%u7EC7%u65E7%u5F88%u9C7C\&quot;,\&quot;auth\&quot;:5,\&quot;rnd\&quot;:\&quot;4186712606754595\&quot;}&quot;}</code><br>itemid,catid,capthc,auth,rnd如何生成</p>
 </li>
 </ol>
-<p><strong>itemid 就是你投票的公司的id，catid之前讲过，captcha就是验证码,</strong><br><strong>auth和上面的authtype一样</strong><br><strong>rnd是通过搜索js发现了.</strong><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u0llrazj20uo03t0sz.jpg" alt=""></p>
-<p>再看看验证码是如何生成的呢<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u2gg6f5j20o507x0t9.jpg" alt=""></p>
-<p>检查验证码是否正确<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo4u3248gpj20um09adgu.jpg" alt=""></p>
+<p><strong>itemid 就是你投票的公司的id，catid之前讲过，captcha就是验证码,</strong><br><strong>auth和上面的authtype一样</strong><br><strong>rnd是通过搜索js发现了.</strong><br><img src="/2018/02/04/websocket与爬虫/12.jpg"></p>
+<p>再看看验证码是如何生成的呢<br><img src="/2018/02/04/websocket与爬虫/13.jpg"></p>
+<p>检查验证码是否正确<br><img src="/2018/02/04/websocket与爬虫/14.jpg"></p>
 <p>我们已经拿到所有需要的东西了，只要用程序模拟发送就行了.</p>
 <h2 id="模拟发送"><a href="#模拟发送" class="headerlink" title="模拟发送"></a>模拟发送</h2><p>使用的包是<a href="https://github.com/websocket-client/websocket-client/" rel="external nofollow noopener noreferrer" target="_blank">websocket</a></p>
 <p>官方demo<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> thread</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> _thread <span class="keyword">as</span> thread</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(ws, message)</span>:</span></span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_error</span><span class="params">(ws, error)</span>:</span></span><br><span class="line">    print(error)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_close</span><span class="params">(ws)</span>:</span></span><br><span class="line">    print(<span class="string">"### closed ###"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_open</span><span class="params">(ws)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(*args)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            ws.send(<span class="string">"Hello %d"</span> % i)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        ws.close()</span><br><span class="line">        print(<span class="string">"thread terminating..."</span>)</span><br><span class="line">    thread.start_new_thread(run, ())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    websocket.enableTrace(<span class="keyword">True</span>)</span><br><span class="line">    ws = websocket.WebSocketApp(<span class="string">"ws://echo.websocket.org/"</span>,</span><br><span class="line">                              on_message = on_message,</span><br><span class="line">                              on_error = on_error,</span><br><span class="line">                              on_close = on_close)</span><br><span class="line">    ws.on_open = on_open</span><br><span class="line">    ws.run_forever()</span><br></pre></td></tr></table></figure></p>

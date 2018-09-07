@@ -5,20 +5,20 @@
   
   <title>一行代码损失了？？？RMB | 高金的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca   下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这">
+  <meta name="description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca  下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一行代码损失了？？？RMB">
 <meta property="og:url" content="https://jin10086.github.io/2018/05/24/一行代码损失了？？？RMB/index.html">
 <meta property="og:site_name" content="高金的博客">
-<meta property="og:description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca   下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这">
+<meta property="og:description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca  下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.ax1x.com/2018/05/24/CW30Qf.png">
-<meta property="og:image" content="https://s1.ax1x.com/2018/05/24/CW3By8.png">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.492Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/05/24/一行代码损失了？？？RMB/0.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/05/24/一行代码损失了？？？RMB/1.png">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一行代码损失了？？？RMB">
-<meta name="twitter:description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca   下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这">
-<meta name="twitter:image" content="https://s1.ax1x.com/2018/05/24/CW30Qf.png">
+<meta name="twitter:description" content="背景 又发现一个ERC20 超级大的漏洞  这个漏洞严重到什么情况呢？  你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱  那笔操作记录是 0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca  下面我来带大家看看，黑客是如何实现的！  我们可以看到执行的方法是 transferFrom  那这个">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/05/24/一行代码损失了？？？RMB/0.png">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -118,7 +118,8 @@ ga('send', 'pageview');
 <p>这个漏洞严重到什么情况呢？</p>
 <p><strong>你的钱不再是你的钱，任何人都可以把你的钱转走，你也可以转走任何人的钱</strong></p>
 <p>那笔操作记录是 <a href="https://etherscan.io/tx/0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca" rel="external nofollow noopener noreferrer" target="_blank">0x9a6a0ba68214db82ec6fd12ee3a6b4cf1143ec963974d7a5edf97e08b6c482ca</a></p>
-<p><img src="https://s1.ax1x.com/2018/05/24/CW30Qf.png" alt="CW30Qf.png"><br>下面我来带大家看看，黑客是如何实现的！</p>
+<img src="/2018/05/24/一行代码损失了？？？RMB/0.png" title="CW30Qf.png">
+<p>下面我来带大家看看，黑客是如何实现的！</p>
 <p>我们可以看到执行的方法是 <code>transferFrom</code></p>
 <p>那这个方法是干嘛的呢？（从某个人 转钱到 另外一个人 ）</p>
 <p>这个方法有一个配套的方法<code>approve</code>，你授权某个人用多少你的钱。。。</p>
@@ -164,7 +165,7 @@ ga('send', 'pageview');
 <p>正常来说，应该需要加一个 判断，被授权的金额 不能大于 要发送的金额。。。</p>
 <p><code>require(allowed[_from][msg.sender] &gt;= _value);</code></p>
 <p>这样的话 后面也就不会有这些事情了。。。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我发现了 攻击这个合约的人 已经攻击了很多合约了！！！<br><img src="https://s1.ax1x.com/2018/05/24/CW3By8.png" alt="CW3By8.png"><br>这一些币大家就别抄底了!</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我发现了 攻击这个合约的人 已经攻击了很多合约了！！！<br><img src="/2018/05/24/一行代码损失了？？？RMB/1.png" title="CW3By8.png"><br>这一些币大家就别抄底了!</p>
 
       
     </div>

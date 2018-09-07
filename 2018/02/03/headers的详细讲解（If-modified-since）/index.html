@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="本文讲解的知识点是headers里面的If-modified-since  案例 本次我们要抓取的内容是苹果应用商店里面的所有app 从 iTunes 下载的 App Store 当我第一次打开王者荣耀：在 App Store 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304   那么知道了这个http状态码304对我们爬虫有什么用呢？  当我需要每天的爬取苹果应用商店的ap">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e36k8vrj210q0id49d.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e3xshabj20yf07hwil.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.487Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/1.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="headers的详细讲解（If-modified-since）">
 <meta name="twitter:description" content="本文讲解的知识点是headers里面的If-modified-since  案例 本次我们要抓取的内容是苹果应用商店里面的所有app 从 iTunes 下载的 App Store 当我第一次打开王者荣耀：在 App Store 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304   那么知道了这个http状态码304对我们爬虫有什么用呢？  当我需要每天的爬取苹果应用商店的ap">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e36k8vrj210q0id49d.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -116,11 +116,11 @@ ga('send', 'pageview');
         <!-- Table of Contents -->
         
         <p>本文讲解的知识点是headers里面的If-modified-since</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>本次我们要抓取的内容是苹果应用商店里面的所有app <a href="https://itunes.apple.com/cn/genre/ios/id36" rel="external nofollow noopener noreferrer" target="_blank">从 iTunes 下载的 App Store</a><br>当我第一次打开<a href="https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964" rel="external nofollow noopener noreferrer" target="_blank">王者荣耀：在 App Store</a> 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e36k8vrj210q0id49d.jpg" alt=""></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>本次我们要抓取的内容是苹果应用商店里面的所有app <a href="https://itunes.apple.com/cn/genre/ios/id36" rel="external nofollow noopener noreferrer" target="_blank">从 iTunes 下载的 App Store</a><br>当我第一次打开<a href="https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964" rel="external nofollow noopener noreferrer" target="_blank">王者荣耀：在 App Store</a> 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304<br><img src="/2018/02/03/headers的详细讲解（If-modified-since）/0.jpg"></p>
 <p>那么知道了这个http状态码304对我们爬虫有什么用呢？</p>
 <p>当我需要每天的爬取苹果应用商店的app的时候，因为苹果app很多，所以每次如果我全部爬取的话，会花费很多的时间，其实我只要抓取有更新的内容就好了。那么http状态码304就派上用场了。</p>
 <h2 id="看代码"><a href="#看代码" class="headerlink" title="看代码"></a>看代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'</span>&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://itunes.apple.com/cn/app/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80/id989673964'</span></span><br><span class="line"></span><br><span class="line">z = requests.get(url,headers=headers)</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e3xshabj20yf07hwil.jpg" alt=""></p>
+<img src="/2018/02/03/headers的详细讲解（If-modified-since）/1.jpg">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取上次修改时间</span></span><br><span class="line">last_modified = z.headers[<span class="string">'Last-Modified'</span>]</span><br><span class="line"><span class="comment"># 修改headers</span></span><br><span class="line">headers[<span class="string">'If-Modified-Since'</span>] = last_modified</span><br></pre></td></tr></table></figure>
 <h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z1 = requests.get(url,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z1.status_code</span><br><span class="line"><span class="comment"># 304</span></span><br><span class="line"><span class="comment"># 可以看到已经返回状态码304，表示网页没有更新</span></span><br></pre></td></tr></table></figure>
 <h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z2 = requests.head(url,headers=headers)</span><br><span class="line"><span class="keyword">if</span> z1.headers[<span class="string">'Last-Modified'</span>] == last_modified:</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'网页没有更新'</span></span><br><span class="line"><span class="comment"># 这种方法也可以知道网页是否有更新</span></span><br></pre></td></tr></table></figure>

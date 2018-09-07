@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="360快视频事件 最开始好像是东方华灯宴的视频被发现被盗用，然后众用户排查发现大量B站视频被快视频盗用，连用户和评论也大量照搬，并有很多B站用户发现使用B站的用户名、密码可以直接在快视频上登录一个账号。  详情可以看知乎问题页 如何看待360快视频大量盗用B站视频和用户个人信息数据？  他是怎么实现的 有网友是这样猜测的  A.360主动参与了针对用户群体个人信息数据库的盗窃和/或非法买卖行为；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fonzrwcaimj20dc08174f.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fonzuj8l8tj20iw0bzwf2.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.493Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/21/从爬虫角度来说下360快视频事件/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/21/从爬虫角度来说下360快视频事件/1.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从爬虫角度来说下360快视频事件">
 <meta name="twitter:description" content="360快视频事件 最开始好像是东方华灯宴的视频被发现被盗用，然后众用户排查发现大量B站视频被快视频盗用，连用户和评论也大量照搬，并有很多B站用户发现使用B站的用户名、密码可以直接在快视频上登录一个账号。  详情可以看知乎问题页 如何看待360快视频大量盗用B站视频和用户个人信息数据？  他是怎么实现的 有网友是这样猜测的  A.360主动参与了针对用户群体个人信息数据库的盗窃和/或非法买卖行为；">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fonzrwcaimj20dc08174f.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/21/从爬虫角度来说下360快视频事件/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -136,9 +136,9 @@ ga('send', 'pageview');
 </ol>
 <p>最简单的方法也是爬虫</p>
 <p>具体如何实现的呢？<br>我画了一个小图</p>
-<p>正常流程<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fonzrwcaimj20dc08174f.jpg" alt=""></p>
+<p>正常流程<br><img src="/2018/02/21/从爬虫角度来说下360快视频事件/0.jpg"></p>
 <p>360快视频的流程</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fonzuj8l8tj20iw0bzwf2.jpg" alt=""></p>
+<img src="/2018/02/21/从爬虫角度来说下360快视频事件/1.jpg">
 <p>简单的讲就是 当你在360快视频输入账号密码的时候，<strong>我把你的账号密码拿去B站模拟登陆，登陆成功则获取你在B站的个人页，然后让你跳转到360快视频对应的个人页</strong>，<br>如果登陆不成功，则把B站返回的内容（如用户名或者密码错误）返回给用户</p>
 <h3 id="所以我没有拿到你的账号密码也可以做到和你的网站自动关联"><a href="#所以我没有拿到你的账号密码也可以做到和你的网站自动关联" class="headerlink" title="所以我没有拿到你的账号密码也可以做到和你的网站自动关联."></a>所以我没有拿到你的账号密码也可以做到和你的网站自动关联.</h3><h3 id="这个实现起来难么？"><a href="#这个实现起来难么？" class="headerlink" title="这个实现起来难么？"></a>这个实现起来难么？</h3><p>很简单把…</p>
 <h3 id="你咋知道的？"><a href="#你咋知道的？" class="headerlink" title="你咋知道的？"></a>你咋知道的？</h3><p>我以前做过这种…</p>

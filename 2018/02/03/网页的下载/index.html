@@ -13,25 +13,25 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="本文章属于爬虫入门到精通系统教程第四讲 在爬虫入门到精通第二讲中，我们了解了HTTP协议，那么我们现在使用这些协议来快速爬虫吧  本文的目标 当你看完本文后，你应该能爬取（几乎）任何的网页  使用chrome抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  第一个案列：抓取轮子哥的动态">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pic1.zhimg.com/v2-dfa74da2a25544f87aecb709295f2900_b.png">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-8491c793a89fd5b720808132f5ae1a13_b.png">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-b2c6aa49243fa62dc828b17784874cdf_b.png">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-77eb3f212e42c615dfd6f2b34f3181b3_b.png">
-<meta property="og:image" content="http://pic1.zhimg.com/v2-115412bfab1eda4831eeb209dac900a4_b.png">
-<meta property="og:image" content="http://pic2.zhimg.com/v2-2b8464ab383c7c96577eda0e254d90b1_b.png">
-<meta property="og:image" content="http://pic1.zhimg.com/v2-b5640e764b5740827ab8e1bd7f1d731c_b.png">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-ba57cfa4bf3c274130995103ff40e94b_b.png">
-<meta property="og:image" content="http://pic2.zhimg.com/v2-0be52da70c21fc745a286b8de9799949_b.png">
-<meta property="og:image" content="http://pic2.zhimg.com/v2-7e73fc640c2a1efae93b8258d4bfef8d_b.png">
-<meta property="og:image" content="http://pic1.zhimg.com/v2-1562f82e5b86925647c3127c8dc8be40_b.png">
-<meta property="og:image" content="http://pic2.zhimg.com/v2-80da9e32f22e2299b95552a1d4d10a6d_b.png">
-<meta property="og:image" content="http://pic3.zhimg.com/v2-a47ae4763beaadc1bb220bf5d459355e_b.png">
-<meta property="og:image" content="http://pic4.zhimg.com/v2-06d5c5feb3df654555cd95bc72534337_b.png">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.502Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/0.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/1.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/2.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/3.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/4.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/5.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/6.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/7.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/8.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/9.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/10.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/11.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/12.png">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/网页的下载/13.png">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页的下载">
 <meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第四讲 在爬虫入门到精通第二讲中，我们了解了HTTP协议，那么我们现在使用这些协议来快速爬虫吧  本文的目标 当你看完本文后，你应该能爬取（几乎）任何的网页  使用chrome抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  第一个案列：抓取轮子哥的动态">
-<meta name="twitter:image" content="http://pic1.zhimg.com/v2-dfa74da2a25544f87aecb709295f2900_b.png">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/网页的下载/0.png">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -133,19 +133,22 @@ ga('send', 'pageview');
 <p>抓包（packet capture）就是将<a href="http://link.zhihu.com/?target=http%3A//baike.baidu.com/view/1542295.htm" rel="external nofollow noopener noreferrer" target="_blank">网络传输</a>发送与接收的<a href="http://link.zhihu.com/?target=http%3A//baike.baidu.com/view/25880.htm" rel="external nofollow noopener noreferrer" target="_blank">数据包</a>进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。</p>
 </blockquote>
 <h2 id="第一个案列：抓取轮子哥的动态"><a href="#第一个案列：抓取轮子哥的动态" class="headerlink" title="第一个案列：抓取轮子哥的动态"></a>第一个案列：抓取<a href="https://www.zhihu.com/people/excited-vczh/activities" rel="external nofollow noopener noreferrer" target="_blank">轮子哥的动态</a></h2><ol>
-<li><p>打开轮子哥动态这个网页<br><img src="http://pic1.zhimg.com/v2-dfa74da2a25544f87aecb709295f2900_b.png" alt=""></p>
+<li><p>打开轮子哥动态这个网页</p>
+<img src="/2018/02/03/网页的下载/0.png">
 </li>
 <li><p>打开抓包工具</p>
 <ul>
 <li>点击F12打开开发者工具</li>
 <li>点击Network(或者网络)</li>
 <li>按F5刷新下页面（主要是让请求重发一次，这样就能抓到包了）</li>
-<li>应该会看到如下界面<br><img src="http://pic4.zhimg.com/v2-8491c793a89fd5b720808132f5ae1a13_b.png" alt=""></li>
+<li>应该会看到如下界面<img src="/2018/02/03/网页的下载/1.png">
+</li>
 </ul>
 </li>
 <li><p>找到我们需要的请求</p>
 <ul>
-<li><p>可以看到如下截图，里面有这么多的请求，那么到底哪一个才是我们需要的呢 ？<br><img src="http://pic4.zhimg.com/v2-b2c6aa49243fa62dc828b17784874cdf_b.png" alt=""></p>
+<li><p>可以看到如下截图，里面有这么多的请求，那么到底哪一个才是我们需要的呢 ？</p>
+<img src="/2018/02/03/网页的下载/2.png">
 </li>
 <li><p><strong>这边提供一个小技巧</strong></p>
 <ul>
@@ -155,7 +158,8 @@ ga('send', 'pageview');
 </li>
 <li><p>简单来讲就是如果整个页面没有刷新的话，那就是在XHR里面，否则在DOC里面</p>
 </li>
-<li><p>因为本次抓包整个页面有刷新，所以，我们需要找的请求在DOC下面，可以看到只有一个请求<br><img src="http://pic4.zhimg.com/v2-77eb3f212e42c615dfd6f2b34f3181b3_b.png" alt=""></p>
+<li><p>因为本次抓包整个页面有刷新，所以，我们需要找的请求在DOC下面，可以看到只有一个请求</p>
+<img src="/2018/02/03/网页的下载/3.png">
 </li>
 </ul>
 </li>
@@ -163,9 +167,11 @@ ga('send', 'pageview');
 <ul>
 <li><p>有以下两种方法（基本上用1，因为比较快）</p>
 <ul>
-<li>在我们要抓包的页面随便copy出几个字，在Respoinse中使用ctrl+f 查找，如果有找到，说明我们找到的是对的 （我查找的是”和微软粉丝谈”）<br><img src="http://pic1.zhimg.com/v2-115412bfab1eda4831eeb209dac900a4_b.png" alt=""><ul>
+<li>在我们要抓包的页面随便copy出几个字，在Respoinse中使用ctrl+f 查找，如果有找到，说明我们找到的是对的 （我查找的是”和微软粉丝谈”）<img src="/2018/02/03/网页的下载/4.png">
+<ul>
 <li>把response中所有的内容复制到一个txt中，并改名为”#.html”(这里的#可以随便取)然后打开这个html，看看是否和我们要抓的一样</li>
-<li><img src="http://pic2.zhimg.com/v2-2b8464ab383c7c96577eda0e254d90b1_b.png" alt=""></li>
+<li><img src="/2018/02/03/网页的下载/5.png">
+</li>
 </ul>
 </li>
 </ul>
@@ -182,7 +188,8 @@ ga('send', 'pageview');
 </li>
 <li><p>方法是： GET</p>
 </li>
-<li><p>requests headers 是（下图中框出来的地方）<br><img src="http://pic1.zhimg.com/v2-b5640e764b5740827ab8e1bd7f1d731c_b.png" alt=""></p>
+<li><p>requests headers 是（下图中框出来的地方）</p>
+<img src="/2018/02/03/网页的下载/6.png">
 </li>
 <li><p>所以我们的代码应该是：</p>
 </li>
@@ -202,30 +209,30 @@ ga('send', 'pageview');
 <h2 id="第二个案列：点赞"><a href="#第二个案列：点赞" class="headerlink" title="第二个案列：点赞"></a>第二个案列：点赞</h2><p><strong>1.打开要爬取的网页</strong></p>
 <p>我们打开 “<a href="https://www.zhihu.com/" rel="external nofollow noopener noreferrer" target="_blank">知乎 - 与世界分享你的知识、经验和见解</a>“</p>
 <p>我们要点赞的回答是这个</p>
-<p><img src="http://pic4.zhimg.com/v2-ba57cfa4bf3c274130995103ff40e94b_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/7.png">
 <p><strong>2.打开开发者工具，并让请求重发一次</strong></p>
 <p>打开后”点击赞一下”,可以看到有好多请求</p>
-<p><img src="http://pic2.zhimg.com/v2-0be52da70c21fc745a286b8de9799949_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/8.png">
 <p><strong>3.找到正确的请求</strong></p>
 <p>我们一个一个的点开请求看，发现就一个有返回值，而且这个返回值没有意义，那么怎么确定这个就是我们要找的呢？</p>
-<p><img src="http://pic2.zhimg.com/v2-7e73fc640c2a1efae93b8258d4bfef8d_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/9.png">
 <p>我们可以点击Headers，看一下发送的参数</p>
 <p>vote_up 很明显，就是点赞的意思。所以这个应该就是我们要找的。</p>
-<p><img src="http://pic1.zhimg.com/v2-1562f82e5b86925647c3127c8dc8be40_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/10.png">
 <p>这边说一下，右边”Headers,Preview,Response,Cookies,Timing”是什么意思</p>
 <p>我们经常要看的有，headers 和 preview</p>
 <p>headers 里面我们都有介绍过（请求头，返回头）</p>
 <p>preview和response里面的内容是相同的（preview里面的内容格式化了，输出的好看一些），里面的内容是html返回值</p>
 <p>cookies 里面是cookie的值，只不过分成了key value的形式</p>
 <p>Timing基本用不上,所以也不介绍了（想了解的话可以自己百度…）</p>
-<p><img src="http://pic2.zhimg.com/v2-80da9e32f22e2299b95552a1d4d10a6d_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/11.png">
 <p>4.用程序模拟发送</p>
 <p>我们把headers全部copy，</p>
 <p>url也和上面一样</p>
 <p>参数也是对的</p>
 <p>请求方法是post</p>
 <p>但是发现最终返回http code 400,这是为什么呢？</p>
-<p><img src="http://pic3.zhimg.com/v2-a47ae4763beaadc1bb220bf5d459355e_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/12.png">
 <p>让我们留到后面讲解~</p>
 <h2 id="最后再次总结一下"><a href="#最后再次总结一下" class="headerlink" title="最后再次总结一下"></a>最后再次总结一下</h2><p>看完本篇文章后，你应该要</p>
 <ul>
@@ -234,7 +241,7 @@ ga('send', 'pageview');
 <p>最后大家可以抓一下知乎登录的包哦~</p>
 <p>小提示：当你要抓的网页是会自动跳转的话，那么你需要选中“proserve log”</p>
 <p>意思是不要在页面重新加载后清除log（抓知乎登录的包会用到）</p>
-<p><img src="http://pic4.zhimg.com/v2-06d5c5feb3df654555cd95bc72534337_b.png" alt=""></p>
+<img src="/2018/02/03/网页的下载/13.png">
 
       
     </div>

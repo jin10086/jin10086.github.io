@@ -13,38 +13,38 @@
 <meta property="og:site_name" content="高金的博客">
 <meta property="og:description" content="本文章属于爬虫入门到精通系统教程第八讲 本次我们会讲解两个知识点   1. 异步加载  2. headers中的Accept  本次我们要抓取的是花瓣网美女照片美女花瓣，陪你做生活的设计师（发现、采集你喜欢的美女图片）花瓣网（http://huaban.com/favorite/beauty/）  本次我们会用到的辅助包 scrapy/parsel （https://github.com/scra">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cuy9gw1j21bh0ldhdt.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cv7gv4sj20wq0lbqu9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cvkhe1ij20qi0hmdwn.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cvxe2jsj21b10m2b29.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cw8kp2sj20j40gt7ig.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cwr661wj20ol0j4k9p.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cxlu5wpj215s0ex7pj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cy6wv3oj20p00heann.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cyg8danj20pa0hjqeo.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cz11jltj20uh0j5tis.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3czojwn0j20u60fltks.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3czxm7ioj20zo0fujzu.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d09faj0j20w10kk4nu.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d0ow0ecj20je0hb46m.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d0wl2cgj20kx0azjvk.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d1fno1xj20cj0ciae8.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d1y0w1sj20em0bnwi7.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d3090lwj20mg0arjvs.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d37q0usj20gs0ie403.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d3n0tt7j20xh0k9qha.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d43refmj20qw0k8tr0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4h492ej20qw0k8wtq.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4pad0tj20vh0dyn3p.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4yml35j20pb0e4788.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d54qh7pj20mm0dy42y.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d5pyuqdj20p70k044q.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d5z3ziqj20mz0h1tfw.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.500Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/3.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/4.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/5.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/6.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/7.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/8.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/9.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/10.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/11.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/12.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/13.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/14.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/15.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/16.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/17.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/18.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/19.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/20.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/21.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/22.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/23.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/24.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/25.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/26.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫之异步加载（实战花瓣网）">
 <meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第八讲 本次我们会讲解两个知识点   1. 异步加载  2. headers中的Accept  本次我们要抓取的是花瓣网美女照片美女花瓣，陪你做生活的设计师（发现、采集你喜欢的美女图片）花瓣网（http://huaban.com/favorite/beauty/）  本次我们会用到的辅助包 scrapy/parsel （https://github.com/scra">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cuy9gw1j21bh0ldhdt.jpg">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/爬虫之异步加载-实战花瓣网/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -161,8 +161,9 @@ ga('send', 'pageview');
 <h2 id="开始爬虫"><a href="#开始爬虫" class="headerlink" title="开始爬虫"></a>开始爬虫</h2><p>我们先打开美女花瓣，陪你做生活的设计师（发现、采集你喜欢的美女图片）花瓣网（<a href="http://huaban.com/favorite/beauty/）" rel="external nofollow noopener noreferrer" target="_blank">http://huaban.com/favorite/beauty/）</a></p>
 <h3 id="页面分析"><a href="#页面分析" class="headerlink" title="页面分析"></a>页面分析</h3><p>如果我们想把这里面所有美女照片抓取下来的话，那么我们的操作步骤应该是这样的</p>
 <p>1.打开首页的每一个”相框”，然后点进去</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cuy9gw1j21bh0ldhdt.jpg" alt=""><br>2.获取所有图片的链接，然后下载下来</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cv7gv4sj20wq0lbqu9.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/0.jpg">
+<p>2.获取所有图片的链接，然后下载下来</p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/1.jpg">
 <h3 id="程序实现："><a href="#程序实现：" class="headerlink" title="程序实现："></a>程序实现：</h3><p>用程序实现的话，也是挺简单的</p>
 <ol>
 <li>获取首页所有“相框”的链接</li>
@@ -179,31 +180,32 @@ ga('send', 'pageview');
 </li>
 <li><p>点击如图所示的位置</p>
 </li>
-<li><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cvkhe1ij20qi0hmdwn.jpg" alt=""></p>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/2.jpg">
 </li>
 <li><p>点击任何一个相框，然后你会看到网页的源代码自动会跳到你当前选中的地方</p>
 </li>
-<li><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cvxe2jsj21b10m2b29.jpg" alt=""></p>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/3.jpg">
 </li>
 <li><p>然后你就可以在这附近找找你想要的链接地址（可以看到/pins/1062650100/，我们可以打开这个地址看看，确认下是我们想要找的）</p>
 </li>
-<li><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cw8kp2sj20j40gt7ig.jpg" alt=""></p>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/4.jpg">
 </li>
 <li><p>可以看到图片是一样的，说明我们要找的没错</p>
 </li>
-<li><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cwr661wj20ol0j4k9p.jpg" alt=""></p>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/5.jpg">
 </li>
 <li><p>那么既然我们找到了需要的链接，接下来就是用程序定位到这了。</p>
 </li>
 <li><p>可以看到链接这边有个<code>class=”img x layer-view loaded”</code>,那么我们可以用以下xpath来获取地址了<br><code>//a[@class=”img x layer-view loaded”]/@href</code></p>
 </li>
-<li><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cxlu5wpj215s0ex7pj.jpg" alt=""></p>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/6.jpg">
 </li>
 </ol>
 <h3 id="用代码实现："><a href="#用代码实现：" class="headerlink" title="用代码实现："></a>用代码实现：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> parsel <span class="keyword">import</span> Selector</span><br><span class="line">url = ‘http://huaban.com/favorite/beauty/‘</span><br><span class="line">headers = &#123;‘User-Agent’:’Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; WOW64) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">56.0</span><span class="number">.2924</span><span class="number">.87</span> Safari/<span class="number">537.36</span>’&#125;</span><br><span class="line">z = requests.get(url,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z.status_code</span><br><span class="line"><span class="comment">#返回200</span></span><br><span class="line"><span class="comment">#使用parsel中的Selector 来解析</span></span><br><span class="line">sel = Selector(text=z.text)</span><br><span class="line">print sel.xpath(‘//a[@class=”img x layer-view loaded”]/@href’)</span><br><span class="line"><span class="comment">#发现返回为空</span></span><br></pre></td></tr></table></figure>
 <p>这边为什么会返回空呢？不是应该返回所有链接的么？</p>
 <p>我们可以查看下网页源代码，可以发现的内容都是通过js渲染上去的，所以我们才获取不到内容（这个可以用js2xml来解析，先放在这里，到详情页再来处理。）</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cy6wv3oj20p00heann.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cyg8danj20pa0hjqeo.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/7.jpg">
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/8.jpg">
 <h2 id="所谓的异步加载"><a href="#所谓的异步加载" class="headerlink" title="所谓的异步加载"></a>所谓的异步加载</h2><ol>
 <li><p>我们还是打开美女花瓣，陪你做生活的设计师（发现、采集你喜欢的美女图片）花瓣网（<a href="http://huaban.com/favorite/beauty/）" rel="external nofollow noopener noreferrer" target="_blank">http://huaban.com/favorite/beauty/）</a></p>
 </li>
@@ -216,7 +218,7 @@ ga('send', 'pageview');
 <li>拖动到页面最下面（有些网站是点击加载更多）</li>
 <li>注意 我有勾选”xhr”</li>
 <li>可以看到每次页面到最底部，都会发送一个请求。这个请求就是所谓的异步加载请求。</li>
-<li>!<img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3cz11jltj20uh0j5tis.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/9.jpg"></li>
 <li>可以看到请求的参数如下：</li>
 </ol>
 <p><code>j0ga0has:</code></p>
@@ -229,41 +231,48 @@ ga('send', 'pageview');
 <li><code>limit</code> 是每次返回的条数</li>
 <li>有人可能会问，你怎么知道这个参数是干嘛的？其实都是试出来的（或者说看出来的）</li>
 <li>如下图的<code>pin_id</code>，可以发现下一条请求的max就是上一条请求获取到的最后一个pin_id</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3czojwn0j20u60fltks.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/10.jpg"></li>
 <li>我们查看返回值，发现竟然是json格式的，这样的话，都不需要我们解析了，那我们找找我们需要的链接地址在哪。</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3czxm7ioj20zo0fujzu.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/11.jpg"></li>
 <li>发现链接地址就是由pin_id拼接而成的，所以我们只要获取到这个pin_id就行。</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d09faj0j20w10kk4nu.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/12.jpg">
+</li>
 </ol>
 <h3 id="用程序来实现："><a href="#用程序来实现：" class="headerlink" title="用程序来实现："></a>用程序来实现：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">url = ‘http://huaban.com/favorite/beauty/‘</span><br><span class="line">params = &#123; ‘j0ga0hbi’:’’, ‘max’:’<span class="number">1062161596</span>’, ‘limit’:’<span class="number">100</span>’, ‘wfl’:’<span class="number">1</span>’&#125;</span><br><span class="line">z1 = requests.get(url=url,params=params,headers=headers)</span><br><span class="line"><span class="keyword">print</span> z1.status_code</span><br><span class="line"><span class="comment">#返回200</span></span><br><span class="line"><span class="keyword">print</span> z1.json()</span><br><span class="line"><span class="comment">#报错</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d0ow0ecj20je0hb46m.jpg" alt=""><br>然后发现竟然报错了。。。</p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/13.jpg">
+<p>然后发现竟然报错了。。。</p>
 <p>为什么呢？我们查看请求的时候就是jsno格式的啊</p>
 <p>我们打印下源代码看看</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d0wl2cgj20kx0azjvk.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/14.jpg">
 <p>你会看到竟然是<code>&lt;!DOCTYPE html&gt;&lt;html</code>这样的，但是我们上面查看请求的时候，明明是如下图这样的啊</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d1fno1xj20cj0ciae8.jpg" alt=""><br>那么到底是哪里出了问题呢？</p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/15.jpg">
+<p>那么到底是哪里出了问题呢？</p>
 <p>我们再次查看之前我们看到的异步请求</p>
 <p>可以发现它有几个 特别的请求头</p>
 <p>指定了格式为json ,那么我们加上去看看呢<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Accept:application/json</span><br><span class="line">X-Request:<span class="built_in">JSON</span></span><br><span class="line">X-Requested-With:XMLHttpRequest</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d1y0w1sj20em0bnwi7.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/16.jpg">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">headers1 = &#123; ‘User-Agent’:’Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; WOW64) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">56.0</span><span class="number">.2924</span><span class="number">.87</span> Safari/<span class="number">537.36</span>’, ‘Accept’:’application/json’, ‘X-Request’:’JSON’, ‘X-Requested-With’:’XMLHttpRequest’ &#125;</span><br><span class="line">z2 = requests.get(url=url,params=params,headers=headers1)</span><br><span class="line"><span class="keyword">print</span> z2.content</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d3090lwj20mg0arjvs.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/17.jpg">
 <p>可以看到返回值和我们之前一样了。</p>
 <p>获取pin_id</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d37q0usj20gs0ie403.jpg" alt=""><br>最后只要把pin_id拼接成url就可以了，如果你想要爬取所有的图片的话，那么你只需要把最后的pin_id 传入给max，再请求一次，直到pins为空为止</p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/18.jpg">
+<p>最后只要把pin_id拼接成url就可以了，如果你想要爬取所有的图片的话，那么你只需要把最后的pin_id 传入给max，再请求一次，直到pins为空为止</p>
 <p>在上面我们已经获取到了所有的详情页的地址，那么我们现在只要获取到图片链接就行</p>
 <ol>
 <li>随便打开一个详情页花瓣（<a href="http://huaban.com/pins/1062650100/）" rel="external nofollow noopener noreferrer" target="_blank">http://huaban.com/pins/1062650100/）</a></li>
 <li>查看图片地址</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d3n0tt7j20xh0k9qha.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/19.jpg"></li>
 <li>复制图片地址到网页源代码里面找找看</li>
 <li>全部复制，发现没有找到</li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d43refmj20qw0k8tr0.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/20.jpg"></li>
 <li>那么我们复制一部分</li>
 <li>可以看到已经找到了，这边你也可以用正则表达式，来匹配所有的地址，但是太麻烦了，我们可以用<code>js2xml</code></li>
-<li><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4h492ej20qw0k8wtq.jpg" alt=""></li>
+<li><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/21.jpg">
+</li>
 </ol>
-<h3 id="看代码"><a href="#看代码" class="headerlink" title="看代码."></a>看代码.</h3><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4pad0tj20vh0dyn3p.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d4yml35j20pb0e4788.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d54qh7pj20mm0dy42y.jpg" alt=""></p>
+<h3 id="看代码"><a href="#看代码" class="headerlink" title="看代码."></a>看代码.</h3><img src="/2018/02/03/爬虫之异步加载-实战花瓣网/22.jpg">
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/23.jpg">
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/24.jpg">
 <p>就这样，我们已经把图片地址获取到了，只需要拼接下即可（记得去下重）</p>
 <h2 id="最后再次总结一下"><a href="#最后再次总结一下" class="headerlink" title="最后再次总结一下"></a>最后再次总结一下</h2><p>看完本篇文章后，你应该要</p>
 <ul>
@@ -273,10 +282,10 @@ ga('send', 'pageview');
 </ul>
 <p>最后代码都在 kimg1234/pachong（<a href="https://github.com/kimg1234/pachong/blob/master/huaban%E7%88%AC%E8%99%AB.ipynb）" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/kimg1234/pachong/blob/master/huaban%E7%88%AC%E8%99%AB.ipynb）</a></p>
 <p>填一个坑，我在<a href="http://mp.weixin.qq.com/s?__biz=MzU2OTAxNTcwMw==&amp;mid=100000023&amp;idx=1&amp;sn=0c0ff48e9bfca19dca6c4ed5bad46e0a&amp;chksm=7c846def4bf3e4f9bde83bc8aa966419022c86dea5db9a00918f3b0220f9432c38f3b991d44a#rd" rel="external nofollow noopener noreferrer" target="_blank">http://mp.weixin.qq.com/s?__biz=MzU2OTAxNTcwMw==&amp;mid=100000023&amp;idx=1&amp;sn=0c0ff48e9bfca19dca6c4ed5bad46e0a&amp;chksm=7c846def4bf3e4f9bde83bc8aa966419022c86dea5db9a00918f3b0220f9432c38f3b991d44a#rd</a><br>留下以下问题</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d5pyuqdj20p70k044q.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/25.jpg">
 <p>其实解决方法也挺简单的，就是把content-type这一行注释掉。</p>
 <p>那么为什么注释掉就可以了呢？请仔细研究研究http协议。。。</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3d5z3ziqj20mz0h1tfw.jpg" alt=""></p>
+<img src="/2018/02/03/爬虫之异步加载-实战花瓣网/26.jpg">
 
       
     </div>

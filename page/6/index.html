@@ -117,7 +117,6 @@ ga('send', 'pageview');
 
 发现 全部是乱码的
 
-
 那这个时候应该怎么办呢？
 
 requests是如何判断编码
@@ -147,7 +146,7 @@ content = None
 encoding = self.encoding  
   
 if not self.content:  
-  return 
+  return s
         
           <p class="article-more-link">
             <a href="/2018/02/03/再也不用担心网页编码的坑了！/#more">继续阅读全文 »</a>
@@ -200,13 +199,9 @@ if not self.content:
 
 首先，来看看我之前是如何做的，有多烦我就不说了…
 
-
-
 如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~
 
 那我现在怎么是怎么做的呢？
-
-
 
 可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.
 
@@ -240,7 +235,7 @@ pip install copyheaders
 
 
 # 引入python包
-
+from
         
           <p class="article-more-link">
             <a href="/2018/02/03/爬虫小工具-copyheader/#more">继续阅读全文 »</a>
@@ -417,9 +412,7 @@ HTTP451
 
 怎么用
  1. 打开想法详情页
-    
  2. 点击复制链接
-    
  3. python zhihu.py --url 刚刚复制的网址
 
 代码如下
@@ -471,6 +464,10 @@ HTTP451
 46
 47
 48
+49
+50
+51
+
         
           <p class="article-more-link">
             <a href="/2018/02/03/知乎想法抽奖专用/#more">继续阅读全文 »</a>

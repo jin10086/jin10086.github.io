@@ -5,30 +5,30 @@
   
   <title>mongodb的基本使用 | 高金的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
+  <meta name="description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…  我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找”">
 <meta name="keywords" content="mongodb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongodb的基本使用">
 <meta property="og:url" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/index.html">
 <meta property="og:site_name" content="高金的博客">
-<meta property="og:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
+<meta property="og:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…  我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找”">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg">
-<meta property="og:updated_time" content="2018-09-05T05:38:12.488Z">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/0.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/1.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/2.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/3.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/4.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/5.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/6.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/7.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/8.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/9.jpg">
+<meta property="og:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/10.jpg">
+<meta property="og:updated_time" content="2018-09-07T15:29:37.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb的基本使用">
-<meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…   我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg">
+<meta name="twitter:description" content="本文章属于爬虫入门到精通系统教程第十讲  在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？  保存到文本文件？ 可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…  我今天爬取了10000部日本电影  假如说你要找苍老师出演的，那么你可能会说，我直接ctrl+f查找”苍老师”不就行了  但是假如你想要找”">
+<meta name="twitter:image" content="https://jin10086.github.io/2018/02/03/mongodb的基本使用/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
   
@@ -127,7 +127,8 @@ ga('send', 'pageview');
         <p>本文章属于<a href="https://zhuanlan.zhihu.com/p/25296437" rel="external nofollow noopener noreferrer" target="_blank">爬虫入门到精通系统教程</a>第十讲</p>
 <p>在之前我们讲解了如何爬取网页（不管是异步加载的还是普通的），但是爬取下来的数据该如何保存呢？</p>
 <h2 id="保存到文本文件？"><a href="#保存到文本文件？" class="headerlink" title="保存到文本文件？"></a>保存到文本文件？</h2><p>可能有人会说那我保存在文本文件里面，这样也是可以的，但是到你需要用这个数据的时候，可能就会很麻烦了…</p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fo3e7zp2qwj208z0bu0uj.jpg" alt=""><br>我今天爬取了10000部日本电影</p>
+<img src="/2018/02/03/mongodb的基本使用/0.jpg">
+<p>我今天爬取了10000部日本电影</p>
 <p>假如说你要找苍老师出演的，那么你可能会说，我直接<code>ctrl+f</code>查找”苍老师”不就行了</p>
 <p>但是假如你想要找”苍老师+无码”怎么办呢？？？</p>
 <p>这个时候就是体现数据库的作用了。</p>
@@ -141,10 +142,16 @@ ga('send', 'pageview');
 </ol>
 <h2 id="Mongodb的安装"><a href="#Mongodb的安装" class="headerlink" title="Mongodb的安装"></a>Mongodb的安装</h2><p>直接到 <a href="https://www.mongodb.com/download-center#community" rel="external nofollow noopener noreferrer" target="_blank">https://www.mongodb.com/download-center#community</a>选择合适的版本下载安装就可以了。</p>
 <p>安装完成后</p>
-<p>windows用户在<br><code>bin</code>目录下新建一个<code>data</code>的文件夹<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqdlmycmj20et0f9aaq.jpg" alt=""></p>
-<p>然后在新建一个<code>start.bat</code>文件,内容写上<br><code>mongod --dbpath ./data</code><br>后面每次只要直接打开这个.bat 文件mongodb就运行了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqfgpnajj20mn0czq3i.jpg" alt=""><br>你可以直接选中<code>start.bat</code>，发送到桌面快捷方式，这样你以后可以直接在桌面打开了<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqid02mpj20qq0ifabn.jpg" alt=""></p>
+<p>windows用户在<br><code>bin</code>目录下新建一个<code>data</code>的文件夹<br><img src="/2018/02/03/mongodb的基本使用/1.jpg"></p>
+<p>然后在新建一个<code>start.bat</code>文件,内容写上<br><code>mongod --dbpath ./data</code><br>后面每次只要直接打开这个.bat 文件mongodb就运行了<br><img src="/2018/02/03/mongodb的基本使用/2.jpg"><br>你可以直接选中<code>start.bat</code>，发送到桌面快捷方式，这样你以后可以直接在桌面打开了<br><img src="/2018/02/03/mongodb的基本使用/3.jpg"></p>
 <h2 id="mongodb的基本使用"><a href="#mongodb的基本使用" class="headerlink" title="mongodb的基本使用"></a>mongodb的基本使用</h2><p>首先 <code>pip install pymongo</code></p>
-<p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqkudq2zj20jb0bvq33.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqlm5lokj20rv0jg3yy.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqm6dds3j20rp0agwen.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkyg24j20xv0idq3l.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkv3jsj20ye0hxwez.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnkxqzij20ss0g374s.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1feoqnl1sjdj20wx0gngm9.jpg" alt=""></p>
+<img src="/2018/02/03/mongodb的基本使用/4.jpg">
+<img src="/2018/02/03/mongodb的基本使用/5.jpg">
+<img src="/2018/02/03/mongodb的基本使用/6.jpg">
+<img src="/2018/02/03/mongodb的基本使用/7.jpg">
+<img src="/2018/02/03/mongodb的基本使用/8.jpg">
+<img src="/2018/02/03/mongodb的基本使用/9.jpg">
+<img src="/2018/02/03/mongodb的基本使用/10.jpg">
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="爬虫经常用到的三条插入语句"><a href="#爬虫经常用到的三条插入语句" class="headerlink" title="爬虫经常用到的三条插入语句"></a>爬虫经常用到的三条插入语句</h3><p>下面的<strong>test2为表名</strong>,</p>
 <ul>
 <li><code>test2.insert_one(xx)</code> 插入一条数据</li>
