@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/0.jpg">
 <meta property="og:image" content="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/1.jpg">
-<meta property="og:updated_time" content="2018-09-07T15:40:32.326Z">
+<meta property="og:updated_time" content="2018-09-08T08:47:13.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="headers的详细讲解（If-modified-since）">
 <meta name="twitter:description" content="本文讲解的知识点是headers里面的If-modified-since  案例 本次我们要抓取的内容是苹果应用商店里面的所有app 从 iTunes 下载的 App Store 当我第一次打开王者荣耀：在 App Store 上的内容网页的时候，再次刷新的时候，你会看到http状态码返回 304   那么知道了这个http状态码304对我们爬虫有什么用呢？  当我需要每天的爬取苹果应用商店的ap">
@@ -127,11 +127,12 @@ ga('send', 'pageview');
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么假如我要每天爬取苹果应该商店的app，那么我会在第一次请求的时候吧每个网页的上次修改时间存到数据库（也就是If-Modified-Since）</p>
 <p>然后在我第二次爬取的时候，我会把上次存到数据库的时间放到headers里面，如果http状态码返回304,则表示网页没有更新，我可以不用再次解析网页，这样会节约大量时间…</p>
 <p>最后代码在 <a href="https://github.com/jin10086/pachong/blob/master/If-modified-since.ipynb" rel="external nofollow noopener noreferrer" target="_blank">kimg1234/pachong</a></p>
+<p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/">https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/" data-id="cjlt6qdj9000hyosva6iad4v9" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/headers的详细讲解（If-modified-since）/" data-id="cjlt8d84p000gm6sv2vgob983" class="article-share-link">分享</a>
       
       
       

@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/0.gif">
 <meta property="og:image" content="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/1.gif">
-<meta property="og:updated_time" content="2018-09-07T15:40:32.824Z">
+<meta property="og:updated_time" content="2018-09-08T08:47:14.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫小工具-copyheader">
 <meta name="twitter:description" content="大家写爬虫的，肯定知道如何伪造请求头了，那么你们是如何做的呢？  首先，来看看我之前是如何做的，有多烦我就不说了…  如果有小伙伴是和我一样，那么请帮忙把这篇文章分享出去~  那我现在怎么是怎么做的呢？  可以发现复制请求头很简单了，只要把请求头全部copy下来，然后用headers_raw_to_dict 转一下，就直接变成了dict了.  如何安装呢 pip install copyheade">
@@ -126,11 +126,12 @@ ga('send', 'pageview');
 <h2 id="如何使用呢"><a href="#如何使用呢" class="headerlink" title="如何使用呢"></a>如何使用呢</h2><p>先找到你要复制的请求头，并且复制</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入python包</span></span><br><span class="line"><span class="keyword">from</span> copyheaders <span class="keyword">import</span> headers_raw_to_dict</span><br><span class="line">impore requests</span><br><span class="line"><span class="comment"># 把刚刚复制的请求头复制进来</span></span><br><span class="line">r_h = <span class="string">b'''</span></span><br><span class="line"><span class="string">Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</span></span><br><span class="line"><span class="string">Accept-Encoding:gzip, deflate, br</span></span><br><span class="line"><span class="string">Accept-Language:zh-CN,zh;q=0.9,zh-TW;q=0.8</span></span><br><span class="line"><span class="string">Cache-Control:max-age=0</span></span><br><span class="line"><span class="string">Connection:keep-alive</span></span><br><span class="line"><span class="string">Cookie:_gauges_unique_month=1; _gauges_unique_year=1; _gauges_unique=1; _gauges_unique_hour=1; _gauges_unique_day=1</span></span><br><span class="line"><span class="string">DNT:1</span></span><br><span class="line"><span class="string">Host:httpbin.org</span></span><br><span class="line"><span class="string">Referer:https://httpbin.org/</span></span><br><span class="line"><span class="string">Upgrade-Insecure-Requests:1</span></span><br><span class="line"><span class="string">User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 转换成字典</span></span><br><span class="line">headers = headers_raw_to_dict(r_h)</span><br><span class="line"><span class="comment"># 然后就可以直接使用了~</span></span><br><span class="line">z = requests.get(<span class="string">'https://httpbin.org/headers'</span>,headers=headers</span><br></pre></td></tr></table></figure>
 <p>项目地址在<a href="https://github.com/jin10086/copyheaders" rel="external nofollow noopener noreferrer" target="_blank">copyheaders</a></p>
+<p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/">https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/" data-id="cjlt6qdli002gyosvx28fwjoy" class="article-share-link">分享</a>
+      <a data-url="https://jin10086.github.io/2018/02/03/爬虫小工具-copyheader/" data-id="cjlt8d86z002fm6sv6017turl" class="article-share-link">分享</a>
       
       
       
