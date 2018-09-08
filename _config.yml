@@ -102,3 +102,9 @@ deploy:
   type: git
   repo: git@github.com:jin10086/jin10086.github.io.git
   branch: master
+
+
+# addlink
+addlink:
+  before_text:  <br />__本文作者__：高金<br />__本文地址__： # text before the post link 
+  after_text: <br />__版权声明__：转载请注明出处！
