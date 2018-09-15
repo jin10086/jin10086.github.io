@@ -1,9 +1,9 @@
 <% include ../_third-part/index.ejs%>
- <%- js('js/is.js') %>
+<%- js('js/is.js') %>
 
 <% if (theme.fancybox){ %>
-  <%- css('fancybox/jquery.fancybox') %>
-  <%- js('fancybox/jquery.fancybox.pack') %>
+<%- css('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css') %>
+<%- js('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js') %>
 <% } %>
 
 <%- js('js/script') %>

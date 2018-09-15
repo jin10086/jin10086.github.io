@@ -4,7 +4,7 @@
   <% if (page.permalink){ %>
   var disqus_url = '<%= page.permalink %>';
   <% } %>
-  (function(){
+  (function () {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
@@ -14,11 +14,11 @@
 </script>
 <% } %>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
 <% if (theme.fancybox){ %>
-  <%- css('fancybox/jquery.fancybox') %>
-  <%- js('fancybox/jquery.fancybox.pack') %>
+<%- css('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css') %>
+<%- js('//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js') %>
 <% } %>
 
 <%- js('js/script') %>
