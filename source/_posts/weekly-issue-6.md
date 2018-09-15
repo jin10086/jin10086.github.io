@@ -78,3 +78,5 @@ tags:
 {% asset_img 6.jpeg %}
 
 项目目前还在初期，欢迎大家贡献代码啊.
+
+更具体的介绍请[点这里](https://jin10086.github.io/lab/%E8%80%81%E7%8E%A9%E5%AE%B6%E6%A3%80%E6%B5%8B%E5%99%A8.html)
