@@ -108,3 +108,6 @@ deploy:
 addlink:
   before_text:  <br />__本文作者__：高金<br />__本文地址__： # text before the post link 
   after_text: <br />__版权声明__：转载请注明出处！
+
+# 压缩js,html,css,image https://github.com/chenzhutian/hexo-all-minifier
+all_minifier: true
