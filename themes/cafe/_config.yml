@@ -85,7 +85,7 @@ tagcloud_color: true
 # 设置enable属性为true即可开启mathjax
 # per_page如果为true表示所有文章都设置支持mathjax，如果为false，则在需要支持mathjax的文章加上mathjax: true
 mathjax:
-  enable: true
+  enable: false
   per_page: false
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
