@@ -119,3 +119,7 @@ image_minifier:
   pngquant: true
   progressive: false
   silent: false
+
+
+# jsdelivr https://github.com/jsdelivr/jsdelivr#contribute-performance-data
+jsdelivr: true
