@@ -11,5 +11,5 @@ date: 2018-08-15 17:06:51
     - 比特币(BTC): 1FmRnLEdDuhsWpoiVZh5YtqvdP63Tp9bdd
     - BitcoinCash（BCH): 15QsZRENDvqWnu5Zz2sZwXsPuLQkV9aXj8
     - ETH: 0xfb1b5df432b12959d1f7e7d2f9661b43ba0d5bf3
-    - EOS: gy2dgmztgqge
+    - EOS: gaojin.game
     - FIBOS: gggggggggggg
