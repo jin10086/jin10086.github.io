@@ -1,9 +1,10 @@
 ---
 title: EOS合约内查询其他表
 categories:
-  - EOS
+  - 区块链
 date: 2018-12-15 11:43:34
 tags:
+  - EOS
 ---
 
 ## 背景
