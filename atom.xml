@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>高金的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://igaojin.me/"/>
+  <updated>2019-02-20T16:52:57.126Z</updated>
+  <id>https://igaojin.me/</id>
+  
+  <author>
+    <name>Gao JIn</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1080TI 不支持OPENCL解决办法</title>
+    <link href="https://igaojin.me/2019/02/21/1080TI-%E4%B8%8D%E6%94%AF%E6%8C%81OPENCL%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://igaojin.me/2019/02/21/1080TI-不支持OPENCL解决办法/</id>
+    <published>2019-02-20T16:41:20.000Z</published>
+    <updated>2019-02-20T16:52:57.126Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近买了一块1080TI,准备用来跑跑机器学习（顺带打打游戏…)</p><p>然后发现装好驱动,cuda后</p><p>使用pyopencl的时候，竟然找不到GPU</p><p>然后使用 GPU-Z 测试的时候，发现果然不支持 OPENCL</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1g0ddcag2rrj20u01svqv7.jpg" alt=""></p><p>开始以为是自己的板子有问题…</p><p>后面将显卡驱动降级为 471.22这个版本就好了(2018-11-29发布的)</p><p>结合网上看到的一些信息，猜测是 NVIDIA 自己弄了一个 pycuda,可以替换pyopencl的东西…</p><p>所以后续的驱动就不支持pyopencl了…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/02/21/1080TI-不支持OPENCL解决办法/">https://igaojin.me/2019/02/21/1080TI-不支持OPENCL解决办法/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      最近买了一块1080TI,准备用来跑跑机器学习（顺带打打游戏…)
+
+然后发现装好驱动,cuda后
+
+使用pyopencl的时候，竟然找不到GPU
+
+然后使用 GPU-Z 测试的时候，发现果然不支持 OPENCL
+
+
+
+开始以为是自己的板子有问题…
+
+后面将显卡驱动降级为 471.22这个版本就好了(2018-11-29发布的)
+
+结合网上看到的一些信息，猜测是 NVIDIA 自己弄了一个 pycuda,可以替换pyopencl的东西…
+
+所以后续的驱动就不支持pyopencl了…
+
+
+本文作者：高金
+本文地址： https://igaojin.me/2019/02/21/1080TI-不支持O
+    
+    </summary>
+    
+      <category term="奇怪的BUG" scheme="https://igaojin.me/categories/%E5%A5%87%E6%80%AA%E7%9A%84BUG/"/>
+    
+    
+      <category term="opencl" scheme="https://igaojin.me/tags/opencl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>5分钟搭建一个自己的以太坊api</title>
+    <link href="https://igaojin.me/2019/02/13/5%E5%88%86%E9%92%9F%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A5%E5%A4%AA%E5%9D%8Aapi/"/>
+    <id>https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/</id>
+    <published>2019-02-13T15:54:58.000Z</published>
+    <updated>2019-02-13T16:35:52.492Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1g058xe371bj20yi0oy0x5.jpg" alt=""></p><p>这是很早之前吐槽infura api的一个朋友圈</p><p>当时应该是为了薅羊毛,然后卡在了infura这个api上面…</p><p>infura api 有个神奇的限制…</p><p>假如某个账号，向其他账号批量发起转账…(你写个程序跑一下很快就好了)</p><p>但是 infura 每次只会给你广播1笔交易…（1笔成交后，下一笔才会广播出去</p><p>也就是说,假如批量发起100笔转账的话，最少也需要100个区块才会成交…</p><p>当然 假如不敢时间的话，慢慢来也是无所谓的…</p><p>敢时间的话，你估计就骂人了…</p><p>不过目前 市面上能用的 公开的api节点好像就 infura有提供服务…</p><p>其他的 myetherwallet,imtoken,等等肯定有自己的（可以抓包知道他的api地址…) 不过这种用的人多，自然不是很快…</p><p>所以自己搭建节点是有必要的</p><h2 id="搭建轻节点"><a href="#搭建轻节点" class="headerlink" title="搭建轻节点"></a>搭建轻节点</h2><p>搭建全节点的话，如果就偶尔用一下，就很不实际了.</p><ol><li>如果用的时候 再同步，肯定来不及</li><li>如果一直放一台服务器同步，这个成本也不少</li></ol><p>一番搜索，找到了解决办法…parity的轻节点</p><h2 id="如何搭建parity轻节点"><a href="#如何搭建parity轻节点" class="headerlink" title="如何搭建parity轻节点"></a>如何搭建parity轻节点</h2><ol><li><a href="https://github.com/paritytech/parity-ethereum/releases" rel="external nofollow noopener noreferrer" target="_blank">根据自己平台下载parity</a></li><li><code>parity --light</code> 在cmd输入下面的命令（开启parity 轻节点) <a href="https://wiki.parity.io/Light-Client" rel="external nofollow noopener noreferrer" target="_blank">文档地址</a></li></ol><p>大概5分钟就能同步好</p><p>然后就可以连接本地的 <strong><a href="http://127.0.0.1:8545" rel="external nofollow noopener noreferrer" target="_blank">http://127.0.0.1:8545</a></strong> 使用了</p><p>如果要改默认的端口以及监听的host，可以看 <a href="https://wiki.parity.io/Configuring-Parity-Ethereum" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.parity.io/Configuring-Parity-Ethereum</a></p><h2 id="python-使用示例"><a href="#python-使用示例" class="headerlink" title="python 使用示例"></a>python 使用示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from web3 import Web3, HTTPProvider</span><br><span class="line"></span><br><span class="line">RPCAddress = &quot;http://127.0.0.1:8545&quot;</span><br><span class="line"></span><br><span class="line">w3 = Web3(HTTPProvider(RPCAddress))</span><br><span class="line"></span><br><span class="line">balance = w3.eth.getBalance(&apos;0xAD5723C4f7B4C478E09688f96a7A477B0D1196fd&apos;)</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/">https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+
+
+这是很早之前吐槽infura api的一个朋友圈
+
+当时应该是为了薅羊毛,然后卡在了infura这个api上面…
+
+infura api 有个神奇的限制…
+
+假如某个账号，向其他账号批量发起转账…(你写个程序跑一下很快就好了)
+
+但是 infura 每次只会给你广播1笔交易…（1笔成交后，下一笔才会广播出去
+
+也就是说,假如批量发起100笔转账的话，最少也需要100个区块才会成交…
+
+当然 假如不敢时间的话，慢慢来也是无所谓的…
+
+敢时间的话，你估计就骂人了…
+
+不过目前 市面上能用的 公开的api节点好像就 infura有提供服务…
+
+其他的 myetherwallet,imtok
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="以太坊" scheme="https://igaojin.me/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
+    
+      <category term="parity轻节点" scheme="https://igaojin.me/tags/parity%E8%BD%BB%E8%8A%82%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>scatter 导入BOS账号</title>
+    <link href="https://igaojin.me/2019/01/27/scatter-%E5%AF%BC%E5%85%A5BOS%E8%B4%A6%E5%8F%B7/"/>
+    <id>https://igaojin.me/2019/01/27/scatter-导入BOS账号/</id>
+    <published>2019-01-27T11:02:19.000Z</published>
+    <updated>2019-01-27T11:11:36.335Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="设置语言为中文"><a href="#设置语言为中文" class="headerlink" title="设置语言为中文"></a>设置语言为中文</h2><p>选择设置</p><p><img src="http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcjpjtjqj20j80uy760.jpg" alt=""></p><p>然后 Language,在选择中文.</p><h2 id="创建bos-网络"><a href="#创建bos-网络" class="headerlink" title="创建bos 网络"></a>创建bos 网络</h2><p>点击设置-&gt; 网络 -&gt; 新建</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fzlclr7lghj20j80wa0um.jpg" alt=""></p><p>然后名称 设置为 <strong>bosmainnet</strong></p><p>域名或者ip地址设置为 <strong>hapi.bos.eosrio.io</strong></p><p>端口设置为 <strong>443</strong></p><p>chainid 设置为 <strong>d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a3d86</strong></p><p>保存.</p><h2 id="导入私钥-如果你之前有导入过就不需要重新导入"><a href="#导入私钥-如果你之前有导入过就不需要重新导入" class="headerlink" title="导入私钥(如果你之前有导入过就不需要重新导入)"></a>导入私钥(如果你之前有导入过就不需要重新导入)</h2><p>点击 主页面的 密钥对-&gt;新建</p><p><img src="http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcpcby40j20kc0y8gok.jpg" alt=""></p><p>名称自己随便写一个</p><p>直接吧私钥粘贴在 私钥的地方</p><p>然后点击保存</p><h2 id="创建身份"><a href="#创建身份" class="headerlink" title="创建身份"></a>创建身份</h2><p>点击 主页面的身份-&gt;新建</p><p><img src="http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcra9g7hj20j40twdi2.jpg" alt=""></p><p>上面选择刚才创建好的网络</p><p>下面选择你刚刚导入私钥 输入的名称</p><p>然后点击导入即可…</p><p>记得选择 @active的.</p><p><img src="http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcs7ebbkj20ie0k0dgp.jpg" alt=""></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/01/27/scatter-导入BOS账号/">https://igaojin.me/2019/01/27/scatter-导入BOS账号/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      设置语言为中文
+选择设置
+
+
+
+然后 Language,在选择中文.
+
+创建bos 网络
+点击设置-&gt; 网络 -&gt; 新建
+
+
+
+然后名称 设置为 bosmainnet
+
+域名或者ip地址设置为 hapi.bos.eosrio.io
+
+端口设置为 443
+
+chainid 设置为 d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a3d86
+
+保存.
+
+导入私钥(如果你之前有导入过就不需要重新导入)
+点击 主页面的 密钥对-&gt;新建
+
+
+
+名称自己随便写一个
+
+直接吧私钥粘贴在 私钥的地方
+
+然后点击保存
+
+创建身份
+点击 主页面
+    
+    </summary>
+    
+      <category term="EOS" scheme="https://igaojin.me/categories/EOS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何快速的将json转成excel</title>
+    <link href="https://igaojin.me/2019/01/20/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%9A%84%E5%B0%86json%E8%BD%AC%E6%88%90excel/"/>
+    <id>https://igaojin.me/2019/01/20/如何快速的将json转成excel/</id>
+    <published>2019-01-20T05:18:49.000Z</published>
+    <updated>2019-01-20T05:24:28.459Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先安装 pandas</p><p><code>pip install pandas</code></p><p>然后就很简单了…</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_json(&apos;a.json&apos;)</span><br><span class="line">df.to_excel(&quot;a.xlsx&quot;)</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/01/20/如何快速的将json转成excel/">https://igaojin.me/2019/01/20/如何快速的将json转成excel/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      首先安装 pandas
+
+pip install pandas
+
+然后就很简单了…
+
+1
+2
+3
+4
+
+
+import pandas as pd
+
+df = pd.read_json(&#39;a.json&#39;)
+df.to_excel(&quot;a.xlsx&quot;)
+
+
+
+本文作者：高金
+本文地址： https://igaojin.me/2019/01/20/如何快速的将json转成excel/
+版权声明：转载请注明出处！
+    
+    </summary>
+    
+      <category term="python" scheme="https://igaojin.me/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>EOS 如何最低成本挖矿.</title>
+    <link href="https://igaojin.me/2018/12/21/EOS-%E5%A6%82%E4%BD%95%E6%9C%80%E4%BD%8E%E6%88%90%E6%9C%AC%E6%8C%96%E7%9F%BF/"/>
+    <id>https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/</id>
+    <published>2018-12-21T05:42:20.000Z</published>
+    <updated>2018-12-21T06:04:47.976Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿?"></a>挖矿?</h2><p>什么叫挖矿呢？</p><p>挖矿是发现玩某bocai游戏,可以套利…然后用程序来玩…</p><h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>如 下面是betdice的一张图</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fyebflhsbyj216i0pa11l.jpg" alt=""></p><p>可以看到赔率是 1.036,中奖概率是95%</p><p>则我可以算出来 我玩1个EOS理论上输多少EOS <code>1.036*0.95=0.9842</code> <code>1-0.9842=0.0158</code></p><p>也就是算出来我玩一个EOS,理论上输0.0158个EOS</p><p>再减掉 0.1%的邀请奖励 则 我玩一个EOS,理论上输<code>0.0158-0.001=0.0148</code>个EOS<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fyebi7h88pj20to0ekwgo.jpg" alt=""></p><p>当然还有VIP奖励，以及玩一次每小时可以抽一次奖啊,以及排位奖励等等…</p><p>理论上我的成本就会更少…</p><p>我玩1个EOS的话可以获得 <strong>1.5625</strong>个代币</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fyeblkdou2j217e0yggxe.jpg" alt=""></p><p>也就是说 我用0.0148个EOS 换了1.5625个代币…</p><p>那么只要 <code>0.0148/1.5625=0.009472</code> 代币的价格大于 0.009472的话，那么我是可以一直套利的…</p><p>这上面就是挖矿了.</p><h2 id="不仅仅是价格"><a href="#不仅仅是价格" class="headerlink" title="不仅仅是价格"></a>不仅仅是价格</h2><p>上面计算了是否值的挖的公式…</p><p>但是你的实际成本会比这个更高…</p><p>如果你需要跑到和概率差不多值的话，那么你最少要玩个几千吧…</p><p>也就是你需要有一定的本金…最简单的方式就是每次投注你本金的1%…当然也可以参考凯利公式</p><h2 id="CPU也是成本"><a href="#CPU也是成本" class="headerlink" title="CPU也是成本"></a>CPU也是成本</h2><p>因为挖矿需要与合约交互多次,所以,CPU也是必须的…</p><p>而特别是最近CPU价格很高…大概50EOS,才能租10000EOS 一天…</p><p>这个也需要算进成本,你会发现…赚的钱 都给租CPU的人赚过去了…</p><h2 id="合约挖矿"><a href="#合约挖矿" class="headerlink" title="合约挖矿"></a>合约挖矿</h2><p>如何让别人帮你出CPU呢?</p><p>你每次投注获胜的话,项目方都会给你打钱(你赚的钱.)<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fyebw0x7nij21v00yswmf.jpg" alt=""></p><p>那么你可以让这个玩的账号变成一个合约…</p><p>当发现是某个游戏项目方给你打钱的时候,你直接发起一笔玩的操作…</p><p>这样，这个CPU都是由 给你打钱的项目方出了…(这样你就可以不需要CPU来挖矿了)</p><p>当然 为了让挖矿更好的话,你可以设置余额低于某个值就不挖了…</p><p>或者玩了多少把就不玩了…</p><p>也可以加一个方法,可以随时停止游戏…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/">https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      挖矿?
+什么叫挖矿呢？
+
+挖矿是发现玩某bocai游戏,可以套利…然后用程序来玩…
+
+举个例子
+如 下面是betdice的一张图
+
+
+
+可以看到赔率是 1.036,中奖概率是95%
+
+则我可以算出来 我玩1个EOS理论上输多少EOS 1.036*0.95=0.9842 1-0.9842=0.0158
+
+也就是算出来我玩一个EOS,理论上输0.0158个EOS
+
+再减掉 0.1%的邀请奖励 则 我玩一个EOS,理论上输0.0158-0.001=0.0148个EOS
+
+
+当然还有VIP奖励，以及玩一次每小时可以抽一次奖啊,以及排位奖励等等…
+
+理论上我的成本就会更少…
+
+我玩1个EOS的话可以获得
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EOS合约内查询其他表</title>
+    <link href="https://igaojin.me/2018/12/15/EOS%E5%90%88%E7%BA%A6%E5%86%85%E6%9F%A5%E8%AF%A2%E5%85%B6%E4%BB%96%E8%A1%A8/"/>
+    <id>https://igaojin.me/2018/12/15/EOS合约内查询其他表/</id>
+    <published>2018-12-15T03:43:34.000Z</published>
+    <updated>2018-12-21T05:41:20.922Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在准备在一款游戏…</p><p>需要发牌…(涉及到发牌这种游戏，如果需要公平性做的很好的话，需要考虑下面几个问题</p><ol><li>生成牌的随机数不能被预测</li><li>只有玩家自己才能看到自己的牌</li><li>庄家玩法看到其他人的牌</li></ol><h2 id="随机数生成"><a href="#随机数生成" class="headerlink" title="随机数生成"></a>随机数生成</h2><p>随机数还是使用2段延时+用户账号来随机出来的</p><h2 id="只有玩家能看到自己的牌"><a href="#只有玩家能看到自己的牌" class="headerlink" title="只有玩家能看到自己的牌"></a>只有玩家能看到自己的牌</h2><p>使用用户的公钥加密用户的牌就可以了…(EOS目前没有现成的代码,需要自己写…)</p><h2 id="庄家看不到其他人的牌"><a href="#庄家看不到其他人的牌" class="headerlink" title="庄家看不到其他人的牌"></a>庄家看不到其他人的牌</h2><p>首先，如果没有公共牌的话，则庄家只需要在玩家打出牌的时候，验证下他是否有这张牌就可以了…</p><h3 id="怎么验证呢？"><a href="#怎么验证呢？" class="headerlink" title="怎么验证呢？"></a>怎么验证呢？</h3><ul><li><p>零知识证明 感觉可以，但是好像代码会比较复杂…而且密码也学的不好…</p></li><li><p>把他的牌存在某个表里面…(然后他打的时候，验证下…)</p></li></ul><p>但是这样就有一个问题，那就是别人也可以直接查这个表，就能拿到每个人的牌了…</p><p>也就可以作弊了…(当然，开发者肯定更容易作弊…)</p><p>然后和朋友聊天的时候，了解其实可以让某个表不生成abi,这样的话，外部就会无法访问到这个表了…</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7alo4utij214o0psn1z.jpg" alt=""></p><p>吧abi这行删掉，发现确实外部无法访问到这个表…</p><h2 id="但是通过合约调用呢？"><a href="#但是通过合约调用呢？" class="headerlink" title="但是通过合约调用呢？"></a>但是通过合约调用呢？</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7aopcefyj21xa0ygqb2.jpg" alt=""></p><p>定义了同样的数据结构,然后可以发现,在合约内就可以调用了…</p><h3 id="测试-改变数据位置"><a href="#测试-改变数据位置" class="headerlink" title="测试 改变数据位置"></a>测试 改变数据位置</h3><p>发现拿到的数据就错了…(所以如果要拿到正确的数据的话，需要和 原来的数据定义一模一样)<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7auj42ejj21zm18uaoa.jpg" alt=""></p><h3 id="测试-删除一个字段"><a href="#测试-删除一个字段" class="headerlink" title="测试 删除一个字段"></a>测试 删除一个字段</h3><p>发现拿到的数据错了…但是还是可以查到数据<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7axq0w0zj21y2198k50.jpg" alt=""></p><h3 id="测试-删除主键"><a href="#测试-删除主键" class="headerlink" title="测试 删除主键"></a>测试 删除主键</h3><p>会编译无法通过</p><h3 id="测试-随便定义一个主键"><a href="#测试-随便定义一个主键" class="headerlink" title="测试 随便定义一个主键"></a>测试 随便定义一个主键</h3><p>发现拿到的数据错了…但是还是可以查到数据<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7b0gwm78j229i180qfl.jpg" alt=""></p><h2 id="测试-拿到的字段-比原来的多"><a href="#测试-拿到的字段-比原来的多" class="headerlink" title="测试 拿到的字段 比原来的多"></a>测试 拿到的字段 比原来的多</h2><p>编译可以过，但是查询会报错…<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fy7b2h9jm7j22700xc132.jpg" alt=""></p><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>所以使用去掉abi的方法是可以的…</p><p>前提是那段存数据的表 不开源，并且可以定义差不多的几个字段，然后每个字段都加密。。。</p><p>让那些想拿你数据的人有机会会拿错,并且每次存在哪个字段都不随机的…</p><p>当然这种方式还是防止不了大神。。。毕竟有人直接看wasm的代码。。。</p><p>最好的方式还是使用 零知识证明 等等…（学密码学去了…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/15/EOS合约内查询其他表/">https://igaojin.me/2018/12/15/EOS合约内查询其他表/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+最近在准备在一款游戏…
+
+需要发牌…(涉及到发牌这种游戏，如果需要公平性做的很好的话，需要考虑下面几个问题
+
+ 1. 生成牌的随机数不能被预测
+ 2. 只有玩家自己才能看到自己的牌
+ 3. 庄家玩法看到其他人的牌
+
+随机数生成
+随机数还是使用2段延时+用户账号来随机出来的
+
+只有玩家能看到自己的牌
+使用用户的公钥加密用户的牌就可以了…(EOS目前没有现成的代码,需要自己写…)
+
+庄家看不到其他人的牌
+首先，如果没有公共牌的话，则庄家只需要在玩家打出牌的时候，验证下他是否有这张牌就可以了…
+
+怎么验证呢？
+ * 零知识证明 感觉可以，但是好像代码会比较复杂…而且密码也学的不好…
+   
+ 
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>找房子注意事项（最近搬家太多了...)</title>
+    <link href="https://igaojin.me/2018/12/08/%E6%90%AC%E5%AE%B6/"/>
+    <id>https://igaojin.me/2018/12/08/搬家/</id>
+    <published>2018-12-07T18:11:18.000Z</published>
+    <updated>2019-03-12T02:33:16.422Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近搬了几次家,来回折腾了几次…</p><p>做一个总结吧…(以免以后再来回折腾…)</p><h2 id="会碰到的一些坑"><a href="#会碰到的一些坑" class="headerlink" title="会碰到的一些坑"></a>会碰到的一些坑</h2><h3 id="楼上楼下小孩吵-宠物吵"><a href="#楼上楼下小孩吵-宠物吵" class="headerlink" title="楼上楼下小孩吵(宠物吵)"></a>楼上楼下小孩吵(宠物吵)</h3><p>这个避免的话有大概有想到几种</p><ul><li>合租的话，问问现在住在房间里面的人</li><li>找那种青年公寓，类似于自如这种（一般有些好一点公寓会不让老年人以及有小孩入住…)</li><li>当然最简单的是 找房子的时候，就让中介把这些房子帮你过滤掉</li></ul><h3 id="房间隔音不好"><a href="#房间隔音不好" class="headerlink" title="房间隔音不好"></a>房间隔音不好</h3><ul><li>自己可以到里面多呆呆,最好时间长一点，最好能先提前住一晚，这样发现了一些比较吵的就可以不租。</li><li>最好找一些大的平台吧，基本上大的平台都有公约，禁止半夜吵架啊，啥的。。。自己找的一些小区的房子，虽然便宜了，但是遇到傻逼邻居了，你也没有办法…</li><li>别租靠近地铁，靠近马路，靠近飞机场的，学校等等这些</li></ul><h3 id="遮光不好"><a href="#遮光不好" class="headerlink" title="遮光不好"></a>遮光不好</h3><ul><li>看看窗帘能不能关好…(有些窗户设计的傻x，就是关不好，换窗帘也没用…)</li></ul><h2 id="其他的一些要求…"><a href="#其他的一些要求…" class="headerlink" title="其他的一些要求…"></a>其他的一些要求…</h2><ul><li>别太偏…(附近外卖比较多)</li><li>有大型超市</li><li>有图书馆（看自己需求</li><li>有游泳馆（看自己需求</li><li>有大型商场</li><li>离地铁站步行10分钟左右…</li></ul><h2 id="其他注意"><a href="#其他注意" class="headerlink" title="其他注意"></a>其他注意</h2><p>电费的话，可以看看是不是自己交（一般有些不是按照民用电给你的…)</p><p>网络记住别是铁通的…要不然贼卡…</p><p>合租的话，人别太多（特别是共用卫生间,可以先问问大家都是几点起，别都是8点，这样早上就要排队了。。。）</p><p>还有之前碰到过大早上洗澡的（一洗就是一小时的。。。）,这个也可以问问看</p><p>当然最好是独立卫生间…</p><p>其他的有想到就补…</p><hr><p><strong>更新于20181208…</strong></p><p>还需要看一下基础设备（热水，手机信号…今天搬进来的房子 手机信号贼差…</p><hr><p><strong>更新于20181220…</strong></p><p>一楼的话 会有些潮湿…注意下…</p><hr><p><strong>更新于20190312,洗澡洗到一半等待热水….</strong></p><p>洗澡的热水器一定要关注.（可以先开到热水，然后弄到可以洗澡的温度放一段时间，看看会不会突然变凉.)</p><p>烧电的话 需要看看卫生间是不是合用的，因为里面的水就那么多，如果被人先用了，那么你需要等水热…</p><p>燃气的话 有一些不够稳定…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/08/搬家/">https://igaojin.me/2018/12/08/搬家/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      最近搬了几次家,来回折腾了几次…
+
+做一个总结吧…(以免以后再来回折腾…)
+
+会碰到的一些坑
+楼上楼下小孩吵(宠物吵)
+这个避免的话有大概有想到几种
+
+ * 合租的话，问问现在住在房间里面的人
+ * 找那种青年公寓，类似于自如这种（一般有些好一点公寓会不让老年人以及有小孩入住…)
+ * 当然最简单的是 找房子的时候，就让中介把这些房子帮你过滤掉
+
+房间隔音不好
+ * 自己可以到里面多呆呆,最好时间长一点，最好能先提前住一晚，这样发现了一些比较吵的就可以不租。
+ * 最好找一些大的平台吧，基本上大的平台都有公约，禁止半夜吵架啊，啥的。。。自己找的一些小区的房子，虽然便宜了，但是遇到傻逼邻居了，你
+    
+    </summary>
+    
+      <category term="琐事" scheme="https://igaojin.me/categories/%E7%90%90%E4%BA%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>EOS智能合约的功与防-拒绝转账</title>
+    <link href="https://igaojin.me/2018/11/23/EOS%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%8A%9F%E4%B8%8E%E9%98%B2/"/>
+    <id>https://igaojin.me/2018/11/23/EOS智能合约的功与防/</id>
+    <published>2018-11-22T23:33:41.000Z</published>
+    <updated>2018-11-23T00:20:48.902Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="从World-Conquest-被攻击说起"><a href="#从World-Conquest-被攻击说起" class="headerlink" title="从World Conquest 被攻击说起"></a>从World Conquest 被攻击说起</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357ly1fxhnhi91h3j20l40e149q.jpg" alt=""></p><p>World Conquest的游戏规则采用了FOMO模式，如果你是最后一位购买者，那么你可以获得奖池里面大部分的钱。</p><p>假如你是普通玩家，你肯定是一只盯着网页，到了最后10s左右，如果没有人购买的话，你就只好买入…</p><p>然后希望在后续10分钟内，所有的玩家都不要买入，这样你就能获得了大奖…</p><p>那如果你是一位技术流玩家的话，你会怎么做呢?</p><p>World Conquest 有一个缴税规则,所有购买地图的玩家，都需要向世界领主缴税（也就是每当有人购买某个地图后，合约都会给世界领主 这个玩家打一笔钱。</p><p>因为EOS内，所有的账号都可以部署合约,那么假如 我先用我的小号成为最后一位购买者，然后我用世界领主这个账号 部署合约</p><p>拒绝合约账号给我打钱，那么我只要默默等待时间结束，我就成为了最后一位玩家。（因为别人购买的时候 会触发给你打钱的动作，但是因为这个动作被拒绝了，所以导致整个交易失败，然后也就购买不成功…</p><h3 id="攻击再优化一点"><a href="#攻击再优化一点" class="headerlink" title="攻击再优化一点"></a>攻击再优化一点</h3><p>在前面说了,世界账号是部署了合约，拒绝了 World Conquest 这个合约给他打钱.</p><p>但是其实这样是有一些问题的，假如说 游戏结束后，系统是自动发奖的…那么因为你拒绝了该合约给你打钱..。</p><p>那么你也就拿不到奖…(当然现实是 手动打钱，因为合约时间到了后，只能手动打，你需要在开发者给你打钱之前 把合约重新部署下，就可以了）</p><p>当然这个方法不怎么好，如何把细节完善好呢…</p><p>一个简单的方法 就是判断打进来的钱的金额（因为缴税的金额肯定是比较低的，而大奖金额是比较多的…</p><p>或者通过memo来判断，也是一样的…</p><h2 id="快神话被攻击"><a href="#快神话被攻击" class="headerlink" title="快神话被攻击"></a>快神话被攻击</h2><p>昨天上线一款新的资金盘类游戏…</p><p>游戏有个规则是 最后奖池的20%分给最低价值英雄的玩家…</p><p>那么 如何成为拥有最低价值英雄的玩家呢…</p><ol><li>在标语里面写上 买我这个英雄的都是SX 之类的</li><li>技术流当然是使用上面攻击World Conquest相同的方法了…</li></ol><h2 id="如何防止这种攻击呢"><a href="#如何防止这种攻击呢" class="headerlink" title="如何防止这种攻击呢?"></a>如何防止这种攻击呢?</h2><h3 id="World-Conquest是怎么做的呢？"><a href="#World-Conquest是怎么做的呢？" class="headerlink" title="World Conquest是怎么做的呢？"></a>World Conquest是怎么做的呢？</h3><p>World Conquest在新开第二盘的时候，使用了记账的方式 来避免被攻击…</p><p>正常来说，有人购买你的地后，你就能拿到赚的钱，这笔钱会直接转到你的账号上(上面说的攻击就是拒绝这笔转账汇入)</p><p>World Conquest是在有人购买你的地后，不给你转钱，而是帮你记一笔账…</p><p>当然你可以随时来提取你的奖金…</p><p>当然这种方式肯定是被玩家喷了…不能立马复投的资金盘还叫资金盘么…</p><h3 id="有没有更好的办法"><a href="#有没有更好的办法" class="headerlink" title="有没有更好的办法"></a>有没有更好的办法</h3><p>防止这种攻击的方法其实很简单…就是把购买动作和转钱分开…</p><p>那么只要在购买成功后，发起一笔延时交易,给用户打钱.这样购买与转钱的动作就分开了…</p><p>而且还有个好处是,假如用户恶意拒绝合约给他转钱的话，那么这笔钱会留在你的合约…(算是惩罚了 恶意用户)</p><p>当然不是所有的方法都是完美的…</p><p>这个方法有一个问题是…因为延时交易是需要 合约出CPU的…</p><p><strong>目前我还没有测试 到底是在发出延时的时候 扣CPU,还是延时发生的时候才扣</strong></p><p>假如是第一种情况…还好，毕竟用户无法买入了…（可能会去你群里与你沟通</p><p>假如是第二种情况…正常用户买入了,而合约却没有把钱给上一个玩家…那么你肯定要被用户喷死…</p><p>当然解决方法也不是很难</p><ol><li>你可以提前多去租点CPU,就能避免CPU不足的问题了</li><li>可以参考系统解除质押发出的延时 如果出错怎么处理的…</li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>目前EOS上，各种斗智斗勇的故事在发生…</p><p>欢迎来EOS上玩…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/23/EOS智能合约的功与防/">https://igaojin.me/2018/11/23/EOS智能合约的功与防/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      从World Conquest 被攻击说起
+
+
+World Conquest的游戏规则采用了FOMO模式，如果你是最后一位购买者，那么你可以获得奖池里面大部分的钱。
+
+假如你是普通玩家，你肯定是一只盯着网页，到了最后10s左右，如果没有人购买的话，你就只好买入…
+
+然后希望在后续10分钟内，所有的玩家都不要买入，这样你就能获得了大奖…
+
+那如果你是一位技术流玩家的话，你会怎么做呢?
+
+World Conquest 有一个缴税规则,所有购买地图的玩家，都需要向世界领主缴税（也就是每当有人购买某个地图后，合约都会给世界领主 这个玩家打一笔钱。
+
+因为EOS内，所有的账号都可以部署合约,那么假如 我
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
+    
+      <category term="安全" scheme="https://igaojin.me/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>此地无人生还：区块链随机数的原罪与救赎（转</title>
+    <link href="https://igaojin.me/2018/11/23/%E6%AD%A4%E5%9C%B0%E6%97%A0%E4%BA%BA%E7%94%9F%E8%BF%98%EF%BC%9A%E5%8C%BA%E5%9D%97%E9%93%BE%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E5%8E%9F%E7%BD%AA%E4%B8%8E%E6%95%91%E8%B5%8E/"/>
+    <id>https://igaojin.me/2018/11/23/此地无人生还：区块链随机数的原罪与救赎/</id>
+    <published>2018-11-22T16:17:17.000Z</published>
+    <updated>2018-11-22T16:28:21.526Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>生成随机数不是应该留给人类来做的任务。——Mads Haah</p></blockquote><p>受访者：慢雾科技安全研究员Johan</p><p>特别致谢：高金</p><p>作者：李画</p><p>区块链的世界没有真正的随机数，但随机数却是区块链游戏之魂，至少在目前阶段。</p><p>所以，当伪随机数让DApp流下第一滴血后，DApp却无法断臂求生。潜伏的黑客们就像嗜血的鲨鱼，在嗅到腥味后迅速聚拢过来，围攻这个有着天生缺陷的猎物。</p><p>Luckyos、EOS.WIN、DEOSBET、FairDice、EosRoyale、EOSDice、FFGame……这些热门DApp游戏先后被攻击，因随机数漏洞而面临生死危机。“没有被攻击过随机数的都不好意思说自己做的是DApp”，开发者们如此自嘲。</p><p>本文采访了一直关注DApp随机数漏洞的慢雾科技安全研究员Johan，并就代码细节问题咨询了资深DApp开发工程师高金，试图通过这篇文章，呈现出随机数的前世与今生、原罪与救赎。</p><h2 id="原罪：计算机的世界没有真随机数"><a href="#原罪：计算机的世界没有真随机数" class="headerlink" title="原罪：计算机的世界没有真随机数"></a>原罪：计算机的世界没有真随机数</h2><p>真正的随机数只存在于物理世界中，比如掷骰子的结果，比如电子组件的噪声。</p><p>最早的随机数生成器是骰子，早在公元前2600年，人类就已经用四面骰来玩抛掷游戏了，迄今为止，它依然是最值得信赖的产生随机数的方法。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhart6iwjj20dw08d75x.jpg" alt=""></p><p>但骰子显然不能满足现代世界对随机数的需求，于是在1995年，RAND公司推出《百万乱数表》（《A Million Random Digits with 100,000 Normal Deviates》）。RAND先通过随机脉冲发生器生成大量随机数，再把这些数字集合起来组成随机数字书，免费提供给人们使用。</p><p>这本书是20世纪随机数领域的重要著作，也是人类历史上第一次产生如此大量的、高质量的随机数。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhasg3fv0j20g60afgrk.jpg" alt=""></p><p>与此同时，阿兰·图灵在计算机 Ferranti Mark 1中首次内置了随机数生成指令，利用热噪声可以一次性生成 20 个随机比特。1999 年，Intel更进一步， 在 i810 芯片组上集成了芯片级的真随机数生成器（TRNG），通过热噪声产生本地源的随机数。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhasqgd5cj20il09t75t.jpg" alt=""></p><p>不过，TRNG每秒只能产生有限的随机比特，随机数生成速度低，致使软件的工作频率受限，而且TRNG对外界干扰极其敏感，需要耗费大量功率避免非随机信号对信号源的污染。</p><p>伪随机数应运而生。冯·诺依曼创造了最早的伪随机数生成器（PRNG），通过给出一个确定的随机数种子，由确定的算法在每次生成同样的随机数序列。只要种子不变，伪随机数的数序也不会变。</p><p><strong>自此以后，猜种子破解随机数便成为黑客的常规攻击手段，而事实证明，具有好的质量且不易被攻克的种子很难寻觅。但即便如此，因为效率的缘故，计算机软件还是不得不依赖于伪随机数。</strong></p><p>在当前的编程语言中，C++、R、Python、Ruby、PHP等都采用了梅森旋转算法（Mersenne Twister）作为默认的伪随机数生成方法，它由松本真和西村拓士在 1997 年发明。</p><p>梅森旋转算法把寄存器当时或者之前的状态作为种子来源，通过线性反馈移位寄存器对输入进行移位旋转，周期为一个梅森素数。该算法产生的伪随机数质量好、产生速度快。</p><p>伪随机数的种子来源也可以是真随机数——CPU通过TRNG不断产生真随机数，并将真随机数存储在熵池中，当软件需要使用随机数时，从熵池里提取一些真随机数作为种子输入到PRNG中，通过PRNG得到伪随机数序列。</p><h2 id="天堑：区块链不支持生成随机数"><a href="#天堑：区块链不支持生成随机数" class="headerlink" title="天堑：区块链不支持生成随机数"></a>天堑：区块链不支持生成随机数</h2><p>传统的伪随机数生成算法或多或少与单台机器的物理状态或运算状态相关，不同的机器，或者说不同的节点，会有不同的运算结果，这在区块链上是行不通的。区块链是一个分布式的系统，它要求各个节点的运算结果是可验证、可共识的。</p><p><strong>区块链需要从零开始设计崭新的随机数法则，从而实现不同节点上的智能合约可以使用相同的随机数。</strong></p><p>有三种解决方式。第一种是让可信第三方为合约提供随机数；第二种是通过基础合约实现伪随机数生成器，为其他合约提供一致的随机数；第三种是让所有节点上的合约可以采集到相同的种子，再通过伪随机算法计算出相同的随机数序列。</p><p>第一种方式最大的缺陷是需要引入第三方。该第三方是否值得信任，能否能提供高质量的随机数均是问题。除此之外，区块链是警惕中心化的，而第三方在某种程度上是中心化的，这与一些DApp开发者的理念不相符合。</p><p>在以太坊上，Oraclize是为链上节点提供随机数的第三方。Oraclize是一个预言机，独立于区块链系统之外，智能合约发送请求给Oraclize，当Oraclize监听到链上相关请求后，生成随机数并将结果返回区块链。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhatk83pbj20j607cgoq.jpg" alt=""></p><p>第二种方式最符合区块链精神，是一个不同参与者合作生成随机数的伪随机数生成器，但它涉及到激励机制的设计问题，以及人为控制的作弊问题。</p><p>RANDAO采用的即是这种方式，它以智能合约的形式封装了伪随机数生成算法和对应的业务逻辑，为以太坊提供随机数服务，任何人都可以参与生成RANDAO随机数。</p><p>在随机数生成周期，每个参与者都需要提交一个数字，而来自所有参与者的数字集合将被作为种子生成伪随机数，因为无法知晓他人提供的种子，该方法产生的结果难以被破解。智能合约可以向RANDAO请求随机数，但需要支付奖金给生成随机数的参与者。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhaty2g8bj20q00fhjwq.jpg" alt=""></p><p>第三种方式，随机数不是从合约外部引入，而是把区块链的链上信息做为种子，由智能合约根据种子生成伪随机数。这种方法最大的缺陷就是一旦黑客知道了随机数的生成算法，也能获取正确的种子，就能轻易地对智能合约发起随机数攻击。</p><p><strong>不同于传统伪随机数生成算法中种子的私密性，区块链上的种子几乎是“透明”的</strong>：它是链上的区块信息，所有节点上的智能合约都能够取到，那么从原理上讲，黑客用于攻击的恶意合约同样可以获得这些数值。</p><p>不过，因为缺乏成熟的随机数提供方，以及对中心化随机数的警惕、对链上自治的追求，通过智能合约计算随机数依然是EOS上众多DApps首选的方法，这也是DApps深陷黑客危机的原因所在。</p><h2 id="攻防：道高一尺魔高一丈"><a href="#攻防：道高一尺魔高一丈" class="headerlink" title="攻防：道高一尺魔高一丈"></a>攻防：道高一尺魔高一丈</h2><p>FFGAME可能是史上最倒霉DApp——游戏还没正式运营就遭到攻击。黑客很快破解了随机数，然后在游戏中不断获胜，轻松拿走FFGAME平台放入游戏中的初始资产，1332个EOS。FFGAME还没准备迎敌，城门就已失守。</p><p>在DApp的攻防战中，攻击者们通常有两种方法来利用随机数盗取资产。</p><p>第一种方法是获取正确的随机数种子，通过伪随机算法计算出游戏结果，然后根据结果下注，保证百分百胜率。</p><p>第二种方法是在知道伪随机算法和种子来源的情况下，通过改变种子的数值让伪随机算法计算出自己下注的游戏结果，从而保证百分百胜率。</p><p><strong>EOSDice是一个被黑客用第一种方法攻破后，修改了伪随机数算法，旋即又被黑客用第二种方法攻破的DApp。</strong>不过，值得赞赏的是，EOSDice也是一个被攻破两次但依然坚持开源的 EOS游戏。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhauxz191j20u00hr159.jpg" alt=""></p><p>EOSDice 第一次被攻击发生在11月4日 上午3:15，攻击者为jk2uslllkjfd，共被盗取约2500个EOS并转入火币。</p><p>EOSDice的伪随机数生成算法中使用的随机种子主要是： tapos_block_prefix() ； tapos_block_num() ；name ()； game_id ；current_time()； pool_ol_eos.amount。种子中的后四个，也就是帐户名、id、开奖时间、合约余额都比较容易获取，随机数的安全性主要依赖于前两个种子，也就是reference block的信息。</p><p>在EOSDice 的实时开奖机制中，开奖action的reference block在默认状态下是执行当前action的上一个区块，该区块已经存在，其信息可以提前获取。因此，黑客可以通过种子预先算出结果，再下注。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhav6kgxij20gx09qmyr.jpg" alt=""></p><p>EOSDice在被攻击后把实时开奖改为异步延时开奖，并重新上线运营。只不过二次攻击很快发生，在11月10日上午11:19，账户名为coinbasewa11的攻击者盗取了约4900 个EOS，并转入bitfinex。</p><p>在异步延时开奖机制下，reference block的指向发生了变化。开奖action的reference block是在下注时还未生成的区块，其信息难以提前获取，也就不能抢先计算出游戏结果。</p><p>但黑客们谋划了新手段：首先，让攻击合约模拟EOSDice的游戏合约，只要两种合约运行在同一个区块，就会取到相同的种子，计算出相同的结果；然后，因为EOSDice伪随机算法的种子包括账户余额，黑客可以在攻击合约中一次次修改余额的数值来改变种子进而改变运算的结果，直到其最终满足自己的下注条件；最后，在通过上述计算“碰撞”出“正确”的账户余额后，黑客只需要向真正的游戏合约账户转入被计算好的EOS，就能保证开奖时必然中奖。</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fxhavj5vz6j20n30n7dmh.jpg" alt=""></p><h2 id="救赎：没有最好，只能更好"><a href="#救赎：没有最好，只能更好" class="headerlink" title="救赎：没有最好，只能更好"></a>救赎：没有最好，只能更好</h2><p>链上随机数问题没有完美的解决方案。区块链上不仅没有真随机数，连传统的伪随机数也没有。</p><p>EOS官方示例中采用的随机数生成法类似于上文讨论的第二种方式——用不同参与者的私密数据的集合作为种子，生成难以被预测的伪随机数。</p><p>以Dice为例，玩家和庄家需要提前生成密钥，把公钥先传到链上，开奖的时候再提交各自的私钥，作为种子生成随机数，再由随机数判定开奖结果。这可能是目前最安全的伪随机数生成方式，但它给玩家增加了额外的且并不轻松的操作，提高了游戏门槛，在现实中并未被广泛的采用。</p><p>BM在EOS开发者群回答随机数安全问题时，提出了一个“信任区块生产者”的方案，也就是说用区块生产者在打包交易的某个特定时机获取的某些信息来生成伪随机数。虽然是在链上解决问题，但这种方法更接近于上文讨论的第一种方式——由一个中心化的第三方来提供随机数，虽然难以被破解，但提供者不一定值得信任。</p><p>屡败屡战的EOS上的DApp开发者通常选用上文中的第三种方式——智能合约获取链上数据作为种子，自己生成伪随机数。</p><p>在与黑客数次交锋之后，<strong>目前DApp最常用的开奖机制是“二次延时开奖+种子中不设置可控变量”。</strong></p><p>实时开奖机制下，reference block是上一个区块，其中的种子数据在开奖前就可被黑客获取；而二次延时开奖，reference block是还未生成的区块，其中的种子数据难以预测，黑客也就无法提前算出开奖结果。种子中不设置可控变量则保证了黑客不能通过改变种子的数值来操控开奖结果。</p><p>不过，即便如此，“二次延时开奖+种子中不设置可控变量”也不能保证合约随机数的绝对安全，只能说在目前阶段这种方法还未被黑客攻破，相对安全。毕竟不管采用几次延时，开奖合约能获取的种子，攻击合约也一样能得到，链上的种子是“公平”、“透明”的。</p><p>如何在这种不完美的情况下尽量减少随机数攻击带来的破坏，慢雾团队给出了一些实用建议：</p><ol><li><p>多用攻击者视角审查合约。</p></li><li><p>攻击者一般是通过恶意合约完成攻击，要思考合约能从什么角度攻击随机数。</p></li><li><p>随机数的安全与伪随机数生成算法相关，也与开奖机制相关，算法和机制要配合设计。</p></li><li><p>伪随机数生成算法不要引入可预测种子和可控种子，避免结果被预测或被篡改。</p></li><li><p>了解区块链上的随机数与传统随机数的差别。</p></li><li><p>做安全审计。在项目上线和开源前做安全审计，已知的漏洞能被查出，未知的漏洞也能通过风控机制把危害降到最低。</p></li></ol><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>“在所有的产生随机数的事物中，我认为没有什么能够超越骰子了”，Francis Galton在 1890 年的《自然》杂志中如此写道。</p><p>但骰子永远也不可能满足计算机应用的需求，一旦要在二进制的世界使用随机数，我们就需要做出妥协，把自己暴露在黑客攻击的危险之下。</p><p>区块链世界的特殊性需要我们做出更多的妥协。因为分布式、因为透明、因为警惕中心化与渴望链上自治，在区块链上，没有真随机数、也永远不会有绝对安全的随机数。</p><p>随机数带来的是一场永久的战役，在开发者与黑客之间。随机数会抗所有已知类型的攻击，但黑客也会不断发现新的攻击手段。此地无人生还。</p><h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol><li><p><a href="https://www.bishijie.com/shendu_10242" rel="external nofollow noopener noreferrer" target="_blank">道高一尺魔高一丈的随机数攻击—— EOS伪随机数漏洞</a></p></li><li><p><a href="https://bihu.com/article/1827909" rel="external nofollow noopener noreferrer" target="_blank">EOS主网上线以来智能合约攻击方式汇总</a></p></li><li><p><a href="https://www.chainnews.com/articles/776607864103.htm" rel="external nofollow noopener noreferrer" target="_blank">Fomo3D 狼人杀、EOSBet 、EOSDice 等十八个安全漏洞事件始末</a></p></li></ol><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/23/此地无人生还：区块链随机数的原罪与救赎/">https://igaojin.me/2018/11/23/此地无人生还：区块链随机数的原罪与救赎/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      生成随机数不是应该留给人类来做的任务。——Mads Haah
+
+受访者：慢雾科技安全研究员Johan
+
+特别致谢：高金
+
+作者：李画
+
+区块链的世界没有真正的随机数，但随机数却是区块链游戏之魂，至少在目前阶段。
+
+所以，当伪随机数让DApp流下第一滴血后，DApp却无法断臂求生。潜伏的黑客们就像嗜血的鲨鱼，在嗅到腥味后迅速聚拢过来，围攻这个有着天生缺陷的猎物。
+
+Luckyos、EOS.WIN、DEOSBET、FairDice、EosRoyale、EOSDice、FFGame……这些热门DApp游戏先后被攻击，因随机数漏洞而面临生死危机。“没有被攻击过随机数的都不好意思说自己做的是DApp”，
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="随机数" scheme="https://igaojin.me/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何让某个程序一直运行</title>
+    <link href="https://igaojin.me/2018/11/22/%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9F%90%E4%B8%AA%E7%A8%8B%E5%BA%8F%E4%B8%80%E7%9B%B4%E8%BF%90%E8%A1%8C/"/>
+    <id>https://igaojin.me/2018/11/22/如何让某个程序一直运行/</id>
+    <published>2018-11-21T17:04:05.000Z</published>
+    <updated>2018-11-21T17:06:13.790Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为有时候需要让某段程序一直运行,停止了就自动重启…</p><p>从网上找了好久，找到了这段代码。。。用了挺好，记录下</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"AutoRes is starting"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 你要一直运行的代码放在这...</span></span><br><span class="line">    executable = sys.executable</span><br><span class="line">    args = sys.argv[:]</span><br><span class="line">    print(args)</span><br><span class="line">    args.insert(<span class="number">0</span>, sys.executable)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"Respawning"</span>)</span><br><span class="line">    os.execvp(executable, args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/22/如何让某个程序一直运行/">https://igaojin.me/2018/11/22/如何让某个程序一直运行/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      因为有时候需要让某段程序一直运行,停止了就自动重启…
+
+从网上找了好久，找到了这段代码。。。用了挺好，记录下
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+
+
+def main():
+    print(&quot;AutoRes is starting&quot;)
+
+    # 你要一直运行的代码放在这...
+    executable = sys.executable
+    args = sys.argv[:]
+    print(args)
+    args.insert(0, sys.executable)
+
+    time.sleep(1)
+    print(
+    
+    </summary>
+    
+      <category term="python" scheme="https://igaojin.me/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>EOSDIEC 随机数被攻破</title>
+    <link href="https://igaojin.me/2018/11/04/EODIDEC-%E9%9A%8F%E6%9C%BA%E6%95%B0%E8%A2%AB%E6%94%BB%E7%A0%B4/"/>
+    <id>https://igaojin.me/2018/11/04/EODIDEC-随机数被攻破/</id>
+    <published>2018-11-04T00:49:35.000Z</published>
+    <updated>2018-11-05T08:32:08.436Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="EOSDICE"><a href="#EOSDICE" class="headerlink" title="EOSDICE"></a>EOSDICE</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvqt03svej211i0c4jt4.jpg" alt=""></p><p>今天起床看到 EODICE随机数竟然被攻破了？</p><p>之前我还看过代码，觉得挺安全的，看来我还是太菜了</p><p>随机数代码如下 (来源于<a href="https://github.com/loveblockchain/eosdice/blob/master/eosbocai2222.hpp" rel="external nofollow noopener noreferrer" target="_blank">github</a>)</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint8_t</span> random(account_name name, <span class="keyword">uint64_t</span> game_id)</span><br><span class="line">&#123;</span><br><span class="line">    asset pool_eos = eosio::token(N(eosio.token)).get_balance(_self, symbol_type(S(<span class="number">4</span>, EOS)).name());</span><br><span class="line">    <span class="keyword">auto</span> mixd = tapos_block_prefix() * tapos_block_num() + name + game_id - current_time() + pool_eos.amount;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *mixedChar = <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span> *&gt;(&amp;mixd);</span><br><span class="line"></span><br><span class="line">    checksum256 result;</span><br><span class="line">    sha256((<span class="keyword">char</span> *)mixedChar, <span class="keyword">sizeof</span>(mixedChar), &amp;result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint64_t</span> random_num = *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">0</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">8</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">16</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">24</span>]);</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">uint8_t</span>)(random_num % <span class="number">100</span> + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>可以看到生成随机数 有几个特别的东西</p><ol><li>game_id 这个是递增的，可以拿到</li><li>account_name 这个是玩家的用户名，可以拿到</li><li>pool_eos 这个是当前合约的余额，如果短时间没有人玩的话，是可以拿到固定的值的</li><li>tapos_block_prefix &amp; tapos_block_num 这两个是区块内部的值，如果我用合约来攻击的话，可以拿到</li><li>current_time 当前时间戳(合约用了延时交易)</li></ol><p>我当时看到这个合约的时候,其实有想过怎么攻击,但是发现变量比较多,应该比较难,攻击合约需要满足以下条件</p><ol><li>需要短时间内没有人玩，要不然game_id 与 pool_eos都会变动，导致你攻击失败</li><li>必须要把攻击合约与 出结果 的时间控制在一个区块内，要不然 tapos_block_prefix &amp; tapos_block_num 这两个数会发生改变</li><li>之前我一直觉得没办法攻击的是 时间，因为合约取的是未来时间的（其实发现了eos 延时合约运行的话,延时多久，时间往后加就行了。。。） 这点要是想明白了，说不定暴富的人就是我了…</li></ol><p>我写的一个模拟攻击合约,不知道是不是因为本地测试的原因，tapos_block_prefix &amp; tapos_block_num 一直对不上</p><p>其实本来想 直接从合约拿到他的 game_id的，但是一直没有成功…<br></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> charity::hi(<span class="keyword">uint64_t</span> game_id)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    asset pool_eos = eosio::token(N(eosio.token)).get_balance(N(eosbocai2222), symbol_type(S(<span class="number">4</span>, EOS)).name());</span><br><span class="line">    pool_eos.amount += <span class="number">9985</span>;</span><br><span class="line">    <span class="keyword">uint64_t</span> t = current_time();</span><br><span class="line">    t += <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">auto</span> mixd = tapos_block_prefix() * tapos_block_num() + _self + game_id - t + pool_eos.amount;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *mixedChar = <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span> *&gt;(&amp;mixd);</span><br><span class="line"></span><br><span class="line">    checksum256 result;</span><br><span class="line">    sha256((<span class="keyword">char</span> *)mixedChar, <span class="keyword">sizeof</span>(mixedChar), &amp;result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">uint64_t</span> random_num = *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">0</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">8</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">16</span>]) + *(<span class="keyword">uint64_t</span> *)(&amp;result.hash[<span class="number">24</span>]);</span><br><span class="line">    print(<span class="string">"random"</span>, random_num % <span class="number">100</span> + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// return (uint8_t)(random_num % 100 + 1);</span></span><br><span class="line">    asset payout = asset(<span class="number">10000</span>, S(<span class="number">4</span>, EOS));</span><br><span class="line">    action(</span><br><span class="line">        permission_level&#123;_self, N(active)&#125;,</span><br><span class="line">        N(eosio.token), N(transfer),</span><br><span class="line">        <span class="built_in">std</span>::make_tuple(_self, N(eosbocai2222), payout, <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="string">"dice-rrr-50-"</span>)))</span><br><span class="line">        .send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>来一张测试截图</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvr9gr5g2j21aw0ictes.jpg" alt=""></p><p>可以看到除了 tapos_block_prefix &amp; tapos_block_num 这两个不一样的话，其他的都一样的，</p><p>tapos_block_num 应该是每次+1,tapos_block_prefix 不知道生成规则，但是如果在一个区块内，应该是能拿到相同的.</p><h2 id="事件回顾"><a href="#事件回顾" class="headerlink" title="事件回顾"></a>事件回顾</h2><p>根据官方给出的账号，我找到了黑客的攻击截图</p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvriwhyucj21rw0yajxj.jpg" alt=""></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvrehi0zmj21g40zmjwx.jpg" alt=""></p><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvrkwvmugj22a20gw423.jpg" alt=""></p><p>不知道黑客代码怎么写的，他现在已经把合约换掉了…并且吧钱转到了交易所</p><p>根据官方所说，他们有对合约自动检测工具，导致被发现疑似黑客事件，立马把钱转走了.</p><p>这一点还是值得表扬的，说明团队实力还是有的。（希望可以开源，这样的话，其他的dice被攻击了也不至于损失那么惨）<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvru0n2g3j20tc06s0t8.jpg" alt="自动转账截图"></p><p>好像公告发布的也比较早，不知道是不是 自动检测功能能把人call醒（哈哈哈）</p><h2 id="总结与反思"><a href="#总结与反思" class="headerlink" title="总结与反思"></a>总结与反思</h2><p><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvrwv3i17j20iw0bkgn4.jpg" alt=""></p><p>当被攻击后，有网友在官方群发了这样的一句话…</p><p>让我想起一个笑话</p><blockquote><p>A: 为什么你玩DApp？<br>B: 因为开源透明代码可见，更公平<br>A：最近玩什么呢<br>B：EOS上的菠菜<br>A：开源了么？<br>B：没有</p></blockquote><p>我一直觉得 区块链合约肯定要开源，要不然和其他的有啥区别呢?</p><p>我个人为啥投了这个游戏呢？是因为这个游戏开源，符合我理想中的区块链游戏，不会发生黑我的情况…</p><p>本以为他做大了，能给整个社区起一个带头作用，告诉大家，开源合约也没事情的，区块链游戏就是需要开源！</p><p>但是还好，损失不是很大。</p><p>最后借用老猫的一张图<br><img src="http://ww1.sinaimg.cn/large/cfc08357gy1fwvs1n7542j20u02bc4qp.jpg" alt=""></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/04/EODIDEC-随机数被攻破/">https://igaojin.me/2018/11/04/EODIDEC-随机数被攻破/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      EOSDICE
+
+
+今天起床看到 EODICE随机数竟然被攻破了？
+
+之前我还看过代码，觉得挺安全的，看来我还是太菜了
+
+随机数代码如下 (来源于github)
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+
+
+uint8_t random(account_name name, uint64_t game_id)
+{
+    asset pool_eos = eosio::token(N(eosio.token)).get_balance(_self, symbol_type(S(4, EOS)).name());
+    auto mixd = tapos_block_pre
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>人人参与的送书活动</title>
+    <link href="https://igaojin.me/2018/09/24/%E4%BA%BA%E4%BA%BA%E5%8F%82%E4%B8%8E%E7%9A%84%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/"/>
+    <id>https://igaojin.me/2018/09/24/人人参与的送书活动/</id>
+    <published>2018-09-24T09:19:27.000Z</published>
+    <updated>2018-10-11T17:11:19.579Z</updated>
+    
+    <content type="html"><![CDATA[<p>很早之前就说要做送书活动了,但是自己太懒,一直没有弄下去…</p><p>趁此中秋佳节之际,刚好弄起来吧…</p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我公众号也弄过几次送书活动,不过我一直觉得此类活动,除了给公众号涨粉外,并没有太多的作用。</p><p>可能你是因为好玩，或者因为感觉这本书不错，所以参加了活动…</p><p>有多少人能拿到自己想要的那本书呢…</p><p>真正拿到书的人有多少能看完呢？有多少真的学到了东西呢…</p><p>我自己趁打折时候买的一些书，都好多没有看完…</p><p>上面都是个人看法，欢迎反驳。</p><h2 id="真正的送书活动"><a href="#真正的送书活动" class="headerlink" title="真正的送书活动?"></a>真正的送书活动?</h2><p>综上所述,我想弄一个真正的送书活动.</p><p>让每个人都能拿到自己想要的书.</p><p>怎么做呢?</p><p>理论上可以我每个月拿出1000左右的钱出来,给大家送书…</p><p>但是这样的话，这个系统太中心化了…</p><p>万一哪天我不想送了,那这个活动也就结束了…</p><p>所以,应该让系统中的每一个人都参与进来…</p><h2 id="人人参与的送书活动"><a href="#人人参与的送书活动" class="headerlink" title="人人参与的送书活动"></a>人人参与的送书活动</h2><h3 id="共识"><a href="#共识" class="headerlink" title="共识"></a>共识</h3><p>假如你想要参与到送书活动中来的话,你需要做到下面的几件事</p><ol><li>有想看的书(任何种类的书)</li><li>在2个月内能看完</li><li>能写出大于1000字的观后感（这篇文章会发表到公众号)</li></ol><p>这上面就是我们的共识了.</p><h3 id="书送给谁"><a href="#书送给谁" class="headerlink" title="书送给谁?"></a>书送给谁?</h3><p>因为系统的资源是有限的,所以需要通过某种方法选出合适的人.</p><p>目前规则很简单:你需要给公众号赞赏大于1RMB,然后在所有参与者中随机选出“中奖者”</p><h3 id="系统如何自洽"><a href="#系统如何自洽" class="headerlink" title="系统如何自洽"></a>系统如何自洽</h3><p>目前,系统需要的资源应该就是钱了…</p><p>目前有以下途径可以拿到钱</p><ul><li>公众号底部的广告(目前每个月大概50元左右…这个锅是我的，发文章太少了)</li><li>其他人投放的软文…(应该很久没有发了,都被我拒了…)</li><li>参与者 赞赏的钱（也就是上面的参与方式内的赞赏）</li><li>土豪赞助(目前还没有)</li></ul><h3 id="愿景"><a href="#愿景" class="headerlink" title="愿景"></a>愿景</h3><p>最终我希望通过这种方式，能出一个持续的送书活动.</p><p>如果你对这个活动比较感兴趣,有一些建议或者想要吐槽的地方,欢迎到<a href="https://github.com/jin10086/send-book/issues/1" rel="external nofollow noopener noreferrer" target="_blank">送书活动讨论区</a>和大家一起讨论</p><h2 id="第一期活动"><a href="#第一期活动" class="headerlink" title="第一期活动"></a>第一期活动</h2><p>第一期活动由我抛砖引玉 送出10本书,每本书价格在200以内进行.（截止到9/29日）</p><p>参与方式见上文.</p><p>最后祝大家中秋节快乐.</p><p>博客想参与的话，请点击<a href="https://mp.weixin.qq.com/s/duroacjtGynAvaY3t9JgzQ" rel="external nofollow noopener noreferrer" target="_blank">微信文章</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/24/人人参与的送书活动/">https://igaojin.me/2018/09/24/人人参与的送书活动/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      很早之前就说要做送书活动了,但是自己太懒,一直没有弄下去…
+
+趁此中秋佳节之际,刚好弄起来吧…
+
+背景
+我公众号也弄过几次送书活动,不过我一直觉得此类活动,除了给公众号涨粉外,并没有太多的作用。
+
+可能你是因为好玩，或者因为感觉这本书不错，所以参加了活动…
+
+有多少人能拿到自己想要的那本书呢…
+
+真正拿到书的人有多少能看完呢？有多少真的学到了东西呢…
+
+我自己趁打折时候买的一些书，都好多没有看完…
+
+上面都是个人看法，欢迎反驳。
+
+真正的送书活动?
+综上所述,我想弄一个真正的送书活动.
+
+让每个人都能拿到自己想要的书.
+
+怎么做呢?
+
+理论上可以我每个月拿出1000左右的钱出来,给大家送书…
+
+    
+    </summary>
+    
+      <category term="送书活动" scheme="https://igaojin.me/categories/%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 7 期</title>
+    <link href="https://igaojin.me/2018/09/21/weekly-issue-7/"/>
+    <id>https://igaojin.me/2018/09/21/weekly-issue-7/</id>
+    <published>2018-09-21T14:56:18.000Z</published>
+    <updated>2018-10-11T17:11:19.468Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="稳定币？"><a href="#稳定币？" class="headerlink" title="稳定币？"></a>稳定币？</h1><h3 id="Gemini美元GUSD稳定币中文白皮书"><a href="#Gemini美元GUSD稳定币中文白皮书" class="headerlink" title="Gemini美元GUSD稳定币中文白皮书"></a><a href="https://www.8btc.com/article/275190" rel="external nofollow noopener noreferrer" target="_blank">Gemini美元GUSD稳定币中文白皮书</a></h3><p>USD(Gemini 美元)是一种加密令牌，它是(i)一个纽约信托 公司发行的，(ii)严格按 1:1 与美元挂钩，以及(iii)根据 ERC20 标准 建立在以太坊网络[1]上。<br>GUSD(Gemini 美元)是一个稳定币，它结合了 美元的信誉和价格稳定性，以及加密货币的技术优势，并且体现了美国监 管机构的监管。<br>作为符合 ERC20 标准的一种代币，GUSD(Gemini 美元) 可以在以太坊网络上传输。<br>GUSD(Gemini 美元)在从 Gemini 数字货币交 易所时提取出来时创建，并在存入 Gemini 数字货币交易所时被赎回或”销毁” 。</p><h3 id="香港首家离岸人民币稳定币将合规出场"><a href="#香港首家离岸人民币稳定币将合规出场" class="headerlink" title="香港首家离岸人民币稳定币将合规出场"></a><a href="http://www.huoxing24.com/newsdetail/20180918154809524749.html" rel="external nofollow noopener noreferrer" target="_blank">香港首家离岸人民币稳定币将合规出场</a></h3><p>WIT是一项基于ERC20的区块链应用，是在审计机构的参与下，以离岸人民币作为结算标准，对客户的资金或超额质押的优质数字资产，按照相应的流程发出的电子凭证。</p><h3 id="中美首个“合规稳定币”合约剖析：孰优孰劣？"><a href="#中美首个“合规稳定币”合约剖析：孰优孰劣？" class="headerlink" title="中美首个“合规稳定币”合约剖析：孰优孰劣？"></a><a href="https://mp.weixin.qq.com/s/tZIVmSAnYAmor_GzhRpEKw" rel="external nofollow noopener noreferrer" target="_blank">中美首个“合规稳定币”合约剖析：孰优孰劣？</a></h3><h3 id="王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大"><a href="#王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大" class="headerlink" title="王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大"></a><a href="https://mp.weixin.qq.com/s/K-I5RsK5cn9XI4cuZuxgqw" rel="external nofollow noopener noreferrer" target="_blank">王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大</a></h3><hr><h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="已经解决了黎曼猜想"><a href="#已经解决了黎曼猜想" class="headerlink" title="已经解决了黎曼猜想?"></a><a href="https://mp.weixin.qq.com/s/XrnNbzQs3NGYj00C-sa5gw" rel="external nofollow noopener noreferrer" target="_blank">已经解决了黎曼猜想?</a></h3><p>菲尔兹和阿贝尔奖双料得主迈克尔·阿蒂亚爵士宣称自己证明了黎曼猜想，要在9月24日海德堡获奖者论坛[1]上宣讲.</p><p>[1] 海德堡获奖者论坛是由Klaus Tschira基金会，海德堡理论研究所，ACM（国际计算机学会），国际数学联合会，以及挪威科学与文学院共同举办，旨在为青年一代学者提供与图灵奖得主，阿贝尔奖得主，奈望林纳奖得主，菲尔兹奖得主等国际顶级奖项获奖人为期一周的共同研究探讨的机会。</p><p>科普 <a href="https://mp.weixin.qq.com/s/2ZYeZIInfm6vqluJKKQjgw" rel="external nofollow noopener noreferrer" target="_blank">什么是黎曼猜想</a></p><p><a href="https://mp.weixin.qq.com/s/u_rhcDOuQqqzr7Q0o-KYWQ" rel="external nofollow noopener noreferrer" target="_blank">数学科幻小说——黎曼的猫</a></p><p><a href="https://mp.weixin.qq.com/s/ucx0txcCupyHkD7mbLyPYg" rel="external nofollow noopener noreferrer" target="_blank">危险的“黎曼猜想”</a></p><h3 id="朋友，别再用“去中心化”描述区块链了"><a href="#朋友，别再用“去中心化”描述区块链了" class="headerlink" title="朋友，别再用“去中心化”描述区块链了"></a><a href="https://mp.weixin.qq.com/s/vyWjsZUufbyb5dxwXSuxdA" rel="external nofollow noopener noreferrer" target="_blank">朋友，别再用“去中心化”描述区块链了</a></h3><p>当我们说起“去中心化”的时候，我们到底在说什么？</p><p>用一个含糊不清的词来描述一个新出现的事物，对我们的理解会有怎样的危害？</p><p>Tony Sheng的这篇文章从“去中心化”的定义开始思考，得出的结论是：某个东西是否“去中心化”并不重要，重要的是“去中心化”背后的特质到底如何衡量，比如能否抵御监管、防止内容被篡改。这才是真正重要的本质属性。</p><p>我们不用担心EOS是不是足够去中心化了。<br>我们应该问的是对监管的抵御足够了吗？对防篡保护到位了吗？谁有权利改变整个网络的规则？<br>不同的派系对于各个方面怎么划线都有不同的答案，但是至少我们是在同一个维度进行讨论。</p><h3 id="从MP3到种子王者海盗湾-鬼知道今天的去中心化都经历了些什么"><a href="#从MP3到种子王者海盗湾-鬼知道今天的去中心化都经历了些什么" class="headerlink" title="从MP3到种子王者海盗湾, 鬼知道今天的去中心化都经历了些什么"></a><a href="https://mp.weixin.qq.com/s/xHea_dQ1VE5qPLGBHOU8og" rel="external nofollow noopener noreferrer" target="_blank">从MP3到种子王者海盗湾, 鬼知道今天的去中心化都经历了些什么</a></h3><p>去中心化，一个在行业里被说烂的词，比特币和加密货币的出现让这个词变得妇孺皆知；</p><p>然而，去中心化这一概念却并不是比特币首创，早在20世纪80年代，去中心化就伴随着共享文件需求的增长，形成了最初的雏形。在这一过程中，无论是我们所熟知的MP3，还是宅男必备的「海盗湾」，甚至连各国政府的法律法规，都有意无意的成为了推动去中心化发展的重要推手。<br>了解去中心化的成因和历史，对于今天区块链创业和项目选型至为重要。那么，中心化的起源到底是什么？经历了哪些发展？又为什么会对我们今天对区块链的理解产生影响呢？这些问题让我们回到历史中去寻找答案。</p><h3 id="杭州造云记-甲子光年"><a href="#杭州造云记-甲子光年" class="headerlink" title="杭州造云记 | 甲子光年"></a><a href="https://mp.weixin.qq.com/s/TV6JzUSIau06YpzHPQzaGw" rel="external nofollow noopener noreferrer" target="_blank">杭州造云记 | 甲子光年</a></h3><img src="/2018/09/21/weekly-issue-7/640.webp"><p>在离云栖大会会场不远处，有一尊飞天5K纪念碑，底座一侧刻着参与战斗的227个工程师和他们家人的名字，另一侧刻着王坚的一段记录：“一群有理想的平凡人经历了1757个日日夜夜，用生命和热血写成代码，为云计算开启了未来之势。坚持你相信的，相信你坚持的。”</p><h3 id="火车上的40年：从站票、泡面到复兴号"><a href="#火车上的40年：从站票、泡面到复兴号" class="headerlink" title="火车上的40年：从站票、泡面到复兴号"></a><a href="https://mp.weixin.qq.com/s/-gDwMcREC7WmuLBG-JKlWQ" rel="external nofollow noopener noreferrer" target="_blank">火车上的40年：从站票、泡面到复兴号</a></h3><img src="/2018/09/21/weekly-issue-7/40.webp"><p>►1977年，哈尔滨铁路局三棵树车辆站的宣传干事王福春拿起了人生的第一台相机——装胶卷的双镜头海鸥相机，将镜头对准了他每天打交道的火车车厢和行色匆匆的旅客。没想到，这一拍就是40年。</p><p>40年光阴荏苒，王福春几乎跑遍了中国所有的铁路线，他的镜头见证了四十年的国民发展变迁。十多万张黑白影像上记录的每一丝褶皱、每一滴汗水、每一份笑容、每一个背影，凝结成了几代中国人对于火车的集体记忆。</p><p>王福春说，“我是摄影师，是社会的记录者。中国这40年是改革最快变化最大的40年，在铁路这个小分支，我全赶上了，全在我的影集里，没给社会留下空白，这就是我作为摄影师最大的成就感了。”</p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="住在公司一年多，一些细节和感想"><a href="#住在公司一年多，一些细节和感想" class="headerlink" title="住在公司一年多，一些细节和感想"></a><a href="https://www.v2ex.com/t/490481" rel="external nofollow noopener noreferrer" target="_blank">住在公司一年多，一些细节和感想</a></h3><p>V站神人，讲述自己如何在公司住了一年多…</p><p>应该很多人可能说过(比如我)，公司环境这么好，住在公司挺好的…但是有多少人真的实践过呢…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/21/weekly-issue-7/">https://igaojin.me/2018/09/21/weekly-issue-7/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      稳定币？
+Gemini美元GUSD稳定币中文白皮书
+USD(Gemini 美元)是一种加密令牌，它是(i)一个纽约信托 公司发行的，(ii)严格按 1:1 与美元挂钩，以及(iii)根据 ERC20 标准 建立在以太坊网络[1]上。
+GUSD(Gemini 美元)是一个稳定币，它结合了 美元的信誉和价格稳定性，以及加密货币的技术优势，并且体现了美国监 管机构的监管。
+作为符合 ERC20 标准的一种代币，GUSD(Gemini 美元) 可以在以太坊网络上传输。
+GUSD(Gemini 美元)在从 Gemini 数字货币交 易所时提取出来时创建，并在存入 Gemini 数字货币交易所时被赎回或”
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 6 期</title>
+    <link href="https://igaojin.me/2018/09/15/weekly-issue-6/"/>
+    <id>https://igaojin.me/2018/09/15/weekly-issue-6/</id>
+    <published>2018-09-15T07:46:52.000Z</published>
+    <updated>2018-10-11T17:11:19.452Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="GUSD：受纽约金融服务部监管的新稳定币"><a href="#GUSD：受纽约金融服务部监管的新稳定币" class="headerlink" title="GUSD：受纽约金融服务部监管的新稳定币"></a><a href="https://mp.weixin.qq.com/s/XMi_3GhsfyE2HjpU3cMREA" rel="external nofollow noopener noreferrer" target="_blank">GUSD：受纽约金融服务部监管的新稳定币</a></h3><p>美东时间9月10日10点，纽约金融服务部（NYDFS）在官网发布公告，授权数字货币交易所Gemini Trust（双子星交易所）和区块链初创企业Paxos Trust两家公司各自发行价格稳定、严格和美元1:1挂钩的加密数字货币。不久后双子星交易所宣布在北京时间9月10日22时正式推出全球首个受政府监管、基于以太坊区块链ERC20标准的稳定币Gemini dollar（GUSD）。目前GUSD发行量约10.12万枚：</p><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="在线写nginx配置"><a href="#在线写nginx配置" class="headerlink" title="在线写nginx配置"></a><a href="https://nginxconfig.io/" rel="external nofollow noopener noreferrer" target="_blank">在线写nginx配置</a></h3><p>适合对nginx不熟悉，每次写的时候都需要搜索的同学</p><p>有PHP后端、Node.js、单页应用、WordPress等多个预置模板，一般需求简单修改一下即可使用。</p><img src="/2018/09/15/weekly-issue-6/1.png"><h3 id="计算机科学的一些笔记"><a href="#计算机科学的一些笔记" class="headerlink" title="计算机科学的一些笔记"></a><a href="https://github.com/CyC2018/CS-Notes" rel="external nofollow noopener noreferrer" target="_blank">计算机科学的一些笔记</a></h3><img src="/2018/09/15/weekly-issue-6/2.png"><h3 id="pdb-tutorial"><a href="#pdb-tutorial" class="headerlink" title="pdb-tutorial"></a><a href="https://github.com/spiside/pdb-tutorial" rel="external nofollow noopener noreferrer" target="_blank">pdb-tutorial</a></h3><p>如何使用pdb的简单教程.一步一步的教你.</p><p>虽然使用IDE 调式很简单，但是有时候IDE无法用的时候,就需要使用pdb了。</p><p>当然还有ipdb,在pdb上面的扩展(相当于ipython 与python的关系)</p><img src="/2018/09/15/weekly-issue-6/pdb.png"><h3 id="halo"><a href="#halo" class="headerlink" title="halo"></a><a href="https://github.com/manrajgrover/halo" rel="external nofollow noopener noreferrer" target="_blank">halo</a></h3><p>在命令行给用户更加友好的提示</p><img src="/2018/09/15/weekly-issue-6/doge_spin.gif"><h3 id="free-for-dev"><a href="#free-for-dev" class="headerlink" title="free-for-dev"></a><a href="https://github.com/ripienaar/free-for-dev" rel="external nofollow noopener noreferrer" target="_blank">free-for-dev</a></h3><p>面向开发者的免费服务list</p><hr><h1 id="程序员圈内的政治正确？"><a href="#程序员圈内的政治正确？" class="headerlink" title="程序员圈内的政治正确？"></a>程序员圈内的政治正确？</h1><h3 id="Redis-作者被迫修改-masterslave-架构的描述"><a href="#Redis-作者被迫修改-masterslave-架构的描述" class="headerlink" title="Redis 作者被迫修改 masterslave 架构的描述"></a><a href="https://github.com/antirez/redis/issues/5335" rel="external nofollow noopener noreferrer" target="_blank">Redis 作者被迫修改 masterslave 架构的描述</a></h3><p><a href="http://antirez.com/news/122" rel="external nofollow noopener noreferrer" target="_blank">On Redis master-slave terminology</a></p><img src="/2018/09/15/weekly-issue-6/redis_master_slave.png" title="antire在推特上的问卷调差"><h3 id="Redis-之后，Python-的-master-slave-亦恐被无奈修改"><a href="#Redis-之后，Python-的-master-slave-亦恐被无奈修改" class="headerlink" title="Redis 之后，Python 的 master-slave 亦恐被无奈修改"></a><a href="https://www.oschina.net/news/99858/python-purges-master-and-slave" rel="external nofollow noopener noreferrer" target="_blank">Redis 之后，Python 的 master-slave 亦恐被无奈修改</a></h3><h3 id="预防？"><a href="#预防？" class="headerlink" title="预防？"></a>预防？</h3><img src="/2018/09/15/weekly-issue-6/4.jpeg"><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="老玩家检测器"><a href="#老玩家检测器" class="headerlink" title="老玩家检测器"></a><a href="https://github.com/jin10086/fuckman" rel="external nofollow noopener noreferrer" target="_blank">老玩家检测器</a></h3><p>可以根据手机号检测ta注册了多少个约p软件…</p><p>想法来源是</p><img src="/2018/09/15/weekly-issue-6/6.jpeg"><p>项目目前还在初期，欢迎大家贡献代码啊.</p><p>更具体的介绍请<a href="https://jin10086.github.io/lab/%E8%80%81%E7%8E%A9%E5%AE%B6%E6%A3%80%E6%B5%8B%E5%99%A8.html" target="_blank" rel="noopener">点这里</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/15/weekly-issue-6/">https://igaojin.me/2018/09/15/weekly-issue-6/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      一些文章
+GUSD：受纽约金融服务部监管的新稳定币
+美东时间9月10日10点，纽约金融服务部（NYDFS）在官网发布公告，授权数字货币交易所Gemini Trust（双子星交易所）和区块链初创企业Paxos Trust两家公司各自发行价格稳定、严格和美元1:1挂钩的加密数字货币。不久后双子星交易所宣布在北京时间9月10日22时正式推出全球首个受政府监管、基于以太坊区块链ERC20标准的稳定币Gemini dollar（GUSD）。目前GUSD发行量约10.12万枚：
+
+
+
+
+不错的项目
+在线写nginx配置
+适合对nginx不熟悉，每次写的时候都需要搜索的同学
+
+有PHP后端、Node.js、
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 5 期</title>
+    <link href="https://igaojin.me/2018/09/07/weekly-issue-5/"/>
+    <id>https://igaojin.me/2018/09/07/weekly-issue-5/</id>
+    <published>2018-09-07T06:16:17.000Z</published>
+    <updated>2018-10-11T17:11:19.364Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="2018上半年暗网研究报告"><a href="#2018上半年暗网研究报告" class="headerlink" title="2018上半年暗网研究报告"></a><a href="https://paper.seebug.org/686/" rel="external nofollow noopener noreferrer" target="_blank">2018上半年暗网研究报告</a></h3><img src="/2018/09/07/weekly-issue-5/0.jpg"> <img src="/2018/09/07/weekly-issue-5/1.jpg" title="Tor暗网的主要类别"><h3 id="上车吗？9-17-9-23-相约上海，Ride-with-Pony！"><a href="#上车吗？9-17-9-23-相约上海，Ride-with-Pony！" class="headerlink" title="上车吗？9/17-9/23 相约上海，Ride with Pony！"></a><a href="https://mp.weixin.qq.com/s/J67rM3t6fLniX1Tdu7daCQ" rel="external nofollow noopener noreferrer" target="_blank">上车吗？9/17-9/23 相约上海，Ride with Pony！</a></h3><img src="/2018/09/07/weekly-issue-5/2.jpg"><p>HELLO，人类！<br>这是来自AI世界的邀请。2018人工智能爆发元年，AI号飞船降落上海徐汇滨江，并建立AI PARK，集结最顶尖AI技术，集中展出被赋能的未来生活场景，在2018.9.17—9.23期间欢迎您的到访。<br>您可以穿越星空，观赏AI舞团、带上脑环感受意念之力、零距离体验 “首长视角”，甚至定制一个属于您个人的AI形象。<br>未来已来，欢迎预约前往！</p><p><strong>9.17—9.23</strong>可以预约体验自动驾驶了！</p><h3 id="照片-2018-ChinaJoy-Showgirl-Collection"><a href="#照片-2018-ChinaJoy-Showgirl-Collection" class="headerlink" title="[照片]2018 ChinaJoy Showgirl Collection"></a><a href="https://mp.weixin.qq.com/s/UguYje5kE0xIkvVZNhKDYA" rel="external nofollow noopener noreferrer" target="_blank">[照片]2018 ChinaJoy Showgirl Collection</a></h3><img src="/2018/09/07/weekly-issue-5/3.jpg"> <img src="/2018/09/07/weekly-issue-5/4.jpg"><p>全是图…(之前喜欢摄影的时候，还去过两届，今年离的很近也没有去…)</p><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="reprexpy"><a href="#reprexpy" class="headerlink" title="reprexpy"></a><a href="https://github.com/crew102/reprexpy" rel="external nofollow noopener noreferrer" target="_blank">reprexpy</a></h3><p>可以重新错误的代码，方便发布到github或者Stack Overflow</p><img src="/2018/09/07/weekly-issue-5/5.gif"><h3 id="cached-property"><a href="#cached-property" class="headerlink" title="cached-property"></a><a href="https://github.com/pydanny/cached-property" rel="external nofollow noopener noreferrer" target="_blank">cached-property</a></h3><p>用于在类中缓存属性的装饰器。多线程和async/await 都可用.<br><img src="/2018/09/07/weekly-issue-5/6.jpg"><br><img src="/2018/09/07/weekly-issue-5/7.jpg"><br><img src="/2018/09/07/weekly-issue-5/8.jpg"></p><h3 id="【第〇课时】滚城一团的-ECharts-训练营"><a href="#【第〇课时】滚城一团的-ECharts-训练营" class="headerlink" title="【第〇课时】滚城一团的 ECharts 训练营"></a><a href="https://www.bilibili.com/video/av31172702" rel="external nofollow noopener noreferrer" target="_blank">【第〇课时】滚城一团的 ECharts 训练营</a></h3><p>ECharts 核心开发者之一的羡辙在 B 站教 ECharts😁</p><p>记得当初不知道从哪看到羡辙的github, 顺藤摸瓜就看到<a href="http://zhangwenli.com/blog/" rel="external nofollow noopener noreferrer" target="_blank">羡辙的blog</a></p><p>当时惊为天人，感觉就是女神！（现在还是.)</p><img src="/2018/09/07/weekly-issue-5/9.jpg" title="女神博客截图"> <img src="/2018/09/07/weekly-issue-5/10.jpg" title="女神博客截图"><p>女神做的一个好玩的项目 <a href="http://zhangwenli.com/lipstick/" rel="external nofollow noopener noreferrer" target="_blank">口红颜色可视化 - 为什么你的女神总缺一支口红</a><br><img src="/2018/09/07/weekly-issue-5/11.jpg"></p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="GitHub-Contributions-Chart-Generator"><a href="#GitHub-Contributions-Chart-Generator" class="headerlink" title="GitHub Contributions Chart Generator"></a><a href="https://github-contributions.now.sh/" rel="external nofollow noopener noreferrer" target="_blank">GitHub Contributions Chart Generator</a></h3><img src="/2018/09/07/weekly-issue-5/12.jpg" title="我的"><h3 id="【纪录片】AlphaGo世紀對決-2017"><a href="#【纪录片】AlphaGo世紀對決-2017" class="headerlink" title="【纪录片】AlphaGo世紀對決 2017"></a><a href="https://movie.douban.com/subject/27012433/" rel="external nofollow noopener noreferrer" target="_blank">【纪录片】AlphaGo世紀對決 2017</a></h3><img src="/2018/09/07/weekly-issue-5/13.jpg"><p>AlphaGo世紀對決是一部圍棋紀錄片，記錄AlphaGo從出道至2016年AlphaGo李世乭五番棋的過程。</p><blockquote><p>从科技研发角度来说，历史上几乎从未像这次这样，人类用自己的失败让自己向前迈进了一大步；看到韩国大街上的显示屏直播围棋比赛，真的非常感动；影片展现的人类智慧之美和创造力之美同样让人感动，但观看的时候心中始终蒙着阴影：片中出现的几位中国人，如在中国本土，有可能被划为滴端人口。</p></blockquote><p>版权归作者所有，任何形式转载请联系作者。<br>作者：想把我唱给你听（来自豆瓣）<br>来源：<a href="https://movie.douban.com/review/9053579/" rel="external nofollow noopener noreferrer" target="_blank">https://movie.douban.com/review/9053579/</a></p><blockquote><p>如果说第一局李世石的失败，围棋界大部分的感觉是震惊，但仍然认为人类还有赢得希望，那么在连输三局之后，整个围棋界，包括所有关注这场人机大战的人都陷入的一丝绝望与恐慌感，当时整个比赛大厅都陷入了一片沉寂。如同《终结者》的时代已经提前到来，就连AlphaGo的团队成员都为李世石的失败感到难过，人类自身的脆弱，让我们制造许多强大的工具来强化保护我们自身，AlphaGo也是一个工具。然而此时此刻，AlphaGo强大的学习能力似乎隐隐的有些超出了我们所能想象的范畴，AlphaGo最终会发展成一个强大的工具还是一个新的智慧体，对异类的排斥和恐惧动摇了人类中心论的价值观，好似《银翼杀手》中对复制人的捕杀与限制，这些本来只应该在科幻片出现的感觉，现在每个人都在这现实的世界中都真真切切的感受到了。</p></blockquote><blockquote><p>这也是为什么在第四场比赛，李世石顽强的扳回一局会让那么多人热泪盈眶，原来人类还有希望啊！很多人这么想。如果故事到此戛然而止，一部主旋律励志电影就诞生了，然而真正的反高潮在于第五局，李世石没有任何还手之力，AlphaGo用一种高高在上的方式结束了整场比赛。就这样结束了？好像除了赞美一下科技的神奇之外，总有些怪怪的感觉。主流的声音都在说AlphaGo的胜利吸引了更多人关注围棋，这不是围棋的消亡反而是围棋的再一次重生，确实，有正确自我认知的人会在失败中让自己成长，李世石和柯洁都是这样的人，他们输得有尊严，也清楚自己与对手的差距。然而对大部分旁观者来说，更重要的是唯一一场胜利消弭了“非我族类，其心必异”的不适感，但心里仍不是滋味。</p></blockquote><h3 id="大空头-The-Big-Short"><a href="#大空头-The-Big-Short" class="headerlink" title="大空头 The Big Short"></a><a href="https://movie.douban.com/subject/26303622/" rel="external nofollow noopener noreferrer" target="_blank">大空头 The Big Short</a></h3><img src="/2018/09/07/weekly-issue-5/14.jpg"><p>　2008年全球金融危机，华尔街几位眼光独到的投资鬼才在2007年美国信贷风暴前就看穿了泡沫假象，通过做空次贷CDS而大幅获益，成为少数在金融灾难中大量获利的投资枭雄。贾瑞德·韦内特（瑞恩·高斯林饰）将一个能把40亿美元单子做成37亿美元收入的德银代理人，迈克尔·布瑞（克里斯蒂安·贝尔饰）是独眼基金管理人，马克·鲍姆（史蒂夫·卡瑞尔饰）是华尔街世家出身，本·霍克特（布拉德·皮特饰）是康沃尔资本退休银行家。</p><blockquote><p>这种电影最怕“银行家们都是混蛋百姓被剥削最可怜”这种道德指责。《大空头》很好地用末世来临的全景方式展现了每个参与其中的人的行为。嬉笑怒骂插科打诨，恣意不羁剪辑凌厉。不要想着拯救世界，这种努力在浪潮面前毫无意义 #真心牛逼#</p></blockquote><h3 id="拼多多引发的血案"><a href="#拼多多引发的血案" class="headerlink" title="拼多多引发的血案"></a><a href="https://github.com/fastai/fastai/issues/751" rel="external nofollow noopener noreferrer" target="_blank">拼多多引发的血案</a></h3><p>在 v2ex 看到 github 上一个 Issue，姘多多导致深度学习 bug。有人用 fastai 训练模型时总会莫名其妙死机，调试了8个小时候才发现，原来在 PDD 买的标称 550W 的电源最多只有 200W，机器学到 high 处就会因供血不足死机<br><img src="/2018/09/07/weekly-issue-5/15.jpg"></p><h3 id="Identifying-the-author-behind-New-York-Time’s-op-ed-from-inside-the-Trump-White-House"><a href="#Identifying-the-author-behind-New-York-Time’s-op-ed-from-inside-the-Trump-White-House" class="headerlink" title="Identifying the author behind New York Time’s op-ed from inside the Trump White House."></a><a href="https://github.com/mkearney/resist_oped" rel="external nofollow noopener noreferrer" target="_blank">Identifying the author behind New York Time’s op-ed from inside the Trump White House.</a></h3><p>《纽约时报》发表了一封匿名来信，作者是特朗普总统身边的高管。来信说，他为了美国的利益，潜伏在总统身边，让总统的很多错误决定无法执行。</p><p>有个程序员在GitHub公布了一个脚本，将这封来信与每个内阁成员的推特进行对比，求出相关系数。<br><img src="/2018/09/07/weekly-issue-5/16.jpg"></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/07/weekly-issue-5/">https://igaojin.me/2018/09/07/weekly-issue-5/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      一些文章
+2018上半年暗网研究报告
+上车吗？9/17-9/23 相约上海，Ride with Pony！
+HELLO，人类！
+这是来自AI世界的邀请。2018人工智能爆发元年，AI号飞船降落上海徐汇滨江，并建立AI PARK，集结最顶尖AI技术，集中展出被赋能的未来生活场景，在2018.9.17—9.23期间欢迎您的到访。
+您可以穿越星空，观赏AI舞团、带上脑环感受意念之力、零距离体验 “首长视角”，甚至定制一个属于您个人的AI形象。
+未来已来，欢迎预约前往！
+
+9.17—9.23可以预约体验自动驾驶了！
+
+[照片]2018 ChinaJoy Showgirl Collection
+全是图…
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 4 期</title>
+    <link href="https://igaojin.me/2018/08/24/weekly-issue-4/"/>
+    <id>https://igaojin.me/2018/08/24/weekly-issue-4/</id>
+    <published>2018-08-24T08:22:22.000Z</published>
+    <updated>2018-10-11T17:11:19.334Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="「首次深度揭秘」Fomo3D，被黑客拿走的-2200-万"><a href="#「首次深度揭秘」Fomo3D，被黑客拿走的-2200-万" class="headerlink" title="「首次深度揭秘」Fomo3D，被黑客拿走的 2200 万"></a><a href="https://mp.weixin.qq.com/s/s_RCF_EDlptQpm3d7mzApA" rel="external nofollow noopener noreferrer" target="_blank">「首次深度揭秘」Fomo3D，被黑客拿走的 2200 万</a></h3><p><a href="https://mp.weixin.qq.com/s/MCuGJepXr_f18xrXZsImBQ" rel="external nofollow noopener noreferrer" target="_blank">Fomo3D 千万大奖获得者“特殊攻击技巧”最全揭露</a></p><p><strong>一直以为 FOMO3D 永远不会结束…</strong></p><p>Fomo3D 游戏第一轮正式结束，最终大奖由地址 0xa169 获得，奖金额高达 10,469.66 以太币。</p><p>不少人轻易得出结论：获奖者平平无奇。</p><p>安比（SECBIT）实验室昨日首个发现 Fomo3D 大奖获得者采取一些“特殊攻击技巧”，使得游戏临近结束时，矿工打包入区块内的交易数量骤减（涉及连续多个区块），从而起到加速游戏结束和提高胜率的作用。安比（SECBIT）实验室在 Last Winner 上轮游戏结束时也观察到了多个十分类似的异常区块和交易。</p><img src="/2018/08/24/weekly-issue-4/0.jpg"><p>后面准备写一篇 fomo3d 的文章，从随机数的漏洞到如何有机会得到大奖…</p><h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="一个安卓程序媛的人生经验"><a href="#一个安卓程序媛的人生经验" class="headerlink" title="一个安卓程序媛的人生经验"></a><a href="https://mp.weixin.qq.com/s/Whtx_UPUELzzpOGVKteo5Q" rel="external nofollow noopener noreferrer" target="_blank">一个安卓程序媛的人生经验</a></h3><img src="/2018/08/24/weekly-issue-4/1.jpg"><p>一位程序媛妹子的心酸血泪史</p><h3 id="我们正在目睹的是-20-世纪以来人类社会最大规模的崩溃"><a href="#我们正在目睹的是-20-世纪以来人类社会最大规模的崩溃" class="headerlink" title="我们正在目睹的是 20 世纪以来人类社会最大规模的崩溃"></a><a href="https://mp.weixin.qq.com/s/sHqIni5wBa9qV3WeRa-pcQ" rel="external nofollow noopener noreferrer" target="_blank">我们正在目睹的是 20 世纪以来人类社会最大规模的崩溃</a></h3><img src="/2018/08/24/weekly-issue-4/2.jpg"><p>关于委内瑞拉的现状，媒体上已经有很多的报道了，大致可以归纳为三个方面。</p><p>第一，多年恶性通货膨胀，货币严重贬值，国际货币基金组织的预计是到今年年底通胀率将会高达 1000000%，逼近人类通胀史的最高水平。</p><p>第二，除了物价高，更可怕的是有钱也买不到东西。</p><p>第三，治安状况急剧恶化，暴力犯罪极度猖獗，伴随经济崩溃而来的是社会秩序的全面崩塌。</p><p>我们正在目睹的，是一个失败国家的典型，是 20 世纪以来非战乱条件所造成的人类社会最大规模的崩溃。</p><h3 id="喷子简史：当年“匡扶正义”的网友，如何成为今天尽情狂欢的嗨粉"><a href="#喷子简史：当年“匡扶正义”的网友，如何成为今天尽情狂欢的嗨粉" class="headerlink" title="喷子简史：当年“匡扶正义”的网友，如何成为今天尽情狂欢的嗨粉"></a><a href="https://mp.weixin.qq.com/s/afLY6E34CnuO5SwGkthfBQ" rel="external nofollow noopener noreferrer" target="_blank">喷子简史：当年“匡扶正义”的网友，如何成为今天尽情狂欢的嗨粉</a></h3><img src="/2018/08/24/weekly-issue-4/3.jpg" title="喷子也随社会进化"><p>传说亚洲有三子，韩国棒子、日本鬼子和中国喷子。<br>中国喷子凭借其辉煌的战绩获得如此高的地位，可以说受之无愧。<br>当 NMSL 堂而皇之和流量担当蔡徐坤一起登上了微博热搜时，喷子们再一次刷爆了存在感。</p><h3 id="偷听传销一席话，胜读-10-本运营书"><a href="#偷听传销一席话，胜读-10-本运营书" class="headerlink" title="偷听传销一席话，胜读 10 本运营书"></a><a href="https://mp.weixin.qq.com/s/o8hMQztHGM2PPne4edOIYA" rel="external nofollow noopener noreferrer" target="_blank">偷听传销一席话，胜读 10 本运营书</a></h3><p>之前有段时间，新闻报道了一些关于传销导致的悲剧，导致很多人谈传销色变。</p><p>但是也会有很多人觉得好奇，传销到底是怎么做到将人彻底洗脑的？</p><p>今天分享的这篇文章，恰好讲到这个话题，我来回看了几遍，不得不感叹对人性做到透彻的洞察，真的是把极其锋利的双刃剑……</p><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="lunr-js"><a href="#lunr-js" class="headerlink" title="lunr.js"></a><a href="https://github.com/olivernn/lunr.js" rel="external nofollow noopener noreferrer" target="_blank">lunr.js</a></h3><p>lunr.js 是个用于浏览器的轻量级 JavaScript 全文搜索引擎，对于一些小型的博客、开发者文档或 Wiki 网站来说，完全可以通过 lunr.js 实现站内离线搜索，既快速又小巧。</p><h3 id="Save-Page-WE"><a href="#Save-Page-WE" class="headerlink" title="Save Page WE"></a><a href="https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof" rel="external nofollow noopener noreferrer" target="_blank">Save Page WE</a></h3><img src="/2018/08/24/weekly-issue-4/4.jpg"><p>Save Page WE，一个保存网页的扩展程序，可以将网页保存为 html 格式单文件，效果极好，自带的 Ctrl+S 实在很弱</p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="hacknical"><a href="#hacknical" class="headerlink" title="hacknical"></a><a href="https://hacknical.com/" rel="external nofollow noopener noreferrer" target="_blank">hacknical</a></h3><p><strong>hacknical 是什么？</strong></p><p>在我工作的经历中，无论是面试别人，或者在换工作时被人面试，都是一件很麻烦的事情。面试官经常对面试者的水平了解不足，而有些水平不错的开发者，也不知道该如何很好的展现自我。在这些状态下，简历里往往会有这样或那样的瑕疵：</p><ul><li>工作经历要么描述的太少，要么废话太多</li><li>没有实际的线上作品</li><li>没有可看的公开或开源代码来让面试官了解自己的代码水平和风格</li><li>往往喜欢用 “百分之 XX” 这样的进度来表示自己精通某种语言</li><li>无法通过简历，看出面试者的灵魂和风格</li></ul><p>所以，对于经验不足的人来说，在书写简历时如果没有一个很好的模板或者引导，比较容易走进一个自嗨的误区。如何言简意赅的展现自己的经历，让面试官认识到自己的水平，则是 hacknical 想要去解决的问题。</p><p><strong>它能做什么？</strong></p><p>有了上述的问题，hacknical 会去一步步尝试优化整个流程，引导你写出更好更高效的简历。</p><p><strong>目前，功能如下：</strong></p><ul><li>一个体验更好的简历填写流程。</li><li>通过 github 登录，抓取你公开的 repos/commits/languages/star/followers 等信息，生成一张较为详细的可视化总结报告。</li><li>你可以选择性的在自己的简历，或者 hacknical 生成的在线简历后面附件上这份 github 报告（推荐），以便让心仪的公司更加精准的了解你。</li><li>可以随时选择 公开/私密 自己的在线简历以及 github 总结报告。</li></ul><p><strong>你可以怎么玩？</strong></p><ul><li>可以单纯的把它作为查看自己 github 总结报告的工具</li><li>可以把 github 总结报告附属在自己的简历上</li><li>可以通过它生成自己的在线简历，并选择性的附加 github 总结报告</li></ul><p>可以扫描下面二维码看看我的页面…<br><img src="/2018/08/24/weekly-issue-4/5.jpg"></p><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="网易云音乐配对"><a href="#网易云音乐配对" class="headerlink" title="网易云音乐配对."></a><a href="https://juejin.im/pin/5b70de6ee51d4503821250bc" rel="external nofollow noopener noreferrer" target="_blank">网易云音乐配对.</a></h3><blockquote><p>留下你们的网易云歌单链接，希望碰到彼此音乐感受力高度契合的那个人。<br>因为热爱音乐的人不管什么时候、从事什么工作，都能把日子过成诗。</p></blockquote><p>做一个根据网易云音乐喜欢的歌,自己交友的软件(或者网站)</p><p>用户可以在此网页上放出自己的用户名,然后爬他喜欢的歌曲…</p><p>然后根据某种算法来匹配…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/08/24/weekly-issue-4/">https://igaojin.me/2018/08/24/weekly-issue-4/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      「首次深度揭秘」Fomo3D，被黑客拿走的 2200 万
+Fomo3D 千万大奖获得者“特殊攻击技巧”最全揭露
+
+一直以为 FOMO3D 永远不会结束…
+
+Fomo3D 游戏第一轮正式结束，最终大奖由地址 0xa169 获得，奖金额高达 10,469.66 以太币。
+
+不少人轻易得出结论：获奖者平平无奇。
+
+安比（SECBIT）实验室昨日首个发现 Fomo3D 大奖获得者采取一些“特殊攻击技巧”，使得游戏临近结束时，矿工打包入区块内的交易数量骤减（涉及连续多个区块），从而起到加速游戏结束和提高胜率的作用。安比（SECBIT）实验室在 Last Winner 上轮游戏结束时也观察到了多个十分类似
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 3 期</title>
+    <link href="https://igaojin.me/2018/08/17/weekly-issue-3/"/>
+    <id>https://igaojin.me/2018/08/17/weekly-issue-3/</id>
+    <published>2018-08-17T09:43:14.000Z</published>
+    <updated>2018-10-11T17:11:19.260Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="比特币：十年话江湖-下"><a href="#比特币：十年话江湖-下" class="headerlink" title="比特币：十年话江湖(下)"></a><a href="https://www.8btc.com/article/248871" rel="external nofollow noopener noreferrer" target="_blank">比特币：十年话江湖(下)</a></h3><p><a href="https://www.8btc.com/article/158353" rel="external nofollow noopener noreferrer" target="_blank">比特币：十年话江湖(上)</a></p><blockquote><p>比特币圈（简称“币圈”）比任何一个圈子都具有江湖习气。构成这个江湖的大多数人都是籍籍无名之辈，他们从一开始就不属于时代主流力量。<br>所以，他们的行事做派极其草莽，动辄撸串，怒则撕逼。他们的口号是“一币一嫩模”“一币一别墅”，他们的信仰是“守币如守寡”。<br>传统的互联网圈、金融圈、区块链圈觉得这是一个loser的世界，但是这些人眼高于顶，自命不凡，叛逆心极重。<br>他们不甘心在BAT画好的版图里闪展腾挪，在他们眼中，比特币这个法律照不到的灰色角落，正是风起于青萍之末时。<br>格局未定，真假莫辨，十年币圈，财富无限，无论币涨币跌，依旧无限可能。这就是比特币的世界。</p></blockquote><p><a href="https://www.8btc.com/author/19987" rel="external nofollow noopener noreferrer" target="_blank">罗金海</a>老师写的 关于比特币十年的故事。</p><blockquote><ul><li>中国比特币史上最神秘的人物：烤猫</li><li>2009~2010年 比特币的“结绳记事”年代</li><li>2011~2012年 比特币的蛮荒岁月</li><li>2013年 北上深杭 “群雄并起”</li><li>2014~2016 币圈的悲情岁月</li><li>2017~2018年 币圈已经不是原来的币圈</li><li>应该铭记的“布道者”</li><li>币圈里的“反对派”</li><li>比特币：我没有敌人</li></ul></blockquote><blockquote><p>比特币在行情4500的时候，比特币的创业者聚在一起撸串。<br>比特币在行情3500的时候，北上深杭还能找一帮子人聚会。<br>比特币在行情2000的时候，很多比特币创业者开始卖币为生。<br>比特币在行情900的时候，再也没有人谈及比特币了。</p></blockquote><blockquote><p>在这段艰难的岁月里，信仰者坚持了下来，我们经常说矿工没有信仰，但事实上，在这样艰难的岁月，矿工走遍中国寻找低价水电，仍然在坚持拓荒式生存，瑞锡、小小、三金他们就是在这段时间一直坚守着自己的领地。</p></blockquote><img src="/2018/08/17/weekly-issue-3/0.jpg"><blockquote><p>还有很多我不知道的人，他们在那个充满争议的时代开始布道。<br>到了今天，无数的专家和大咖冒了出来，编织一个又一个百度不到的神奇故事。</p></blockquote><img src="/2018/08/17/weekly-issue-3/1.jpg"><blockquote><p>比特币的十年，是充满争议的十年，也是野蛮生长的十年。<br>很多时候都是误解，无论你喜欢还是不喜欢———比特币只是一段开源程序、一种密码算法、一种新技术、一个P2P的电子支付系统、一段美好的思想……<br>虽然技术界的自由主义者会赋予它伟大理想，极客里的无政府主义者视它为现代信仰，但比特币只是想通过技术去解决实际问题，让人类在实际交往中变得方便。<br>对自由主义者来说，比特币可能是心中的诺亚方舟；对行走于灰色世界的极客来说，比特币是遮人耳目的铁幕。比特币十年江湖，没有财富神话，更多的是血泪传奇。</p></blockquote><h3 id="陆奇，YC-中国的-01-号员工-36氪独家"><a href="#陆奇，YC-中国的-01-号员工-36氪独家" class="headerlink" title="陆奇，YC 中国的 01 号员工 | 36氪独家"></a><a href="https://36kr.com/p/5148299.html?from=timeline&amp;isappinstalled=0" rel="external nofollow noopener noreferrer" target="_blank">陆奇，YC 中国的 01 号员工 | 36氪独家</a></h3><p><strong>因为真正改变世界的创新发明往往是好奇心和想象力驱动的。</strong></p><p><strong>但是改变世界的技术创新公司需要三家事情：信心、耐心和恒心。这是我一定要强调的个人经验。就是一定要相信、一定要忍耐住、一定要静得下来。</strong></p><blockquote><p>其实陆奇过去几个月经历的事情大多数人都经历过——职业转型，做什么才好？<br>为了做出自己不后悔的决定，他会向挚友伙伴寻求建议，和未来的老板深入了解彼此，用笔在纸上写字画图分析自己的处境、写下自己对世界的认知对未来的看法、审视自己和坚定信仰。</p></blockquote><blockquote><p>陆奇在向我们描述美丽新世界的时候，既满怀对未来的希冀，也充斥了对现实的不满。他相信人工智能驱动的创新会给全人类带来前所未有的进步和公平。</p></blockquote><blockquote><p>但同时，他很讨厌看到只有技术进步、而没有与之配套的新生态建设。还有他更讨厌的是，当今的创新生态越来越不支持持续的技术创新，因为这将直接影响他心目中美丽新世界的到来速度</p></blockquote><blockquote><p>陆奇：我对区块链技术长期看好，它的特性带来很多好处。</p><ol><li>对隐私和数据的保护。</li><li>可以为创新带来不同的激励机制。目前，市场上已有的激励机制通常是财务层面的，例如股权和债券，但区块链技术在长期可能会带来激励机制方面的创新。</li><li>更长期的是，通过数字化的形式，用户可以相互传递信任度。<br>具体创业形式还不确定，但是区块链技术会在上述这些方面降低创业的门槛。</li></ol></blockquote><h3 id="王思聪要打职业比赛"><a href="#王思聪要打职业比赛" class="headerlink" title="王思聪要打职业比赛"></a><a href="https://m.weibo.cn/status/4273785823554882?from=timeline&amp;isappinstalled=0" rel="external nofollow noopener noreferrer" target="_blank">王思聪要打职业比赛</a></h3><p>虽然很多人说“有钱真的为所欲为”,但是我觉得，兴怀梦想，你也可以做你自己想做的事情的！</p><blockquote><p>虽然这本来是校长的一句玩笑话，但是我在接下来的几分钟内却进行了一些思考。<br>说真的，类似的玩笑我似乎已经听到他不止一次的说过了，所以这句话可能已经不能说是他简单的一句玩笑，更多的是对他渴望融入电竞比赛的一种意愿的体现，甚至可能是他的一个夙愿。<br>大家可能知道，游戏和电子竞技对他来说真的是生活中的一部分。<br>做老板，校长在电竞圈中已经8年，但是如果有机会能做选手，这依然是让他非常渴望的体验。<br>所以这就是为什么每次有什么商业活动如果安排了他与职业选手的表演赛，他一向都颇为乐于参的原因吧</p></blockquote><img src="/2018/08/17/weekly-issue-3/2.jpg"> <img src="/2018/08/17/weekly-issue-3/3.jpg"><p><strong>最新播报，已经赢了</strong></p><ul><li>赛前采访</li></ul><iframe width="560" height="315" src="https://f.us.sinaimg.cn/000igEO0lx07mWZuc9fO010402004eaY0k010.mp4?label=mp4_ld&template=640x360.28&Expires=1534678345&ssig=I%2F2lFWGYWh&KID=unistore,video" frameborder="0" allowfullscreen></iframe><ul><li>混战中，校长灵活输出，成功拿下LPL职业生涯的首杀！校长是真滴棒！WXZ秀起来了啊</li></ul><iframe width="560" height="315" src="https://f.us.sinaimg.cn/003EHd0Ulx07mX1YhSb6010402005kCk0k010.mp4?label=mp4_ld&template=640x360.28&Expires=1534678405&ssig=9vOrOv74FF&KID=unistore,video" frameborder="0" allowfullscreen></iframe><ul><li>阿水和王思聪赛后采访来啦</li></ul><iframe width="560" height="315" src="https://f.us.sinaimg.cn/00392wlBlx07mX7NaQRO01040200FpgP0k010.mp4?label=mp4_ld&template=640x360.28&Expires=1534678671&ssig=PRV8hnwb1c&KID=unistore,video" frameborder="0" allowfullscreen></iframe><h3 id="天才-第一季"><a href="#天才-第一季" class="headerlink" title="天才 第一季"></a><a href="https://movie.douban.com/subject/26782706/" rel="external nofollow noopener noreferrer" target="_blank">天才 第一季</a></h3><img src="/2018/08/17/weekly-issue-3/4.jpg"><p>讲述爱因斯坦的故事.</p><p>我个人看完感受是</p><p><strong>想要成为厉害的人 的话，不仅需要天赋，更需要怀有梦想，且一直朝着梦想前进。</strong></p><p>推荐有空可以看看…</p><h3 id="智能合约史上最大规模攻击手法曝光，盘点黑客团伙作案细节"><a href="#智能合约史上最大规模攻击手法曝光，盘点黑客团伙作案细节" class="headerlink" title="智能合约史上最大规模攻击手法曝光，盘点黑客团伙作案细节"></a><a href="https://mp.weixin.qq.com/s/YBG8YyPwh374HbGWcUKTdQ" rel="external nofollow noopener noreferrer" target="_blank">智能合约史上最大规模攻击手法曝光，盘点黑客团伙作案细节</a></h3><p>其实这个漏洞，我在7月份就看到了，而且当时还在群里发了下…</p><img src="/2018/08/17/weekly-issue-3/5.jpg"><p>为啥能攻击可以看这篇<a href="https://www.reddit.com/r/ethereum/comments/916xni/how_to_pwn_fomo3d_a_beginners_guide/" rel="external nofollow noopener noreferrer" target="_blank">how_to_pwn_fomo3d_a_beginners_guide</a></p><p>然后我大概在10号左右才醒悟过来，好像可以攻击赚钱零花钱…</p><p>然后到现在大概赚了几个eth吧…本来上周五能赚一笔大的（有一个类似游戏上线）</p><p>我还订了个闹钟（他9点开始）</p><p>我8点50起来的时候，发现电脑没电。。。充电器丢公司没有带回来。。。</p><p>感觉自己没有暴富的命</p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="谷歌眼中的你"><a href="#谷歌眼中的你" class="headerlink" title="谷歌眼中的你"></a><a href="https://adssettings.google.com/authenticated?pli=1" rel="external nofollow noopener noreferrer" target="_blank">谷歌眼中的你</a></h3><p>下面这张图是我的，育儿是什么鬼…</p><img src="/2018/08/17/weekly-issue-3/6.jpg"><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="吃瓜助手"><a href="#吃瓜助手" class="headerlink" title="吃瓜助手"></a><a href="https://www.zhihu.com/pin/1014531860365438976?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=681969768437780480" rel="external nofollow noopener noreferrer" target="_blank">吃瓜助手</a></h3><p>为啥有这个需求是因为 最近知乎撕逼太多了…</p><p>所以需要这个工具，能更方便的吃…</p><p>当然防止怕被封的话，可以放在gitpage上或者ipfs上！</p><blockquote><p>一个新产品idea：吃瓜助手。<br>只提供平台，任何用户可以自己创建吃瓜时间线；<br>各时间线可以互联，可以clone，可以组成树状图；<br>每个事件节点包括文字概述、出处网址、截图；<br>采取众包形式，多管理员维护时间线，允许其他吃瓜群众投稿筛选；<br>可以自动生成八卦时间线图分享到微博微信知乎等，附带本瓜二维码，跳回原地址继续追更；</p></blockquote><blockquote><p>目前有淘瓜、瓜乎、瓜多多等产品名称待选。<br>等做大了还会发行瓜币割瓜秧们。</p></blockquote><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/08/17/weekly-issue-3/">https://igaojin.me/2018/08/17/weekly-issue-3/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      一些文章
+比特币：十年话江湖(下)
+比特币：十年话江湖(上)
+
+比特币圈（简称“币圈”）比任何一个圈子都具有江湖习气。构成这个江湖的大多数人都是籍籍无名之辈，他们从一开始就不属于时代主流力量。
+所以，他们的行事做派极其草莽，动辄撸串，怒则撕逼。他们的口号是“一币一嫩模”“一币一别墅”，他们的信仰是“守币如守寡”。
+传统的互联网圈、金融圈、区块链圈觉得这是一个loser的世界，但是这些人眼高于顶，自命不凡，叛逆心极重。
+他们不甘心在BAT画好的版图里闪展腾挪，在他们眼中，比特币这个法律照不到的灰色角落，正是风起于青萍之末时。
+格局未定，真假莫辨，十年币圈，财富无限，无论币涨币跌，依旧无限可能。这
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 2 期</title>
+    <link href="https://igaojin.me/2018/08/11/weekly-issue-2/"/>
+    <id>https://igaojin.me/2018/08/11/weekly-issue-2/</id>
+    <published>2018-08-11T13:00:07.000Z</published>
+    <updated>2018-10-11T17:11:19.174Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="张志东Tony：团队需要会发光的人挺身而出"><a href="#张志东Tony：团队需要会发光的人挺身而出" class="headerlink" title="张志东Tony：团队需要会发光的人挺身而出"></a><a href="https://mp.weixin.qq.com/s/sNAyCY72ttM5RPNHJsjmyA" rel="external nofollow noopener noreferrer" target="_blank">张志东Tony：团队需要会发光的人挺身而出</a></h3><blockquote><p>我相信，不快乐的团队是很难创造好的产品的。</p></blockquote><blockquote><p>事实上，在互联网世界，并不存在盛极一世的产品。即使你已经是行业中的第一名，也只是说明你在同行中领先，你的颠覆者会来自于跨界的家伙。他们用的是另外一个维度，比你更符合世界变化的模式。</p></blockquote><h3 id="FCoin的成功是通证经济模式的成功，FCoin的失败是张健个人的失败"><a href="#FCoin的成功是通证经济模式的成功，FCoin的失败是张健个人的失败" class="headerlink" title="FCoin的成功是通证经济模式的成功，FCoin的失败是张健个人的失败"></a><a href="https://mp.weixin.qq.com/s/P2RnuBYyHoQEyOdfo6A6OA" rel="external nofollow noopener noreferrer" target="_blank">FCoin的成功是通证经济模式的成功，FCoin的失败是张健个人的失败</a></h3><blockquote><p>我不知道如果重新来一遍，有没有人可以比他做得更好，可能 99% 的人已经倒在更早的利益关卡，所以他难得可贵，可是我希望，如果重来一遍，他可以错得更少一点。快速的巨大成功加上黑压压的币圈，确实让人容易迷失自己。在上述的原因背后，我看到了一个自大，盲目，膨胀，集权的人，我也从不质疑他的公心，可是这么苦，几天几夜不吃不睡，戴心率分析仪加班，方向错了，受的苦都白受。你等了 10 年才等到天时地利人和，不要让自己的盲目自信摧毁了币圈唯一的希望。FCoin 的成功是通证经济的成功，不要让 FCoin 的失败成为你个人的错误。</p></blockquote><h3 id="全国首张区块链发票来了！报销再也不用贴贴贴发票"><a href="#全国首张区块链发票来了！报销再也不用贴贴贴发票" class="headerlink" title="全国首张区块链发票来了！报销再也不用贴贴贴发票"></a><a href="https://mp.weixin.qq.com/s/6rTddc8NRCEJQe-JHhfVOQ" rel="external nofollow noopener noreferrer" target="_blank">全国首张区块链发票来了！报销再也不用贴贴贴发票</a></h3><p><strong>区块链+发票</strong></p><blockquote><p>可能还有同学没明白：区块链+发票怎么理解？它到底厉害在哪里？<br>简单来说，当你用线上支付的方式完成一笔交易后，你这一笔交易的数据便可视为一张“发票”。<br>而它会通过区块链分布式存储技术，连接你、商户、公司、税务局等每一个发票干系人。<br>这样一张“区块链发票”，每个环节都可追溯、信息不可篡改、数据不会丢失。<br>重点来了：<br>有了它，你结账后就能通过微信自助申请开票、一键报销，发票信息将实时同步至企业和税局，并在线上拿到报销款，报销状态实时可查。</p></blockquote><h3 id="豆瓣网友“独钓寒江雪”的案件破了！终结诈骗独家还原嗅探盗刷全过程！"><a href="#豆瓣网友“独钓寒江雪”的案件破了！终结诈骗独家还原嗅探盗刷全过程！" class="headerlink" title="豆瓣网友“独钓寒江雪”的案件破了！终结诈骗独家还原嗅探盗刷全过程！"></a><a href="https://mp.weixin.qq.com/s/rKy719bTFvt74IbfGKyMGg" rel="external nofollow noopener noreferrer" target="_blank">豆瓣网友“独钓寒江雪”的案件破了！终结诈骗独家还原嗅探盗刷全过程！</a></h3><blockquote><p>前几天，豆瓣网友“独钓寒江雪”的文章《这下一无所有了》刷爆整个网络，她以切身经历讲述了自己在毫不知情的情况下，支付宝、京东及关联银行卡被盗刷的全过程，引发全国网民关注，诸多媒体也对这种“短信嗅探+中间人攻击”的手法进行了解读。深圳龙岗警方对该案高度重视，抽调精兵强将此类新型案件进行串并研判，在一周内抓获了数名犯罪嫌疑人，并缴获了作案设备。</p></blockquote><blockquote><p>我们的资金真的不安全了吗？到底要不要如此恐慌？如何才能有效防范？我们这次让犯罪嫌疑人对该手法进行全程还原，以便寻求最科学的防范手法，同时也督促相关企业立即封堵漏洞</p></blockquote><h3 id="what-happens-when-zh-CN"><a href="#what-happens-when-zh-CN" class="headerlink" title="what-happens-when-zh_CN"></a><a href="https://github.com/skyline75489/what-happens-when-zh_CN/blob/master/README.rst" rel="external nofollow noopener noreferrer" target="_blank">what-happens-when-zh_CN</a></h3><blockquote><p>当你在浏览器中输入 google.com 并且按下回车之后发生了什么？<br>不过我们不再局限于平常的回答，而是想办法回答地尽可能具体，不遗漏任何细节。</p></blockquote><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="TextQL"><a href="#TextQL" class="headerlink" title="TextQL"></a><a href="https://github.com/dinedal/textql" rel="external nofollow noopener noreferrer" target="_blank">TextQL</a></h3><p>用SQL查询 CSV<br><img src="/2018/08/11/weekly-issue-2/0.jpg"></p><h3 id="可以自动生成-gitignore的网站"><a href="#可以自动生成-gitignore的网站" class="headerlink" title="可以自动生成.gitignore的网站"></a><a href="https://www.gitignore.io/" rel="external nofollow noopener noreferrer" target="_blank">可以自动生成.gitignore的网站</a></h3><p>配合 zsh 使用效果更好哦<br>在 <code>.zshrc</code>文件里面输入<br><code>function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}</code><br>然后添加python的gitignore只需要<code>gi python &gt;&gt; .gitignore</code><br>更多操作请看<a href="https://www.gitignore.io/docs" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a></p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="最不欢迎路痴的城市"><a href="#最不欢迎路痴的城市" class="headerlink" title="最不欢迎路痴的城市"></a><a href="https://mp.weixin.qq.com/s/6G4oaashwUk72spJFVkf6w" rel="external nofollow noopener noreferrer" target="_blank">最不欢迎路痴的城市</a></h3><blockquote><p>有这么一群人，他们手持GPS导航走在路上，找路标、看方向，直到听到导航提示：您已偏离当前路线……嗯，他们就是路痴。<br>不过，迷路也不能都怪路痴属性，有些城市的路就是不好认。<br>有的城市连指路都难以描述，七拐八扭不知道去了哪儿，比如重庆。但也有城市横平竖直，东南西北要往哪儿走、拐几个弯一目了然，像北京。<br>这都属于道路的“规律性”，可以通过计算被量化。加州大学伯克利分校城市规划专业的博士后吉奥夫·波音（Geoff Boeing）就提供了判定市道路的“规律性”的方法：他用一个小工具（OSMnx）在地图上取样，把城市里面不同方向的道路，按长度叠加，然后在一个玫瑰图上比较各个方向的路的比率，可以说是非常直观了。</p></blockquote><ul><li>北京<img src="/2018/08/11/weekly-issue-2/1.jpg"></li><li>上海<img src="/2018/08/11/weekly-issue-2/2.jpg"></li><li>西安<img src="/2018/08/11/weekly-issue-2/3.jpg"></li><li>重庆<img src="/2018/08/11/weekly-issue-2/4.jpg"></li></ul><p>想自己去找更多城市<a href="https://mourner.github.io/road-orientation-map/#6.5/30.204/107.74" rel="external nofollow noopener noreferrer" target="_blank">点这里</a><br>想看源代码<a href="https://github.com/mourner/road-orientation-map" rel="external nofollow noopener noreferrer" target="_blank">点这里</a></p><h3 id="wttr-in"><a href="#wttr-in" class="headerlink" title="wttr.in"></a><a href="https://github.com/chubin/wttr.in" rel="external nofollow noopener noreferrer" target="_blank">wttr.in</a></h3><p>在命令行里面查看天气.<br><img src="/2018/08/11/weekly-issue-2/5.jpg"></p><p><strong>还可以打开<a href="https://github.com/chubin" rel="external nofollow noopener noreferrer" target="_blank">chubin</a>的主页，可以看能在命令行做很多事情！</strong></p><ul><li><p>做小抄 <a href="https://github.com/chubin/cheat.sh" rel="external nofollow noopener noreferrer" target="_blank">cheat.sh</a></p><img src="/2018/08/11/weekly-issue-2/6.jpg"></li><li><p>查币价 <a href="https://github.com/chubin/rate.sx" rel="external nofollow noopener noreferrer" target="_blank"></a></p><img src="/2018/08/11/weekly-issue-2/7.jpg"></li></ul><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="带声音的明信片！"><a href="#带声音的明信片！" class="headerlink" title="带声音的明信片！"></a>带声音的明信片！</h3><p>起源于朋友组织的一次草地音乐节.<a href="https://mp.weixin.qq.com/s/C9Z5DXJvRDJSEaeGR3Yi3Q" rel="external nofollow noopener noreferrer" target="_blank">想给你寄一张小小的音乐卡片</a></p><blockquote><p>一年夏天，被圈圈儿带到一个展览上，发现了有趣的东西。</p></blockquote><blockquote><p>一个大大的电话亭样子的装置，带上耳机，录一段声音，一会儿就会从盒子里吐出一张明信片，明信片上有生成的声波纹和二维码。如果你扫描明信片上的二维码，就能听到刚刚录下的声音。第一反应是觉得有点意思，仔细一想有觉得，那我直接把声音从微信发过去就是咯，干嘛要寄明信片？</p></blockquote><blockquote><p>后来过了些天，我又想起这个装置，却越发觉得有意思。</p></blockquote><blockquote><p>就像你寄一张写了字的明信片，本也可以发电子邮件啊，所以它的意义当然不是传送讯息，而是另一种形式的问候。于是我就想，既然是声音，那就放些音乐进去吧，首先浮现在脑海的场景就是在音乐节你能看到的，很多人拿起微信录一段live给远方的朋友发过去。音质当然是糟糕的，但意义在于另一种情感，是被染色的声音。</p></blockquote><blockquote><p>这样结合起来，如果我们在草地音乐的现场录下歌声，印在卡片上寄出去，会是一种独特而有趣的体验吧。</p></blockquote><p>只是想把这个功能稍微完善下,留下个记录</p><p><strong>如何做</strong>:<br>录制声音后，自动传到后台，生成唯一的网址</p><p>转成二维码后，扫描后，直接打开一个网址，后台自动播放这个音乐。</p><p>并且把语音转成文字，然后一段一段的放出来。</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/08/11/weekly-issue-2/">https://igaojin.me/2018/08/11/weekly-issue-2/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      一些文章
+张志东Tony：团队需要会发光的人挺身而出
+我相信，不快乐的团队是很难创造好的产品的。
+
+事实上，在互联网世界，并不存在盛极一世的产品。即使你已经是行业中的第一名，也只是说明你在同行中领先，你的颠覆者会来自于跨界的家伙。他们用的是另外一个维度，比你更符合世界变化的模式。
+
+FCoin的成功是通证经济模式的成功，FCoin的失败是张健个人的失败
+我不知道如果重新来一遍，有没有人可以比他做得更好，可能 99% 的人已经倒在更早的利益关卡，所以他难得可贵，可是我希望，如果重来一遍，他可以错得更少一点。快速的巨大成功加上黑压压的币圈，确实让人容易迷失自己。在上述的原因背后，我看到了一个自大，
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MAC 如何安装 bsddb3</title>
+    <link href="https://igaojin.me/2018/08/06/MAC-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85-bsddb3/"/>
+    <id>https://igaojin.me/2018/08/06/MAC-如何安装-bsddb3/</id>
+    <published>2018-08-06T10:46:33.000Z</published>
+    <updated>2018-10-11T17:11:19.090Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>因为今天要写一个爬虫,需要长期爬，需要过滤一些重复的请求。。。</p><p>所以准备使用 <a href="https://github.com/scrapy-plugins/scrapy-deltafetch" rel="external nofollow noopener noreferrer" target="_blank">scrapy-deltafetch</a></p><p>发现，要求必须先安装 <code>bsddb3</code></p><h2 id="如何安装bsddb3"><a href="#如何安装bsddb3" class="headerlink" title="如何安装bsddb3"></a>如何安装bsddb3</h2><p>当然<code>pip install bsddb3</code>直接安装肯定是失败了</p><p>使用 <code>anaconda</code>也失败了…</p><p>看了下官方文档<a href="https://pypi.org/project/bsddb3/" rel="external nofollow noopener noreferrer" target="_blank">bsddb3</a></p><p>找半天，竟然没有找到如何安装…wtf!</p><p>最后直接使用google大法，</p><p>找到了 <a href="https://stackoverflow.com/questions/16003224/installing-bsddb-package-python" rel="external nofollow noopener noreferrer" target="_blank">Installing bsddb package - python</a></p><img src="/2018/08/06/MAC-如何安装-bsddb3/0.jpg"><p>然后试了下。。。发现还是不行</p><p>然后找到了 <a href="https://github.com/scrapy-plugins/scrapy-deltafetch/issues/23" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/scrapy-plugins/scrapy-deltafetch/issues/23</a></p><img src="/2018/08/06/MAC-如何安装-bsddb3/1.jpg"><p>然后发现报错，提示我安装的<code>berkeley-db</code>版本过高…</p><p>那我就想如何安装低版本的 <code>berkeley-db</code></p><p>然后一顿搜索，发现 <code>brew</code>支持安装不同版本的，发现竟然只有最新版的…(有一个4.几版本的,安装失败了。。。)</p><p>这时候，很气，甚至都想要用docker来跑了。。。</p><p>最后想想看，还是安装好吧。。。</p><h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><p>手动安装 <code>berkeley-db</code></p><p>搜到一篇文章 <a href="https://qiita.com/kuranosuke-h/items/5f47573814fbfdd8d786" rel="external nofollow noopener noreferrer" target="_blank">Berkeley DB 6.2インストール手順</a>，真是太感谢这篇文章了！！！</p><h2 id="如何安装-bsddb3"><a href="#如何安装-bsddb3" class="headerlink" title="如何安装 bsddb3"></a>如何安装 bsddb3</h2><ol><li><p>先到 <a href="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html" rel="external nofollow noopener noreferrer" target="_blank">oracle berkeleydb</a>下面指定的版本，推荐使用<code>6.2.32</code>其他的高版本不行…</p></li><li><p>解压到适当的文件夹</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./db-<span class="number">6</span>.<span class="number">2</span>.<span class="number">32</span>/build_unix</span><br><span class="line">../dist/configure --prefix =/usr/local/Cellar/berkeley-db/<span class="number">6</span>.<span class="number">2</span>.<span class="number">32</span></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></li><li><p>记住上面的 <code>/usr/local/Cellar/berkeley-db/6.2.32</code></p></li><li>去<a href="https://pypi.org/project/bsddb3/#files" rel="external nofollow noopener noreferrer" target="_blank">bsddb3</a>下载 python bsddb3包</li><li>解压后，并 <code>python setup.py install --berkeley-db=/usr/local/Cellar/berkeley-db/6.2.32</code><br>这后面的路径就是 刚刚上面相同的</li></ol><p>然后就安装成功了</p><p>就可以直接 <code>pip install scrapy-deltafetch</code></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/08/06/MAC-如何安装-bsddb3/">https://igaojin.me/2018/08/06/MAC-如何安装-bsddb3/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+因为今天要写一个爬虫,需要长期爬，需要过滤一些重复的请求。。。
+
+所以准备使用 scrapy-deltafetch
+
+发现，要求必须先安装 bsddb3
+
+如何安装bsddb3
+当然pip install bsddb3直接安装肯定是失败了
+
+使用 anaconda也失败了…
+
+看了下官方文档bsddb3
+
+找半天，竟然没有找到如何安装…wtf!
+
+最后直接使用google大法，
+
+找到了 Installing bsddb package - python
+
+然后试了下。。。发现还是不行
+
+然后找到了 https://github.com/scrapy-plugins/scrapy-del
+    
+    </summary>
+    
+      <category term="爬虫" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每周分享第 1 期</title>
+    <link href="https://igaojin.me/2018/08/03/weekly-issue-1/"/>
+    <id>https://igaojin.me/2018/08/03/weekly-issue-1/</id>
+    <published>2018-08-03T11:08:14.000Z</published>
+    <updated>2018-10-11T17:11:19.164Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里记录过去一周，我看到的值得分享的东西，以及我的一些奇思妙想,每周五发布。<a href="http://www.ruanyifeng.com/blog/2018/08/weekly-issue-16.html" rel="external nofollow noopener noreferrer" target="_blank">灵感来自阮一峰</a></p><h3 id="宾夕法尼亚大学提供在线计算机科学硕士学位"><a href="#宾夕法尼亚大学提供在线计算机科学硕士学位" class="headerlink" title="宾夕法尼亚大学提供在线计算机科学硕士学位"></a><a href="https://www.coursera.org/degrees/mcit-penn?utm_medium=email&amp;utm_source=marketing&amp;utm_campaign=_NY5YJBjEeilGMF2QyQgTw#academics" rel="external nofollow noopener noreferrer" target="_blank">宾夕法尼亚大学提供在线计算机科学硕士学位</a></h3><p>Coursera上线了，目前是唯一一所常春藤联盟的大学参加在线授课的制度，完成课程即可获得学位。<br>不需要有计算机背景</p><p>申请要求是：</p><ul><li>A bachelor’s degree from an accredited school or university</li><li>A personal statement</li><li>Two letters of recommendation; from industry or academia</li><li>Unofficial transcripts (translated to English if necessary) from all institutions where course credit was earned; official transcripts will be required if an offer of admission is made.</li><li>Your resume</li><li>TOEFL scores for international applicants and non-U.S. citizens/permanent resident applicants if English is not your native language. More details can be found on the MCIT Online website.</li><li>GRE scores are optional. If submitted, exam results will be taken into consideration in the evaluation process and can have a favorable impact.</li></ul><hr><h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="寻找圣杯"><a href="#寻找圣杯" class="headerlink" title="寻找圣杯"></a><a href="https://bihu.com/article/1019497" rel="external nofollow noopener noreferrer" target="_blank">寻找圣杯</a></h3><p>帮助币圈用户充值信仰</p><blockquote><p>4年内，加密资产总市值逼近或超过黄金，目前黄金的总市值是8万亿美元。<br>4年内，某个智能合约平台的总市值超越世界上市值最高的上市公司，目前是苹果公司，9382亿美元。也就是，单个智能合约平台基础通证的总市值超1万亿美元。<br>8年内，基于区块链的超级应用出现，单个项目的市值超过1万亿美元。</p></blockquote><h3 id="以太坊创始人V神首度连线王峰十问：发布以太坊的时候，我的父亲非常骄傲"><a href="#以太坊创始人V神首度连线王峰十问：发布以太坊的时候，我的父亲非常骄傲" class="headerlink" title="以太坊创始人V神首度连线王峰十问：发布以太坊的时候，我的父亲非常骄傲"></a><a href="https://mp.weixin.qq.com/s/xTPglX1JaYmp2FRDvwrYWg" rel="external nofollow noopener noreferrer" target="_blank">以太坊创始人V神首度连线王峰十问：发布以太坊的时候，我的父亲非常骄傲</a></h3><blockquote><p>我认为，对于任何一个区块链协议来说，最好的办法就是切换或直接使用权益认证（PoS）。ASIC太中心化了，我知道现在比特币领域里，有一个人生产了市场上的绝大多数ASIC矿机，而且已经开始使用这些矿机进行挖矿了。（不知道V神是否暗示比特大陆吴忌寒）。一些工作量认证（PoW）算法开始抵抗ASIC挖矿，而且是去中心化的。</p></blockquote><blockquote><p>但是在今年，我们发现很多抵制ASIC挖矿的加密货币都受到了攻击，这些事件表明，与ASIC挖矿对抗并不是一件容易的事情。具体可以参阅David Vorick写过的一篇文章<a href="https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b" rel="external nofollow noopener noreferrer" target="_blank">https://blog.sia.tech/the-state-of-cryptocurrency-mining-538004a37f9b</a> 所以，不管是对ASIC挖矿友好的工作量认证（PoW），还是抵制ASCI挖矿的工作量认证（PoW），其实看上去效果都不是很好，因此我觉得权益认证（PoS）是最好的。</p></blockquote><h3 id="LinkedIn“转折点”音频访谈第八期，对话北漂17年的崔英杰。"><a href="#LinkedIn“转折点”音频访谈第八期，对话北漂17年的崔英杰。" class="headerlink" title="LinkedIn“转折点”音频访谈第八期，对话北漂17年的崔英杰。"></a><a href="https://mp.weixin.qq.com/s/yIQYtKl1LgT_AYpRQVfLJQ" rel="external nofollow noopener noreferrer" target="_blank">LinkedIn“转折点”音频访谈第八期，对话北漂17年的崔英杰。</a></h3><blockquote><p>不同于996模式下的程序员，他在旅行中远程工作，甚至还举家搬到珠海。但他也建议，30岁之前还是应该在大城市多待待。从一个有严格计划的人变得不爱做太长远的规划，他的人生观念因何改变？他如何看待成功？</p></blockquote><p>程序员强烈建议听一下！</p><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="Photon"><a href="#Photon" class="headerlink" title="Photon"></a><a href="https://github.com/s0md3v/Photon" rel="external nofollow noopener noreferrer" target="_blank">Photon</a></h3><p>Photon是一种快速的网络爬虫，可以提取网址，电子邮件，文件，网站帐户等等。</p><img src="/2018/08/03/weekly-issue-1/0.jpg"><h3 id="certbot"><a href="#certbot" class="headerlink" title="certbot"></a><a href="https://github.com/certbot/certbot" rel="external nofollow noopener noreferrer" target="_blank">certbot</a></h3><p>certbot 可以很方便的帮你生成HTTPS证书</p><h3 id="simpread"><a href="#simpread" class="headerlink" title="simpread"></a><a href="https://github.com/kenshin/simpread" rel="external nofollow noopener noreferrer" target="_blank">simpread</a></h3><p>让你瞬间进入沉浸式阅读的扩展</p><img src="/2018/08/03/weekly-issue-1/1.jpg"><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="现在跳槽第一个收到你简历的可能是你现在的上司"><a href="#现在跳槽第一个收到你简历的可能是你现在的上司" class="headerlink" title="现在跳槽第一个收到你简历的可能是你现在的上司"></a><a href="https://juejin.im/pin/5b5ed8a5f265da1046bb7799" rel="external nofollow noopener noreferrer" target="_blank">现在跳槽第一个收到你简历的可能是你现在的上司</a></h3><img src="/2018/08/03/weekly-issue-1/2.jpg"><h3 id="教你怎么写-PHP-和-JavaScript-的异常捕获-​​​"><a href="#教你怎么写-PHP-和-JavaScript-的异常捕获-​​​" class="headerlink" title="教你怎么写 PHP 和 JavaScript 的异常捕获 ​​​"></a><a href="https://juejin.im/pin/5b5c25e8092dcb61bd728390" rel="external nofollow noopener noreferrer" target="_blank">教你怎么写 PHP 和 JavaScript 的异常捕获 ​​​</a></h3><img src="/2018/08/03/weekly-issue-1/3.jpg"> <img src="/2018/08/03/weekly-issue-1/4.jpg"><p>谁来补一个python的.</p><h3 id="Nod-to-the-Rhythm"><a href="#Nod-to-the-Rhythm" class="headerlink" title="Nod to the Rhythm"></a><a href="http://nodtotherhythm.com/?g2OXmPYH=" rel="external nofollow noopener noreferrer" target="_blank">Nod to the Rhythm</a></h3><p>上传一张照片，就可以让照片跟着节奏动起来了<br><img src="/2018/08/03/weekly-issue-1/5.jpg"></p><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="弄一个新的b站，建立在ipfs之上"><a href="#弄一个新的b站，建立在ipfs之上" class="headerlink" title="弄一个新的b站，建立在ipfs之上"></a>弄一个新的b站，建立在ipfs之上</h3><p>为啥有这个想法呢，主要是看到了<a href="https://www.zhihu.com/question/284623285" rel="external nofollow noopener noreferrer" target="_blank">如何看待 bilibili 将播放量过千万的鬼畜视频《蕉忍疾风传》封禁？</a></p><blockquote><p>谁出来整个bilifans大家去蹲着呗（滑稽）<br>引用来自 如何看待 bilibili 将播放量过千万的鬼畜视频《蕉忍疾风传》封禁？ - 王不想起名的回答 - 知乎<br><a href="https://www.zhihu.com/question/284623285/answer/447840366" rel="external nofollow noopener noreferrer" target="_blank">https://www.zhihu.com/question/284623285/answer/447840366</a></p></blockquote><p><strong>为啥用ipfs呢？</strong><br>主要是穷，用ipfs的话，就不需要买很多流量了。。。</p><p><strong>具体怎么做？</strong><br>发起一个”ICO”,这个ICO不是要钱，而是要人…（二次元的程序员）</p><p>然后把所有的代码都开源在github，视频存在ipfs。相当于一个去中心化的B站…</p><p>视频过不过审，做不做广告，之类的 都是大家投票决定的。</p><h3 id="做一个python-inspect"><a href="#做一个python-inspect" class="headerlink" title="做一个python inspect"></a>做一个python inspect</h3><p>主要是看到 <a href="https://github.com/danielstjules/jsinspect" rel="external nofollow noopener noreferrer" target="_blank">jsinspect</a><br>Detect copy-pasted and structurally similar code</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/08/03/weekly-issue-1/">https://igaojin.me/2018/08/03/weekly-issue-1/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      这里记录过去一周，我看到的值得分享的东西，以及我的一些奇思妙想,每周五发布。灵感来自阮一峰
+
+宾夕法尼亚大学提供在线计算机科学硕士学位
+Coursera上线了，目前是唯一一所常春藤联盟的大学参加在线授课的制度，完成课程即可获得学位。
+不需要有计算机背景
+
+申请要求是：
+
+ * A bachelor’s degree from an accredited school or university
+ * A personal statement
+ * Two letters of recommendation; from industry or academia
+ * Unofficial tra
+    
+    </summary>
+    
+      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
+    
+    
+  </entry>
+  
+</feed>
