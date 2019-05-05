@@ -41,25 +41,25 @@ tags:
 
 然后和朋友聊天的时候，了解其实可以让某个表不生成abi,这样的话，外部就会无法访问到这个表了...
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7alo4utij214o0psn1z.jpg)
+{% asset_img 0.jpg  %}
 
 吧abi这行删掉，发现确实外部无法访问到这个表...
 
 ## 但是通过合约调用呢？
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7aopcefyj21xa0ygqb2.jpg)
+{% asset_img 1.jpg  %}
 
 定义了同样的数据结构,然后可以发现,在合约内就可以调用了...
 
 ### 测试 改变数据位置
 
 发现拿到的数据就错了...(所以如果要拿到正确的数据的话，需要和 原来的数据定义一模一样)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7auj42ejj21zm18uaoa.jpg)
+{% asset_img 2.jpg  %}
 
 ### 测试 删除一个字段
 
 发现拿到的数据错了...但是还是可以查到数据
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7axq0w0zj21y2198k50.jpg)
+{% asset_img 3.jpg  %}
 
 ### 测试 删除主键
 
@@ -68,12 +68,12 @@ tags:
 ### 测试 随便定义一个主键
 
 发现拿到的数据错了...但是还是可以查到数据
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7b0gwm78j229i180qfl.jpg)
+{% asset_img 4.jpg  %}
 
 ## 测试 拿到的字段 比原来的多
 
 编译可以过，但是查询会报错...
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fy7b2h9jm7j22700xc132.jpg)
+{% asset_img 5.jpg  %}
 
 ## 结论
 

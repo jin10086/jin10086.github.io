@@ -17,7 +17,7 @@ tags:
 
 如 下面是betdice的一张图
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fyebflhsbyj216i0pa11l.jpg)
+{% asset_img 0.jpg  %}
 
 可以看到赔率是 1.036,中奖概率是95%
 
@@ -26,7 +26,7 @@ tags:
 也就是算出来我玩一个EOS,理论上输0.0158个EOS
 
 再减掉 0.1%的邀请奖励 则 我玩一个EOS,理论上输`0.0158-0.001=0.0148`个EOS
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fyebi7h88pj20to0ekwgo.jpg)
+{% asset_img 1.jpg  %}
 
 当然还有VIP奖励，以及玩一次每小时可以抽一次奖啊,以及排位奖励等等...
 
@@ -34,7 +34,7 @@ tags:
 
 我玩1个EOS的话可以获得 **1.5625**个代币
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fyeblkdou2j217e0yggxe.jpg)
+{% asset_img 2.jpg  %}
 
 也就是说 我用0.0148个EOS 换了1.5625个代币...
 
@@ -66,7 +66,7 @@ tags:
 如何让别人帮你出CPU呢?
 
 你每次投注获胜的话,项目方都会给你打钱(你赚的钱.)
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fyebw0x7nij21v00yswmf.jpg)
+{% asset_img 3.jpg  %}
 
 那么你可以让这个玩的账号变成一个合约...
 

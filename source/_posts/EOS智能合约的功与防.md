@@ -10,7 +10,7 @@ tags:
 
 ## 从World Conquest 被攻击说起
 
-![](http://ww1.sinaimg.cn/large/cfc08357ly1fxhnhi91h3j20l40e149q.jpg)
+{% asset_img 1.jpg  %}
 
 World Conquest的游戏规则采用了FOMO模式，如果你是最后一位购买者，那么你可以获得奖池里面大部分的钱。
 
