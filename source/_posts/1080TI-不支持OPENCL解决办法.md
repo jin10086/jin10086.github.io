@@ -16,7 +16,7 @@ tags:
 
 然后使用 GPU-Z 测试的时候，发现果然不支持 OPENCL
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1g0ddcag2rrj20u01svqv7.jpg)
+{% asset_img 1.jpg  %}
 
 开始以为是自己的板子有问题...
 

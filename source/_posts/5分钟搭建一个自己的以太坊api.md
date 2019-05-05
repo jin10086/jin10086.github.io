@@ -10,7 +10,7 @@ tags:
 
 ## 背景
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1g058xe371bj20yi0oy0x5.jpg)
+{% asset_img 1.jpg  %}
 
 这是很早之前吐槽infura api的一个朋友圈
 

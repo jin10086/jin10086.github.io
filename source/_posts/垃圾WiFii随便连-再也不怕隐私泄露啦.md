@@ -17,7 +17,7 @@ tags:
 ## WiFi为什么会泄露你的隐私?
 
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1g21uk3kovcj216g0w4qv5.jpg)
+{% asset_img 0.jpg %}
 
 上面是画的一张你通过WiFi上网的图...
 
@@ -37,7 +37,7 @@ tags:
 
 ### 看一个HTTP的例子
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1g21uzm90p3j20z20mgdj2.jpg)
+{% asset_img 1.jpg  %}
 
 上面那张图是data5u的登录页面(找了半天才找到一个http登录，且是明文密码传输的例子)
 
@@ -91,11 +91,11 @@ Shadowsocks 很多人用他可能都是为了翻越长城...
 注意 这个图里面都省掉了你上网的方式(如WiFi 4G 等等...)
 
 
-![不使用Shadowsocks](http://ww1.sinaimg.cn/large/cfc08357gy1g21w4czft4j20vw0f2wtb.jpg)
+{% asset_img 不使用Shadowsocks.jpg  %}
+
+{% asset_img 使用Shadowsocks.jpg  %}
 
 
-
-![使用Shadowsocks](http://ww1.sinaimg.cn/large/cfc08357gy1g21w0ma3h1j210k0r4u00.jpg)
 
 可以看到当你使用了Shadowsocks后,你访问的网址以及内容全部都是加密的...
 
