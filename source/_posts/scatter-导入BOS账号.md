@@ -12,7 +12,7 @@ tags:
 
 选择设置
 
-![](http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcjpjtjqj20j80uy760.jpg)
+{% asset_img 0.jpg  %}
 
 然后 Language,在选择中文.
 
@@ -20,7 +20,7 @@ tags:
 
 点击设置-> 网络 -> 新建
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fzlclr7lghj20j80wa0um.jpg)
+{% asset_img 1.jpg  %}
 
 然后名称 设置为 **bosmainnet**
 
@@ -36,7 +36,7 @@ chainid 设置为 **d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a
 
 点击 主页面的 密钥对->新建
 
-![](http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcpcby40j20kc0y8gok.jpg)
+{% asset_img 2.jpg  %}
 
 名称自己随便写一个
 
@@ -48,7 +48,7 @@ chainid 设置为 **d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a
 
 点击 主页面的身份->新建
 
-![](http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcra9g7hj20j40twdi2.jpg)
+{% asset_img 3.jpg  %}
 
 上面选择刚才创建好的网络 
 
@@ -58,6 +58,6 @@ chainid 设置为 **d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a
 
 记得选择 @active的.
 
-![](http://ww1.sinaimg.cn/mw690/cfc08357gy1fzlcs7ebbkj20ie0k0dgp.jpg)
+{% asset_img 4.jpg  %}
 
 
