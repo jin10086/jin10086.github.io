@@ -8,7 +8,7 @@ tags:
 
 ## EOSDICE
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvqt03svej211i0c4jt4.jpg)
+{% asset_img 0.jpg  %}
 
 今天起床看到 EODICE随机数竟然被攻破了？
 
@@ -78,7 +78,7 @@ void charity::hi(uint64_t game_id)
 
 来一张测试截图
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvr9gr5g2j21aw0ictes.jpg)
+{% asset_img 1.jpg  %}
 
 可以看到除了 tapos_block_prefix & tapos_block_num 这两个不一样的话，其他的都一样的，
 
@@ -88,25 +88,25 @@ tapos_block_num 应该是每次+1,tapos_block_prefix 不知道生成规则，但
 
 根据官方给出的账号，我找到了黑客的攻击截图
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvriwhyucj21rw0yajxj.jpg)
+{% asset_img 2.jpg  %}
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvrehi0zmj21g40zmjwx.jpg)
+{% asset_img 3.jpg  %}
 
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvrkwvmugj22a20gw423.jpg)
+{% asset_img 4.jpg  %}
 
 不知道黑客代码怎么写的，他现在已经把合约换掉了...并且吧钱转到了交易所
 
 根据官方所说，他们有对合约自动检测工具，导致被发现疑似黑客事件，立马把钱转走了.
 
 这一点还是值得表扬的，说明团队实力还是有的。（希望可以开源，这样的话，其他的dice被攻击了也不至于损失那么惨）
-![自动转账截图](http://ww1.sinaimg.cn/large/cfc08357gy1fwvru0n2g3j20tc06s0t8.jpg)
+{% asset_img 5.jpg  %}
 
 好像公告发布的也比较早，不知道是不是 自动检测功能能把人call醒（哈哈哈）
 
 ## 总结与反思
 
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvrwv3i17j20iw0bkgn4.jpg)
+{% asset_img 6.jpg  %}
 
 当被攻击后，有网友在官方群发了这样的一句话...
 
@@ -128,7 +128,7 @@ tapos_block_num 应该是每次+1,tapos_block_prefix 不知道生成规则，但
 但是还好，损失不是很大。
 
 最后借用老猫的一张图
-![](http://ww1.sinaimg.cn/large/cfc08357gy1fwvs1n7542j20u02bc4qp.jpg)
+{% asset_img 7.jpg  %}
 
 
 
