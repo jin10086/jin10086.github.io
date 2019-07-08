@@ -81,7 +81,7 @@ Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来
 
 `npm install -g cnpm --registry=https://registry.npm.taobao.org`
 
-`cnpm install hexo`
+`cnpm install hexo -g`
 
 `cnpm install`
 
