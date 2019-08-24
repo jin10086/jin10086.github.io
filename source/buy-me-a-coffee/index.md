@@ -14,3 +14,4 @@ date: 2018-08-15 17:06:51
     - EOS: gaojin.game
     - FIBOS: ggggggggggg
     - BOS: gaojingaojin
+4. [Paypal](https://www.paypal.me/igaojin)
