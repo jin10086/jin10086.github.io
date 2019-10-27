@@ -14,6 +14,8 @@ tags:
 先推荐一些学习区块链好的文章以及网站 
 
 - [以太坊爱好者](https://ethfans.org/)  https://ethfans.org/
+{% asset_img ethfans.png %}
+
 - [链闻推荐：真正搞懂区块链，从半入门到精通](https://mp.weixin.qq.com/s/HJH8M62gORUg_9CjlVkS2A)
 
 当然学习强国里面也有了视频,也可以在里面看看
