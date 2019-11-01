@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-11-01T02:57:36.704Z</updated>
+  <updated>2019-11-01T08:15:16.103Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EIDOS 自动撸空投(不需要开电脑与手机版)</title>
+    <link href="https://igaojin.me/2019/11/01/EIDOS-%E8%87%AA%E5%8A%A8%E6%92%B8%E7%A9%BA%E6%8A%95-%E4%B8%8D%E9%9C%80%E8%A6%81%E5%BC%80%E7%94%B5%E8%84%91%E4%B8%8E%E6%89%8B%E6%9C%BA%E7%89%88/"/>
+    <id>https://igaojin.me/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/</id>
+    <published>2019-11-01T07:46:26.000Z</published>
+    <updated>2019-11-01T08:15:16.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是EIDOS"><a href="#什么是EIDOS" class="headerlink" title="什么是EIDOS"></a>什么是EIDOS</h2><p>我感觉就是让大家疯狂干EOS主网，谁干的猛，谁拿的钱就多。。。</p><p>下面是老陆写的介绍,<a href="https://mp.weixin.qq.com/s/ep4HdVFc1AvOMTYkpJMuUg" rel="external nofollow noopener noreferrer" target="_blank">EIDOS 自动撸空投详解</a></p><img src="/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/1.webp"><blockquote><p>官网：<a href="http://eidos.one" rel="external nofollow noopener noreferrer" target="_blank">http://eidos.one</a></p></blockquote><p>官方推特：<a href="https://twitter.com/EnuMivo" rel="external nofollow noopener noreferrer" target="_blank">https://twitter.com/EnuMivo</a></p><p>早前消息是说啊，EIDOS 快来到EOS上发空投了，UBI理念的ENU已经死了。</p><p>简要回顾一下ENU，一次空投4000多个，一个最多涨到0.5元，批量撸ENU赚几十万的不在少数。</p><p>本着宁可做过不可错过的精神，现在开始教大家怎么撸EIDOS。</p><p>首先我们先了解空投的规则，用户可以将任意金额的 EOS 转账至 eidosonecoin 这个账户，智能合约会将等量的 EOS 返回至用户账户，并会将 eidosonecoin 这个账户中存有的 0.01% EIDOS 发送到用户账户中。</p><p>按照 EIDOS 的规则，每一秒内，会有 25 个 EIDOS 产生，其中 20 个 EIDOS 用于空投给用户，剩余 5 个将发送到团队的账户。空投将持续 15 个月，最终，将有 10 亿 EIDOS 生成，其中 8 亿用于空投。</p><p>简单来说就是不停给 eidosonecoin 这个账号转账，每次转账消耗 CPU 资源来获取账号内万分之一的 EIDOS 。</p><img src="/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/2.webp"><h2 id="合约挖矿"><a href="#合约挖矿" class="headerlink" title="合约挖矿"></a>合约挖矿</h2><p>正常的操作应该是我写一个脚本,每隔1秒疯狂向eidosonecoin发0.0001 EOS,但是这样比较麻烦的是 你需要有一台电脑一直开机</p><p>然后我就写了一个合约…</p><p>你只要部署这个合约,设置好参数,充值好CPU,NET后,就可以不用管了…</p><p>原理很简单,就是疯狂延时交易而已…</p><p>代码在：<a href="https://app.eosstudio.io/jin10086/fuckenu" rel="external nofollow noopener noreferrer" target="_blank">https://app.eosstudio.io/jin10086/fuckenu</a></p><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h3><ol><li>需要先买200kb的内存 （后面不想跑了可以卖掉</li><li>需要电脑装了scatter</li><li>需要给自己部署合约的这个账号加eosio.code权限</li></ol><h3 id="部署合约"><a href="#部署合约" class="headerlink" title="部署合约"></a>部署合约</h3><p>按照下面图片1，2，3的顺序 部署合约</p><ol><li>登录scatter</li><li>build 合约</li><li>部署合约</li></ol><img src="/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/3.png"><h3 id="执行合约"><a href="#执行合约" class="headerlink" title="执行合约"></a>执行合约</h3><img src="/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/4.png"><ol><li>切成你部署好的合约</li><li>先执行init 方法</li><li>再执行run方法 就一直跑了</li></ol><p>执行完应该如下图</p><img src="/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/5.png"><h3 id="停止合约"><a href="#停止合约" class="headerlink" title="停止合约"></a>停止合约</h3><p>执行 stop方法就行了</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/">https://igaojin.me/2019/11/01/EIDOS-自动撸空投-不需要开电脑与手机版/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      什么是EIDOS
+我感觉就是让大家疯狂干EOS主网，谁干的猛，谁拿的钱就多。。。
+
+下面是老陆写的介绍,EIDOS 自动撸空投详解
+
+官网：http://eidos.one
+
+官方推特：https://twitter.com/EnuMivo
+
+早前消息是说啊，EIDOS 快来到EOS上发空投了，UBI理念的ENU已经死了。
+
+简要回顾一下ENU，一次空投4000多个，一个最多涨到0.5元，批量撸ENU赚几十万的不在少数。
+
+本着宁可做过不可错过的精神，现在开始教大家怎么撸EIDOS。
+
+首先我们先了解空投的规则，用户可以将任意金额的 EOS 转账至 eidosonecoin 这个账户，智能合约
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>区块链小白书fork版</title>
@@ -770,37 +805,6 @@ USD(Gemini 美元)是一种加密令牌，它是(i)一个纽约信托 公司发�
 GUSD(Gemini 美元)是一个稳定币，它结合了 美元的信誉和价格稳定性，以及加密货币的技术优势，并且体现了美国监 管机构的监管。
 作为符合 ERC20 标准的一种代币，GUSD(Gemini 美元) 可以在以太坊网络上传输。
 GUSD(Gemini 美元)在从 Gemini 数字货币交 易所时提取出来时创建，并在存入 Gemini 数字货币交易所时被赎回或”
-    
-    </summary>
-    
-      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>每周分享第 6 期</title>
-    <link href="https://igaojin.me/2018/09/15/weekly-issue-6/"/>
-    <id>https://igaojin.me/2018/09/15/weekly-issue-6/</id>
-    <published>2018-09-15T07:46:52.000Z</published>
-    <updated>2018-10-11T17:11:19.452Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="GUSD：受纽约金融服务部监管的新稳定币"><a href="#GUSD：受纽约金融服务部监管的新稳定币" class="headerlink" title="GUSD：受纽约金融服务部监管的新稳定币"></a><a href="https://mp.weixin.qq.com/s/XMi_3GhsfyE2HjpU3cMREA" rel="external nofollow noopener noreferrer" target="_blank">GUSD：受纽约金融服务部监管的新稳定币</a></h3><p>美东时间9月10日10点，纽约金融服务部（NYDFS）在官网发布公告，授权数字货币交易所Gemini Trust（双子星交易所）和区块链初创企业Paxos Trust两家公司各自发行价格稳定、严格和美元1:1挂钩的加密数字货币。不久后双子星交易所宣布在北京时间9月10日22时正式推出全球首个受政府监管、基于以太坊区块链ERC20标准的稳定币Gemini dollar（GUSD）。目前GUSD发行量约10.12万枚：</p><hr><h1 id="不错的项目"><a href="#不错的项目" class="headerlink" title="不错的项目"></a>不错的项目</h1><h3 id="在线写nginx配置"><a href="#在线写nginx配置" class="headerlink" title="在线写nginx配置"></a><a href="https://nginxconfig.io/" rel="external nofollow noopener noreferrer" target="_blank">在线写nginx配置</a></h3><p>适合对nginx不熟悉，每次写的时候都需要搜索的同学</p><p>有PHP后端、Node.js、单页应用、WordPress等多个预置模板，一般需求简单修改一下即可使用。</p><img src="/2018/09/15/weekly-issue-6/1.png"><h3 id="计算机科学的一些笔记"><a href="#计算机科学的一些笔记" class="headerlink" title="计算机科学的一些笔记"></a><a href="https://github.com/CyC2018/CS-Notes" rel="external nofollow noopener noreferrer" target="_blank">计算机科学的一些笔记</a></h3><img src="/2018/09/15/weekly-issue-6/2.png"><h3 id="pdb-tutorial"><a href="#pdb-tutorial" class="headerlink" title="pdb-tutorial"></a><a href="https://github.com/spiside/pdb-tutorial" rel="external nofollow noopener noreferrer" target="_blank">pdb-tutorial</a></h3><p>如何使用pdb的简单教程.一步一步的教你.</p><p>虽然使用IDE 调式很简单，但是有时候IDE无法用的时候,就需要使用pdb了。</p><p>当然还有ipdb,在pdb上面的扩展(相当于ipython 与python的关系)</p><img src="/2018/09/15/weekly-issue-6/pdb.png"><h3 id="halo"><a href="#halo" class="headerlink" title="halo"></a><a href="https://github.com/manrajgrover/halo" rel="external nofollow noopener noreferrer" target="_blank">halo</a></h3><p>在命令行给用户更加友好的提示</p><img src="/2018/09/15/weekly-issue-6/doge_spin.gif"><h3 id="free-for-dev"><a href="#free-for-dev" class="headerlink" title="free-for-dev"></a><a href="https://github.com/ripienaar/free-for-dev" rel="external nofollow noopener noreferrer" target="_blank">free-for-dev</a></h3><p>面向开发者的免费服务list</p><hr><h1 id="程序员圈内的政治正确？"><a href="#程序员圈内的政治正确？" class="headerlink" title="程序员圈内的政治正确？"></a>程序员圈内的政治正确？</h1><h3 id="Redis-作者被迫修改-masterslave-架构的描述"><a href="#Redis-作者被迫修改-masterslave-架构的描述" class="headerlink" title="Redis 作者被迫修改 masterslave 架构的描述"></a><a href="https://github.com/antirez/redis/issues/5335" rel="external nofollow noopener noreferrer" target="_blank">Redis 作者被迫修改 masterslave 架构的描述</a></h3><p><a href="http://antirez.com/news/122" rel="external nofollow noopener noreferrer" target="_blank">On Redis master-slave terminology</a></p><img src="/2018/09/15/weekly-issue-6/redis_master_slave.png" title="antire在推特上的问卷调差"><h3 id="Redis-之后，Python-的-master-slave-亦恐被无奈修改"><a href="#Redis-之后，Python-的-master-slave-亦恐被无奈修改" class="headerlink" title="Redis 之后，Python 的 master-slave 亦恐被无奈修改"></a><a href="https://www.oschina.net/news/99858/python-purges-master-and-slave" rel="external nofollow noopener noreferrer" target="_blank">Redis 之后，Python 的 master-slave 亦恐被无奈修改</a></h3><h3 id="预防？"><a href="#预防？" class="headerlink" title="预防？"></a>预防？</h3><img src="/2018/09/15/weekly-issue-6/4.jpeg"><hr><h1 id="我的奇思妙想"><a href="#我的奇思妙想" class="headerlink" title="我的奇思妙想"></a>我的奇思妙想</h1><h3 id="老玩家检测器"><a href="#老玩家检测器" class="headerlink" title="老玩家检测器"></a><a href="https://github.com/jin10086/fuckman" rel="external nofollow noopener noreferrer" target="_blank">老玩家检测器</a></h3><p>可以根据手机号检测ta注册了多少个约p软件…</p><p>想法来源是</p><img src="/2018/09/15/weekly-issue-6/6.jpeg"><p>项目目前还在初期，欢迎大家贡献代码啊.</p><p>更具体的介绍请<a href="https://jin10086.github.io/lab/%E8%80%81%E7%8E%A9%E5%AE%B6%E6%A3%80%E6%B5%8B%E5%99%A8.html" target="_blank" rel="noopener">点这里</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/15/weekly-issue-6/">https://igaojin.me/2018/09/15/weekly-issue-6/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      一些文章
-GUSD：受纽约金融服务部监管的新稳定币
-美东时间9月10日10点，纽约金融服务部（NYDFS）在官网发布公告，授权数字货币交易所Gemini Trust（双子星交易所）和区块链初创企业Paxos Trust两家公司各自发行价格稳定、严格和美元1:1挂钩的加密数字货币。不久后双子星交易所宣布在北京时间9月10日22时正式推出全球首个受政府监管、基于以太坊区块链ERC20标准的稳定币Gemini dollar（GUSD）。目前GUSD发行量约10.12万枚：
-
-
-
-
-不错的项目
-在线写nginx配置
-适合对nginx不熟悉，每次写的时候都需要搜索的同学
-
-有PHP后端、Node.js、
     
     </summary>
     
