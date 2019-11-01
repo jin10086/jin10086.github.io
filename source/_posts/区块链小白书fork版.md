@@ -23,3 +23,5 @@ tags:
 可以直接访问https://forkblockchainlittlebook.com/ 查看
 
 修改记录在 https://github.com/jin10086/blockchainlittlebook.com/commit/33c4ee420047030189698bf586752b22c79111d7
+
+{% asset_img 2.png  %}
