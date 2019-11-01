@@ -80,7 +80,8 @@ tags:
 执行 stop方法就行了
 
 
+最后放一张我撸的截图 1s一次
 
-
+{% asset_img 6.png  %}
 
 
