@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-11-04T13:06:36.364Z</updated>
+  <updated>2019-11-04T13:08:58.689Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://igaojin.me/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/"/>
     <id>https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/</id>
     <published>2019-11-04T12:59:49.000Z</published>
-    <updated>2019-11-04T13:06:36.364Z</updated>
+    <updated>2019-11-04T13:08:58.689Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近EIDOS很火,一把小心挖矿就把自己的CPU挖爆了。。。</p><p>想出货都没有办法。。。</p><p>但是最近EOS1.8版本已经上线了</p><p>可以让别人帮你支付CPU费用</p><h2 id="新特性的介绍"><a href="#新特性的介绍" class="headerlink" title="新特性的介绍"></a>新特性的介绍</h2><blockquote><p>如果一笔交易有两个或者两个以上的账户联合签名，则只会对排在第一位的账户收取资源费用。此外， EOSIO 1.8的新特性不只是“dApp为用户支付资源“，还包括：1.资源的付费方，可以是任意的账号或服务方，该账号不一定是dApp；2.交易所可以为用户承担资源费用，帮助用户充值至交易所；3.任意的EOS账号，都可以为其他的账号支付资源；4.dApp能够为用户支付资源；5.有可能借助于一项特殊的协议，扫描二维码即可完成资源支付。</p></blockquote><h2 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h2><p><code>cleos push action eidosonecoin transfer &#39;[&quot;gy2dgmztgqge&quot;,&quot;mxcexdeposit&quot;,&quot;4642.9812 EIDOS&quot;,&quot;109257&quot;]&#39; -p bbheasxtlatd gy2dgmztgqge</code></p><p>其实还是很简单的,只是签名的时候 把 支付cpu的那个号放在前面就好了</p><p>如上面 <code>bbheasxtlatd</code>是出cpu费用的号</p><p>详细请看这笔签名的tx <a href="https://bloks.io/transaction/e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb" rel="external nofollow noopener noreferrer" target="_blank">e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb</a></p><h2 id="延伸一下"><a href="#延伸一下" class="headerlink" title="延伸一下"></a>延伸一下</h2><p>感觉以后羊毛党很舒服了啊</p><p>只要给大号质押资源就可以了,然后全部用大号的资源</p><p>再也不怕小号动不了了</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/">https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近EIDOS很火,一不小心挖矿就把自己的CPU挖爆了。。。</p><p>想出货都没有办法。。。</p><p>但是最近EOS1.8版本已经上线了</p><p>可以让别人帮你支付CPU费用</p><h2 id="新特性的介绍"><a href="#新特性的介绍" class="headerlink" title="新特性的介绍"></a>新特性的介绍</h2><blockquote><p>如果一笔交易有两个或者两个以上的账户联合签名，则只会对排在第一位的账户收取资源费用。此外， EOSIO 1.8的新特性不只是“dApp为用户支付资源“，还包括：1.资源的付费方，可以是任意的账号或服务方，该账号不一定是dApp；2.交易所可以为用户承担资源费用，帮助用户充值至交易所；3.任意的EOS账号，都可以为其他的账号支付资源；4.dApp能够为用户支付资源；5.有可能借助于一项特殊的协议，扫描二维码即可完成资源支付。</p></blockquote><h2 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h2><p><code>cleos push action eidosonecoin transfer &#39;[&quot;gy2dgmztgqge&quot;,&quot;mxcexdeposit&quot;,&quot;4642.9812 EIDOS&quot;,&quot;109257&quot;]&#39; -p bbheasxtlatd gy2dgmztgqge</code></p><p>其实还是很简单的,只是签名的时候 把 支付cpu的那个号放在前面就好了</p><p>如上面 <code>bbheasxtlatd</code>是出cpu费用的号</p><p>详细请看这笔签名的tx <a href="https://bloks.io/transaction/e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb" rel="external nofollow noopener noreferrer" target="_blank">e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb</a></p><h2 id="延伸一下"><a href="#延伸一下" class="headerlink" title="延伸一下"></a>延伸一下</h2><p>感觉以后羊毛党很舒服了啊</p><p>只要给大号质押资源就可以了,然后全部用大号的资源</p><p>再也不怕小号动不了了</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/">https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
     <summary type="html">
     
       背景
-最近EIDOS很火,一把小心挖矿就把自己的CPU挖爆了。。。
+最近EIDOS很火,一不小心挖矿就把自己的CPU挖爆了。。。
 
 想出货都没有办法。。。
 
