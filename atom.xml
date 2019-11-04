@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-11-01T08:24:18.809Z</updated>
+  <updated>2019-11-04T13:06:36.364Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EOS1.8新特性,羊毛党的福利</title>
+    <link href="https://igaojin.me/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/"/>
+    <id>https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/</id>
+    <published>2019-11-04T12:59:49.000Z</published>
+    <updated>2019-11-04T13:06:36.364Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近EIDOS很火,一把小心挖矿就把自己的CPU挖爆了。。。</p><p>想出货都没有办法。。。</p><p>但是最近EOS1.8版本已经上线了</p><p>可以让别人帮你支付CPU费用</p><h2 id="新特性的介绍"><a href="#新特性的介绍" class="headerlink" title="新特性的介绍"></a>新特性的介绍</h2><blockquote><p>如果一笔交易有两个或者两个以上的账户联合签名，则只会对排在第一位的账户收取资源费用。此外， EOSIO 1.8的新特性不只是“dApp为用户支付资源“，还包括：1.资源的付费方，可以是任意的账号或服务方，该账号不一定是dApp；2.交易所可以为用户承担资源费用，帮助用户充值至交易所；3.任意的EOS账号，都可以为其他的账号支付资源；4.dApp能够为用户支付资源；5.有可能借助于一项特殊的协议，扫描二维码即可完成资源支付。</p></blockquote><h2 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h2><p><code>cleos push action eidosonecoin transfer &#39;[&quot;gy2dgmztgqge&quot;,&quot;mxcexdeposit&quot;,&quot;4642.9812 EIDOS&quot;,&quot;109257&quot;]&#39; -p bbheasxtlatd gy2dgmztgqge</code></p><p>其实还是很简单的,只是签名的时候 把 支付cpu的那个号放在前面就好了</p><p>如上面 <code>bbheasxtlatd</code>是出cpu费用的号</p><p>详细请看这笔签名的tx <a href="https://bloks.io/transaction/e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb" rel="external nofollow noopener noreferrer" target="_blank">e7c203425927bb89928a33e3f1b41c75bf293cb84c29230ad68de36a061d95bb</a></p><h2 id="延伸一下"><a href="#延伸一下" class="headerlink" title="延伸一下"></a>延伸一下</h2><p>感觉以后羊毛党很舒服了啊</p><p>只要给大号质押资源就可以了,然后全部用大号的资源</p><p>再也不怕小号动不了了</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/">https://igaojin.me/2019/11/04/EOS1-8新特性-羊毛党的福利/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+最近EIDOS很火,一把小心挖矿就把自己的CPU挖爆了。。。
+
+想出货都没有办法。。。
+
+但是最近EOS1.8版本已经上线了
+
+可以让别人帮你支付CPU费用
+
+新特性的介绍
+如果一笔交易有两个或者两个以上的账户联合签名，则只会对排在第一位的账户收取资源费用。此外， EOSIO 1.8的新特性不只是“dApp为用户支付资源“，还包括：1.资源的付费方，可以是任意的账号或服务方，该账号不一定是dApp；2.交易所可以为用户承担资源费用，帮助用户充值至交易所；3.任意的EOS账号，都可以为其他的账号支付资源；4.dApp能够为用户支付资源；5.有可能借助于一项特殊的协议，扫描二维码即可完成资源
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="EOS" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/EOS/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>EIDOS 自动撸空投(不需要开电脑与手机版)</title>
@@ -784,31 +816,6 @@ uint8_t random(account_name name, uint64_t game_id)
     </summary>
     
       <category term="送书活动" scheme="https://igaojin.me/categories/%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>每周分享第 7 期</title>
-    <link href="https://igaojin.me/2018/09/21/weekly-issue-7/"/>
-    <id>https://igaojin.me/2018/09/21/weekly-issue-7/</id>
-    <published>2018-09-21T14:56:18.000Z</published>
-    <updated>2018-10-11T17:11:19.468Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="稳定币？"><a href="#稳定币？" class="headerlink" title="稳定币？"></a>稳定币？</h1><h3 id="Gemini美元GUSD稳定币中文白皮书"><a href="#Gemini美元GUSD稳定币中文白皮书" class="headerlink" title="Gemini美元GUSD稳定币中文白皮书"></a><a href="https://www.8btc.com/article/275190" rel="external nofollow noopener noreferrer" target="_blank">Gemini美元GUSD稳定币中文白皮书</a></h3><p>USD(Gemini 美元)是一种加密令牌，它是(i)一个纽约信托 公司发行的，(ii)严格按 1:1 与美元挂钩，以及(iii)根据 ERC20 标准 建立在以太坊网络[1]上。<br>GUSD(Gemini 美元)是一个稳定币，它结合了 美元的信誉和价格稳定性，以及加密货币的技术优势，并且体现了美国监 管机构的监管。<br>作为符合 ERC20 标准的一种代币，GUSD(Gemini 美元) 可以在以太坊网络上传输。<br>GUSD(Gemini 美元)在从 Gemini 数字货币交 易所时提取出来时创建，并在存入 Gemini 数字货币交易所时被赎回或”销毁” 。</p><h3 id="香港首家离岸人民币稳定币将合规出场"><a href="#香港首家离岸人民币稳定币将合规出场" class="headerlink" title="香港首家离岸人民币稳定币将合规出场"></a><a href="http://www.huoxing24.com/newsdetail/20180918154809524749.html" rel="external nofollow noopener noreferrer" target="_blank">香港首家离岸人民币稳定币将合规出场</a></h3><p>WIT是一项基于ERC20的区块链应用，是在审计机构的参与下，以离岸人民币作为结算标准，对客户的资金或超额质押的优质数字资产，按照相应的流程发出的电子凭证。</p><h3 id="中美首个“合规稳定币”合约剖析：孰优孰劣？"><a href="#中美首个“合规稳定币”合约剖析：孰优孰劣？" class="headerlink" title="中美首个“合规稳定币”合约剖析：孰优孰劣？"></a><a href="https://mp.weixin.qq.com/s/tZIVmSAnYAmor_GzhRpEKw" rel="external nofollow noopener noreferrer" target="_blank">中美首个“合规稳定币”合约剖析：孰优孰劣？</a></h3><h3 id="王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大"><a href="#王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大" class="headerlink" title="王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大"></a><a href="https://mp.weixin.qq.com/s/K-I5RsK5cn9XI4cuZuxgqw" rel="external nofollow noopener noreferrer" target="_blank">王峰十问PoS共识机制发明人：稳定币的影响被外界过度夸大</a></h3><hr><h1 id="一些文章"><a href="#一些文章" class="headerlink" title="一些文章"></a>一些文章</h1><h3 id="已经解决了黎曼猜想"><a href="#已经解决了黎曼猜想" class="headerlink" title="已经解决了黎曼猜想?"></a><a href="https://mp.weixin.qq.com/s/XrnNbzQs3NGYj00C-sa5gw" rel="external nofollow noopener noreferrer" target="_blank">已经解决了黎曼猜想?</a></h3><p>菲尔兹和阿贝尔奖双料得主迈克尔·阿蒂亚爵士宣称自己证明了黎曼猜想，要在9月24日海德堡获奖者论坛[1]上宣讲.</p><p>[1] 海德堡获奖者论坛是由Klaus Tschira基金会，海德堡理论研究所，ACM（国际计算机学会），国际数学联合会，以及挪威科学与文学院共同举办，旨在为青年一代学者提供与图灵奖得主，阿贝尔奖得主，奈望林纳奖得主，菲尔兹奖得主等国际顶级奖项获奖人为期一周的共同研究探讨的机会。</p><p>科普 <a href="https://mp.weixin.qq.com/s/2ZYeZIInfm6vqluJKKQjgw" rel="external nofollow noopener noreferrer" target="_blank">什么是黎曼猜想</a></p><p><a href="https://mp.weixin.qq.com/s/u_rhcDOuQqqzr7Q0o-KYWQ" rel="external nofollow noopener noreferrer" target="_blank">数学科幻小说——黎曼的猫</a></p><p><a href="https://mp.weixin.qq.com/s/ucx0txcCupyHkD7mbLyPYg" rel="external nofollow noopener noreferrer" target="_blank">危险的“黎曼猜想”</a></p><h3 id="朋友，别再用“去中心化”描述区块链了"><a href="#朋友，别再用“去中心化”描述区块链了" class="headerlink" title="朋友，别再用“去中心化”描述区块链了"></a><a href="https://mp.weixin.qq.com/s/vyWjsZUufbyb5dxwXSuxdA" rel="external nofollow noopener noreferrer" target="_blank">朋友，别再用“去中心化”描述区块链了</a></h3><p>当我们说起“去中心化”的时候，我们到底在说什么？</p><p>用一个含糊不清的词来描述一个新出现的事物，对我们的理解会有怎样的危害？</p><p>Tony Sheng的这篇文章从“去中心化”的定义开始思考，得出的结论是：某个东西是否“去中心化”并不重要，重要的是“去中心化”背后的特质到底如何衡量，比如能否抵御监管、防止内容被篡改。这才是真正重要的本质属性。</p><p>我们不用担心EOS是不是足够去中心化了。<br>我们应该问的是对监管的抵御足够了吗？对防篡保护到位了吗？谁有权利改变整个网络的规则？<br>不同的派系对于各个方面怎么划线都有不同的答案，但是至少我们是在同一个维度进行讨论。</p><h3 id="从MP3到种子王者海盗湾-鬼知道今天的去中心化都经历了些什么"><a href="#从MP3到种子王者海盗湾-鬼知道今天的去中心化都经历了些什么" class="headerlink" title="从MP3到种子王者海盗湾, 鬼知道今天的去中心化都经历了些什么"></a><a href="https://mp.weixin.qq.com/s/xHea_dQ1VE5qPLGBHOU8og" rel="external nofollow noopener noreferrer" target="_blank">从MP3到种子王者海盗湾, 鬼知道今天的去中心化都经历了些什么</a></h3><p>去中心化，一个在行业里被说烂的词，比特币和加密货币的出现让这个词变得妇孺皆知；</p><p>然而，去中心化这一概念却并不是比特币首创，早在20世纪80年代，去中心化就伴随着共享文件需求的增长，形成了最初的雏形。在这一过程中，无论是我们所熟知的MP3，还是宅男必备的「海盗湾」，甚至连各国政府的法律法规，都有意无意的成为了推动去中心化发展的重要推手。<br>了解去中心化的成因和历史，对于今天区块链创业和项目选型至为重要。那么，中心化的起源到底是什么？经历了哪些发展？又为什么会对我们今天对区块链的理解产生影响呢？这些问题让我们回到历史中去寻找答案。</p><h3 id="杭州造云记-甲子光年"><a href="#杭州造云记-甲子光年" class="headerlink" title="杭州造云记 | 甲子光年"></a><a href="https://mp.weixin.qq.com/s/TV6JzUSIau06YpzHPQzaGw" rel="external nofollow noopener noreferrer" target="_blank">杭州造云记 | 甲子光年</a></h3><img src="/2018/09/21/weekly-issue-7/640.webp"><p>在离云栖大会会场不远处，有一尊飞天5K纪念碑，底座一侧刻着参与战斗的227个工程师和他们家人的名字，另一侧刻着王坚的一段记录：“一群有理想的平凡人经历了1757个日日夜夜，用生命和热血写成代码，为云计算开启了未来之势。坚持你相信的，相信你坚持的。”</p><h3 id="火车上的40年：从站票、泡面到复兴号"><a href="#火车上的40年：从站票、泡面到复兴号" class="headerlink" title="火车上的40年：从站票、泡面到复兴号"></a><a href="https://mp.weixin.qq.com/s/-gDwMcREC7WmuLBG-JKlWQ" rel="external nofollow noopener noreferrer" target="_blank">火车上的40年：从站票、泡面到复兴号</a></h3><img src="/2018/09/21/weekly-issue-7/40.webp"><p>►1977年，哈尔滨铁路局三棵树车辆站的宣传干事王福春拿起了人生的第一台相机——装胶卷的双镜头海鸥相机，将镜头对准了他每天打交道的火车车厢和行色匆匆的旅客。没想到，这一拍就是40年。</p><p>40年光阴荏苒，王福春几乎跑遍了中国所有的铁路线，他的镜头见证了四十年的国民发展变迁。十多万张黑白影像上记录的每一丝褶皱、每一滴汗水、每一份笑容、每一个背影，凝结成了几代中国人对于火车的集体记忆。</p><p>王福春说，“我是摄影师，是社会的记录者。中国这40年是改革最快变化最大的40年，在铁路这个小分支，我全赶上了，全在我的影集里，没给社会留下空白，这就是我作为摄影师最大的成就感了。”</p><hr><h1 id="好玩的"><a href="#好玩的" class="headerlink" title="好玩的"></a>好玩的</h1><h3 id="住在公司一年多，一些细节和感想"><a href="#住在公司一年多，一些细节和感想" class="headerlink" title="住在公司一年多，一些细节和感想"></a><a href="https://www.v2ex.com/t/490481" rel="external nofollow noopener noreferrer" target="_blank">住在公司一年多，一些细节和感想</a></h3><p>V站神人，讲述自己如何在公司住了一年多…</p><p>应该很多人可能说过(比如我)，公司环境这么好，住在公司挺好的…但是有多少人真的实践过呢…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/21/weekly-issue-7/">https://igaojin.me/2018/09/21/weekly-issue-7/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      稳定币？
-Gemini美元GUSD稳定币中文白皮书
-USD(Gemini 美元)是一种加密令牌，它是(i)一个纽约信托 公司发行的，(ii)严格按 1:1 与美元挂钩，以及(iii)根据 ERC20 标准 建立在以太坊网络[1]上。
-GUSD(Gemini 美元)是一个稳定币，它结合了 美元的信誉和价格稳定性，以及加密货币的技术优势，并且体现了美国监 管机构的监管。
-作为符合 ERC20 标准的一种代币，GUSD(Gemini 美元) 可以在以太坊网络上传输。
-GUSD(Gemini 美元)在从 Gemini 数字货币交 易所时提取出来时创建，并在存入 Gemini 数字货币交易所时被赎回或”
-    
-    </summary>
-    
-      <category term="每周分享" scheme="https://igaojin.me/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/"/>
     
     
   </entry>
