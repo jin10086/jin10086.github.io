@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-11-04T13:08:58.689Z</updated>
+  <updated>2019-11-06T15:51:11.048Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EOS合约编译无法生成ABI的解决办法</title>
+    <link href="https://igaojin.me/2019/11/06/EOS%E5%90%88%E7%BA%A6%E7%BC%96%E8%AF%91%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90ABI%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://igaojin.me/2019/11/06/EOS合约编译无法生成ABI的解决办法/</id>
+    <published>2019-11-06T15:40:58.000Z</published>
+    <updated>2019-11-06T15:51:11.048Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在写EOS上面ram的代币化合约</p><p>但是发现,怎么部署合约 都无法生成abi文件</p><p>abi里面一直是空白的</p><p>无论是在<a href="https://app.eosstudio.io/" rel="external nofollow noopener noreferrer" target="_blank">https://app.eosstudio.io/</a> 在线编译器</p><p>还是本地 使用eosio-cpp编译都是一样</p><p>最后才发现是 因为合约名字和 .cpp文件的名字不一样导致的。。。（真无法</p><img src="/2019/11/06/EOS合约编译无法生成ABI的解决办法/一杯茶一根烟一个bug改一天.jpg" title="一杯茶一根烟一个bug改一天"><p>所以解决方法就是</p><hr><p>假如你的build 代码是 <code>eosio-cpp -o learn/learn.wasm learn/src/learn.cpp --abigen</code></p><p>那么你需要确保 <code>learn.cpp</code> 里面的 contract name 也是 <strong>learn</strong></p><p>如下所示：</p><p><code>CONTRACT learn : public contract</code></p><p>如果不是,那么就怎么也无法生成abi了。。。</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/06/EOS合约编译无法生成ABI的解决办法/">https://igaojin.me/2019/11/06/EOS合约编译无法生成ABI的解决办法/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      最近在写EOS上面ram的代币化合约
+
+但是发现,怎么部署合约 都无法生成abi文件
+
+abi里面一直是空白的
+
+无论是在https://app.eosstudio.io/ 在线编译器
+
+还是本地 使用eosio-cpp编译都是一样
+
+最后才发现是 因为合约名字和 .cpp文件的名字不一样导致的。。。（真无法
+
+所以解决方法就是
+
+
+
+
+假如你的build 代码是 eosio-cpp -o learn/learn.wasm learn/src/learn.cpp --abigen
+
+那么你需要确保 learn.cpp 里面的 contract name 也是 learn
+
+如下所示：
+
+CON
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>EOS1.8新特性,羊毛党的福利</title>
@@ -771,51 +814,6 @@ uint8_t random(account_name name, uint64_t game_id)
     </summary>
     
       <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>人人参与的送书活动</title>
-    <link href="https://igaojin.me/2018/09/24/%E4%BA%BA%E4%BA%BA%E5%8F%82%E4%B8%8E%E7%9A%84%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/"/>
-    <id>https://igaojin.me/2018/09/24/人人参与的送书活动/</id>
-    <published>2018-09-24T09:19:27.000Z</published>
-    <updated>2018-10-11T17:11:19.579Z</updated>
-    
-    <content type="html"><![CDATA[<p>很早之前就说要做送书活动了,但是自己太懒,一直没有弄下去…</p><p>趁此中秋佳节之际,刚好弄起来吧…</p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我公众号也弄过几次送书活动,不过我一直觉得此类活动,除了给公众号涨粉外,并没有太多的作用。</p><p>可能你是因为好玩，或者因为感觉这本书不错，所以参加了活动…</p><p>有多少人能拿到自己想要的那本书呢…</p><p>真正拿到书的人有多少能看完呢？有多少真的学到了东西呢…</p><p>我自己趁打折时候买的一些书，都好多没有看完…</p><p>上面都是个人看法，欢迎反驳。</p><h2 id="真正的送书活动"><a href="#真正的送书活动" class="headerlink" title="真正的送书活动?"></a>真正的送书活动?</h2><p>综上所述,我想弄一个真正的送书活动.</p><p>让每个人都能拿到自己想要的书.</p><p>怎么做呢?</p><p>理论上可以我每个月拿出1000左右的钱出来,给大家送书…</p><p>但是这样的话，这个系统太中心化了…</p><p>万一哪天我不想送了,那这个活动也就结束了…</p><p>所以,应该让系统中的每一个人都参与进来…</p><h2 id="人人参与的送书活动"><a href="#人人参与的送书活动" class="headerlink" title="人人参与的送书活动"></a>人人参与的送书活动</h2><h3 id="共识"><a href="#共识" class="headerlink" title="共识"></a>共识</h3><p>假如你想要参与到送书活动中来的话,你需要做到下面的几件事</p><ol><li>有想看的书(任何种类的书)</li><li>在2个月内能看完</li><li>能写出大于1000字的观后感（这篇文章会发表到公众号)</li></ol><p>这上面就是我们的共识了.</p><h3 id="书送给谁"><a href="#书送给谁" class="headerlink" title="书送给谁?"></a>书送给谁?</h3><p>因为系统的资源是有限的,所以需要通过某种方法选出合适的人.</p><p>目前规则很简单:你需要给公众号赞赏大于1RMB,然后在所有参与者中随机选出“中奖者”</p><h3 id="系统如何自洽"><a href="#系统如何自洽" class="headerlink" title="系统如何自洽"></a>系统如何自洽</h3><p>目前,系统需要的资源应该就是钱了…</p><p>目前有以下途径可以拿到钱</p><ul><li>公众号底部的广告(目前每个月大概50元左右…这个锅是我的，发文章太少了)</li><li>其他人投放的软文…(应该很久没有发了,都被我拒了…)</li><li>参与者 赞赏的钱（也就是上面的参与方式内的赞赏）</li><li>土豪赞助(目前还没有)</li></ul><h3 id="愿景"><a href="#愿景" class="headerlink" title="愿景"></a>愿景</h3><p>最终我希望通过这种方式，能出一个持续的送书活动.</p><p>如果你对这个活动比较感兴趣,有一些建议或者想要吐槽的地方,欢迎到<a href="https://github.com/jin10086/send-book/issues/1" rel="external nofollow noopener noreferrer" target="_blank">送书活动讨论区</a>和大家一起讨论</p><h2 id="第一期活动"><a href="#第一期活动" class="headerlink" title="第一期活动"></a>第一期活动</h2><p>第一期活动由我抛砖引玉 送出10本书,每本书价格在200以内进行.（截止到9/29日）</p><p>参与方式见上文.</p><p>最后祝大家中秋节快乐.</p><p>博客想参与的话，请点击<a href="https://mp.weixin.qq.com/s/duroacjtGynAvaY3t9JgzQ" rel="external nofollow noopener noreferrer" target="_blank">微信文章</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/09/24/人人参与的送书活动/">https://igaojin.me/2018/09/24/人人参与的送书活动/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      很早之前就说要做送书活动了,但是自己太懒,一直没有弄下去…
-
-趁此中秋佳节之际,刚好弄起来吧…
-
-背景
-我公众号也弄过几次送书活动,不过我一直觉得此类活动,除了给公众号涨粉外,并没有太多的作用。
-
-可能你是因为好玩，或者因为感觉这本书不错，所以参加了活动…
-
-有多少人能拿到自己想要的那本书呢…
-
-真正拿到书的人有多少能看完呢？有多少真的学到了东西呢…
-
-我自己趁打折时候买的一些书，都好多没有看完…
-
-上面都是个人看法，欢迎反驳。
-
-真正的送书活动?
-综上所述,我想弄一个真正的送书活动.
-
-让每个人都能拿到自己想要的书.
-
-怎么做呢?
-
-理论上可以我每个月拿出1000左右的钱出来,给大家送书…
-
-    
-    </summary>
-    
-      <category term="送书活动" scheme="https://igaojin.me/categories/%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/"/>
     
     
   </entry>
