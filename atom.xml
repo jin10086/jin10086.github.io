@@ -726,15 +726,22 @@ Luckyos、EOS.WIN、DEOSBET、FairDice、EosRoyale、EOSDice、FFGame……这�
     <link href="https://igaojin.me/2018/11/22/%E5%A6%82%E4%BD%95%E8%AE%A9%E6%9F%90%E4%B8%AA%E7%A8%8B%E5%BA%8F%E4%B8%80%E7%9B%B4%E8%BF%90%E8%A1%8C/"/>
     <id>https://igaojin.me/2018/11/22/如何让某个程序一直运行/</id>
     <published>2018-11-21T17:04:05.000Z</published>
-    <updated>2018-11-21T17:06:13.790Z</updated>
+    <updated>2019-11-07T00:56:38.180Z</updated>
     
-    <content type="html"><![CDATA[<p>因为有时候需要让某段程序一直运行,停止了就自动重启…</p><p>从网上找了好久，找到了这段代码。。。用了挺好，记录下</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"AutoRes is starting"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 你要一直运行的代码放在这...</span></span><br><span class="line">    executable = sys.executable</span><br><span class="line">    args = sys.argv[:]</span><br><span class="line">    print(args)</span><br><span class="line">    args.insert(<span class="number">0</span>, sys.executable)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"Respawning"</span>)</span><br><span class="line">    os.execvp(executable, args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/22/如何让某个程序一直运行/">https://igaojin.me/2018/11/22/如何让某个程序一直运行/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    <content type="html"><![CDATA[<p>因为有时候需要让某段程序一直运行,停止了就自动重启…</p><p>从网上找了好久，找到了这段代码。。。用了挺好，记录下</p><hr><p>简直是神器</p><p>什么websocket reconnect,什么异常处理都不用管 <strong>我就是要无脑运行</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys,time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"AutoRes is starting"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 你要一直运行的代码放在这...</span></span><br><span class="line">    executable = sys.executable</span><br><span class="line">    args = sys.argv[:]</span><br><span class="line">    print(args)</span><br><span class="line">    args.insert(<span class="number">0</span>, sys.executable)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"Respawning"</span>)</span><br><span class="line">    os.execvp(executable, args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/11/22/如何让某个程序一直运行/">https://igaojin.me/2018/11/22/如何让某个程序一直运行/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
     <summary type="html">
     
       因为有时候需要让某段程序一直运行,停止了就自动重启…
 
 从网上找了好久，找到了这段代码。。。用了挺好，记录下
+
+
+
+
+简直是神器
+
+什么websocket reconnect,什么异常处理都不用管 我就是要无脑运行
 
 1
 2
@@ -752,7 +759,11 @@ Luckyos、EOS.WIN、DEOSBET、FairDice、EosRoyale、EOSDice、FFGame……这�
 14
 15
 16
+17
+18
 
+
+import os,sys,time
 
 def main():
     print(&quot;AutoRes is starting&quot;)
@@ -760,11 +771,7 @@ def main():
     # 你要一直运行的代码放在这...
     executable = sys.executable
     args = sys.argv[:]
-    print(args)
-    args.insert(0, sys.executable)
-
-    time.sleep(1)
-    print(
+ 
     
     </summary>
     
