@@ -25,11 +25,17 @@ https://player.soundon.fm/episode/dc138238-bf4e-4a36-b50b-f8a90945c3b0
 
 最近迷上了[《激进市场（Radical Markets）》](http://radicalmarkets.com/) — 由芝加哥大学法学院知名教授、国际法律专家[艾瑞克·波斯纳（Eric Posner）](https://en.wikipedia.org/wiki/Eric_Posner)和微软首席经济研究员、芝加哥大学经济系有史以来最年轻教授[格伦·韦尔（Glen Weyl）](http://glenweyl.com/)所共同提出的全新社会经济架构理念。
 
-![via https://www.slideshare.net/EGlenWeyl/radical-markets](https://miro.medium.com/max/5000/1*9y21W9A7ML5jCeJD9079-Q.jpeg)
+<!-- ![via https://www.slideshare.net/EGlenWeyl/radical-markets](https://miro.medium.com/max/5000/1*9y21W9A7ML5jCeJD9079-Q.jpeg) -->
+
+{% asset_img bbs1.jpeg  via https://www.slideshare.net/EGlenWeyl/radical-markets %}
+
 
 去年（2018）三月这两位法学界、经济学界的金童合写了一本新书[《激进市场：彻底根除资本主义和民主，建设公正社会（Radical Markets:Uprooting Capitalism and Democracy for a Just Society）》](https://www.amazon.com/Radical-Markets-Uprooting-Capitalism-Democracy/dp/0691177503)，给市场带来了不小的震撼，连区块链界大神/以太坊创办人 Vitalik 都被圈粉；书中试图提出五种相对于社会现状非常 “激进（Radical）”的社会经济革新提案，引发众人迴响。
 
-![神童作者— Glen Weyl. via https://twitter.com/LeuvenEconomics/](https://miro.medium.com/max/2513/0*7-HkB3tJkQDPwot1.jpg)
+<!-- ![神童作者— Glen Weyl. via https://twitter.com/LeuvenEconomics/](https://miro.medium.com/max/2513/0*7-HkB3tJkQDPwot1.jpg) -->
+
+{% asset_img bbs2.jpg  神童作者— Glen Weyl. via https://twitter.com/LeuvenEconomics/ %}
+
 
 
 
@@ -45,7 +51,10 @@ https://player.soundon.fm/episode/dc138238-bf4e-4a36-b50b-f8a90945c3b0
 
 ### [Radical Markets 书籍官网](http://radicalmarkets.com/)
 
-![相比起一般经济学书籍更酷一些的插图](https://miro.medium.com/max/2400/1*Ay4zrwVVhMRbdoBytWyobQ.png)
+<!-- ![相比起一般经济学书籍更酷一些的插图](https://miro.medium.com/max/2400/1*Ay4zrwVVhMRbdoBytWyobQ.png) -->
+{% asset_img bbs3.png  相比起一般经济学书籍更酷一些的插图 %}
+
+
 
 网站裡即明列了有所有书裡提到的主要观点，即书中五大章节：
 
@@ -74,7 +83,8 @@ https://player.soundon.fm/episode/dc138238-bf4e-4a36-b50b-f8a90945c3b0
 
 ### [Amazon 亚马逊书店购买连结](https://www.amazon.com/Radical-Markets-Uprooting-Capitalism-Democracy/dp/0691177503)：当前评价四颗星
 
-![Radical Markets — Amazon 购书页面](https://miro.medium.com/max/3145/1*gaRo8uSyUaOwsBk0u77nXg.png)
+<!-- ![Radical Markets — Amazon 购书页面](https://miro.medium.com/max/3145/1*gaRo8uSyUaOwsBk0u77nXg.png) -->
+{% asset_img bbs4.png  Radical Markets — Amazon 购书页面 %}
 
 
 其实我本来一秒就想上网购书来看，想说这麽有趣又激进的提案，早些入手啃一下英文版好了，没想到却立刻被认识该书作者 Glen Weyl 的宝博士多年好友 Prof. [Tom Lam](https://www.clemson.edu/business/about/profiles/TOMLAM) 给出手阻止：
