@@ -1,5 +1,5 @@
 ---
-title: '法学、经济学与区块链的最潮交会 — 激进市场（Radical Markets）提案入门 [含阅读清单]'
+title: '法学、经济学与区块链的最潮交会 — 激进市场（Radical Markets）提案入门'
 categories:
   - 激进市场
 date: 2019-11-13 15:57:05
