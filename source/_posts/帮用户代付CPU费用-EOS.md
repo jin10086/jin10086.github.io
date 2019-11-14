@@ -22,7 +22,7 @@ tags:
 
 1. 前端生成如下的数据，此时用户不需要签名
 
-```
+```json
 {
   "expiration": "2019-10-15T06:02:59",
   "ref_block_num": 486,
@@ -48,7 +48,37 @@ tags:
 }
 ```
 2. 判断收费情况，等待用户付费
-3. 付费成功后,修改expiration，ref_block_num和ref_block_prefix、，并且要代付费的actor添加为first authorization。
+3. 付费成功后,修改expiration 到20分钟后，并且要代付费的actor添加为first authorization。
+```json
+{
+  "expiration": "2019-10-15T06:22:59",
+  "ref_block_num": 486,
+  "ref_block_prefix": 2948179210,
+  "max_net_usage_words": 0,
+  "max_cpu_usage_ms": 0,
+  "delay_sec": 0,
+  "context_free_actions": [],
+  "actions": [{
+      "account": "eosio.token",
+      "name": "transfer",
+      "authorization": [
+        {
+          "actor": "代付的用户",
+          "permission": "active"
+        },
+        {
+          "actor": "USER",
+          "permission": "active"
+        }
+      ],
+      "data": "0000000084ab32dd0000000088ab32dd102700000000000004454f530000000000"
+    }
+  ],
+  "transaction_extensions": [],
+  "signatures": [],
+  "context_free_data": []
+}
+```
 4. 对生成的交易进行签名
 5. 返回给前端，让用户签名，整个流程完成
 
