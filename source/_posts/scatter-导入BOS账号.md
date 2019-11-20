@@ -1,7 +1,7 @@
 ---
 title: scatter 导入BOS账号
 categories:
-  - EOS
+  - 区块链
 date: 2019-01-27 19:02:19
 tags:
 ---

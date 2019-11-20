@@ -1,10 +1,11 @@
 ---
 title: 你的EOS 账号安全谁来保护？
 categories:
-  - 区块链
-  - EOS
+    - 区块链
 date: 2018-06-15 11:46:49
 tags:
+  - EOS
+ 
 ---
 
 ## 背景

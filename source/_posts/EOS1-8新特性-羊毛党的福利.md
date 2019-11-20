@@ -2,9 +2,9 @@
 title: 'EOS1.8新特性,羊毛党的福利'
 categories:
   - 区块链
-  - EOS
 date: 2019-11-04 20:59:49
 tags:
+  - EOS
 ---
 ## 背景
 
