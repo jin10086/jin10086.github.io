@@ -20,7 +20,7 @@ tags:
 
 查询链接在：https://console.cloud.google.com/bigquery?sq=348440405491:dd7234a0a453433da1596f2e57b344e4
 
-{% asset_img eth-contract-similarity-query.png  eth contract similarity query%}
+{% asset_img eth_contract_similarity_query.png  eth contract similarity query%}
 
 只要把其他sql里面的 address换成你想要查找的就可以了。。。
 
