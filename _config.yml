@@ -5,10 +5,10 @@
 # Site
 title: 高金的博客
 subtitle:
-description: 高金的个人博客，记录一下关于爬虫和学习python以及瞎折腾的一些东西
+description: 高金的个人博客，记录一些关于爬虫、学习python、区块链、薅羊毛以及瞎折腾的一些东西
 author: Gao JIn
 language: zh-CN
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
