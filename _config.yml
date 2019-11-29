@@ -112,13 +112,7 @@ addlink:
 # 压缩js,html,css,image https://github.com/chenzhutian/hexo-all-minifier
 all_minifier: true
 image_minifier:
-  enable: true
-  interlaced: true
-  multipass: true
-  optimizationLevel: 2
-  pngquant: true
-  progressive: false
-  silent: false
+  enable: false
 
 
 # jsdelivr https://github.com/jsdelivr/jsdelivr#contribute-performance-data
