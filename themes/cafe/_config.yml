@@ -32,6 +32,7 @@ wechat_url: https://igaojin.me/about/index/0.jpg
 # Friendly links 友情链接
 links:
     #我爱看图: http://52kantu.cn/
+    寻TA: https://xunta.today
     giscafer's blog: http://blog.giscafer.com
     13 Blog(13的技术分享): http://blog.hanshuai.xin
     Cryptospace: https://dbarobin.com/
@@ -40,7 +41,6 @@ links:
     以太坊爱好者: https://ethfans.org
     橙皮书: http://orange.xyz
     forkit: https://forkit.fm
-
 # 侧边栏 Sidebar，目前仅支持right
 sidebar: right
 # 目录展示位置，有两种选择，post为文章内部右侧；widget为sidebar形式展示，在markdown文件中通过toc:false可以指定某文章不展示目录
