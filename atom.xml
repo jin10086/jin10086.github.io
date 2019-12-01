@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-11-24T05:12:47.661Z</updated>
+  <updated>2019-12-01T07:54:09.567Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>程序员找对象聚合平台-xunta.today</title>
+    <link href="https://igaojin.me/2019/11/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%89%BE%E5%AF%B9%E8%B1%A1%E8%81%9A%E5%90%88%E5%B9%B3%E5%8F%B0-xunta-today/"/>
+    <id>https://igaojin.me/2019/11/30/程序员找对象聚合平台-xunta-today/</id>
+    <published>2019-11-30T05:10:41.000Z</published>
+    <updated>2019-12-01T07:54:09.567Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>程序员相亲的公众号最近也挺多的,但是因为微信平台的原因</p><p>导致无法搜索,不能更快的寻找需要的信息…</p><p>所以做了一个聚合N个相亲公众号信息的网站 <a href="https://xunta.today" rel="external nofollow noopener noreferrer" target="_blank">https://xunta.today</a></p><p>网站名字叫 <strong>XUNTA</strong></p><img src="/2019/11/30/程序员找对象聚合平台-xunta-today/xunta.png" title="xunta"><h2 id="信息来源"><a href="#信息来源" class="headerlink" title="信息来源"></a>信息来源</h2><p>目前只汇总以下公众号的文章</p><ul><li>CQ脱单联萌</li><li>程序员脱单实验室</li><li>村姑的个人农场</li><li>单身青年自救平台</li><li>脱单吖</li></ul><p>如果还有新的公众号也提供相亲信息的话 欢迎邮件告诉我</p><p>上面那几个还是发朋友圈问来的</p><img src="/2019/11/30/程序员找对象聚合平台-xunta-today/pyq.jpeg" title="朋友圈截图"><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过爬虫定期去爬取以上公众号的文章,下载网页源代码就好了</p><p>然后把源代码丢到<a href="https://github.com/getpelican/pelican" rel="external nofollow noopener noreferrer" target="_blank">pelican</a> 里面</p><p>再放到gihtub上面</p><p>源代码在:<a href="https://github.com/jin10086/xunta2" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/jin10086/xunta2</a></p><p>爬虫的没有公开,主要怕公开了微信限制接口,后面增加工作量,有需要可以邮件我.</p><p>碰到的问题</p><ol><li>微信图片有防盗链</li></ol><p>使用nginx转发一下就可以了,当然需要先把图片域名改成你的</p><p>如下<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">location /mmbiz&#123;</span><br><span class="line">    proxy_set_header referer &quot;https://mp.weixin.qq.com&quot;;</span><br><span class="line">    proxy_set_header origin &quot;https://mp.weixin.qq.com&quot;;</span><br><span class="line">    proxy_set_header user-agent &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36&quot;;</span><br><span class="line"></span><br><span class="line">    rewrite /(.+)$ /$1 break;</span><br><span class="line">    proxy_pass http://mmbiz.qpic.cn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /mp&#123;</span><br><span class="line">    proxy_set_header referer &quot;https://mp.weixin.qq.com&quot;;</span><br><span class="line">    proxy_set_header origin &quot;https://mp.weixin.qq.com&quot;;</span><br><span class="line">proxy_set_header user-agent &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36&quot;;</span><br><span class="line">    rewrite /(.+)$ /$1 break;</span><br><span class="line">    proxy_pass https://mp.weixin.qq.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><ol start="2"><li>搜索</li></ol><p>目前站内也可以搜索</p><p>用的是 <a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search" rel="external nofollow noopener noreferrer" target="_blank">tipue_search</a></p><img src="/2019/11/30/程序员找对象聚合平台-xunta-today/xuntasearch.png" title="xunta网站搜索截图"><p>显示结果有点辣眼睛</p><p>因为源代码里面太多乱七八糟的东西了,所以我直接在创建搜索的时候,只保留了文章中的中文内容,其他全部去掉了…</p><p>可以过几天等google爬虫把网站索引了</p><p>直接用 <code>site:xunta.today</code> 搜索</p><h2 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h2><p>爬虫会每天更新一次</p><p>公众号也会每周汇总一次,有人有兴趣一起参与的话欢迎邮件我,（不限于讨论,排版,等等…)</p><h2 id="投诉与建议"><a href="#投诉与建议" class="headerlink" title="投诉与建议"></a>投诉与建议</h2><p>如果你觉得某篇文章有冒犯你,请直接邮件我 并且带上链接！</p><p>有好的建议也欢迎邮件！</p><h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><p><a href="mailto:xunta@igaojin.me">xunta@igaojin.me</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/30/程序员找对象聚合平台-xunta-today/">https://igaojin.me/2019/11/30/程序员找对象聚合平台-xunta-today/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+程序员相亲的公众号最近也挺多的,但是因为微信平台的原因
+
+导致无法搜索,不能更快的寻找需要的信息…
+
+所以做了一个聚合N个相亲公众号信息的网站 https://xunta.today
+
+网站名字叫 XUNTA
+
+信息来源
+目前只汇总以下公众号的文章
+
+ * CQ脱单联萌
+ * 程序员脱单实验室
+ * 村姑的个人农场
+ * 单身青年自救平台
+ * 脱单吖
+
+如果还有新的公众号也提供相亲信息的话 欢迎邮件告诉我
+
+上面那几个还是发朋友圈问来的
+
+原理
+通过爬虫定期去爬取以上公众号的文章,下载网页源代码就好了
+
+然后把源代码丢到pelican 里面
+
+再放到gihtub上面
+
+源代码在:htt
+    
+    </summary>
+    
+      <category term="相亲" scheme="https://igaojin.me/categories/%E7%9B%B8%E4%BA%B2/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>EOS 1.8 bidname的漏洞分析</title>
@@ -783,40 +832,6 @@ df.to_excel(&quot;a.xlsx&quot;)
     
     
       <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>找房子注意事项（最近搬家太多了...)</title>
-    <link href="https://igaojin.me/2018/12/08/%E6%90%AC%E5%AE%B6/"/>
-    <id>https://igaojin.me/2018/12/08/搬家/</id>
-    <published>2018-12-07T18:11:18.000Z</published>
-    <updated>2019-11-23T15:34:57.507Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近搬了几次家,来回折腾了几次…</p><p>做一个总结吧…(以免以后再来回折腾…)</p><h2 id="会碰到的一些坑"><a href="#会碰到的一些坑" class="headerlink" title="会碰到的一些坑"></a>会碰到的一些坑</h2><h3 id="楼上楼下小孩吵-宠物吵"><a href="#楼上楼下小孩吵-宠物吵" class="headerlink" title="楼上楼下小孩吵(宠物吵)"></a>楼上楼下小孩吵(宠物吵)</h3><p>这个避免的话有大概有想到几种</p><ul><li>合租的话，问问现在住在房间里面的人</li><li>找那种青年公寓，类似于自如这种（一般有些好一点公寓会不让老年人以及有小孩入住…)</li><li>当然最简单的是 找房子的时候，就让中介把这些房子帮你过滤掉</li></ul><h3 id="房间隔音不好"><a href="#房间隔音不好" class="headerlink" title="房间隔音不好"></a>房间隔音不好</h3><ul><li>自己可以到里面多呆呆,最好时间长一点，最好能先提前住一晚，这样发现了一些比较吵的就可以不租。</li><li>最好找一些大的平台吧，基本上大的平台都有公约，禁止半夜吵架啊，啥的。。。自己找的一些小区的房子，虽然便宜了，但是遇到傻逼邻居了，你也没有办法…</li><li>别租靠近地铁，靠近马路，靠近飞机场的，学校等等这些</li></ul><h3 id="遮光不好"><a href="#遮光不好" class="headerlink" title="遮光不好"></a>遮光不好</h3><ul><li>看看窗帘能不能关好…(有些窗户设计的傻x，就是关不好，换窗帘也没用…)</li></ul><h3 id="一楼的问题"><a href="#一楼的问题" class="headerlink" title="一楼的问题"></a>一楼的问题</h3><ol><li>潮湿</li><li>夏天蚊子特别多</li><li>可能不是很安全</li></ol><h2 id="其他的一些要求…"><a href="#其他的一些要求…" class="headerlink" title="其他的一些要求…"></a>其他的一些要求…</h2><ul><li>别太偏…(附近外卖比较多)</li><li>有大型超市</li><li>有图书馆（看自己需求</li><li>有游泳馆（看自己需求</li><li>有大型商场</li><li>离地铁站步行10分钟左右…</li></ul><h2 id="其他注意"><a href="#其他注意" class="headerlink" title="其他注意"></a>其他注意</h2><p>电费的话，可以看看是不是自己交（一般有些不是按照民用电给你的…)</p><p>网络记住别是铁通的…要不然贼卡…</p><p>合租的话，人别太多（特别是共用卫生间,可以先问问大家都是几点起，别都是8点，这样早上就要排队了。。。）</p><p>还有之前碰到过大早上洗澡的（一洗就是一小时的。。。）,这个也可以问问看</p><p>当然最好是独立卫生间…</p><p>其他的有想到就补…</p><hr><p><strong>更新于20181208…</strong></p><p>还需要看一下基础设备（热水，手机信号…今天搬进来的房子 手机信号贼差…</p><hr><p><strong>更新于20181220…</strong></p><p>一楼的话 会有些潮湿…注意下…</p><hr><p><strong>更新于20190312,洗澡洗到一半等待热水….</strong></p><p>洗澡的热水器一定要关注.（可以先开到热水，然后弄到可以洗澡的温度放一段时间，看看会不会突然变凉.)</p><p>烧电的话 需要看看卫生间是不是合用的，因为里面的水就那么多，如果被人先用了，那么你需要等水热…</p><p>燃气的话 有一些不够稳定…</p><p><strong>更新于20190324,浴室有浴霸，要不然冬天很冷….</strong></p><p><strong>更新于20190324,一楼夏天蚊子很多，所以可以选高层….</strong></p><p><strong>更新于20190817,如果是转租过来的房子，记得看能不能续租，别刚搬好下个月就要退房.</strong></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/08/搬家/">https://igaojin.me/2018/12/08/搬家/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      最近搬了几次家,来回折腾了几次…
-
-做一个总结吧…(以免以后再来回折腾…)
-
-会碰到的一些坑
-楼上楼下小孩吵(宠物吵)
-这个避免的话有大概有想到几种
-
- * 合租的话，问问现在住在房间里面的人
- * 找那种青年公寓，类似于自如这种（一般有些好一点公寓会不让老年人以及有小孩入住…)
- * 当然最简单的是 找房子的时候，就让中介把这些房子帮你过滤掉
-
-房间隔音不好
- * 自己可以到里面多呆呆,最好时间长一点，最好能先提前住一晚，这样发现了一些比较吵的就可以不租。
- * 最好找一些大的平台吧，基本上大的平台都有公约，禁止半夜吵架啊，啥的。。。自己找的一些小区的房子，虽然便宜了，但是遇到傻逼邻居了，你
-    
-    </summary>
-    
-      <category term="琐事" scheme="https://igaojin.me/categories/%E7%90%90%E4%BA%8B/"/>
-    
     
   </entry>
   
