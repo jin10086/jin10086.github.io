@@ -107,3 +107,8 @@ proxy_set_header user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) App
 
 xunta@igaojin.me
 
+## 一个彩蛋
+
+删除一些不相关文章的时候发现的。。。
+
+{% asset_img  caidan.png %}
