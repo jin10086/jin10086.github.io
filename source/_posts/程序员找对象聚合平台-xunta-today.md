@@ -103,5 +103,7 @@ proxy_set_header user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) App
 
 有好的建议也欢迎邮件！
 
-邮件 xunta@igaojin.me
+## 邮件 
+
+xunta@igaojin.me
 
