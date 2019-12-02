@@ -46,7 +46,7 @@ tags:
 
 再放到gihtub上面
 
-源代码在:https://github.com/jin10086/xunta2
+源代码在:https://github.com/xunta-today/website
 
 爬虫的没有公开,主要怕公开了微信限制接口,后面增加工作量,有需要可以邮件我.
 
