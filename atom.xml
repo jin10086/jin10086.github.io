@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-12-02T10:43:35.727Z</updated>
+  <updated>2019-12-03T07:04:00.036Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何在conflux上部署合约</title>
+    <link href="https://igaojin.me/2019/12/03/%E5%A6%82%E4%BD%95%E5%9C%A8conflux%E4%B8%8A%E9%83%A8%E7%BD%B2%E5%90%88%E7%BA%A6/"/>
+    <id>https://igaojin.me/2019/12/03/如何在conflux上部署合约/</id>
+    <published>2019-12-03T06:35:15.000Z</published>
+    <updated>2019-12-03T07:04:00.036Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编译合约"><a href="#编译合约" class="headerlink" title="编译合约"></a>编译合约</h2><p>在 <a href="https://remix.ethereum.org/" rel="external nofollow noopener noreferrer" target="_blank">https://remix.ethereum.org/</a> 上面编写好合约</p><img src="/2019/12/03/如何在conflux上部署合约/remix.png" title="remix编译合约截图"><p>编译好了就可以拿到ABI 以及 Bytecode了.(后面用)</p><h2 id="创建conflux-地址"><a href="#创建conflux-地址" class="headerlink" title="创建conflux 地址"></a>创建conflux 地址</h2><p>有好几种方式,因为conflux地址是与eth兼容的,所以你可以直接使用你的eth地址</p><p>当然也可以使用官方的js,或者在线钱包</p><ol><li>在线钱包</li></ol><p>打开<a href="https://wallet.confluxscan.io/wallet就可以创建了" rel="external nofollow noopener noreferrer" target="_blank">https://wallet.confluxscan.io/wallet就可以创建了</a></p><h2 id="本地js创建（推荐-因为后面部署合约也需要用到"><a href="#本地js创建（推荐-因为后面部署合约也需要用到" class="headerlink" title="本地js创建（推荐,因为后面部署合约也需要用到"></a>本地js创建（推荐,因为后面部署合约也需要用到</h2><h3 id="先下载github-repo并初始化"><a href="#先下载github-repo并初始化" class="headerlink" title="先下载github repo并初始化"></a>先下载github repo并初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jin10086/confluxBuildContract.git</span><br><span class="line">cd confluxBuildContract</span><br><span class="line">nmp install  //初始化环境</span><br></pre></td></tr></table></figure><h3 id="创建钱包"><a href="#创建钱包" class="headerlink" title="创建钱包"></a>创建钱包</h3><p>直接执行 <code>node createAccount.js</code> 就创建好了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  confluxBuildContract git:(master) ✗ node createAccount.js</span><br><span class="line">pub_key: 0xa17b63007bd491822306b3b8c793311e7a21e8de </span><br><span class="line"> priv_key: 0x0ac9e33baa5cc302785a7fa1ef8912ff34b492ad0d52c7d518fe80975191bbaa</span><br></pre></td></tr></table></figure><h2 id="领取测试代币"><a href="#领取测试代币" class="headerlink" title="领取测试代币"></a>领取测试代币</h2><p>因为新地址是没有代币的,所以需要先领取</p><p>直接浏览器打开 <a href="https://wallet.confluxscan.io/faucet/dev/ask?address=你的pub_key" rel="external nofollow noopener noreferrer" target="_blank">https://wallet.confluxscan.io/faucet/dev/ask?address=你的pub_key</a></p><p>就可以领取了</p><h2 id="部署合约"><a href="#部署合约" class="headerlink" title="部署合约"></a>部署合约</h2><ol><li>把 <code>deployContract.js</code>里面的<code>pub_key priv_key</code>改成刚才生成的公钥以及私钥</li><li>把 <code>deployContract.js</code>里面的<code>abi bytecode</code>改成在remix生成的</li><li>执行 <code>node deployContract.js</code> 就可以部署合约了</li></ol><p>部署返回结果如下<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) ➜  confluxBuildContract git:(master) ✗ node deployContract.js       </span><br><span class="line">contract deployed. address: 0x26f9269a3d09c5d7ca7066445fc30ca91b9aa3bc</span><br></pre></td></tr></table></figure><p></p><p>可以在<a href="http://www.confluxscan.io/" rel="external nofollow noopener noreferrer" target="_blank">http://www.confluxscan.io/</a> 上查看刚刚部署成功的合约</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/12/03/如何在conflux上部署合约/">https://igaojin.me/2019/12/03/如何在conflux上部署合约/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      编译合约
+在 https://remix.ethereum.org/ 上面编写好合约
+
+编译好了就可以拿到ABI 以及 Bytecode了.(后面用)
+
+创建conflux 地址
+有好几种方式,因为conflux地址是与eth兼容的,所以你可以直接使用你的eth地址
+
+当然也可以使用官方的js,或者在线钱包
+
+ 1. 在线钱包
+
+打开https://wallet.confluxscan.io/wallet就可以创建了
+
+本地js创建（推荐,因为后面部署合约也需要用到
+先下载github repo并初始化
+1
+2
+3
+
+
+git clone https://github.com/jin10086
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="conflux" scheme="https://igaojin.me/tags/conflux/"/>
+    
+  </entry>
   
   <entry>
     <title>程序员找对象聚合平台-xunta.today</title>
@@ -782,49 +825,6 @@ df.to_excel(&quot;a.xlsx&quot;)
 理论上我的成本就会更少…
 
 我玩1个EOS的话可以获得 1
-    
-    </summary>
-    
-      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-      <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EOS合约内查询其他表</title>
-    <link href="https://igaojin.me/2018/12/15/EOS%E5%90%88%E7%BA%A6%E5%86%85%E6%9F%A5%E8%AF%A2%E5%85%B6%E4%BB%96%E8%A1%A8/"/>
-    <id>https://igaojin.me/2018/12/15/EOS合约内查询其他表/</id>
-    <published>2018-12-15T03:43:34.000Z</published>
-    <updated>2019-11-23T15:34:56.807Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在准备在一款游戏…</p><p>需要发牌…(涉及到发牌这种游戏，如果需要公平性做的很好的话，需要考虑下面几个问题</p><ol><li>生成牌的随机数不能被预测</li><li>只有玩家自己才能看到自己的牌</li><li>庄家玩法看到其他人的牌</li></ol><h2 id="随机数生成"><a href="#随机数生成" class="headerlink" title="随机数生成"></a>随机数生成</h2><p>随机数还是使用2段延时+用户账号来随机出来的</p><h2 id="只有玩家能看到自己的牌"><a href="#只有玩家能看到自己的牌" class="headerlink" title="只有玩家能看到自己的牌"></a>只有玩家能看到自己的牌</h2><p>使用用户的公钥加密用户的牌就可以了…(EOS目前没有现成的代码,需要自己写…)</p><h2 id="庄家看不到其他人的牌"><a href="#庄家看不到其他人的牌" class="headerlink" title="庄家看不到其他人的牌"></a>庄家看不到其他人的牌</h2><p>首先，如果没有公共牌的话，则庄家只需要在玩家打出牌的时候，验证下他是否有这张牌就可以了…</p><h3 id="怎么验证呢？"><a href="#怎么验证呢？" class="headerlink" title="怎么验证呢？"></a>怎么验证呢？</h3><ul><li><p>零知识证明 感觉可以，但是好像代码会比较复杂…而且密码也学的不好…</p></li><li><p>把他的牌存在某个表里面…(然后他打的时候，验证下…)</p></li></ul><p>但是这样就有一个问题，那就是别人也可以直接查这个表，就能拿到每个人的牌了…</p><p>也就可以作弊了…(当然，开发者肯定更容易作弊…)</p><p>然后和朋友聊天的时候，了解其实可以让某个表不生成abi,这样的话，外部就会无法访问到这个表了…</p><img src="/2018/12/15/EOS合约内查询其他表/0.jpg"><p>吧abi这行删掉，发现确实外部无法访问到这个表…</p><h2 id="但是通过合约调用呢？"><a href="#但是通过合约调用呢？" class="headerlink" title="但是通过合约调用呢？"></a>但是通过合约调用呢？</h2><img src="/2018/12/15/EOS合约内查询其他表/1.jpg"><p>定义了同样的数据结构,然后可以发现,在合约内就可以调用了…</p><h3 id="测试-改变数据位置"><a href="#测试-改变数据位置" class="headerlink" title="测试 改变数据位置"></a>测试 改变数据位置</h3><p>发现拿到的数据就错了…(所以如果要拿到正确的数据的话，需要和 原来的数据定义一模一样)<br><img src="/2018/12/15/EOS合约内查询其他表/2.jpg"></p><h3 id="测试-删除一个字段"><a href="#测试-删除一个字段" class="headerlink" title="测试 删除一个字段"></a>测试 删除一个字段</h3><p>发现拿到的数据错了…但是还是可以查到数据<br><img src="/2018/12/15/EOS合约内查询其他表/3.jpg"></p><h3 id="测试-删除主键"><a href="#测试-删除主键" class="headerlink" title="测试 删除主键"></a>测试 删除主键</h3><p>会编译无法通过</p><h3 id="测试-随便定义一个主键"><a href="#测试-随便定义一个主键" class="headerlink" title="测试 随便定义一个主键"></a>测试 随便定义一个主键</h3><p>发现拿到的数据错了…但是还是可以查到数据<br><img src="/2018/12/15/EOS合约内查询其他表/4.jpg"></p><h2 id="测试-拿到的字段-比原来的多"><a href="#测试-拿到的字段-比原来的多" class="headerlink" title="测试 拿到的字段 比原来的多"></a>测试 拿到的字段 比原来的多</h2><p>编译可以过，但是查询会报错…<br><img src="/2018/12/15/EOS合约内查询其他表/5.jpg"></p><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>所以使用去掉abi的方法是可以的…</p><p>前提是那段存数据的表 不开源，并且可以定义差不多的几个字段，然后每个字段都加密。。。</p><p>让那些想拿你数据的人有机会会拿错,并且每次存在哪个字段都不随机的…</p><p>当然这种方式还是防止不了大神。。。毕竟有人直接看wasm的代码。。。</p><p>最好的方式还是使用 零知识证明 等等…（学密码学去了…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/15/EOS合约内查询其他表/">https://igaojin.me/2018/12/15/EOS合约内查询其他表/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      背景
-最近在准备在一款游戏…
-
-需要发牌…(涉及到发牌这种游戏，如果需要公平性做的很好的话，需要考虑下面几个问题
-
- 1. 生成牌的随机数不能被预测
- 2. 只有玩家自己才能看到自己的牌
- 3. 庄家玩法看到其他人的牌
-
-随机数生成
-随机数还是使用2段延时+用户账号来随机出来的
-
-只有玩家能看到自己的牌
-使用用户的公钥加密用户的牌就可以了…(EOS目前没有现成的代码,需要自己写…)
-
-庄家看不到其他人的牌
-首先，如果没有公共牌的话，则庄家只需要在玩家打出牌的时候，验证下他是否有这张牌就可以了…
-
-怎么验证呢？
- * 零知识证明 感觉可以，但是好像代码会比较复杂…而且密码也学的不好…
-   
- 
     
     </summary>
     
