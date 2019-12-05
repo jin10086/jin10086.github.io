@@ -3,6 +3,7 @@ title: 程序员找对象聚合平台-xunta.today
 categories:
   - 相亲
 date: 2019-11-30 13:10:41
+updated: 2019-12-05 21:53:41
 tags:
 ---
 
@@ -75,9 +76,9 @@ proxy_set_header user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) App
 }
 ```
 
-2. 搜索
+## 搜索
 
-目前站内也可以搜索
+### 站内搜索
 
 用的是 [tipue_search](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search)
 
@@ -87,9 +88,12 @@ proxy_set_header user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) App
 
 因为源代码里面太多乱七八糟的东西了,所以我直接在创建搜索的时候,只保留了文章中的中文内容,其他全部去掉了...
 
-可以过几天等google爬虫把网站索引了
+### 用Google搜索
 
-直接用 `site:xunta.today` 搜索
+直接用 `site:xunta.today 加上你要搜索的内容` 搜索
+
+{% asset_img  sitesearch.png google搜索xunta.today %}
+
 
 ## 后续计划
 
