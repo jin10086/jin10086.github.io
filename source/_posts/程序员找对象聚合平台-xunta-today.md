@@ -45,7 +45,7 @@ tags:
 
 然后把源代码丢到[pelican](https://github.com/getpelican/pelican) 里面
 
-再放到gihtub上面
+再放到github上面
 
 源代码在:https://github.com/xunta-today/website
 
