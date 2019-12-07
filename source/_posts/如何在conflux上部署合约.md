@@ -32,7 +32,7 @@ tags:
 ```
 git clone https://github.com/jin10086/confluxBuildContract.git
 cd confluxBuildContract
-nmp install  //初始化环境
+npm install  //初始化环境
 ```
 ### 创建钱包
 
