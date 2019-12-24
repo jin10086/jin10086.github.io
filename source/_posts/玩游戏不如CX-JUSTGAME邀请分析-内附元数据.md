@@ -35,7 +35,7 @@ Out[11]: 358
 
 把元数据以及代码放到github了,有兴趣的自己分析把
 
-
+[justgame游戏数据](https://github.com/jin10086/justgame)
 
 
 
