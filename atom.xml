@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-12-24T17:53:29.666Z</updated>
+  <updated>2019-12-24T18:13:50.496Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://igaojin.me/2019/12/25/%E7%8E%A9%E6%B8%B8%E6%88%8F%E4%B8%8D%E5%A6%82CX-JUSTGAME%E9%82%80%E8%AF%B7%E5%88%86%E6%9E%90-%E5%86%85%E9%99%84%E5%85%83%E6%95%B0%E6%8D%AE/"/>
     <id>https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/</id>
     <published>2019-12-24T17:33:53.000Z</published>
-    <updated>2019-12-24T17:53:29.666Z</updated>
+    <updated>2019-12-24T18:13:50.496Z</updated>
     
-    <content type="html"><![CDATA[<p>所有数据截止到2019-12-24:19:00:00(之后没有统计)</p><p>justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个<a href="https://mp.weixin.qq.com/s/WIy3DcauPIWxg1Vo3CO75Q" rel="external nofollow noopener noreferrer" target="_blank">DR深度这一次，孙宇晨真的被割了</a>,本文只看 邀请奖励</p><p>总游戏人数<strong>4529</strong><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [13]: len(db.distinct(&apos;raw_data.contract.parameter.value.owner_address&apos;))</span><br><span class="line">Out[13]: 4259</span><br></pre></td></tr></table></figure><p></p><p>拿到邀请奖励的:358(统计邀请奖励大于1trx的)<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [11]: db1.count_documents(&#123;&apos;ref&apos;:&#123;&quot;$gt&quot;:1&#125;&#125;)</span><br><span class="line">Out[11]: 358</span><br></pre></td></tr></table></figure><p></p><p>然后下面就是按照邀请金额排行的了</p><p>第一名603w<br>第二名310w<br>第一名181w<br><img src="/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/ref1.png" title="title"></p><p>其他的数据懒得统计了</p><p>把元数据以及代码放到github了,有兴趣的自己分析把</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/">https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    <content type="html"><![CDATA[<p>所有数据截止到2019-12-24:19:00:00(之后没有统计)</p><p>justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个<a href="https://mp.weixin.qq.com/s/WIy3DcauPIWxg1Vo3CO75Q" rel="external nofollow noopener noreferrer" target="_blank">DR深度这一次，孙宇晨真的被割了</a>,本文只看 邀请奖励</p><p>总游戏人数<strong>4529</strong><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [13]: len(db.distinct(&apos;raw_data.contract.parameter.value.owner_address&apos;))</span><br><span class="line">Out[13]: 4259</span><br></pre></td></tr></table></figure><p></p><p>拿到邀请奖励的:358(统计邀请奖励大于1trx的)<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [11]: db1.count_documents(&#123;&apos;ref&apos;:&#123;&quot;$gt&quot;:1&#125;&#125;)</span><br><span class="line">Out[11]: 358</span><br></pre></td></tr></table></figure><p></p><p>然后下面就是按照邀请金额排行的了</p><p>第一名603w<br>第二名310w<br>第一名181w<br><img src="/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/ref1.png" title="title"></p><p>其他的数据懒得统计了</p><p>把元数据以及代码放到github了,有兴趣的自己分析把</p><p><a href="https://github.com/jin10086/justgame" rel="external nofollow noopener noreferrer" target="_blank">justgame游戏数据</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/">https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
     <summary type="html">
     
