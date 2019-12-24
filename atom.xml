@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2019-12-07T09:57:28.052Z</updated>
+  <updated>2019-12-24T17:53:29.666Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>玩游戏不如CX,JUSTGAME邀请分析(内附元数据)</title>
+    <link href="https://igaojin.me/2019/12/25/%E7%8E%A9%E6%B8%B8%E6%88%8F%E4%B8%8D%E5%A6%82CX-JUSTGAME%E9%82%80%E8%AF%B7%E5%88%86%E6%9E%90-%E5%86%85%E9%99%84%E5%85%83%E6%95%B0%E6%8D%AE/"/>
+    <id>https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/</id>
+    <published>2019-12-24T17:33:53.000Z</published>
+    <updated>2019-12-24T17:53:29.666Z</updated>
+    
+    <content type="html"><![CDATA[<p>所有数据截止到2019-12-24:19:00:00(之后没有统计)</p><p>justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个<a href="https://mp.weixin.qq.com/s/WIy3DcauPIWxg1Vo3CO75Q" rel="external nofollow noopener noreferrer" target="_blank">DR深度这一次，孙宇晨真的被割了</a>,本文只看 邀请奖励</p><p>总游戏人数<strong>4529</strong><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [13]: len(db.distinct(&apos;raw_data.contract.parameter.value.owner_address&apos;))</span><br><span class="line">Out[13]: 4259</span><br></pre></td></tr></table></figure><p></p><p>拿到邀请奖励的:358(统计邀请奖励大于1trx的)<br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [11]: db1.count_documents(&#123;&apos;ref&apos;:&#123;&quot;$gt&quot;:1&#125;&#125;)</span><br><span class="line">Out[11]: 358</span><br></pre></td></tr></table></figure><p></p><p>然后下面就是按照邀请金额排行的了</p><p>第一名603w<br>第二名310w<br>第一名181w<br><img src="/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/ref1.png" title="title"></p><p>其他的数据懒得统计了</p><p>把元数据以及代码放到github了,有兴趣的自己分析把</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/">https://igaojin.me/2019/12/25/玩游戏不如CX-JUSTGAME邀请分析-内附元数据/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      所有数据截止到2019-12-24:19:00:00(之后没有统计)
+
+justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个DR深度这一次，孙宇晨真的被割了,本文只看 邀请奖励
+
+总游戏人数4529
+
+
+1
+2
+
+
+In [13]: len(db.distinct(&#39;raw_data.contract.parameter.value.owner_address&#39;))
+Out[13]: 4259
+
+
+
+
+拿到邀请奖励的:358(统计邀请奖励大于1trx的)
+
+
+1
+2
+
+
+In [11]: db1.count_documents({&#39;ref&#39;:{&quot;$gt&quot;:1}})
+Out[11
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="JUSTGAME" scheme="https://igaojin.me/tags/JUSTGAME/"/>
+    
+  </entry>
   
   <entry>
     <title>如何在conflux上部署合约</title>
@@ -789,49 +836,6 @@ df.to_excel(&quot;a.xlsx&quot;)
     
       <category term="python" scheme="https://igaojin.me/categories/python/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>EOS 如何最低成本挖矿.</title>
-    <link href="https://igaojin.me/2018/12/21/EOS-%E5%A6%82%E4%BD%95%E6%9C%80%E4%BD%8E%E6%88%90%E6%9C%AC%E6%8C%96%E7%9F%BF/"/>
-    <id>https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/</id>
-    <published>2018-12-21T05:42:20.000Z</published>
-    <updated>2019-11-23T15:34:56.785Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿?"></a>挖矿?</h2><p>什么叫挖矿呢？</p><p>挖矿是发现玩某bocai游戏,可以套利…然后用程序来玩…</p><h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>如 下面是betdice的一张图</p><img src="/2018/12/21/EOS-如何最低成本挖矿/0.jpg"><p>可以看到赔率是 1.036,中奖概率是95%</p><p>则我可以算出来 我玩1个EOS理论上输多少EOS <code>1.036*0.95=0.9842</code> <code>1-0.9842=0.0158</code></p><p>也就是算出来我玩一个EOS,理论上输0.0158个EOS</p><p>再减掉 0.1%的邀请奖励 则 我玩一个EOS,理论上输<code>0.0158-0.001=0.0148</code>个EOS<br><img src="/2018/12/21/EOS-如何最低成本挖矿/1.jpg"></p><p>当然还有VIP奖励，以及玩一次每小时可以抽一次奖啊,以及排位奖励等等…</p><p>理论上我的成本就会更少…</p><p>我玩1个EOS的话可以获得 <strong>1.5625</strong>个代币</p><img src="/2018/12/21/EOS-如何最低成本挖矿/2.jpg"><p>也就是说 我用0.0148个EOS 换了1.5625个代币…</p><p>那么只要 <code>0.0148/1.5625=0.009472</code> 代币的价格大于 0.009472的话，那么我是可以一直套利的…</p><p>这上面就是挖矿了.</p><h2 id="不仅仅是价格"><a href="#不仅仅是价格" class="headerlink" title="不仅仅是价格"></a>不仅仅是价格</h2><p>上面计算了是否值的挖的公式…</p><p>但是你的实际成本会比这个更高…</p><p>如果你需要跑到和概率差不多值的话，那么你最少要玩个几千吧…</p><p>也就是你需要有一定的本金…最简单的方式就是每次投注你本金的1%…当然也可以参考凯利公式</p><h2 id="CPU也是成本"><a href="#CPU也是成本" class="headerlink" title="CPU也是成本"></a>CPU也是成本</h2><p>因为挖矿需要与合约交互多次,所以,CPU也是必须的…</p><p>而特别是最近CPU价格很高…大概50EOS,才能租10000EOS 一天…</p><p>这个也需要算进成本,你会发现…赚的钱 都给租CPU的人赚过去了…</p><h2 id="合约挖矿"><a href="#合约挖矿" class="headerlink" title="合约挖矿"></a>合约挖矿</h2><p>如何让别人帮你出CPU呢?</p><p>你每次投注获胜的话,项目方都会给你打钱(你赚的钱.)<br><img src="/2018/12/21/EOS-如何最低成本挖矿/3.jpg"></p><p>那么你可以让这个玩的账号变成一个合约…</p><p>当发现是某个游戏项目方给你打钱的时候,你直接发起一笔玩的操作…</p><p>这样，这个CPU都是由 给你打钱的项目方出了…(这样你就可以不需要CPU来挖矿了)</p><p>当然 为了让挖矿更好的话,你可以设置余额低于某个值就不挖了…</p><p>或者玩了多少把就不玩了…</p><p>也可以加一个方法,可以随时停止游戏…</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/">https://igaojin.me/2018/12/21/EOS-如何最低成本挖矿/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      挖矿?
-什么叫挖矿呢？
-
-挖矿是发现玩某bocai游戏,可以套利…然后用程序来玩…
-
-举个例子
-如 下面是betdice的一张图
-
-可以看到赔率是 1.036,中奖概率是95%
-
-则我可以算出来 我玩1个EOS理论上输多少EOS 1.036*0.95=0.9842 1-0.9842=0.0158
-
-也就是算出来我玩一个EOS,理论上输0.0158个EOS
-
-再减掉 0.1%的邀请奖励 则 我玩一个EOS,理论上输0.0158-0.001=0.0148个EOS
-
-
-当然还有VIP奖励，以及玩一次每小时可以抽一次奖啊,以及排位奖励等等…
-
-理论上我的成本就会更少…
-
-我玩1个EOS的话可以获得 1
-    
-    </summary>
-    
-      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-      <category term="EOS" scheme="https://igaojin.me/tags/EOS/"/>
     
   </entry>
   
