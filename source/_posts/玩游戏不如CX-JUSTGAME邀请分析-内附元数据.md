@@ -12,7 +12,7 @@ tags:
 justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个[DR深度这一次，孙宇晨真的被割了](https://mp.weixin.qq.com/s/WIy3DcauPIWxg1Vo3CO75Q),本文只看 邀请奖励
 
 
-总游戏人数**4529**
+总游戏人数**4259**
 ```
 In [13]: len(db.distinct('raw_data.contract.parameter.value.owner_address'))
 Out[13]: 4259
