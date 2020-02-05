@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2020-02-03T15:15:30.150Z</updated>
+  <updated>2020-02-05T12:55:17.729Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何通过技术手段证明&quot;我&quot;没有去过武汉</title>
+    <link href="https://igaojin.me/2020/02/05/%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E-%E6%88%91-%E6%B2%A1%E6%9C%89%E5%8E%BB%E8%BF%87%E6%AD%A6%E6%B1%89/"/>
+    <id>https://igaojin.me/2020/02/05/如何证明-我-没有去过武汉/</id>
+    <published>2020-02-05T12:30:54.000Z</published>
+    <updated>2020-02-05T12:55:17.729Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>其实刚开始是看到一个朋友发的朋友圈</p><p>她说有个出租车司机再三确定她没有去过武汉 才载她。</p><p>我就很好奇,出租车师傅是如何确定 她没有去过武汉的呢？</p><p>然后我就问了她。。。她说 “出租车师傅问她有没有去过，他说自己没有去过。。。”</p><p>emmmm 那么有没有什么技术方法能确定某个人是否去过武汉呢？</p><h2 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h2><p>微信，支付宝，百度等科技公司应该都有位置信息，以及上传的时间信息（就是不太清楚频率如何）</p><p>这个数据可以做很多事情</p><p>比如:</p><h3 id="查看某时间段内-哪些人在被感染地段待过"><a href="#查看某时间段内-哪些人在被感染地段待过" class="headerlink" title="查看某时间段内,哪些人在被感染地段待过"></a>查看某时间段内,哪些人在被感染地段待过</h3><p>可以让这些人更注意自己的安全</p><h3 id="查看某个人是否最近到过武汉"><a href="#查看某个人是否最近到过武汉" class="headerlink" title="查看某个人是否最近到过武汉"></a>查看某个人是否最近到过武汉</h3><p>可以使用支付宝，微信，qq等登陆，然后能查到自己最近是否有到过某些地方</p><p>这样可以让医生，出租车司机等人更加安全</p><p>比如最近爆出来的某个老人不说自己去过武汉，导致70多个人被隔离（最近这样的新闻特别多，好多人就是那么不负责任）</p><h3 id="查看哪些人有和已经被确诊的人-近距离接触过，但是还没有被隔离"><a href="#查看哪些人有和已经被确诊的人-近距离接触过，但是还没有被隔离" class="headerlink" title="查看哪些人有和已经被确诊的人 近距离接触过，但是还没有被隔离"></a>查看哪些人有和已经被确诊的人 近距离接触过，但是还没有被隔离</h3><p>这些人我认为可能是高危人员，可以把数据交给警方</p><p>可能数据还能做更多事情把。</p><p>我只是提出一个想法，希望能有帮助</p><p>上面是我在知乎上回答的一个问题</p><p><a href="https://www.zhihu.com/question/367572490/answer/984050487" rel="external nofollow noopener noreferrer" target="_blank">面对新型冠状病毒肺炎疫情，科技公司能够做些什么？ - 写bug的高师傅的回答 - 知乎</a></p><p>但是 可能设计到隐私等等问题。所以可能很多企业不一定会放出这些问题</p><p>但是我找到了一个 不需要这些企业配合 就能可以证明某人是否到过武汉等地方的 方法。。。</p><p>希望可以让一些恶意隐藏的人 无法躲避！</p><p>多扯一句（因为每个人的DNA都是不一样的，所以我在想 是不是理论上可以查到 某人是被谁感染的<br>如果可以确定是被谁传染的话，那么 导致别人得病的人，需要给他传染的人 付50%的治疗费，如果他的钱不够的话，就拍卖他的固定资产，这样会让每个人都会注意到不感染到别人把。。。因为他感染别人的成本变的很高来）</p><h2 id="如何通过苹果的定位来确定某个人是否去过武汉"><a href="#如何通过苹果的定位来确定某个人是否去过武汉" class="headerlink" title="如何通过苹果的定位来确定某个人是否去过武汉?"></a>如何通过苹果的定位来确定某个人是否去过武汉?</h2><p>首先…我只知道苹果系统可以这样</p><p>打开 设置-&gt;隐私-&gt;定位服务-&gt;系统服务（应该在最下面）-&gt;重要地点</p><p>下面一张图是我的,可以看到我最近确实没有去过武汉…</p><img src="/2020/02/05/如何证明-我-没有去过武汉/1.jpeg"><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2020/02/05/如何证明-我-没有去过武汉/">https://igaojin.me/2020/02/05/如何证明-我-没有去过武汉/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+其实刚开始是看到一个朋友发的朋友圈
+
+她说有个出租车司机再三确定她没有去过武汉 才载她。
+
+我就很好奇,出租车师傅是如何确定 她没有去过武汉的呢？
+
+然后我就问了她。。。她说 “出租车师傅问她有没有去过，他说自己没有去过。。。”
+
+emmmm 那么有没有什么技术方法能确定某个人是否去过武汉呢？
+
+技术问题
+微信，支付宝，百度等科技公司应该都有位置信息，以及上传的时间信息（就是不太清楚频率如何）
+
+这个数据可以做很多事情
+
+比如:
+
+查看某时间段内,哪些人在被感染地段待过
+可以让这些人更注意自己的安全
+
+查看某个人是否最近到过武汉
+可以使用支付宝，微信，qq等登陆，然后能查到自己最近是否有
+    
+    </summary>
+    
+      <category term="编程随想" scheme="https://igaojin.me/categories/%E7%BC%96%E7%A8%8B%E9%9A%8F%E6%83%B3/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>XUNTA 季度报告</title>
@@ -781,54 +823,6 @@ infura api 有个神奇的限制…
       <category term="以太坊" scheme="https://igaojin.me/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
     
       <category term="parity轻节点" scheme="https://igaojin.me/tags/parity%E8%BD%BB%E8%8A%82%E7%82%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>scatter 导入BOS账号</title>
-    <link href="https://igaojin.me/2019/01/27/scatter-%E5%AF%BC%E5%85%A5BOS%E8%B4%A6%E5%8F%B7/"/>
-    <id>https://igaojin.me/2019/01/27/scatter-导入BOS账号/</id>
-    <published>2019-01-27T11:02:19.000Z</published>
-    <updated>2019-11-23T15:34:56.930Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="设置语言为中文"><a href="#设置语言为中文" class="headerlink" title="设置语言为中文"></a>设置语言为中文</h2><p>选择设置</p><img src="/2019/01/27/scatter-导入BOS账号/0.jpg"><p>然后 Language,在选择中文.</p><h2 id="创建bos-网络"><a href="#创建bos-网络" class="headerlink" title="创建bos 网络"></a>创建bos 网络</h2><p>点击设置-&gt; 网络 -&gt; 新建</p><img src="/2019/01/27/scatter-导入BOS账号/1.jpg"><p>然后名称 设置为 <strong>bosmainnet</strong></p><p>域名或者ip地址设置为 <strong>hapi.bos.eosrio.io</strong></p><p>端口设置为 <strong>443</strong></p><p>chainid 设置为 <strong>d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a3d86</strong></p><p>保存.</p><h2 id="导入私钥-如果你之前有导入过就不需要重新导入"><a href="#导入私钥-如果你之前有导入过就不需要重新导入" class="headerlink" title="导入私钥(如果你之前有导入过就不需要重新导入)"></a>导入私钥(如果你之前有导入过就不需要重新导入)</h2><p>点击 主页面的 密钥对-&gt;新建</p><img src="/2019/01/27/scatter-导入BOS账号/2.jpg"><p>名称自己随便写一个</p><p>直接吧私钥粘贴在 私钥的地方</p><p>然后点击保存</p><h2 id="创建身份"><a href="#创建身份" class="headerlink" title="创建身份"></a>创建身份</h2><p>点击 主页面的身份-&gt;新建</p><img src="/2019/01/27/scatter-导入BOS账号/3.jpg"><p>上面选择刚才创建好的网络</p><p>下面选择你刚刚导入私钥 输入的名称</p><p>然后点击导入即可…</p><p>记得选择 @active的.</p><img src="/2019/01/27/scatter-导入BOS账号/4.jpg"><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/01/27/scatter-导入BOS账号/">https://igaojin.me/2019/01/27/scatter-导入BOS账号/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      设置语言为中文
-选择设置
-
-然后 Language,在选择中文.
-
-创建bos 网络
-点击设置-&gt; 网络 -&gt; 新建
-
-然后名称 设置为 bosmainnet
-
-域名或者ip地址设置为 hapi.bos.eosrio.io
-
-端口设置为 443
-
-chainid 设置为 d5a3d18fbb3c084e3b1f3fa98c21014b5f3db536cc15d08f9f6479517c6a3d86
-
-保存.
-
-导入私钥(如果你之前有导入过就不需要重新导入)
-点击 主页面的 密钥对-&gt;新建
-
-名称自己随便写一个
-
-直接吧私钥粘贴在 私钥的地方
-
-然后点击保存
-
-创建身份
-点击 主页面的身份-&gt;新
-    
-    </summary>
-    
-      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
     
   </entry>
   
