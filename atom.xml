@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2020-02-05T12:55:17.729Z</updated>
+  <updated>2020-02-07T06:03:15.205Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何创建一个完全匿名的EOS、ETH账号</title>
+    <link href="https://igaojin.me/2020/02/07/%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E5%85%A8%E5%8C%BF%E5%90%8D%E7%9A%84EOS%E3%80%81ETH%E8%B4%A6%E5%8F%B7/"/>
+    <id>https://igaojin.me/2020/02/07/如何创建一个完全匿名的EOS、ETH账号/</id>
+    <published>2020-02-07T05:43:08.000Z</published>
+    <updated>2020-02-07T06:03:15.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>所谓完全匿名，也就是说 不管有几方配合，也查不到是你注册的这个账号。</p><h2 id="需要哪些工具"><a href="#需要哪些工具" class="headerlink" title="需要哪些工具"></a>需要哪些工具</h2><ul><li>能买到门罗的交易所账号（无所谓是否kyc）<strong>—账号1</strong></li><li>能充值门罗的交易所账号（小额提现不需要kyc） 也就是匿名交易所账号 <strong>—账号2</strong></li><li>TOR</li><li>新的操作系统（可以windows的vmware</li></ul><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="使用正常的操作系统"><a href="#使用正常的操作系统" class="headerlink" title="使用正常的操作系统"></a>使用正常的操作系统</h3><p>登陆<strong>账号1</strong>提取合适金额的门罗到你账号上(合适金额要看账号2的免kyc提现额度)</p><h3 id="需要使用新的操作系统（防止之前系统的一些习惯之类的暴露了你）"><a href="#需要使用新的操作系统（防止之前系统的一些习惯之类的暴露了你）" class="headerlink" title="需要使用新的操作系统（防止之前系统的一些习惯之类的暴露了你）"></a>需要使用新的操作系统（防止之前系统的一些习惯之类的暴露了你）</h3><p>下载TOR,并且下面所有操作 使用TOR代理</p><p>把提取到的门罗转到自己生成的A账号,再转到B账号,再转到C账号(就是多操作几次,金额可以分开,时间也可以间隔久一些)</p><p>把C账号的门罗 充值到 <strong>账号2</strong>,记得账号2需要通过TOR注册</p><p>然后换成EOS 或者ETH</p><p>EOS账号需要注意的是 记得直接提现到 signupeoseos,通过这个来注册新的账号<br>ETH则可以直接提现到自己新生成的地址上…</p><p><strong>使用的时候也需要注意哦</strong></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2020/02/07/如何创建一个完全匿名的EOS、ETH账号/">https://igaojin.me/2020/02/07/如何创建一个完全匿名的EOS、ETH账号/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      所谓完全匿名，也就是说 不管有几方配合，也查不到是你注册的这个账号。
+
+需要哪些工具
+ * 能买到门罗的交易所账号（无所谓是否kyc）—账号1
+ * 能充值门罗的交易所账号（小额提现不需要kyc） 也就是匿名交易所账号 —账号2
+ * TOR
+ * 新的操作系统（可以windows的vmware
+
+开始
+使用正常的操作系统
+登陆账号1提取合适金额的门罗到你账号上(合适金额要看账号2的免kyc提现额度)
+
+需要使用新的操作系统（防止之前系统的一些习惯之类的暴露了你）
+下载TOR,并且下面所有操作 使用TOR代理
+
+把提取到的门罗转到自己生成的A账号,再转到B账号,再转到C账号(就是多操作几次,金
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="安全" scheme="https://igaojin.me/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>如何通过技术手段证明&quot;我&quot;没有去过武汉</title>
@@ -780,49 +817,6 @@ HTTP协议传输的数据都是未加密的，也就是明文的，因此使用H
     
     
       <category term="opencl" scheme="https://igaojin.me/tags/opencl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>5分钟搭建一个自己的以太坊api</title>
-    <link href="https://igaojin.me/2019/02/13/5%E5%88%86%E9%92%9F%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A5%E5%A4%AA%E5%9D%8Aapi/"/>
-    <id>https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/</id>
-    <published>2019-02-13T15:54:58.000Z</published>
-    <updated>2019-11-23T15:34:56.720Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><img src="/2019/02/13/5分钟搭建一个自己的以太坊api/1.jpg"><p>这是很早之前吐槽infura api的一个朋友圈</p><p>当时应该是为了薅羊毛,然后卡在了infura这个api上面…</p><p>infura api 有个神奇的限制…</p><p>假如某个账号，向其他账号批量发起转账…(你写个程序跑一下很快就好了)</p><p>但是 infura 每次只会给你广播1笔交易…（1笔成交后，下一笔才会广播出去</p><p>也就是说,假如批量发起100笔转账的话，最少也需要100个区块才会成交…</p><p>当然 假如不敢时间的话，慢慢来也是无所谓的…</p><p>敢时间的话，你估计就骂人了…</p><p>不过目前 市面上能用的 公开的api节点好像就 infura有提供服务…</p><p>其他的 myetherwallet,imtoken,等等肯定有自己的（可以抓包知道他的api地址…) 不过这种用的人多，自然不是很快…</p><p>所以自己搭建节点是有必要的</p><h2 id="搭建轻节点"><a href="#搭建轻节点" class="headerlink" title="搭建轻节点"></a>搭建轻节点</h2><p>搭建全节点的话，如果就偶尔用一下，就很不实际了.</p><ol><li>如果用的时候 再同步，肯定来不及</li><li>如果一直放一台服务器同步，这个成本也不少</li></ol><p>一番搜索，找到了解决办法…parity的轻节点</p><h2 id="如何搭建parity轻节点"><a href="#如何搭建parity轻节点" class="headerlink" title="如何搭建parity轻节点"></a>如何搭建parity轻节点</h2><ol><li><a href="https://github.com/paritytech/parity-ethereum/releases" rel="external nofollow noopener noreferrer" target="_blank">根据自己平台下载parity</a></li><li><code>parity --light</code> 在cmd输入下面的命令（开启parity 轻节点) <a href="https://wiki.parity.io/Light-Client" rel="external nofollow noopener noreferrer" target="_blank">文档地址</a></li></ol><p>大概5分钟就能同步好</p><p>然后就可以连接本地的 <strong><a href="http://127.0.0.1:8545" rel="external nofollow noopener noreferrer" target="_blank">http://127.0.0.1:8545</a></strong> 使用了</p><p>如果要改默认的端口以及监听的host，可以看 <a href="https://wiki.parity.io/Configuring-Parity-Ethereum" rel="external nofollow noopener noreferrer" target="_blank">https://wiki.parity.io/Configuring-Parity-Ethereum</a></p><h2 id="python-使用示例"><a href="#python-使用示例" class="headerlink" title="python 使用示例"></a>python 使用示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from web3 import Web3, HTTPProvider</span><br><span class="line"></span><br><span class="line">RPCAddress = &quot;http://127.0.0.1:8545&quot;</span><br><span class="line"></span><br><span class="line">w3 = Web3(HTTPProvider(RPCAddress))</span><br><span class="line"></span><br><span class="line">balance = w3.eth.getBalance(&apos;0xAD5723C4f7B4C478E09688f96a7A477B0D1196fd&apos;)</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/">https://igaojin.me/2019/02/13/5分钟搭建一个自己的以太坊api/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      背景
-这是很早之前吐槽infura api的一个朋友圈
-
-当时应该是为了薅羊毛,然后卡在了infura这个api上面…
-
-infura api 有个神奇的限制…
-
-假如某个账号，向其他账号批量发起转账…(你写个程序跑一下很快就好了)
-
-但是 infura 每次只会给你广播1笔交易…（1笔成交后，下一笔才会广播出去
-
-也就是说,假如批量发起100笔转账的话，最少也需要100个区块才会成交…
-
-当然 假如不敢时间的话，慢慢来也是无所谓的…
-
-敢时间的话，你估计就骂人了…
-
-不过目前 市面上能用的 公开的api节点好像就 infura有提供服务…
-
-其他的 myetherwallet,imtoken
-    
-    </summary>
-    
-      <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-      <category term="以太坊" scheme="https://igaojin.me/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
-    
-      <category term="parity轻节点" scheme="https://igaojin.me/tags/parity%E8%BD%BB%E8%8A%82%E7%82%B9/"/>
     
   </entry>
   
