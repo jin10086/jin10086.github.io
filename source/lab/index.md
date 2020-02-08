@@ -21,3 +21,13 @@ date: 2018-02-04 13:36:26
 --- 
 
 ### [程序员找对象聚合平台-xunta.today](/2019/11/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%89%BE%E5%AF%B9%E8%B1%A1%E8%81%9A%E5%90%88%E5%B9%B3%E5%8F%B0-xunta-today/)
+
+---
+
+### [bitcoin-bubble-index](https://igaojin.me/bitcoin-bubble-index/)
+
+What's this?
+
+This project provides a visualization analysis tool for price bubble of Bitcoin, including basic price information, 60-days accumulative increase, hot keywords index, and bubble index. We accumulated the original data (`2010/07/17` - `2019/12/06`) and put them into `/original_data` folder, and we visualize our analysis result using [echarts][1].
+
+[1]: https://github.com/apache/incubator-echarts
