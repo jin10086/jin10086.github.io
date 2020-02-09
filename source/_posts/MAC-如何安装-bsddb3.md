@@ -6,6 +6,12 @@ date: 2018-08-06 18:46:33
 tags:
 ---
 
+更新于2020-02-09号
+
+可以直接使用  `conda install -c conda-forge bsddb3` 安装了 
+
+详细文档见 https://anaconda.org/conda-forge/bsddb3
+
 ## 背景
 
 因为今天要写一个爬虫,需要长期爬，需要过滤一些重复的请求。。。
