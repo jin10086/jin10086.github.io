@@ -1,36 +1,36 @@
-;��˵�¼���б���ʽ ver_20200108
+;凤凰登录器列表格式 ver_20200108
 
 
-[��������]
-��ݷ�ʽ=��������
-�ٷ���ҳ=http://www.baidu.com
-����Ԫ��=http://www.baidu.com
-��ϵ�ͷ�=http://www.baidu.com
-�ر���ת=http://www.baidu.com
-����ҳ��=http://www.baidu.com
-
-
-
-;��������
-�����������=1
-����������Ӱ=1
-�����͵ȼ�����=1
-ʹ����ɳ��=1
+[基本配置]
+快捷方式=传奇世界
+官方首页=http://www.baidu.com
+购买元宝=http://www.baidu.com
+联系客服=http://www.baidu.com
+关闭跳转=http://www.baidu.com
+公告页面=http://www.baidu.com
 
 
 
-;��¼���б�����
-;��¼���б���ʾ������=��Ϸ����|IP��ַ|�˿�|ѡ��ʱ��ɫ|CH|��Ϸģʽ��0�����䡢1��ʱ�⡢2����Ѫ��3��ħ�ʡ�4����ǹ��
+;功能设置
+开启组合连发=1
+开启连续换影=1
+允许低等级聊天=1
+使用老沙城=1
 
 
-[==���������硷==]
-���������硷=��������|111.229.20.56|7000|$00CCFF|CH|1
 
-[��������]
-�汾��=202000108
-ǿ�Ƹ���=1
-���µ�ַ=http://www.baidu.com/down/updlq.exe
-��������=8
+;登录器列表设置
+;登录器列表显示的名称=游戏名称|IP地址|端口|选中时颜色|CH|游戏模式（0：经典、1：时光、2：铁血、3：魔魇、4：灵枪）
+
+
+[==《传奇世界》==]
+《传奇世界》=传奇世界|111.229.20.56|7000|$00CCFF|CH|1
+
+[更新配置]
+版本号=202000108
+强制更新=1
+更新地址=http://www.baidu.com/down/updlq.exe
+补丁数量=8
 1=http://www.baidu.com/down/ItemCfg.zip|.\Data\config\ItemCfg.ini|105425
 2=http://www.baidu.com/down/bestitem.zip|.\Data\config\default\bestitem.ini|20587
 3=http://www.baidu.com/down/ItemList.zip|.\Data\config\ItemList.xml|136378
@@ -40,17 +40,17 @@
 7=http://www.baidu.com/down/baoshinew_12.zip|.\Data\config\baoshinew_12.cfg|10157
 8=http://www.baidu.com/down/xiuluoxinfa.zip|.\Data\config\\xiuluoxinfa_grow.csv|12729
 
-;֧�ָ��¿ͻ��˲������ܣ�������֧��zip��ʽ�Խ�ѹ��
-;zip��ʽ�ļ���ʹ��7-zip��������ѹ�������ص�ַ��https://sparanoid.com/lab/7z/
+;支持更新客户端补丁功能，补丁仅支持zip格式自解压；
+;zip格式文件请使用7-zip软件进行压缩，下载地址：https://sparanoid.com/lab/7z/
 
 
-;����˵����
-;1)���в�����֧��zip�ļ�ѹ����
-;2)ֻ֧�ֵ���wpf�ļ�ѹ������zipѹ���ļ��ڵ�.wpf�������벹���ļ���һ��!
-;3)��½������������Ϊѹ��ǰ��ԭʼ�ļ��Ĵ�С�ֽ�!
-;4)��¼���Զ�ɾ������Texture�����ļ���
-;5)��¼��ȡ���࿪���ƣ���ʹ�òʺ��·������Ϸ�������ƣ�
-;6)��20200108�𣬵�¼������֧��sgl��ʽ�������룻
-;7)��20190817��ʼ���б�·�����б����ơ�����·���н�ֹʹ�����ģ�������ĸ�����������
-;8)��¼����ֹ��Texture1.wpf��Texture9.wpf��9���ٷ�wpf��ʽ�ļ����в������룻
-;9)�������б���ַ��֧��https������ʹ��http��
+;补充说明：
+;1)所有补丁均支持zip文件压缩！
+;2)只支持单个wpf文件压缩，如zip压缩文件内的.wpf名字需与补丁文件名一致!
+;3)登陆器补丁最后参数为压缩前的原始文件的大小字节!
+;4)登录器自动删除多余Texture补丁文件！
+;5)登录器取消多开限制，请使用彩虹新反外挂游戏网关限制；
+;6)自20200108起，登录器不再支持sgl格式补丁导入；
+;7)自20190817开始，列表路径、列表名称、补丁路径中禁止使用中文，请用字母或数字替代。
+;8)登录器禁止对Texture1.wpf—Texture9.wpf这9个官方wpf格式文件进行补丁导入；
+;9)补丁及列表地址不支持https，必须使用http。
