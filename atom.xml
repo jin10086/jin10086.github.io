@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2020-02-29T15:45:55.834Z</updated>
+  <updated>2020-03-26T09:17:47.238Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>知乎直播套利分析</title>
+    <link href="https://igaojin.me/2020/03/26/%E7%9F%A5%E4%B9%8E%E7%9B%B4%E6%92%AD%E5%A5%97%E5%88%A9%E5%88%86%E6%9E%90/"/>
+    <id>https://igaojin.me/2020/03/26/知乎直播套利分析/</id>
+    <published>2020-03-26T07:36:25.000Z</published>
+    <updated>2020-03-26T09:17:47.238Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>知乎最近弄了一个 <a href="https://www.zhihu.com/appview/theater/activity/10060?from=singlemessage&amp;isappinstalled=0" rel="external nofollow noopener noreferrer" target="_blank"><strong>知乎直播 知友行动</strong></a>的活动</p><img src="/2020/03/26/知乎直播套利分析/zhihuhuodong.png" title="知乎直播知友行动"><h2 id="最多能赚多少呢"><a href="#最多能赚多少呢" class="headerlink" title="最多能赚多少呢?"></a>最多能赚多少呢?</h2><p>最大的奖品是 <strong>时光机</strong>20个 也就是等于 5888盐粒*20=117760 盐粒（1盐粒等于1毛钱）</p><p>盐粒兑换成RMB需要扣除平台收入</p><p>最后实际收入 117760*0.42=49,459.2 毛 也就是等于 <strong>4945.92</strong> RMB</p><p>0.42为主播拿到礼物的比率…也就是粉丝送1RMB的礼物 主播拿到0.42RMB</p><p>所以最后 结论是 最多能赚 <strong>4945.92</strong> RMB</p><h2 id="成本分析"><a href="#成本分析" class="headerlink" title="成本分析"></a>成本分析</h2><p>因为这并不是知乎第一次搞直播活动,看了下之前一次活动的情况 <a href="https://www.zhihu.com/appview/theater/activity/valentine-2020" rel="external nofollow noopener noreferrer" target="_blank">站在世界中心呼唤爱</a></p><img src="/2020/03/26/知乎直播套利分析/zhihuhuodong1.jpeg" title="知乎直播情人节行动"><p>最高拿到了3,575,310 爱心值 换算成盐粒 为 3575310/10=357530盐粒 （盐粒与爱心值的比率为1:10）</p><p>那么猜一下本次榜一盐粒大概是在357530</p><p>那么正常算的话 想要获得357530盐粒,需要充值 35753.0RMB（充值的比率为 1RMB=10盐粒）</p><p>一看明显就不合适参加 因为理论上 花 35753.6RMB 最后得到 4945.92RMB</p><h2 id="活动的bug"><a href="#活动的bug" class="headerlink" title="活动的bug?"></a>活动的bug?</h2><p><strong>活动期间，主播知友团人数每增加 1 人，为主播贡献 1000「行动值」，每增加 10 人，主播额外获得 2000「行动值」。</strong></p><p>加入知友团的金额为10盐粒…(不过知乎充值最低金额为6rmb=60盐粒)</p><p>那么我是不是可以 多花一点钱 找人 帮我加知友团呢?</p><p>按照10人一组来算 每个知友团可以获得 （1000*10+2000）/10=1200 行动值 = 1200/2=600盐粒</p><p>且每个人会有剩下的50盐粒</p><p>所以成本是 60盐粒，收益是 650盐粒</p><p>357530/650 约等于需要560个人加入知友团</p><p>560*650=364000盐粒</p><p>找人加知友团的成本为 560*6=3360RMB</p><p>(560人,每人的50个盐粒也是可以提现的,这个也在收益里面 =<code>560*50*0.42/10=1176</code>RMB)</p><h2 id="最终理论收益"><a href="#最终理论收益" class="headerlink" title="最终理论收益"></a>最终理论收益</h2><p>榜一收入:4945.92</p><p>知友团送礼收入:1176</p><p>知友团加人支出:3360</p><p>4945.92+1176-3360=2761.92</p><p>用3360RMB 赚回来了 2761.92,收益率还挺高的</p><p>当然上面的值只是个理论值</p><p>实际情况 估计很复杂</p><p>比如 找人加知友团也是需要付出成本的,比如溢价2rmb（别人充6块加知友团，你给别人反8块）</p><p>这样收入就变成了 2761.92-560*2=1641.92 RMB</p><h2 id="博弈论问题"><a href="#博弈论问题" class="headerlink" title="博弈论问题"></a>博弈论问题</h2><p>算一下在收益为0 的时候,我最多可以投出多少盐粒</p><p>首先要算出 最多可以找多少人加知友团（这边假设找人加知友团的成本为0，也就是6元，不会多给钱）</p><p>算出来 最多可以找 1268位知友加团</p><p><code>1268*6-1268*50*0.042=4945.2</code></p><p>1268位知友团一共贡献 <code>1260*650+ 8*500+8*50=823400</code></p><p>所以 当榜一的盐粒超过了823,400（1,646,800行动值）以后 我就可以不玩了，因为后面就是负收益了。。。</p><p>不过本质上抢夺榜一是个 博弈问题</p><p>当你已经开始玩了,并且盐粒值达到了82w,这时候又有人加价了,导致榜一变成了83w</p><p>那么你应该继续玩吗?这时候你只能继续加价,因为游戏的规则已经变了,变成了<strong>谁亏的少 谁就是赢家了</strong></p><p>模拟计算一下：</p><h3 id="82w-你不加价-成为了第二"><a href="#82w-你不加价-成为了第二" class="headerlink" title="82w 你不加价,成为了第二"></a>82w 你不加价,成为了第二</h3><p>成本为 4945.7，收益为 <code>5888*10*0.042=2472.96 RMB</code></p><p>亏 4945.7-2472.96=2472.74</p><h3 id="你加到83w"><a href="#你加到83w" class="headerlink" title="你加到83w"></a>你加到83w</h3><p>多出 830000-823400=6600盐粒</p><p>找11个人加知友团 获得 650*10+550=7050盐粒 大于830000</p><p>成本为 <code>10*6-10*50*0.042=39</code></p><p>所以亏39</p><h3 id="当双方都这么算的话-游戏会越来越好玩"><a href="#当双方都这么算的话-游戏会越来越好玩" class="headerlink" title="当双方都这么算的话,游戏会越来越好玩"></a>当双方都这么算的话,游戏会越来越好玩</h3><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2020/03/26/知乎直播套利分析/">https://igaojin.me/2020/03/26/知乎直播套利分析/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      背景
+知乎最近弄了一个 知乎直播 知友行动的活动
+
+最多能赚多少呢?
+最大的奖品是 时光机20个 也就是等于 5888盐粒*20=117760 盐粒（1盐粒等于1毛钱）
+
+盐粒兑换成RMB需要扣除平台收入
+
+最后实际收入 117760*0.42=49,459.2 毛 也就是等于 4945.92 RMB
+
+0.42为主播拿到礼物的比率…也就是粉丝送1RMB的礼物 主播拿到0.42RMB
+
+所以最后 结论是 最多能赚 4945.92 RMB
+
+成本分析
+因为这并不是知乎第一次搞直播活动,看了下之前一次活动的情况 站在世界中心呼唤爱
+
+最高拿到了3,575,310 爱心值 换算成盐粒 为 35753
+    
+    </summary>
+    
+      <category term="套利" scheme="https://igaojin.me/categories/%E5%A5%97%E5%88%A9/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>1000刀+的羊毛在等你</title>
@@ -767,43 +804,6 @@ pooltoget
     
       <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>垃圾WiFi随便连,再也不怕隐私泄露啦</title>
-    <link href="https://igaojin.me/2019/04/14/%E5%9E%83%E5%9C%BEWiFi%E9%9A%8F%E4%BE%BF%E8%BF%9E,%E5%86%8D%E4%B9%9F%E4%B8%8D%E6%80%95%E9%9A%90%E7%A7%81%E6%B3%84%E9%9C%B2%E5%95%A6/"/>
-    <id>https://igaojin.me/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/</id>
-    <published>2019-04-13T23:40:54.000Z</published>
-    <updated>2019-11-23T15:34:57.347Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>朋友圈有个朋友 出差的时候连了某酒店的WiFi,然后qq被盗了,自动发菠菜广告…</p><h2 id="WiFi为什么会泄露你的隐私"><a href="#WiFi为什么会泄露你的隐私" class="headerlink" title="WiFi为什么会泄露你的隐私?"></a>WiFi为什么会泄露你的隐私?</h2><img src="/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/0.jpg"><p>上面是画的一张你通过WiFi上网的图…</p><p>你的所有流量都会经过WiFi那边,只要我在WiFi这边记录一下…</p><p>那么你的所有上网记录都会被我看到…</p><p>当然也没有这么恐怖…(现在很多网站都用了HTTPS加密,相当于把内容加密了,)</p><h3 id="HTTP-与-HTTPS"><a href="#HTTP-与-HTTPS" class="headerlink" title="HTTP 与 HTTPS"></a>HTTP 与 HTTPS</h3><blockquote><p>HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。</p></blockquote><p>具体细节可以看这篇文章<a href="https://juejin.im/entry/58d7635e5c497d0057fae036" rel="external nofollow noopener noreferrer" target="_blank">HTTP 与 HTTPS 的区别</a></p><h3 id="看一个HTTP的例子"><a href="#看一个HTTP的例子" class="headerlink" title="看一个HTTP的例子"></a>看一个HTTP的例子</h3><img src="/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/1.jpg"><p>上面那张图是data5u的登录页面(找了半天才找到一个http登录，且是明文密码传输的例子)</p><p>如果你连接了我的WiFi 并且登录了data5u这个网站的话,那么你的账号以及密码已经被我知道了…</p><h3 id="不仅仅是HTTPS"><a href="#不仅仅是HTTPS" class="headerlink" title="不仅仅是HTTPS"></a>不仅仅是HTTPS</h3><p>当然有些公司 为了更加保护用户隐私不被第三方抓取,会使用自有通信协议…</p><p>如微信的:<a href="https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md" rel="external nofollow noopener noreferrer" target="_blank">基于TLS1.3的微信安全通信协议mmtls介绍</a></p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>所以当你连上了某个WiFi的时候，你的隐私是否被泄漏，主要是看你访问的网站的安全性…</p><p>那么我们能不能先自己加密一次，然后再发给目标网站呢?</p><p>这样，不管他网站设计的怎么样，我可以保证我发送与接收的数据都是经过加密的。</p><h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p>Shadowsocks 很多人用他可能都是为了翻越长城…</p><p>但是其实他还可以保护隐私用…</p><h3 id="Shadowsocks的原理"><a href="#Shadowsocks的原理" class="headerlink" title="Shadowsocks的原理"></a>Shadowsocks的原理</h3><blockquote><p>Shadowsocks的运行原理与其他代理工具基本相同，使用特定的中转服务器完成数据传输。例如，用户无法直接访问Google，但代理服务器可以访问，且用户可以直接连接代理服务器，那么用户就可以通过特定软件连接代理服务器，然后由代理服务器获取网站内容并回传给用户，从而实现代理上网的效果。另外用户在成功连接到服务器后，客户端会在本机构建一个本地Socks5代理（或VPN、透明代理等）。浏览网络时，网络流量需要先通过本地代理传递到客户端软件，然后才能发送到服务器端，反之亦然。</p></blockquote><blockquote><p><strong>为防止流量被识别和拦截，服务器和客户端软件会要求提供密码和加密方式，并且在数据传输期间会对传入和传出流量进行加密。</strong></p></blockquote><p>以上内容来自 <a href="https://zh.wikipedia.org/wiki/Shadowsocks" rel="external nofollow noopener noreferrer" target="_blank">https://zh.wikipedia.org/wiki/Shadowsocks</a></p><p>可以看到 Shadowsocks 完全符合我们的要求.</p><p>他会对传入和传出流量进行加密.</p><h3 id="安装以及使用"><a href="#安装以及使用" class="headerlink" title="安装以及使用"></a>安装以及使用</h3><p>可以买一台国内的服务器，然后安装Shadowsocks就可以了.</p><p>具体安装教程请看<a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" rel="external nofollow noopener noreferrer" target="_blank">Shadowsocks 使用说明</a></p><p>然后在你连接上公共WiFi或者你觉得不安全的WiFi的时候,打开Shadowsocks 就可以了…</p><p>如果你觉得运营商的网络也不安全的话,也可以在运营商网络使用Shadowsocks</p><h3 id="使用Shadowsocks-与不使用Shadowsocks的示意图"><a href="#使用Shadowsocks-与不使用Shadowsocks的示意图" class="headerlink" title="使用Shadowsocks 与不使用Shadowsocks的示意图"></a>使用Shadowsocks 与不使用Shadowsocks的示意图</h3><p>注意 这个图里面都省掉了你上网的方式(如WiFi 4G 等等…)</p><img src="/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/不使用Shadowsocks.jpg"> <img src="/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/使用Shadowsocks.jpg"><p>可以看到当你使用了Shadowsocks后,你访问的网址以及内容全部都是加密的…</p><p>虽然还能监听到,但是监听到的是 一串乱码…从而可以保护你的隐私</p><hr><p>本文发自 阿桑奇被捕后.</p><p>为了致敬阿桑奇，也为了我们自身的隐私</p><p>特意送出100本 <a href="https://book.douban.com/subject/27054249/" rel="external nofollow noopener noreferrer" target="_blank">密码朋克</a>,也希望你看完书后,把书送给你的好朋友.</p><p>密码朋克介绍:</p><blockquote><p>互联网已经在世界各地掀起了革命，然而全面的打击也正在展开。随着整个社会向互联网迁移，大规模监控计划也正在向全球部署。我们的文明已经来到一个十字路口。道路的一边通往一个承诺“弱者要隐私，强 者要透明”的未来，而另一边则通往一个极权的互联网，在那里，全人类的权力被转移给不受问责的间谍机构综合体及其跨国公司盟友。</p></blockquote><blockquote><p>密码朋克是一群倡导大规模使用强密码术以保护我们的基本自由免遭攻击的活动家。维基解密的主编和创始人朱利安·阿桑奇自1990年代以来一直是秘密朋克运动的主要领袖之一。现在，在这本新书中，阿桑奇将与一群来自赛博空间战场前线的思想家和活动家一起探讨，互联网终将解放我们，还是奴役所有人</p></blockquote><p>送出规则是:</p><p>向维基解密捐赠（捐赠金额不限)</p><p><a href="https://defend.wikileaks.org/donate/?from=groupmessage&amp;isappinstalled=0" rel="external nofollow noopener noreferrer" target="_blank">维基解密捐赠地址</a></p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/">https://igaojin.me/2019/04/14/垃圾WiFi随便连,再也不怕隐私泄露啦/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      背景
-朋友圈有个朋友 出差的时候连了某酒店的WiFi,然后qq被盗了,自动发菠菜广告…
-
-WiFi为什么会泄露你的隐私?
-上面是画的一张你通过WiFi上网的图…
-
-你的所有流量都会经过WiFi那边,只要我在WiFi这边记录一下…
-
-那么你的所有上网记录都会被我看到…
-
-当然也没有这么恐怖…(现在很多网站都用了HTTPS加密,相当于把内容加密了,)
-
-HTTP 与 HTTPS
-HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的
-    
-    </summary>
-    
-      <category term="安全" scheme="https://igaojin.me/categories/%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="Shadowsocks" scheme="https://igaojin.me/tags/Shadowsocks/"/>
-    
-      <category term="WiFi" scheme="https://igaojin.me/tags/WiFi/"/>
     
   </entry>
   
