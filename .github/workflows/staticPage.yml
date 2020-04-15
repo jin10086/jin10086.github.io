@@ -12,13 +12,15 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    name: Tencent Cloudbase Github Action Example
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: master
+
       - name: Deploy static to Tencent CloudBase
-        id: deployStatic
         uses: TencentCloudBase/cloudbase-action@v1
         with:
           secretId: ${{ secrets.SECRET_ID }}
