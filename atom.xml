@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2020-04-15T03:16:24.704Z</updated>
+  <updated>2020-04-19T07:58:41.529Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>appium 安卓无法点击搜索框解决办法</title>
+    <link href="https://igaojin.me/2020/04/19/appium-%E5%AE%89%E5%8D%93%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB%E6%90%9C%E7%B4%A2%E6%A1%86%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://igaojin.me/2020/04/19/appium-安卓无法点击搜索框解决办法/</id>
+    <published>2020-04-19T07:51:22.000Z</published>
+    <updated>2020-04-19T07:58:41.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在弄python控制app做一些自动化的事情</p><p>碰到很多地方需要点击搜索按钮,搜了一堆,最终找到了完美的解决办法</p><p>之前的<br></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">enter</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># 参考 http://www.lemfix.com/topics/277</span></span><br><span class="line">    <span class="comment"># 切换成搜狗输入法</span></span><br><span class="line">    os.system(<span class="string">"adb shell ime set com.sohu.inputmethod.sogou/.SogouIME"</span>)</span><br><span class="line">    sleep(<span class="number">5</span>)</span><br><span class="line">    self.driver.press_keycode(<span class="number">66</span>)  <span class="comment"># 按回车</span></span><br><span class="line">    sleep(<span class="number">3</span>)</span><br><span class="line">    os.system(<span class="string">"adb shell ime set io.appium.settings/.UnicodeIME"</span>)</span><br><span class="line">    sleep(<span class="number">3</span>)</span><br><span class="line">    print(<span class="string">"回车输入完毕."</span>)</span><br></pre></td></tr></table></figure><p></p><p>但是有时候也不好用。。。完全寄托于搜狗输入法</p><p>后面找到一种官方给出的解决办法</p><p>官方文档：<a href="https://appium.readthedocs.io/en/latest/en/writing-running-appium/android/android-ime/" rel="external nofollow noopener noreferrer" target="_blank">https://appium.readthedocs.io/en/latest/en/writing-running-appium/android/android-ime/</a></p><p>基本上一劳永逸了,不过记得在 点击搜索按钮之前,记得先聚焦在 输入框。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#先聚焦在输入框</span><br><span class="line">driver.find_element_by_id(&quot;com.tencent.mm:id/m7&quot;).click()</span><br><span class="line">#点击搜索按钮</span><br><span class="line">driver.execute_script(&apos;mobile: performEditorAction&apos;, &#123;&apos;action&apos;: &apos;search&apos;&#125;)</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2020/04/19/appium-安卓无法点击搜索框解决办法/">https://igaojin.me/2020/04/19/appium-安卓无法点击搜索框解决办法/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      最近在弄python控制app做一些自动化的事情
+
+碰到很多地方需要点击搜索按钮,搜了一堆,最终找到了完美的解决办法
+
+之前的
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+def enter(self):
+    # 参考 http://www.lemfix.com/topics/277
+    # 切换成搜狗输入法
+    os.system(&quot;adb shell ime set com.sohu.inputmethod.sogou/.SogouIME&quot;)
+    sleep(5)
+    self.driver.press_keycode(66)  # 按回车
+    sleep(3
+    
+    </summary>
+    
+      <category term="爬虫" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="appium" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/appium/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>知乎直播弹幕抓取与解析</title>
@@ -448,16 +495,16 @@ bidname的逻辑大概说一下
     <link href="https://igaojin.me/2019/11/13/%E5%B8%AE%E7%94%A8%E6%88%B7%E4%BB%A3%E4%BB%98CPU%E8%B4%B9%E7%94%A8-EOS/"/>
     <id>https://igaojin.me/2019/11/13/帮用户代付CPU费用-EOS/</id>
     <published>2019-11-13T13:12:12.000Z</published>
-    <updated>2020-04-15T03:22:45.067Z</updated>
+    <updated>2020-04-15T05:03:39.335Z</updated>
     
-    <content type="html"><![CDATA[<p>参考文档 <a href="https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md</a></p><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>用户可以支付RMB,EOS等来让我们帮他支付一次转账的费用</p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>主要是负责救急作用（用户账号动不了的时候)</p><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>用户选择想要操作的合约，方法，以及参数等等</p><ol><li>前端生成如下的数据，此时用户不需要签名</li></ol><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"expiration"</span>: <span class="string">"2019-10-15T06:02:59"</span>,</span><br><span class="line">  <span class="attr">"ref_block_num"</span>: <span class="number">486</span>,</span><br><span class="line">  <span class="attr">"ref_block_prefix"</span>: <span class="number">2948179210</span>,</span><br><span class="line">  <span class="attr">"max_net_usage_words"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"max_cpu_usage_ms"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"delay_sec"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"context_free_actions"</span>: [],</span><br><span class="line">  <span class="attr">"actions"</span>: [&#123;</span><br><span class="line">      <span class="attr">"account"</span>: <span class="string">"eosio.token"</span>,</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"transfer"</span>,</span><br><span class="line">      <span class="attr">"authorization"</span>: [&#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"USER"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"data"</span>: <span class="string">"0000000084ab32dd0000000088ab32dd102700000000000004454f530000000000"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"transaction_extensions"</span>: [],</span><br><span class="line">  <span class="attr">"signatures"</span>: [],</span><br><span class="line">  <span class="attr">"context_free_data"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>判断收费情况，等待用户付费</li><li><p>付费成功后,修改expiration 到20分钟后，并且要代付费的actor添加为first authorization。</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"expiration"</span>: <span class="string">"2019-10-15T06:22:59"</span>,</span><br><span class="line">  <span class="attr">"ref_block_num"</span>: <span class="number">486</span>,</span><br><span class="line">  <span class="attr">"ref_block_prefix"</span>: <span class="number">2948179210</span>,</span><br><span class="line">  <span class="attr">"max_net_usage_words"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"max_cpu_usage_ms"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"delay_sec"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"context_free_actions"</span>: [],</span><br><span class="line">  <span class="attr">"actions"</span>: [&#123;</span><br><span class="line">      <span class="attr">"account"</span>: <span class="string">"eosio.token"</span>,</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"transfer"</span>,</span><br><span class="line">      <span class="attr">"authorization"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"代付的用户"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"USER"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"data"</span>: <span class="string">"0000000084ab32dd0000000088ab32dd102700000000000004454f530000000000"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"transaction_extensions"</span>: [],</span><br><span class="line">  <span class="attr">"signatures"</span>: [],</span><br><span class="line">  <span class="attr">"context_free_data"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>对生成的交易进行签名</p></li><li>返回给前端，让用户签名，整个流程完成</li></ol><p>如果用户是用EOS支付的，则需要先把eosio.token transfer 给收费账号的放在第一位</p><p>否则是直接只有1个交易</p><h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><h3 id="签名后的交易能多次用吗？"><a href="#签名后的交易能多次用吗？" class="headerlink" title="签名后的交易能多次用吗？"></a>签名后的交易能多次用吗？</h3><p>不能</p><h3 id="如何方便的接入rmb支付？"><a href="#如何方便的接入rmb支付？" class="headerlink" title="如何方便的接入rmb支付？"></a>如何方便的接入rmb支付？</h3><p>后续再弄,第一版只支持EOS付费</p><h3 id="能否使用出active权限以外的其他权限代付"><a href="#能否使用出active权限以外的其他权限代付" class="headerlink" title="能否使用出active权限以外的其他权限代付?"></a>能否使用出active权限以外的其他权限代付?</h3><p>不能,所以代付的这个账号只能里面不存任何钱,里面只有资源费用。</p><h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><p>前端post json格式的数据: <code>{username:&quot;xxx&quot;,data:要过来签名的data,json dumps格式,timestamp:xxx,nonce:xxx}</code></p><p>nonce是类似于uuid的东西…是本次请求的一个标识</p><p>然后一直get {“nonce”:”xxx”} 等待返回的数据</p><p>返回的数据格式</p><p>status为1 表示 成功,0表示错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">status:1,nonce:xxx,data:data</span><br><span class="line">status:0,nonce:xxx,data:&quot;错误信息&quot;</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/13/帮用户代付CPU费用-EOS/">https://igaojin.me/2019/11/13/帮用户代付CPU费用-EOS/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    <content type="html"><![CDATA[<p>参考文档 <a href="https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md</a></p><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>用户可以支付RMB,EOS 等来让我们帮他支付一次转账的费用</p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>主要是负责救急作用（用户账号动不了的时候)</p><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>用户选择想要操作的合约，方法，以及参数等等</p><ol><li>前端生成如下的数据，此时用户不需要签名</li></ol><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"expiration"</span>: <span class="string">"2019-10-15T06:02:59"</span>,</span><br><span class="line">  <span class="attr">"ref_block_num"</span>: <span class="number">486</span>,</span><br><span class="line">  <span class="attr">"ref_block_prefix"</span>: <span class="number">2948179210</span>,</span><br><span class="line">  <span class="attr">"max_net_usage_words"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"max_cpu_usage_ms"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"delay_sec"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"context_free_actions"</span>: [],</span><br><span class="line">  <span class="attr">"actions"</span>: [&#123;</span><br><span class="line">      <span class="attr">"account"</span>: <span class="string">"eosio.token"</span>,</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"transfer"</span>,</span><br><span class="line">      <span class="attr">"authorization"</span>: [&#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"USER"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"data"</span>: <span class="string">"0000000084ab32dd0000000088ab32dd102700000000000004454f530000000000"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"transaction_extensions"</span>: [],</span><br><span class="line">  <span class="attr">"signatures"</span>: [],</span><br><span class="line">  <span class="attr">"context_free_data"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>判断收费情况，等待用户付费</li><li><p>付费成功后,修改expiration 到20分钟后，并且要代付费的actor添加为first authorization。</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"expiration"</span>: <span class="string">"2019-10-15T06:22:59"</span>,</span><br><span class="line">  <span class="attr">"ref_block_num"</span>: <span class="number">486</span>,</span><br><span class="line">  <span class="attr">"ref_block_prefix"</span>: <span class="number">2948179210</span>,</span><br><span class="line">  <span class="attr">"max_net_usage_words"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"max_cpu_usage_ms"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"delay_sec"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"context_free_actions"</span>: [],</span><br><span class="line">  <span class="attr">"actions"</span>: [&#123;</span><br><span class="line">      <span class="attr">"account"</span>: <span class="string">"eosio.token"</span>,</span><br><span class="line">      <span class="attr">"name"</span>: <span class="string">"transfer"</span>,</span><br><span class="line">      <span class="attr">"authorization"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"代付的用户"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"actor"</span>: <span class="string">"USER"</span>,</span><br><span class="line">          <span class="attr">"permission"</span>: <span class="string">"active"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"data"</span>: <span class="string">"0000000084ab32dd0000000088ab32dd102700000000000004454f530000000000"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"transaction_extensions"</span>: [],</span><br><span class="line">  <span class="attr">"signatures"</span>: [],</span><br><span class="line">  <span class="attr">"context_free_data"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>对生成的交易进行签名</p></li><li>返回给前端，让用户签名，整个流程完成</li></ol><p>如果用户是用EOS支付的，则需要先把eosio.token transfer 给收费账号的放在第一位</p><p>否则是直接只有1个交易</p><h2 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h2><h3 id="签名后的交易能多次用吗？"><a href="#签名后的交易能多次用吗？" class="headerlink" title="签名后的交易能多次用吗？"></a>签名后的交易能多次用吗？</h3><p>不能</p><h3 id="如何方便的接入rmb支付？"><a href="#如何方便的接入rmb支付？" class="headerlink" title="如何方便的接入rmb支付？"></a>如何方便的接入rmb支付？</h3><p>后续再弄,第一版只支持EOS付费</p><h3 id="能否使用出active权限以外的其他权限代付"><a href="#能否使用出active权限以外的其他权限代付" class="headerlink" title="能否使用出active权限以外的其他权限代付?"></a>能否使用出active权限以外的其他权限代付?</h3><p>不能,所以代付的这个账号只能里面不存任何钱,里面只有资源费用。</p><h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><p>前端post json格式的数据: <code>{username:&quot;xxx&quot;,data:要过来签名的data,json dumps格式,timestamp:xxx,nonce:xxx}</code></p><p>nonce是类似于uuid的东西…是本次请求的一个标识</p><p>然后一直get {“nonce”:”xxx”} 等待返回的数据</p><p>返回的数据格式</p><p>status为1 表示 成功,0表示错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">status:1,nonce:xxx,data:data</span><br><span class="line">status:0,nonce:xxx,data:&quot;错误信息&quot;</span><br></pre></td></tr></table></figure><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/11/13/帮用户代付CPU费用-EOS/">https://igaojin.me/2019/11/13/帮用户代付CPU费用-EOS/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
     <summary type="html">
     
       参考文档 https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md
 
 主要功能
-用户可以支付RMB,EOS等来让我们帮他支付一次转账的费用
+用户可以支付RMB,EOS 等来让我们帮他支付一次转账的费用
 
 使用场景
 主要是负责救急作用（用户账号动不了的时候)
@@ -493,7 +540,7 @@ bidname的逻辑大概说一下
 
 
 {
-  &quot;ex
+  &quot;e
     
     </summary>
     
@@ -756,46 +803,6 @@ CON
     </summary>
     
       <category term="爬虫" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Mac catalina 无法删除/usr/bin/下面的文件</title>
-    <link href="https://igaojin.me/2019/10/10/Mac-catalina-%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4-usr-bin-%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%96%87%E4%BB%B6/"/>
-    <id>https://igaojin.me/2019/10/10/Mac-catalina-无法删除-usr-bin-下面的文件/</id>
-    <published>2019-10-10T12:12:17.000Z</published>
-    <updated>2019-11-23T15:34:56.890Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>rm: /usr/bin/python: Operation not permitted</code></p><p>就算用了sudo 也是一样.</p><p>发现是SIP的问题 具体可以见 <a href="https://www.jianshu.com/p/82e43aff03fd" rel="external nofollow noopener noreferrer" target="_blank">Mac OS X 10.11+ Rootless 介绍</a></p><blockquote><p>尝试关闭 Rootless。重启电脑一直按住 Command+R，直到进入恢复模式，打开Terminal。<br>输入 <code>csrutil disable</code><br>重启即可。这样就关掉了Sip 如果要恢复默认，那么只要输入 <code>csrutil enable</code></p></blockquote><p>发现继续报错</p><p><code>Read-only file system</code></p><p>然后 需要先执行</p><p><code>sudo mount -uw /</code></p><p>再操作就可以了</p><p>记得操作完把 sip重新打开</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以 最后步骤是 先关掉sip,然后<code>sudo mount -uw /</code> 就可以啦</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/10/10/Mac-catalina-无法删除-usr-bin-下面的文件/">https://igaojin.me/2019/10/10/Mac-catalina-无法删除-usr-bin-下面的文件/</a><br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      rm: /usr/bin/python: Operation not permitted
-
-就算用了sudo 也是一样.
-
-发现是SIP的问题 具体可以见 Mac OS X 10.11+ Rootless 介绍
-
-尝试关闭 Rootless。重启电脑一直按住 Command+R，直到进入恢复模式，打开Terminal。
-输入 csrutil disable
-重启即可。这样就关掉了Sip 如果要恢复默认，那么只要输入 csrutil enable
-
-发现继续报错
-
-Read-only file system
-
-然后 需要先执行
-
-sudo mount -uw /
-
-再操作就可以了
-
-记得操作完把
-    
-    </summary>
-    
-      <category term="问题" scheme="https://igaojin.me/categories/%E9%97%AE%E9%A2%98/"/>
     
     
   </entry>
