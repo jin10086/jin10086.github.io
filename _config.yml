@@ -99,10 +99,9 @@ sitemap:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@github.com:jin10086/jin10086.github.io.git
   branch: master
-
 
 # addlink
 addlink:
