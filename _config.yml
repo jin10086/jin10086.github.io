@@ -102,9 +102,9 @@ deploy:
 - type: git
   repo: git@github.com:jin10086/jin10086.github.io.git
   branch: master
-- type: git
-  repo: git@e.coding.net:bug1/bug1.git
-  branch: coding-pages
+# - type: git
+#   repo: git@e.coding.net:bug1/bug1.git
+#   branch: coding-pages
 
 # addlink
 addlink:
@@ -119,3 +119,16 @@ image_minifier:
 
 # jsdelivr https://github.com/jsdelivr/jsdelivr#contribute-performance-data
 jsdelivr: true
+
+#https://github.com/snowdreams1006/hexo-plugin-gitalk
+plugins:
+  gitalk:
+    clientID: 935e92a5333436856348
+    clientSecret: e655566eaf920d216ec6283978d67874bf0850a6
+    repo: jin10086.github.io
+    owner: jin10086
+    admin: 
+      - jin10086
+    distractionFreeMode: false
+    id: page.date
+    createIssueManually: false
