@@ -102,6 +102,9 @@ deploy:
 - type: git
   repo: git@github.com:jin10086/jin10086.github.io.git
   branch: master
+- type: git
+  repo: git@e.coding.net:bug1/bug1.git
+  branch: coding-pages
 
 # addlink
 addlink:
