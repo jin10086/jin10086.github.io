@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://igaojin.me/"/>
-  <updated>2020-04-19T07:58:41.529Z</updated>
+  <updated>2020-04-26T17:21:19.457Z</updated>
   <id>https://igaojin.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>POW与反爬虫</title>
+    <link href="https://igaojin.me/2020/04/27/POW%E4%B8%8E%E5%8F%8D%E7%88%AC%E8%99%AB/"/>
+    <id>https://igaojin.me/2020/04/27/POW与反爬虫/</id>
+    <published>2020-04-26T16:50:36.000Z</published>
+    <updated>2020-04-26T17:21:19.457Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="POW解释"><a href="#POW解释" class="headerlink" title="POW解释"></a>POW解释</h2><p>工作量证明（Proof-of-Work，PoW）是一种对应服务与资源滥用、或是阻断服务攻击的经济对策。一般是要求使用者进行一些耗时适当的复杂运算，并且答案能被服务方快速验算，以此耗用的时间、设备与能源做为担保成本，以确保服务与资源是被真正的需求所使用。此一概念最早由Cynthia Dwork和Moni Naor于1993年的学术论文提出，而工作量证明一词则是在1999年由Markus Jakobsson与Ari Juels所发表。现时此一技术成为了加密货币的主流共识机制之一，如比特币所采用的技术</p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>大家应该都听过POW反垃圾邮件的故事</p><p>大概意思是：在写信的时候,把收件人+邮件内容+发件人 做一个计算…</p><p>比如 要上面的内容与 算出来的某个数 出来的hash 前3位都是0</p><p>在发送邮件的时候 把这个数带上去,服务器要验证这个数是否经过计算…</p><p>通过算法把 计算这个数的时间控制在某个时间内，假设为5秒钟</p><p>对于普通用户来说…5秒的时间是可以接受的,但是对于制造垃圾邮件的人来说,这个时间就很难承受了</p><h2 id="反爬虫"><a href="#反爬虫" class="headerlink" title="反爬虫"></a>反爬虫</h2><p>所谓反爬虫和上面的邮件反垃圾是同理的</p><p>通过让用户先在前端做某个计算,提交答案后再返回api的内容</p><p>每次请求api的时候 都需要带上工作证明(工作证明需要花费时间)</p><p>这样就限制了他的请求速率，达到了反爬虫的效果</p><p>当然还可以动态控制问题难度…</p><p>比如1小时访问次数超过1000次的ip,把问题难度加大,让计算的时间 变长</p><p>当然这个不能放在一些用户体验要求特别高的地方</p><p>需要放在一些用户低频使用,不怎么在乎用户体验的位置</p><p>比如：工商信息查询网站</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2020/04/27/POW与反爬虫/">https://igaojin.me/2020/04/27/POW与反爬虫/</a><br><strong>版权声明</strong>：转载请注明出处！</p><div id="gitalk-container"></div><script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script>var gitalkConfig = {"clientID":"935e92a5333436856348","clientSecret":"e655566eaf920d216ec6283978d67874bf0850a6","repo":"jin10086.github.io","owner":"jin10086","admin":["jin10086"],"distractionFreeMode":false,"id":"page.date","createIssueManually":false};    gitalkConfig.id = md5(location.pathname);var gitalk = new Gitalk(gitalkConfig);    gitalk.render("gitalk-container");    </script>]]></content>
+    
+    <summary type="html">
+    
+      POW解释
+工作量证明（Proof-of-Work，PoW）是一种对应服务与资源滥用、或是阻断服务攻击的经济对策。一般是要求使用者进行一些耗时适当的复杂运算，并且答案能被服务方快速验算，以此耗用的时间、设备与能源做为担保成本，以确保服务与资源是被真正的需求所使用。此一概念最早由Cynthia Dwork和Moni Naor于1993年的学术论文提出，而工作量证明一词则是在1999年由Markus Jakobsson与Ari Juels所发表。现时此一技术成为了加密货币的主流共识机制之一，如比特币所采用的技术
+
+背景
+大家应该都听过POW反垃圾邮件的故事
+
+大概意思是：在写信的时候,把收件人+邮
+    
+    </summary>
+    
+      <category term="爬虫" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>appium 安卓无法点击搜索框解决办法</title>
@@ -762,47 +788,6 @@ CON
     </summary>
     
       <category term="区块链" scheme="https://igaojin.me/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫小技巧</title>
-    <link href="https://igaojin.me/2019/10/26/%E7%88%AC%E8%99%AB%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://igaojin.me/2019/10/26/爬虫小技巧/</id>
-    <published>2019-10-26T00:04:00.000Z</published>
-    <updated>2019-11-23T15:34:57.681Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一个爬虫的小技巧"><a href="#一个爬虫的小技巧" class="headerlink" title="一个爬虫的小技巧"></a>一个爬虫的小技巧</h2><p>先看这篇文章</p><p><a href="https://mp.weixin.qq.com/s/_UcSrEqT9Lym0cusA1SLYQ" rel="external nofollow noopener noreferrer" target="_blank">爬信息爬到服务器瘫痪，今日头条的头条搜索成了小网站的噩梦！</a></p><p>可以看到大家都被今日头条的爬虫弄的苦不堪言。。。</p><p>不知道你看完这篇文章有没有学到什么？</p><hr><p>只要你把User-Agent改成 Bytespider,那么你就可以甩锅给头条了（哈哈哈</p><p>把User-Agent 伪装成搜索引擎的，也算一个小技巧（一般大家都欢迎搜索引擎爬取，不容易被封IP）</p><p>当然在爬取的时候还是要注意频率</p><p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2019/10/26/爬虫小技巧/">https://igaojin.me/2019/10/26/爬虫小技巧/</a><br><strong>版权声明</strong>：转载请注明出处！</p><div id="gitalk-container"></div><script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script>var gitalkConfig = {"clientID":"935e92a5333436856348","clientSecret":"e655566eaf920d216ec6283978d67874bf0850a6","repo":"jin10086.github.io","owner":"jin10086","admin":["jin10086"],"distractionFreeMode":false,"id":"page.date","createIssueManually":false};    gitalkConfig.id = md5(location.pathname);var gitalk = new Gitalk(gitalkConfig);    gitalk.render("gitalk-container");    </script>]]></content>
-    
-    <summary type="html">
-    
-      一个爬虫的小技巧
-先看这篇文章
-
-爬信息爬到服务器瘫痪，今日头条的头条搜索成了小网站的噩梦！
-
-可以看到大家都被今日头条的爬虫弄的苦不堪言。。。
-
-不知道你看完这篇文章有没有学到什么？
-
-
-
-
-只要你把User-Agent改成 Bytespider,那么你就可以甩锅给头条了（哈哈哈
-
-把User-Agent 伪装成搜索引擎的，也算一个小技巧（一般大家都欢迎搜索引擎爬取，不容易被封IP）
-
-当然在爬取的时候还是要注意频率
-
-
-本文作者：高金
-本文地址： https://igaojin.me/2019/10/26/爬虫小技巧/
-版权声明：转载请注明出处！
-    
-    </summary>
-    
-      <category term="爬虫" scheme="https://igaojin.me/categories/%E7%88%AC%E8%99%AB/"/>
     
     
   </entry>
