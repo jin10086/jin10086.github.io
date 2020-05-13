@@ -121,6 +121,13 @@ def test2():
 
 https://github.com/jin10086/tensorflow-cnn-captcha-server
 
+## 实例截图
+
+{% asset_img demo1.png  %}
+
+{% asset_img demo2.png  %}
+
+
 
 ## 参考
 
