@@ -54,6 +54,25 @@ date: 2019-12-10 19:06:51
 
 [付费阅读？阅读赚钱！](https://mp.weixin.qq.com/s?__biz=MzU2OTAxNTcwMw==&mid=2247484081&idx=1&sn=688544e654a7a903e42a3d1623571496&chksm=fc846e49cbf3e75fc19fd8cb4776ee75c5edfd9e751bd4ff5317d363489ce362857dcf864363&token=932787837&lang=zh_CN#rd)
 
+## 去中心化前端
+
+前段时间uni因为监管原因,前端屏蔽了存在监管风险的代币. [去中心化金融成为监管重地，如何将 DeFi 前端去中心化？](https://www.chainnews.com/articles/067784546025.htm)
+
+所以我在想如何能解决这种问题。
+
+其实uniswap的前端一直是开源的[uniswap-interface](https://github.com/Uniswap/uniswap-interface),有蛮多团队以及钱包方现在都有提供自己的版本，方便用户使用。比如TP，Math等
+
+但是最关键的问题其实 是如何验证第三方部署的前端没有作恶.
+
+最简单也容易想到的问题 就是对 uniswap官方的前端每个文件生成md5,并把这个md5.json加入到uniswap官方前端库内.
+
+这样每次uniswap更新后，相对应的md5也会自动更新。
+
+再创建一个chrome插件. md5.json来源可以选择uniswap官方提供的,然后当你打开一个第三方提供的前端时候，chrome插件会自动对网页内加载的所有文件进行md5生成，然后再与uniswap官方提供的md5进行对比。
+这样就很方便的验证 第三方是否有作恶了.
+
+
+
 
 
 
