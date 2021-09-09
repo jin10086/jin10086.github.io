@@ -118,7 +118,6 @@ image_minifier:
 
 
 # jsdelivr https://github.com/jsdelivr/jsdelivr#contribute-performance-data
-jsdelivr: true
 
 #https://github.com/snowdreams1006/hexo-plugin-gitalk
 plugins:
