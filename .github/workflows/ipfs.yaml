@@ -1,5 +1,7 @@
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
 jobs:
   ipfs_publisher_job:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
         uses: sha224/ipfs-publisher@v1
         env:
           DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_TOKEN: ${{ secrets.PINATA_TOKEN }}
           CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
           CLOUDFLARE_ZONEID: ${{ secrets.CLOUDFLARE_ZONEID }}
