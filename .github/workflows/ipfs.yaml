@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  ipfs_publisher_job:
+    runs-on: ubuntu-latest
+    name: A job to publish the static site to IPFS
+    steps:
+      - id: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - id: publish
+        uses: sha224/ipfs-publisher@v1
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+          PINATA_TOKEN: ${{ secrets.PINATA_TOKEN }}
+          CLOUDFLARE_KEY: ${{ secrets.CLOUDFLARE_KEY }}
+          CLOUDFLARE_ZONEID: ${{ secrets.CLOUDFLARE_ZONEID }}
