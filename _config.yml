@@ -85,37 +85,36 @@ pagination_dir: page
 theme: cafe
 
 plugin:
-- hexo-generator-feed
-- hexo-generator-sitemap
+  - hexo-generator-feed
+  - hexo-generator-sitemap
 
 feed:
   type: atom
   path: atom.xml
   limit: 20
- 
+
 sitemap:
-    path: sitemap.xml
+  path: sitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: git
-  repo: git@github.com:jin10086/jin10086.github.io.git
-  branch: master
+  - type: git
+    repo: git@github.com:jin10086/jin10086.github.io.git
+    branch: master
 # - type: git
 #   repo: git@e.coding.net:bug1/bug1.git
 #   branch: coding-pages
 
 # addlink
 addlink:
-  before_text:  <br />__本文作者__：高金<br />__本文地址__： # text before the post link 
+  before_text: <br />__本文作者__：高金<br />__本文地址__： # text before the post link
   after_text: <br />__版权声明__：转载请注明出处！
 
 # 压缩js,html,css,image https://github.com/chenzhutian/hexo-all-minifier
 all_minifier: true
 image_minifier:
   enable: false
-
 
 # jsdelivr https://github.com/jsdelivr/jsdelivr#contribute-performance-data
 
@@ -126,8 +125,36 @@ plugins:
     clientSecret: e655566eaf920d216ec6283978d67874bf0850a6
     repo: jin10086.github.io
     owner: jin10086
-    admin: 
+    admin:
       - jin10086
     distractionFreeMode: false
     id: page.date
     createIssueManually: false
+
+pwa:
+  manifest:
+    path: /manifest.json
+    body:
+      name: hexo
+      short_name: hexo
+      start_url: /
+      theme_color: "#ffffff"
+      background_color: "#ffffff"
+      display: standalone
+  serviceWorker:
+    path: /sw.js
+    preload:
+      urls:
+        - /
+        - /archives/
+      posts: 5
+    opts:
+      networkTimeoutSeconds: 5
+    routes:
+      - pattern: !!js/regexp /hm.baidu.com/
+        strategy: networkOnly
+      - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
+        strategy: cacheFirst
+      - pattern: !!js/regexp /\//
+        strategy: networkFirst
+  priority: 5
