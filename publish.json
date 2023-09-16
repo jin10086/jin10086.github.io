@@ -1,0 +1,10 @@
+{"domain":"ipfs.igaojin.me","dir":"public"}
+<div id="gitalk-container"></div>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+		<script>
+		var gitalkConfig = {"clientID":"935e92a5333436856348","clientSecret":"e655566eaf920d216ec6283978d67874bf0850a6","repo":"jin10086.github.io","owner":"jin10086","admin":["jin10086"],"distractionFreeMode":false,"id":"page.date","createIssueManually":false};
+	    gitalkConfig.id = md5(location.pathname);
+		var gitalk = new Gitalk(gitalkConfig);
+	    gitalk.render("gitalk-container");
+	    </script>
