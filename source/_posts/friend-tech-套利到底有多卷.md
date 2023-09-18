@@ -25,7 +25,7 @@ tags:
 
 ## 数据分析
 
-所有的数据基于block [411977](https://basescan.org/txs?block=4119771&p=10),真实用户[0xda](0xda68eee4c5b10d8a574b9ec072335c583b1c67a2), [购买 tx](https://basescan.org/tx/0x0c499027221fe9195f2b0b0f9038b97e0317b19cae9e55774ceb85767bd07d56)
+所有的数据基于block [411977](https://basescan.org/txs?block=4119771&p=10),真实用户[0xda](https://basescan.org/address/0xda68eee4c5b10d8a574b9ec072335c583b1c67a2), [购买 tx](https://basescan.org/tx/0x0c499027221fe9195f2b0b0f9038b97e0317b19cae9e55774ceb85767bd07d56)
 
 ### 数据长这样
 
