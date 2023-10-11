@@ -31,7 +31,7 @@ function buyShares(address sharesSubject, uint256 amount) public payable {
 }
 ```
 
-一看代码很简单，唯一限制的就这一句 
+一看代码很简单，唯一限制的就这一句
 
 `require(supply > 0 || sharesSubject == msg.sender, "Only the shares' subject can buy the first share");`
 
@@ -69,6 +69,8 @@ contract fuck_friend_tech is TestHarness {
 
 你别说,还真失败了...报错为 `[FAIL. Reason: Arithmetic over/underflow] test_attack() (gas: 3252)`
 
+显示溢出报错.肯定是哪里做运算出错了
+
 再回头看`buyShares`的代码，唯一有疑点的地方就是`getPrice`
 
 ```js
@@ -85,8 +87,34 @@ function getPrice(uint256 supply, uint256 amount) public view returns (uint256) 
 
 出现问题在sum2... supply-1+amount这边就出错了...毕竟 solidity 语言有点傻,0-1=-1就直接溢出了...
 
-好吧,原来不能第一次买多个的原因是 团队写 bug 了...改正也很简单,先+后-就可以了
+好吧,原来不能第一次买多个的原因是 团队写 bug 了...改正也很简单,先+后-就可以了,这也算 solidity 开发常见的问题了,**要先加后减，先乘后除**
 
 `(supply - 1 + amount) * (supply + amount) * (2 * (supply - 1 + amount) + 1) / 6;`
 `(supply + amount - 1) * (supply + amount) * (2 * (supply + amount - 1) + 1) / 6;`
 {% asset_img  xxx.png title %}
+
+## getPrice 分析
+
+再回头看getPrice的代码.
+估计第一眼看过去的都会比较迷糊，这到底是干啥了...当然数学大神一下就能看出来这是平方和公式
+
+我们可以借助 ChatGPT
+
+```
+Q: (supply - 1) * (supply) * (2 * (supply - 1) + 1) / 6 这是什么公式？
+
+A: 
+这个公式是用来计算一个整数变量（通常表示为"supply"）的平方和平方和的一种表示方式。公式的具体步骤如下：
+
+1. 先将"supply"的值减去1，即"(supply - 1)"。
+2. 然后将该值与"supply"相乘，即"(supply - 1) * supply"。
+3. 接下来，将2乘以"(supply - 1)"，即"2 * (supply - 1)"。
+4. 将上一步骤的结果加1，即"2 * (supply - 1) + 1"。
+5. 最后，将前三步骤的结果相乘，并将其除以6，即"(supply - 1) * supply * (2 * (supply - 1) + 1) / 6"。
+
+这个公式可以用来计算一系列连续整数的平方和，其中"supply"代表整数的上限。这种形式的平方和通常在数学和统计学中有多种应用，比如计算方差、概率分布等。
+
+```
+
+知道这是平方求和公式就简单了,这段代码就很好理解了
+`((supply-1+amount)的平方和 - (supply-1)的平方和) / 16000`
