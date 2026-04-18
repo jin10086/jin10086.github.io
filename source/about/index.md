@@ -30,4 +30,4 @@ date: 2018-02-04 13:35:04
 **[buy-me-a-coffee](/buy-me-a-coffee)**
 
 ## 微信公众号
-![微信公众号](index/0.jpg)
+![微信公众号](/about/index/0.jpg)

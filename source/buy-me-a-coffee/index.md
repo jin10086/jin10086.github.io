@@ -4,9 +4,9 @@ date: 2018-08-15 17:06:51
 ---
 
 1. 支付宝
-    ![](index/0.jpg)
+    ![](/buy-me-a-coffee/index/0.jpg)
 2. 微信
-    ![](index/1.jpg)
+    ![](/buy-me-a-coffee/index/1.jpg)
 3. 加密货币
     - 比特币(BTC): 1FmRnLEdDuhsWpoiVZh5YtqvdP63Tp9bdd
     - BitcoinCash（BCH): 15QsZRENDvqWnu5Zz2sZwXsPuLQkV9aXj8

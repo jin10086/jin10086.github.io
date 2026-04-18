@@ -7,6 +7,9 @@
     var yearData=[];
     var length = 0;
     var lang = page.lang || page.language || config.language;
+    if (lang && lang !== 'en' && lang !== 'default') {
+      lang = lang.toLowerCase().replace(/_/g, '-');
+    }
     site.posts.sort('date', -1).forEach(function(post) {
         // Clone the date object to avoid pollution
         var date = post.date.clone();
