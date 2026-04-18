@@ -116,6 +116,71 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-EOS-1-8-bidname的漏洞分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2019-11-24T03:49:12.000Z" itemprop="datePublished">2019-11-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">EOS 1.8 bidname的漏洞分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        背景
+因为最近EIDOS挖矿很火,所以会特别关注EOS CPU的使用情况
+
+一觉醒来看到 eosio的cpu的使用率变高,这肯定不正常,应该是有人利用eosio的cpu来挖EIDOS
+
+bidname 源代码分析
+bidname的逻辑大概说一下
+
+就是a先竞拍某个名字,b如果也想要这个名字的话,需要出大于a价格的10%
+
+然后系统会把a的钱退给他
+
+源码在: https://github.com/EOSIO/eosio.contracts/blob/v1.8.0/contracts/eosio.system/src/name_bidding.cpp#L53
+
+竞拍成功后的给上一个人退钱
+1
+2
+        
+          <p class="article-more-link">
+            <a href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://igaojin.me/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" data-id="cuid7EHzqsEyDkgFMA5uv6MyT" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EOS/" rel="tag">EOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-ETH相似合约查询" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/23/ETH%E7%9B%B8%E4%BC%BC%E5%90%88%E7%BA%A6%E6%9F%A5%E8%AF%A2/" class="article-date">
@@ -397,65 +462,6 @@ abi里面一直是空白的
 
 
   
-    <article id="post-EOS1-8新特性-羊毛党的福利" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/" class="article-date">
-  <time datetime="2019-11-04T12:59:49.000Z" itemprop="datePublished">2019-11-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/">EOS1.8新特性,羊毛党的福利</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        背景
-最近EIDOS很火,一不小心挖矿就把自己的CPU挖爆了。。。
-
-想出货都没有办法。。。
-
-但是最近EOS1.8版本已经上线了
-
-可以让别人帮你支付CPU费用
-
-新特性的介绍
-如果一笔交易有两个或者两个以上的账户联合签名，则只会对排在第一位的账户收取资源费用。此外， EOSIO 1.8的新特性不只是“dApp为用户支付资源“，还包括：1.资源的付费方，可以是任意的账号或服务方，该账号不一定是dApp；2.交易所可以为用户承担资源费用，帮助用户充值至交易所；3.任意的EOS账号，都可以为其他的账号支付资源；4.dApp能够为用户支付资源；5.有可能借助于一项特殊的协议，扫描二维码即可完成资源
-        
-          <p class="article-more-link">
-            <a href="/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://igaojin.me/2019/11/04/EOS1-8%E6%96%B0%E7%89%B9%E6%80%A7-%E7%BE%8A%E6%AF%9B%E5%85%9A%E7%9A%84%E7%A6%8F%E5%88%A9/" data-id="cuid1g--9kmpyEp4FI0MRhCcv" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EOS/" rel="tag">EOS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
@@ -482,6 +488,10 @@ abi里面一直是空白的
       <ul>
         
           <li>
+            <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/">人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/01/%E6%83%85%E7%BB%AA%E4%BB%B7%E5%80%BC%E4%B8%8E%E6%B1%82%E7%9C%9F%EF%BC%9A%E5%A6%82%E4%BD%95%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%BA%94%E5%AF%B9%EF%BC%9F/">情绪价值与求真：如何平衡与应对？</a>
           </li>
         
@@ -495,10 +505,6 @@ abi里面一直是空白的
         
           <li>
             <a href="/2023/09/16/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">无公网ip,无服务器实现内网穿透</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/">植物挖矿</a>
           </li>
         
       </ul>

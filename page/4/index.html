@@ -116,6 +116,75 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-如何证明-我-没有去过武汉" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/05/%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E-%E6%88%91-%E6%B2%A1%E6%9C%89%E5%8E%BB%E8%BF%87%E6%AD%A6%E6%B1%89/" class="article-date">
+  <time datetime="2020-02-05T12:30:54.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%9A%8F%E6%83%B3/">编程随想</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E-%E6%88%91-%E6%B2%A1%E6%9C%89%E5%8E%BB%E8%BF%87%E6%AD%A6%E6%B1%89/">如何通过技术手段证明&#34;我&#34;没有去过武汉</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        背景
+其实刚开始是看到一个朋友发的朋友圈
+
+她说有个出租车司机再三确定她没有去过武汉 才载她。
+
+我就很好奇,出租车师傅是如何确定 她没有去过武汉的呢？
+
+然后我就问了她。。。她说 “出租车师傅问她有没有去过，他说自己没有去过。。。”
+
+emmmm 那么有没有什么技术方法能确定某个人是否去过武汉呢？
+
+技术问题
+微信，支付宝，百度等科技公司应该都有位置信息，以及上传的时间信息（就是不太清楚频率如何）
+
+这个数据可以做很多事情
+
+比如:
+
+查看某时间段内,哪些人在被感染地段待过
+可以让这些人更注意自己的安全
+
+查看某个人是否最近到过武汉
+可以使用支付宝，微信，qq等登陆，然后能查到自己最近是否有
+        
+          <p class="article-more-link">
+            <a href="/2020/02/05/%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E-%E6%88%91-%E6%B2%A1%E6%9C%89%E5%8E%BB%E8%BF%87%E6%AD%A6%E6%B1%89/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://igaojin.me/2020/02/05/%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8E-%E6%88%91-%E6%B2%A1%E6%9C%89%E5%8E%BB%E8%BF%87%E6%AD%A6%E6%B1%89/" data-id="cuidzBoWcxFo8Sf-Afd21gFvn" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-XUNTA-季度报告" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/03/XUNTA-%E5%AD%A3%E5%BA%A6%E6%8A%A5%E5%91%8A/" class="article-date">
@@ -393,71 +462,6 @@ git clone https://github.com/jin10086
 
 
   
-    <article id="post-EOS-1-8-bidname的漏洞分析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" class="article-date">
-  <time datetime="2019-11-24T03:49:12.000Z" itemprop="datePublished">2019-11-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">EOS 1.8 bidname的漏洞分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        背景
-因为最近EIDOS挖矿很火,所以会特别关注EOS CPU的使用情况
-
-一觉醒来看到 eosio的cpu的使用率变高,这肯定不正常,应该是有人利用eosio的cpu来挖EIDOS
-
-bidname 源代码分析
-bidname的逻辑大概说一下
-
-就是a先竞拍某个名字,b如果也想要这个名字的话,需要出大于a价格的10%
-
-然后系统会把a的钱退给他
-
-源码在: https://github.com/EOSIO/eosio.contracts/blob/v1.8.0/contracts/eosio.system/src/name_bidding.cpp#L53
-
-竞拍成功后的给上一个人退钱
-1
-2
-        
-          <p class="article-more-link">
-            <a href="/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://igaojin.me/2019/11/24/EOS-1-8-bidname%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" data-id="cuid7EHzqsEyDkgFMA5uv6MyT" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EOS/" rel="tag">EOS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
@@ -484,6 +488,10 @@ bidname的逻辑大概说一下
       <ul>
         
           <li>
+            <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/">人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/01/%E6%83%85%E7%BB%AA%E4%BB%B7%E5%80%BC%E4%B8%8E%E6%B1%82%E7%9C%9F%EF%BC%9A%E5%A6%82%E4%BD%95%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%BA%94%E5%AF%B9%EF%BC%9F/">情绪价值与求真：如何平衡与应对？</a>
           </li>
         
@@ -497,10 +505,6 @@ bidname的逻辑大概说一下
         
           <li>
             <a href="/2023/09/16/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">无公网ip,无服务器实现内网穿透</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/">植物挖矿</a>
           </li>
         
       </ul>

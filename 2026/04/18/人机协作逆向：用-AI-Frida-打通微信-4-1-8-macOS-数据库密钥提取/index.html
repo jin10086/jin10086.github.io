@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>
+    
+    人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取 |
+    
+    高金的博客
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当内存特征扫描失效、标准 Hook 无功而返时，一个开发者与 AI 如何通过多轮迭代，最终找到微信 4.1.8 的密钥派生入口。     一、背景：旧方案突然失效 chatlog 项目长期依赖一套相对稳定的 macOS 密钥提取逻辑：  1   vmmap 定位内存区域 → lldb dump 内存 → 搜索 fts5(% 特征字节 → 固定偏移取 32B Key → DB 验证   但在用户升级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取">
+<meta property="og:url" content="https://igaojin.me/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/index.html">
+<meta property="og:site_name" content="高金的博客">
+<meta property="og:description" content="当内存特征扫描失效、标准 Hook 无功而返时，一个开发者与 AI 如何通过多轮迭代，最终找到微信 4.1.8 的密钥派生入口。     一、背景：旧方案突然失效 chatlog 项目长期依赖一套相对稳定的 macOS 密钥提取逻辑：  1   vmmap 定位内存区域 → lldb dump 内存 → 搜索 fts5(% 特征字节 → 固定偏移取 32B Key → DB 验证   但在用户升级">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-18T14:37:45.000Z">
+<meta property="article:modified_time" content="2026-04-18T14:38:37.582Z">
+<meta property="article:author" content="Gao JIn">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/favicon.ico">
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mycdn@2.0.0/static/css/style.min.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113457160-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <!--https://github.com/snaptortoise/konami-js-->
+
+  <script src="https://cdn.jsdelivr.net/gh/georgemandis/konami-js@1.6.2/konami.min.js"></script>
+  <script>
+    var easter_egg = new Konami("https://igaojin.me/buy-me-a-coffee/?find_a_egg");
+  </script>
+
+
+  <!--https://ziyuan.baidu.com/linksubmit/index?site=https://igaojin.me/-->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://igaojin.me"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/about">关于我</a>
+        
+          <a class="main-nav-link" href="/buy-me-a-coffee/">赞赏我</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">高金的博客</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-人机协作逆向：用-AI-Frida-打通微信-4-1-8-macOS-数据库密钥提取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/" class="article-date">
+  <time datetime="2026-04-18T14:37:45.000Z" itemprop="datePublished">2026-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI/">AI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <blockquote>
+<p>当内存特征扫描失效、标准 Hook 无功而返时，一个开发者与 AI 如何通过多轮迭代，最终找到微信 4.1.8 的密钥派生入口。</p>
+</blockquote>
+<hr>
+<h2 id="一、背景：旧方案突然失效"><a href="#一、背景：旧方案突然失效" class="headerlink" title="一、背景：旧方案突然失效"></a>一、背景：旧方案突然失效</h2><p><code>chatlog</code> 项目长期依赖一套相对稳定的 macOS 密钥提取逻辑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmmap 定位内存区域 → lldb dump 内存 → 搜索 fts5(% 特征字节 → 固定偏移取 32B Key → DB 验证</span><br></pre></td></tr></table></figure>
+
+<p>但在用户升级到 <strong>微信 4.1.8</strong> 后，这条链路彻底断裂。运行 <code>./bin/chatlog key --debug</code> 时，程序能正常读完 94 个内存区域，然后陷入漫长的静默，最终超时退出——<strong>Key 一个都没找到</strong>。</p>
+<hr>
+<h2 id="二、第一回合：AI-做诊断，人类给环境"><a href="#二、第一回合：AI-做诊断，人类给环境" class="headerlink" title="二、第一回合：AI 做诊断，人类给环境"></a>二、第一回合：AI 做诊断，人类给环境</h2><p>用户把问题抛给 AI：</p>
+<blockquote>
+<p>“我发现现在微信版本升级了，无法获取到 key。”</p>
+</blockquote>
+<p>AI 的第一反应是排查代码路径。通过阅读 <code>chatlog</code> 源码，AI 迅速定位到 V4 Extractor 的两个 Pattern：</p>
+<ul>
+<li>Pattern 1: <code> fts5(%</code>（<code>20 66 74 73 35 28 25 00</code>）</li>
+<li>Pattern 2: 16 个零字节（<code>00 00 ...</code>）</li>
+</ul>
+<p>AI 列出可能的故障点，但用户没有手动去贴日志，而是直接说：</p>
+<blockquote>
+<p><strong>“你直接运行看看吧。”</strong></p>
+</blockquote>
+<p>AI 执行 <code>./bin/chatlog key --debug</code>，观察到内存读取正常、但匹配全部失败。接着 AI 检查微信二进制：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strings /Applications/WeChat.app/Contents/MacOS/WeChat | grep -c <span class="string">&quot;fts5&quot;</span></span><br><span class="line"><span class="comment"># 输出: 0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>关键发现：<code>fts5</code> 在微信 4.1.8 里完全消失了。</strong> 这是旧方案失效的根因。</p>
+<hr>
+<h2 id="三、第二回合：人类抛出新线索，AI-转换思路"><a href="#三、第二回合：人类抛出新线索，AI-转换思路" class="headerlink" title="三、第二回合：人类抛出新线索，AI 转换思路"></a>三、第二回合：人类抛出新线索，AI 转换思路</h2><p>AI 解释了问题的本质：内存布局变了，需要找新的 Pattern 或换更稳定的 Hook 思路。此时用户提供了一个关键的外部信息：</p>
+<blockquote>
+<p><strong>“wx_key 你参考看看这个项目是 windows 的，但是你看看他是怎么找 key 的”</strong></p>
+</blockquote>
+<p>AI 读取 <code>wx_key</code> 的源码后，核心思路被点亮：</p>
+<blockquote>
+<p><strong>Windows 版不扫描数据，而是 Hook 函数。</strong> 它在 <code>Weixin.dll</code> 代码段里搜索机器码 pattern，定位到处理 Key 的函数，安装 Inline Hook，等微信调用时直接拦截参数。</p>
+</blockquote>
+<p>这是一个比内存扫描稳定得多的方案。用户接着问：</p>
+<blockquote>
+<p><strong>“frida hook 你能做吗”</strong></p>
+</blockquote>
+<p>AI 回答：能。于是进入下一轮技术攻坚。</p>
+<hr>
+<h2 id="四、第三回合：AI-搭建-Frida-环境，踩坑与修正"><a href="#四、第三回合：AI-搭建-Frida-环境，踩坑与修正" class="headerlink" title="四、第三回合：AI 搭建 Frida 环境，踩坑与修正"></a>四、第三回合：AI 搭建 Frida 环境，踩坑与修正</h2><p>AI 开始动手：</p>
+<ol>
+<li><strong>安装 Frida</strong>：<code>pip3 install frida-tools</code></li>
+<li><strong>寻找目标函数</strong>：先尝试 Hook <code>libsqlite3.dylib</code> 的 <code>sqlite3_key</code> &#x2F; <code>sqlite3_key_v2</code></li>
+</ol>
+<h3 id="坑-1：Frida-17-API-变更"><a href="#坑-1：Frida-17-API-变更" class="headerlink" title="坑 1：Frida 17 API 变更"></a>坑 1：Frida 17 API 变更</h3><p>写脚本时踩了第一个坑——旧教程里的 <code>Module.findExportByName</code> 在 Frida 17 中报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: not a function</span><br></pre></td></tr></table></figure>
+
+<p>AI 通过快速测试定位到新 API：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正确写法</span></span><br><span class="line"><span class="title class_">Process</span>.<span class="title function_">getModuleByName</span>(<span class="string">&quot;libsqlite3.dylib&quot;</span>).<span class="title function_">findExportByName</span>(<span class="string">&quot;sqlite3_key&quot;</span>)</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="title class_">Module</span>.<span class="title function_">getGlobalExportByName</span>(<span class="string">&quot;sqlite3_key&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="坑-2：sqlite3-key-根本没被调用"><a href="#坑-2：sqlite3-key-根本没被调用" class="headerlink" title="坑 2：sqlite3_key 根本没被调用"></a>坑 2：sqlite3_key 根本没被调用</h3><p>修正 API 后，Hook 安装成功。AI 让用户关闭微信，用 <code>frida.spawn</code> 重新启动并注入脚本。用户登录微信，AI 监控输出——<strong>60 秒内一个 Key 都没捕获到</strong>。</p>
+<p>这说明 <strong>微信 4.1.8 macOS 并未使用标准 SQLCipher 的 <code>sqlite3_key</code> 接口</strong>。加密逻辑完全内嵌在 140MB 的 <code>wechat.dylib</code> 中，自己管理密钥派生和 VFS 层加解密。</p>
+<hr>
+<h2 id="五、第四回合：转移战场到-PBKDF2"><a href="#五、第四回合：转移战场到-PBKDF2" class="headerlink" title="五、第四回合：转移战场到 PBKDF2"></a>五、第四回合：转移战场到 PBKDF2</h2><p>既然 <code>chatlog</code> 的解密代码明确告诉我们：</p>
+<ul>
+<li><strong>算法</strong>：PBKDF2-HMAC-SHA512</li>
+<li><strong>迭代次数</strong>：256000</li>
+<li><strong>输出长度</strong>：32 字节</li>
+</ul>
+<p>那么微信启动数据库时，<strong>一定会在某个时刻做密钥派生</strong>。macOS 上最可能的系统入口是 <code>CommonCrypto</code> 中的 <code>CCKeyDerivationPBKDF</code>。</p>
+<p>AI 更新 Frida 脚本，新增对 <code>CCKeyDerivationPBKDF</code> 的 Hook，并加上过滤条件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pbkdf2 = <span class="title class_">Module</span>.<span class="title function_">getGlobalExportByName</span>(<span class="string">&quot;CCKeyDerivationPBKDF&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pbkdf2, &#123;</span><br><span class="line">    <span class="attr">onEnter</span>: <span class="keyword">function</span>(<span class="params">args</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> algo   = args[<span class="number">0</span>].<span class="title function_">toInt32</span>();   <span class="comment">// 2 = kCCPBKDF2</span></span><br><span class="line">        <span class="keyword">var</span> prf    = args[<span class="number">5</span>].<span class="title function_">toInt32</span>();   <span class="comment">// 5 = kCCPRFHmacAlgSHA512</span></span><br><span class="line">        <span class="keyword">var</span> rounds = args[<span class="number">6</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">        <span class="keyword">var</span> pwdLen = args[<span class="number">2</span>].<span class="title function_">toInt32</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (algo === <span class="number">2</span> &amp;&amp; prf === <span class="number">5</span> &amp;&amp; rounds &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> hex = <span class="title function_">toHex</span>(args[<span class="number">1</span>], pwdLen);</span><br><span class="line">            <span class="title function_">send</span>(&#123;<span class="attr">type</span>: <span class="string">&quot;key&quot;</span>, <span class="attr">key</span>: hex, <span class="attr">rounds</span>: rounds, <span class="attr">len</span>: pwdLen&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、第五回合：捕获成功，人类验证"><a href="#六、第五回合：捕获成功，人类验证" class="headerlink" title="六、第五回合：捕获成功，人类验证"></a>六、第五回合：捕获成功，人类验证</h2><p>脚本就绪后，用户让AI 关闭微信，运行脚本</p>
+<p>几秒钟后，终端输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[KEY] via CCKeyDerivationPBKDF  len=32  rounds=256000 dkLen=32</span><br><span class="line">      24f52f003edd470e97e73fc63f4b89bb0cb9efa09b8a40d685c75c47df21fc11</span><br></pre></td></tr></table></figure>
+
+<p><strong>Key 捕获成功。</strong></p>
+<p>但还没完。用户紧接着提出验证要求：</p>
+<blockquote>
+<p><strong>“你根据这个 key 测试一下是否能 chatlog decrypt”</strong></p>
+</blockquote>
+<p>AI 立刻用捕获到的 Key 执行解密：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./bin/chatlog decrypt \</span><br><span class="line">  --data-dir ~/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/... \</span><br><span class="line">  --data-key 24f52f003edd470e97e73fc63f4b89bb0cb9efa09b8a40d685c75c47df21fc11 \</span><br><span class="line">  --work-dir /tmp/chatlog_test</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">decrypt success</span><br></pre></td></tr></table></figure>
+
+<p><strong>Key 有效，数据库成功解密。</strong></p>
+<hr>
+<h2 id="七、核心方法论：人机协作的分工"><a href="#七、核心方法论：人机协作的分工" class="headerlink" title="七、核心方法论：人机协作的分工"></a>七、核心方法论：人机协作的分工</h2><p>回顾整个过程，人类与 AI 的分工非常清晰：</p>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>贡献</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>人类</strong></td>
+<td>提供运行环境、触发问题、给出关键外部线索（<code>wx_key</code>）、决定尝试 Frida、执行微信登录操作、提出最终验证需求</td>
+</tr>
+<tr>
+<td><strong>AI</strong></td>
+<td>快速阅读大量源码做根因分析、搭建 Frida 环境、编写&#x2F;调试 Hook 脚本、处理 API 兼容性问题、执行最终验证</td>
+</tr>
+</tbody></table>
+<p>如果没有人类抛出的 <code>wx_key</code> 项目，AI 可能会继续在内存扫描或 sqlite3 Hook 的思路上打转；如果没有 AI 的快速代码阅读和脚本编写能力，从诊断到验证可能需要数小时甚至数天。</p>
+<hr>
+<h2 id="八、关键踩坑清单"><a href="#八、关键踩坑清单" class="headerlink" title="八、关键踩坑清单"></a>八、关键踩坑清单</h2><h3 id="1-特征字节依赖生命周期极短"><a href="#1-特征字节依赖生命周期极短" class="headerlink" title="1. 特征字节依赖生命周期极短"></a>1. 特征字节依赖生命周期极短</h3><p>微信 4.1.8 直接从二进制中移除了 <code>fts5</code> 字符串，导致基于内存布局的扫描方案瞬间破产。</p>
+<h3 id="2-标准-SQLCipher-API-是个假目标"><a href="#2-标准-SQLCipher-API-是个假目标" class="headerlink" title="2. 标准 SQLCipher API 是个假目标"></a>2. 标准 SQLCipher API 是个假目标</h3><p>macOS 系统库里有 <code>sqlite3_key</code>，但微信根本不调用。Hook 之前必须做实际验证，不能凭假设行事。</p>
+<h3 id="3-Frida-版本陷阱"><a href="#3-Frida-版本陷阱" class="headerlink" title="3. Frida 版本陷阱"></a>3. Frida 版本陷阱</h3><p>Frida 17 废弃了 <code>Module.findExportByName</code>，大量网络教程已过时。实际动手测试才能发现。</p>
+<h3 id="4-必须在-spawn-模式下拦截"><a href="#4-必须在-spawn-模式下拦截" class="headerlink" title="4. 必须在 spawn 模式下拦截"></a>4. 必须在 <code>spawn</code> 模式下拦截</h3><p>attach 到已运行的微信会错过所有启动时的密钥派生。先 <code>pkill WeChat</code>，再用 <code>frida.spawn()</code> 启动，是捕获 Key 的必要条件。</p>
+<hr>
+<h2 id="九、完整可用脚本"><a href="#九、完整可用脚本" class="headerlink" title="九、完整可用脚本"></a>九、完整可用脚本</h2><p>以下脚本已保存至项目根目录 <code>wechat_key_hook.py</code>，可直接使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">JS = <span class="string">r&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">function toHex(ptr, len) &#123;</span></span><br><span class="line"><span class="string">    try &#123;</span></span><br><span class="line"><span class="string">        var arr = new Uint8Array(ptr.readByteArray(len));</span></span><br><span class="line"><span class="string">        return arr.map(b =&gt; b.toString(16).padStart(2, &#x27;0&#x27;)).join(&#x27;&#x27;);</span></span><br><span class="line"><span class="string">    &#125; catch(e) &#123; return null; &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var pbkdf2 = Module.getGlobalExportByName(&quot;CCKeyDerivationPBKDF&quot;);</span></span><br><span class="line"><span class="string">if (pbkdf2) &#123;</span></span><br><span class="line"><span class="string">    Interceptor.attach(pbkdf2, &#123;</span></span><br><span class="line"><span class="string">        onEnter: function(args) &#123;</span></span><br><span class="line"><span class="string">            var algo   = args[0].toInt32();</span></span><br><span class="line"><span class="string">            var prf    = args[5].toInt32();</span></span><br><span class="line"><span class="string">            var rounds = args[6].toInt32();</span></span><br><span class="line"><span class="string">            var pwdLen = args[2].toInt32();</span></span><br><span class="line"><span class="string">            if (algo === 2 &amp;&amp; prf === 5 &amp;&amp; rounds &gt; 1000) &#123;</span></span><br><span class="line"><span class="string">                var hex = toHex(args[1], pwdLen);</span></span><br><span class="line"><span class="string">                if (hex) send(&#123;type:&quot;key&quot;, key:hex, rounds:rounds, len:pwdLen&#125;);</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">    send(&quot;[+] CCKeyDerivationPBKDF hooked @ &quot; + pbkdf2);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[*] Spawning WeChat...&quot;</span>)</span><br><span class="line">pid = frida.spawn(<span class="string">&quot;/Applications/WeChat.app/Contents/MacOS/WeChat&quot;</span>)</span><br><span class="line">session = frida.attach(pid)</span><br><span class="line">script = session.create_script(JS)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_msg</span>(<span class="params">message, data</span>):</span><br><span class="line">    <span class="keyword">if</span> message[<span class="string">&#x27;type&#x27;</span>] == <span class="string">&#x27;send&#x27;</span>:</span><br><span class="line">        payload = message[<span class="string">&#x27;payload&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(payload, <span class="built_in">dict</span>) <span class="keyword">and</span> payload.get(<span class="string">&#x27;type&#x27;</span>) == <span class="string">&#x27;key&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;\n[!!!] KEY CAPTURED: <span class="subst">&#123;payload[<span class="string">&#x27;key&#x27;</span>]&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(payload)</span><br><span class="line"></span><br><span class="line">script.on(<span class="string">&#x27;message&#x27;</span>, on_msg)</span><br><span class="line">script.load()</span><br><span class="line">frida.resume(pid)</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">60</span>)</span><br><span class="line">session.detach()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十、后续展望"><a href="#十、后续展望" class="headerlink" title="十、后续展望"></a>十、后续展望</h2><p>这次实践验证了 <strong>Hook 加密算法入口</strong> 比 <strong>内存特征扫描</strong> 更稳定、更跨版本。下一步可以将 Frida Hook 封装为 <code>chatlog key</code> 的新后端（例如 <code>--frida</code> 模式），让 macOS 用户不再需要关闭 SIP 或依赖 <code>lldb</code>，大幅降低使用门槛。</p>
+<blockquote>
+<p><strong>一个人类开发者 + 一个能读代码、写脚本、跑验证的 AI，可以在一个小时内完成传统上需要数天的逆向工程闭环。</strong></p>
+</blockquote>
+<p><br><strong>本文作者</strong>：高金<br><strong>本文地址</strong>： <a href="https://igaojin.me/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/">https://igaojin.me/2026/04/18/人机协作逆向：用-AI-Frida-打通微信-4-1-8-macOS-数据库密钥提取/</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+
+<div id="gitalk-container"></div>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+		<script>
+		var gitalkConfig = {"clientID":"935e92a5333436856348","clientSecret":"e655566eaf920d216ec6283978d67874bf0850a6","repo":"jin10086.github.io","owner":"jin10086","admin":["jin10086"],"distractionFreeMode":false,"id":"page.date","createIssueManually":false};
+	    gitalkConfig.id = md5(location.pathname);
+		var gitalk = new Gitalk(gitalkConfig);
+	    gitalk.render("gitalk-container");
+	    </script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://igaojin.me/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/" data-id="cuidMFPj9o54An5OHYRi_AoKA" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.0/dist/jquery.min.js"></script>
+
+<div id="random_posts">
+  <h2>
+    推荐文章
+  </h2>
+  <div class="random_posts_ul">
+    <script>
+      var random_count = 4
+      var site = {
+        BASE_URI: '/'
+      };
+
+      function load_random_posts(obj) {
+        var arr = site.posts;
+        if (!obj) return;
+        // var count = $(obj).attr('data-count') || 6;
+        for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] =
+          tmp);
+        arr = arr.slice(0, random_count);
+        var html = '<ul>';
+
+        for (var j = 0; j < arr.length; j++) {
+          var item = arr[j];
+          html += '<li><strong>' +
+            item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI + item.uri) + '">' +
+            (item.title || item.uri) + '</a></strong>';
+          if (item.excerpt) {
+            html += '<div class="post-excerpt">' + item.excerpt + '</div>';
+          }
+          html += '</li>';
+
+        }
+        $(obj).html(html + '</ul>');
+      }
+      $('.random_posts_ul').each(function () {
+        var c = this;
+        if (!site.posts || !site.posts.length) {
+          $.getJSON(site.BASE_URI + 'js/posts.js', function (json) {
+            site.posts = json;
+            load_random_posts(c)
+          });
+        } else {
+          load_random_posts(c);
+        }
+      });
+    </script>
+  </div>
+</div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/01/01/%E6%83%85%E7%BB%AA%E4%BB%B7%E5%80%BC%E4%B8%8E%E6%B1%82%E7%9C%9F%EF%BC%9A%E5%A6%82%E4%BD%95%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%BA%94%E5%AF%B9%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">情绪价值与求真：如何平衡与应对？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%83%8C%E6%99%AF%EF%BC%9A%E6%97%A7%E6%96%B9%E6%A1%88%E7%AA%81%E7%84%B6%E5%A4%B1%E6%95%88"><span class="toc-number">1.</span> <span class="toc-text">一、背景：旧方案突然失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC%E4%B8%80%E5%9B%9E%E5%90%88%EF%BC%9AAI-%E5%81%9A%E8%AF%8A%E6%96%AD%EF%BC%8C%E4%BA%BA%E7%B1%BB%E7%BB%99%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">二、第一回合：AI 做诊断，人类给环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC%E4%BA%8C%E5%9B%9E%E5%90%88%EF%BC%9A%E4%BA%BA%E7%B1%BB%E6%8A%9B%E5%87%BA%E6%96%B0%E7%BA%BF%E7%B4%A2%EF%BC%8CAI-%E8%BD%AC%E6%8D%A2%E6%80%9D%E8%B7%AF"><span class="toc-number">3.</span> <span class="toc-text">三、第二回合：人类抛出新线索，AI 转换思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC%E4%B8%89%E5%9B%9E%E5%90%88%EF%BC%9AAI-%E6%90%AD%E5%BB%BA-Frida-%E7%8E%AF%E5%A2%83%EF%BC%8C%E8%B8%A9%E5%9D%91%E4%B8%8E%E4%BF%AE%E6%AD%A3"><span class="toc-number">4.</span> <span class="toc-text">四、第三回合：AI 搭建 Frida 环境，踩坑与修正</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-1%EF%BC%9AFrida-17-API-%E5%8F%98%E6%9B%B4"><span class="toc-number">4.1.</span> <span class="toc-text">坑 1：Frida 17 API 变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%91-2%EF%BC%9Asqlite3-key-%E6%A0%B9%E6%9C%AC%E6%B2%A1%E8%A2%AB%E8%B0%83%E7%94%A8"><span class="toc-number">4.2.</span> <span class="toc-text">坑 2：sqlite3_key 根本没被调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC%E5%9B%9B%E5%9B%9E%E5%90%88%EF%BC%9A%E8%BD%AC%E7%A7%BB%E6%88%98%E5%9C%BA%E5%88%B0-PBKDF2"><span class="toc-number">5.</span> <span class="toc-text">五、第四回合：转移战场到 PBKDF2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC%E4%BA%94%E5%9B%9E%E5%90%88%EF%BC%9A%E6%8D%95%E8%8E%B7%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BA%BA%E7%B1%BB%E9%AA%8C%E8%AF%81"><span class="toc-number">6.</span> <span class="toc-text">六、第五回合：捕获成功，人类验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%9A%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E7%9A%84%E5%88%86%E5%B7%A5"><span class="toc-number">7.</span> <span class="toc-text">七、核心方法论：人机协作的分工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%85%B3%E9%94%AE%E8%B8%A9%E5%9D%91%E6%B8%85%E5%8D%95"><span class="toc-number">8.</span> <span class="toc-text">八、关键踩坑清单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%89%B9%E5%BE%81%E5%AD%97%E8%8A%82%E4%BE%9D%E8%B5%96%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%9E%81%E7%9F%AD"><span class="toc-number">8.1.</span> <span class="toc-text">1. 特征字节依赖生命周期极短</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%87%E5%87%86-SQLCipher-API-%E6%98%AF%E4%B8%AA%E5%81%87%E7%9B%AE%E6%A0%87"><span class="toc-number">8.2.</span> <span class="toc-text">2. 标准 SQLCipher API 是个假目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Frida-%E7%89%88%E6%9C%AC%E9%99%B7%E9%98%B1"><span class="toc-number">8.3.</span> <span class="toc-text">3. Frida 版本陷阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BF%85%E9%A1%BB%E5%9C%A8-spawn-%E6%A8%A1%E5%BC%8F%E4%B8%8B%E6%8B%A6%E6%88%AA"><span class="toc-number">8.4.</span> <span class="toc-text">4. 必须在 spawn 模式下拦截</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%AE%8C%E6%95%B4%E5%8F%AF%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">9.</span> <span class="toc-text">九、完整可用脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%90%8E%E7%BB%AD%E5%B1%95%E6%9C%9B"><span class="toc-number">10.</span> <span class="toc-text">十、后续展望</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 -
+      2026
+      Gao JIn&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank" rel="external nofollow noopener noreferrer">Cafe</a>
+    </div>
+    <div id="footer-right">
+      联系方式&nbsp;|&nbsp;
+      i@igaojin.me
+    </div>
+  </div>
+</footer>
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.0/dist/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/about" class="mobile-nav-link">关于我</a>
+  
+    <a href="/buy-me-a-coffee/" class="mobile-nav-link">赞赏我</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+<!-- author:forvoid end -->
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/mycdn@2.0.0/static/js/is.js"></script>
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.pack.min.js"></script>
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/mycdn@2.0.0/static/js/script.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/mycdn@2.0.0/static/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

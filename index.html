@@ -116,6 +116,68 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-人机协作逆向：用-AI-Frida-打通微信-4-1-8-macOS-数据库密钥提取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/" class="article-date">
+  <time datetime="2026-04-18T14:37:45.000Z" itemprop="datePublished">2026-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI/">AI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/">人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        当内存特征扫描失效、标准 Hook 无功而返时，一个开发者与 AI 如何通过多轮迭代，最终找到微信 4.1.8 的密钥派生入口。
+
+
+
+
+一、背景：旧方案突然失效
+chatlog 项目长期依赖一套相对稳定的 macOS 密钥提取逻辑：
+
+1
+
+
+vmmap 定位内存区域 → lldb dump 内存 → 搜索 fts5(% 特征字节 → 固定偏移取 32B Key → DB 验证
+
+
+但在用户升级到 微信 4.1.8 后，这条链路彻底断裂。运行 ./bin/chatlog key --debug 时，程序能正常读完 94 个内存区域，然后陷入漫长的静默，最终超时退出——Key 一个都没找到。
+
+        
+          <p class="article-more-link">
+            <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://igaojin.me/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/" data-id="cuidMFPj9o54An5OHYRi_AoKA" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-情绪价值与求真：如何平衡与应对？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2025/01/01/%E6%83%85%E7%BB%AA%E4%BB%B7%E5%80%BC%E4%B8%8E%E6%B1%82%E7%9C%9F%EF%BC%9A%E5%A6%82%E4%BD%95%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%BA%94%E5%AF%B9%EF%BC%9F/" class="article-date">
@@ -380,58 +442,6 @@ from	nonce	to	transactionIndex	gasPrice	gasFee	status	new_status
 
 
   
-    <article id="post-植物挖矿" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/" class="article-date">
-  <time datetime="2021-07-01T04:08:00.000Z" itemprop="datePublished">2021-07-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/">植物挖矿</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        背景
- 1. 最近在B站看了一个纪录片 超级仿生
-
-我们如何利用自然界最伟大的运动员 - 植物群和动物群的潜力来发挥我们的优势？我们怎样才能从自然的现象力量中获得灵感，并复制它并进化发展出超级解决方案，以满足特定的人类需求，解决我们的问题，限制或修复人类活动已经造成的损害？通过仿生学，精美的3D效果和CGI，本片讲述了一个更加理想和可持续发展的世界的故事。我们将逐步揭示我们的未来。在全球范围内，越来越多的研究人员和企业家，真正的“未来创造者”，正在利用自然界40亿年积累的智慧而获得的惊人成果，开始改变今天和明天世界。
-
- 2. 最近国内禁止挖矿,导致BTC算力猛降.市场上蛮多二手矿机的,我最近
-        
-          <p class="article-more-link">
-            <a href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://igaojin.me/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/" data-id="cuiddONO5kCdGcFzhz_Kka21Z" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
@@ -470,7 +480,7 @@ from	nonce	to	transactionIndex	gasPrice	gasFee	status	new_status
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/XUNTA/">XUNTA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dapp/">dapp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hackathon/">hackathon</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84BUG/">奇怪的BUG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%97%E5%88%A9/">套利</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%97%E5%88%A9/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/">每周分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BF%80%E8%BF%9B%E5%B8%82%E5%9C%BA/">激进市场</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/appium/">appium</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%90%E4%BA%8B/">琐事</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%B8%E4%BA%B2/">相亲</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E4%B9%8E/">知乎</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%9A%8F%E6%83%B3/">编程随想</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%81%8C%E5%9C%BA/">职场</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/">送书活动</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98/">问题</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI/">AI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XUNTA/">XUNTA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dapp/">dapp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hackathon/">hackathon</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84BUG/">奇怪的BUG</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%97%E5%88%A9/">套利</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A5%97%E5%88%A9/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AF%8F%E5%91%A8%E5%88%86%E4%BA%AB/">每周分享</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BF%80%E8%BF%9B%E5%B8%82%E5%9C%BA/">激进市场</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/appium/">appium</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%90%90%E4%BA%8B/">琐事</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%B8%E4%BA%B2/">相亲</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9F%A5%E4%B9%8E/">知乎</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%9A%8F%E6%83%B3/">编程随想</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%81%8C%E5%9C%BA/">职场</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6/">读书</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%80%81%E4%B9%A6%E6%B4%BB%E5%8A%A8/">送书活动</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98/">问题</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -492,6 +502,10 @@ from	nonce	to	transactionIndex	gasPrice	gasFee	status	new_status
       <ul>
         
           <li>
+            <a href="/2026/04/18/%E4%BA%BA%E6%9C%BA%E5%8D%8F%E4%BD%9C%E9%80%86%E5%90%91%EF%BC%9A%E7%94%A8-AI-Frida-%E6%89%93%E9%80%9A%E5%BE%AE%E4%BF%A1-4-1-8-macOS-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%86%E9%92%A5%E6%8F%90%E5%8F%96/">人机协作逆向：用 AI + Frida 打通微信 4.1.8 macOS 数据库密钥提取</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/01/%E6%83%85%E7%BB%AA%E4%BB%B7%E5%80%BC%E4%B8%8E%E6%B1%82%E7%9C%9F%EF%BC%9A%E5%A6%82%E4%BD%95%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%BA%94%E5%AF%B9%EF%BC%9F/">情绪价值与求真：如何平衡与应对？</a>
           </li>
         
@@ -507,10 +521,6 @@ from	nonce	to	transactionIndex	gasPrice	gasFee	status	new_status
             <a href="/2023/09/16/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">无公网ip,无服务器实现内网穿透</a>
           </li>
         
-          <li>
-            <a href="/2021/07/01/%E6%A4%8D%E7%89%A9%E6%8C%96%E7%9F%BF/">植物挖矿</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -520,7 +530,7 @@ from	nonce	to	transactionIndex	gasPrice	gasFee	status	new_status
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">24</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">24</span></li></ul>
     </div>
   </div>
 
