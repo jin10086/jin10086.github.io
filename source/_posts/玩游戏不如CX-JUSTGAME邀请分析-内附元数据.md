@@ -1,12 +1,11 @@
 ---
-title: '玩游戏不如CX,JUSTGAME邀请分析(内附元数据)'
+title: 玩游戏不如CX,JUSTGAME邀请分析(内附元数据)
 categories:
   - 区块链
-date: 2019-12-25 01:33:53
+date: 2019-12-25T01:33:53.000Z
 tags:
   - JUSTGAME
 ---
-
 所有数据截止到2019-12-24:19:00:00(之后没有统计)
 
 justgame估计🈹️了不少人, 对游戏盈利数据分析可以看看这个[DR深度这一次，孙宇晨真的被割了](https://mp.weixin.qq.com/s/WIy3DcauPIWxg1Vo3CO75Q),本文只看 邀请奖励

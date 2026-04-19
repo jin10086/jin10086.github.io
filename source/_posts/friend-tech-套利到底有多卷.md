@@ -1,12 +1,13 @@
 ---
 title: friend_tech 套利到底有多卷
 categories:
-  - 套利
-  - 数据分析
-date: 2023-09-18 23:24:45
+  - 区块链
+  - 爬虫
+date: 2023-09-18T23:24:45.000Z
 tags:
+  - friend.tech
+  - 套利
 ---
-
 ## 背景
 
 最近有准备搞一下friend tech的套利...

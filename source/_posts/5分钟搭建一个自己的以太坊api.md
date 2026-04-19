@@ -2,12 +2,10 @@
 title: 5分钟搭建一个自己的以太坊api
 categories:
   - 区块链
-date: 2019-02-13 23:54:58
+date: 2019-02-13T23:54:58.000Z
 tags:
   - 以太坊
-  - parity轻节点
 ---
-
 ## 背景
 
 {% asset_img 1.jpg  %}

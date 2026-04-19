@@ -2,12 +2,11 @@
 title: EOS智能合约的功与防-拒绝转账
 categories:
   - 区块链
-date: 2018-11-23 07:33:41
+date: 2018-11-23T07:33:41.000Z
 tags:
   - EOS
   - 安全
 ---
-
 ## 从World Conquest 被攻击说起
 
 {% asset_img 1.jpg  %}

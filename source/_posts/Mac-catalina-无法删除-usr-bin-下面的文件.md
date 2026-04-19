@@ -1,11 +1,11 @@
 ---
 title: Mac catalina 无法删除/usr/bin/下面的文件
 categories:
-  - 问题
-date: 2019-10-10 20:12:17
+  - 编程与工具
+date: 2019-10-10T20:12:17.000Z
 tags:
+  - macOS
 ---
-
 `rm: /usr/bin/python: Operation not permitted`
 
 就算用了sudo 也是一样.

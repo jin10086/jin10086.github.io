@@ -2,12 +2,11 @@
 title: 如何用myetherwallet 来玩智能合约
 categories:
   - 区块链
-date: 2018-04-26 20:05:47
+date: 2018-04-26T20:05:47.000Z
 tags:
   - myetherwallet
   - 智能合约
 ---
-
 ## 如何用myetherwallet 来玩智能合约
 
 用myetherwallet之前，请先看看 [黑客已经盗了15,945,221.72 USD

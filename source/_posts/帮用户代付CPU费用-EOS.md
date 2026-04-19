@@ -2,10 +2,10 @@
 title: 帮用户代付CPU费用--EOS
 categories:
   - 区块链
-date: 2019-11-13 21:12:12
+date: 2019-11-13T21:12:12.000Z
 tags:
+  - EOS
 ---
-
 参考文档 https://github.com/EOSLaoMao/deploy-eosio-contracts-v1.7.0/blob/master/features/ONLY_BILL_FIRST_AUTHORIZER.md
 
 ## 主要功能

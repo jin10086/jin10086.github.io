@@ -2,10 +2,10 @@
 title: 如何购买BTC
 categories:
   - 区块链
-date: 2019-10-27 20:48:10
+date: 2019-10-27T20:48:10.000Z
 tags:
+  - BTC
 ---
-
 ## 背景
 
 最近因为 [习近平：把区块链作为核心技术自主创新重要突破口](https://mp.weixin.qq.com/s/fTqleybScxxoE_aXnigk8g)这篇文章

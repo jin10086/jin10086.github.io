@@ -2,10 +2,10 @@
 title: MAC 如何安装 bsddb3
 categories:
   - 爬虫
-date: 2018-08-06 18:46:33
+date: 2018-08-06T18:46:33.000Z
 tags:
+  - 环境配置
 ---
-
 更新于2020-02-09号
 
 可以直接使用  `conda install -c conda-forge bsddb3` 安装了 

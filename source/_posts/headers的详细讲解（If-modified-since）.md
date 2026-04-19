@@ -2,12 +2,11 @@
 title: headers的详细讲解（If-modified-since）
 categories:
   - 爬虫
-date: 2018-02-03 17:30:25
+date: 2018-02-03T17:30:25.000Z
 tags:
-  - If-modified-since
+  - HTTP
   - headers
 ---
-
 本文讲解的知识点是headers里面的If-modified-since
 
 ## 案例

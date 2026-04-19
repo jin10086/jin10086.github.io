@@ -2,10 +2,10 @@
 title: 使用tensorflow识别验证码
 categories:
   - 爬虫
-date: 2020-05-12 22:02:38
+date: 2020-05-12T22:02:38.000Z
 tags:
+  - TensorFlow
 ---
-
 # tensorflow-cnn-captcha-server
 
 ## 背景

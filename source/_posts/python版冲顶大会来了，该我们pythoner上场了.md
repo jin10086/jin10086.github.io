@@ -1,10 +1,9 @@
 ---
 title: python版冲顶大会来了，该我们pythoner上场了
 categories:
-  - python
-date: 2018-02-03 18:37:39
+  - 编程与工具
+date: 2018-02-03T18:37:39.000Z
 tags:
-  - python
   - 冲顶大会
 ---
 ## 背景

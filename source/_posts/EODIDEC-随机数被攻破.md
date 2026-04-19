@@ -2,10 +2,11 @@
 title: EOSDIEC 随机数被攻破
 categories:
   - 区块链
-date: 2018-11-04 08:49:35
+date: 2018-11-04T08:49:35.000Z
 tags:
+  - EOS
+  - 随机数
 ---
-
 ## EOSDICE
 
 {% asset_img 0.jpg  %}

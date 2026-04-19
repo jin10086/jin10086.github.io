@@ -1,9 +1,8 @@
 ---
 title: headers的详细讲解
-date: 2018-02-03 16:28:27
+date: 2018-02-03T16:28:27.000Z
 tags:
   - headers
-  - 爬虫
 categories:
   - 爬虫
 ---

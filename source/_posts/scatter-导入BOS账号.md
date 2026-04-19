@@ -2,12 +2,11 @@
 title: scatter 导入BOS账号
 categories:
   - 区块链
-date: 2019-01-27 19:02:19
+date: 2019-01-27T19:02:19.000Z
 tags:
+  - EOS
+  - Scatter
 ---
-
-
-
 ## 设置语言为中文
 
 选择设置

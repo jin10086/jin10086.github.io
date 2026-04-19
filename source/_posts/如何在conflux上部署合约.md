@@ -2,12 +2,10 @@
 title: 如何在conflux上部署合约
 categories:
   - 区块链
-date: 2019-12-03 14:35:15
+date: 2019-12-03T14:35:15.000Z
 tags:
   - conflux
 ---
-
-
 ## 编译合约
 
 在 https://remix.ethereum.org/ 上面编写好合约

@@ -1,13 +1,11 @@
 ---
 title: 你的EOS 账号安全谁来保护？
 categories:
-    - 区块链
-date: 2018-06-15 11:46:49
+  - 区块链
+date: 2018-06-15T11:46:49.000Z
 tags:
   - EOS
- 
 ---
-
 ## 背景
 
 最近EOS 有发现私钥被盗事件，详情请看>>> https://bihu.com/article/654254

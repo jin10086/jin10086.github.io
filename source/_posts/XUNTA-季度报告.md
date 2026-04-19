@@ -1,11 +1,11 @@
 ---
 title: XUNTA 季度报告
 categories:
-  - XUNTA
-date: 2020-02-03 22:52:32
+  - 区块链
+date: 2020-02-03T22:52:32.000Z
 tags:
+  - XUNTA
 ---
-
 ## XUNTA 
 
 从XUNTA上线至今已经有2个月了

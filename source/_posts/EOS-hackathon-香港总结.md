@@ -1,11 +1,11 @@
 ---
 title: EOS hackathon 香港总结
 categories:
-  - hackathon
-date: 2018-06-14 00:29:03
+  - 区块链
+date: 2018-06-14T00:29:03.000Z
 tags:
+  - EOS
 ---
-
 ## 背景
 
 上周末去参加了EOS在香港举行的黑客松...

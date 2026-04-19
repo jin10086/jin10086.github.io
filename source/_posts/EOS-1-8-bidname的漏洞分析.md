@@ -2,11 +2,10 @@
 title: EOS 1.8 bidname的漏洞分析
 categories:
   - 区块链
-date: 2019-11-24 11:49:12
+date: 2019-11-24T11:49:12.000Z
 tags:
   - EOS
 ---
-
 ## 背景
 
 

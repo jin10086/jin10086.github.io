@@ -1,11 +1,11 @@
 ---
 title: friend_tech 第一笔交易只能买 1 个key?
 categories:
-  - 
-date: 2023-09-19 15:36:24
+  - 区块链
+date: 2023-09-19T15:36:24.000Z
 tags:
+  - friend.tech
 ---
-
 ## 背景
 
 群里有人说friend tech 第一笔交易只能自己购买1笔？

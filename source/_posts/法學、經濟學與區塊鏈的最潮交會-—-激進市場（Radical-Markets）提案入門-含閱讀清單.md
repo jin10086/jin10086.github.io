@@ -1,11 +1,11 @@
 ---
-title: '法学、经济学与区块链的最潮交会 — 激进市场（Radical Markets）提案入门'
+title: 法学、经济学与区块链的最潮交会 — 激进市场（Radical Markets）提案入门
 categories:
-  - 激进市场
-date: 2019-11-13 15:57:05
+  - 区块链
+date: 2019-11-13T15:57:05.000Z
 tags:
+  - 激进市场
 ---
-
 本文转载于[法学、经济学与区块链的最潮交会 — 激进市场（Radical Markets）提案入门 [含阅读清单]](https://medium.com/@daaab/%E6%B3%95%E5%AD%B8-%E7%B6%93%E6%BF%9F%E5%AD%B8%E8%88%87%E5%8D%80%E5%A1%8A%E9%8F%88%E7%9A%84%E6%9C%80%E6%BD%AE%E4%BA%A4%E6%9C%83-%E6%BF%80%E9%80%B2%E5%B8%82%E5%A0%B4-radical-markets-%E6%8F%90%E6%A1%88%E5%85%A5%E9%96%80-%E5%90%AB%E9%96%B1%E8%AE%80%E6%B8%85%E5%96%AE-989032d9c2c5) 
 
 只是简单的把繁体中文 转换成了简体中文

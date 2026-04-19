@@ -1,8 +1,8 @@
 ---
 title: github如何创建ssh-key
 categories:
-  - github
-date: 2018-02-03 19:07:56
+  - 编程与工具
+date: 2018-02-03T19:07:56.000Z
 tags:
   - sshkey
 ---
