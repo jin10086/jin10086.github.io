@@ -19,8 +19,10 @@
 <meta property="og:description" content="当内存特征扫描失效、标准 Hook 无功而返时，一个开发者与 AI 如何通过多轮迭代，最终找到微信 4.1.8 的密钥派生入口。     一、背景：旧方案突然失效 chatlog 项目长期依赖一套相对稳定的 macOS 密钥提取逻辑：  1   vmmap 定位内存区域 → lldb dump 内存 → 搜索 fts5(% 特征字节 → 固定偏移取 32B Key → DB 验证   但在用户升级">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-18T14:37:45.000Z">
-<meta property="article:modified_time" content="2026-04-18T14:38:37.582Z">
+<meta property="article:modified_time" content="2026-04-19T00:50:23.870Z">
 <meta property="article:author" content="Gao JIn">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="逆向">
 <meta name="twitter:card" content="summary">
   
   <link rel="alternate" href="/atom.xml" title="高金的博客" type="application/atom+xml">
@@ -125,7 +127,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E5%85%B7/">编程与工具</a>
   </div>
 
   </div>
@@ -279,6 +281,8 @@ ga('send', 'pageview');
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macOS/" rel="tag">macOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li></ul>
+
     </footer>
   </div>
   
